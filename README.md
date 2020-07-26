@@ -223,6 +223,7 @@ SECRET_KEY | `<your_secret_key>`
 ## Media
 ### Icons
 - All the icons in this website were provided by [Font Awesome](https://fontawesome.com/).
+- Favicon is made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/).
 
 ### Images
 - The favicon for this site is provided by [flaticon](https://www.flaticon.com/)
