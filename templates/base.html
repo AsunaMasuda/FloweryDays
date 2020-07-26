@@ -42,8 +42,19 @@
     <title>Flowery Days {% block extra_title %}{% endblock %}</title>
   </head>
   <body>
-  <header></header>
+  <header class="container-fluid fix-top"></header>
 
-    
+  {% if messages %}
+  {% endif %}
+
+  {% block page_header %}
+  {% endblock %}
+
+  {% block content %}
+  {% endblock %}
+
+  {% block postloadjs %}
+  {% endblock %}
+
   </body>
 </html>
