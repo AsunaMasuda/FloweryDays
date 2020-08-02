@@ -1,3 +1,18 @@
+/** Disable default decorations for Links **/
+a:focus,
+a:hover,
+a:active {
+    outline: none!important;
+    text-decoration: none !important;
+    border: 0!important;
+}
+
+/** Font **/
+body {
+    font-family: 'Playfair Display', serif;
+}
+
+/** Carousel **/
 html, 
 body, 
 .carousel, 
@@ -7,6 +22,7 @@ body,
 }
 
 .carousel-text-box-1 {
+    font-size: 1.5rem;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -20,6 +36,7 @@ body,
 }
 
 .carousel-text-box-2 {
+    font-size: 1.5rem;
     position: absolute;
     top: 50%;
     -ms-transform: translateY(-50%);
@@ -30,4 +47,54 @@ body,
     padding-bottom: 20px;
     color: #fff;
     text-align: center;
+}
+
+/** Navbar **/
+
+.navber-spacing {
+    letter-spacing: 1.5px;
+}
+
+.shopping-cart-ex {
+    font-size: 20px;
+    color: black;
+}
+
+/** Button **/
+.btn-outline {
+  color: black;
+  background-color: #ffffff;
+  border-color: black;
+  border-radius: 0;
+  letter-spacing: 0.05em;
+}
+
+.btn-outline:hover,
+.btn-outline:active,
+.btn-outline:focus,
+.btn-outline.active {
+  background: black;
+  color: #ffffff!important;
+  border-color: black;
+}
+
+.btn-colour-1 {
+  color: #fff;
+  background-color: black;
+  border-color: black;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+}
+
+.btn-colour-1:hover,
+.btn-colour-1:active,
+.btn-colour-1:focus,
+.btn-colour-1.active {
+  background: black;
+  color: #ffffff;
+  border-color: black;
+}
+
+#logo-small{
+    display: none
 }
