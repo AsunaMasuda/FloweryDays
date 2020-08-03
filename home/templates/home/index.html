@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
 <!-- Navbar -->
-<header class="bg-white">
+<header class="header-ex bg-white">
 <div class="container-fluid h-100">
   <div class="row align-items-center h-100">
     <div class="col-auto">
@@ -78,9 +78,10 @@
 </header>
 
 <!-- Carousel -->
-<section
-  id="carouselExampleIndicators"
-  class="carousel slide"
+<section class="top">
+<div class="carousel-padding">
+<div id="carouselExampleIndicators"
+  class="carousel carousel-extension slide"
   data-ride="carousel"
   data-interval="6500"
 >
@@ -92,6 +93,7 @@
     ></li>
     <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
   </ol>
+  <div class="carousel-extension">
   <div class="carousel-inner">
     <div class="carousel-item active">
       <img
@@ -130,6 +132,7 @@
       </div>
     </div>
   </div>
+  </div>
   <a
     class="carousel-control-prev"
     href="#carouselExampleIndicators"
@@ -148,6 +151,9 @@
     <span class="carousel-control-next-icon" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
+</div>
+</div>
 </section>
+
 
 {% endblock %}
