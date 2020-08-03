@@ -1,3 +1,7 @@
+footer, header, section {
+    display: block;
+}
+
 /** Disable default decorations for Links **/
 a:focus,
 a:hover,
@@ -10,43 +14,6 @@ a:active {
 /** Font **/
 body {
     font-family: 'Playfair Display', serif;
-}
-
-/** Carousel **/
-html, 
-body, 
-.carousel, 
-.carousel-inner, 
-.carousel-inner .item {
-    height: 100%;
-}
-
-.carousel-text-box-1 {
-    font-size: 1.5rem;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    left: 15%;
-    z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #fff;
-    text-align: center;
-}
-
-.carousel-text-box-2 {
-    font-size: 1.5rem;
-    position: absolute;
-    top: 50%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
-    right: 15%;
-    z-index: 10;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    color: #fff;
-    text-align: center;
 }
 
 /** Navbar **/
@@ -97,4 +64,71 @@ body,
 
 #logo-small{
     display: none
+}
+
+/** Carousel **/
+html,
+body {
+    height: 100vh; 
+}
+
+.top {
+    height: 100%;
+    margin-bottom: -165px;
+}
+
+.carousel-padding {
+    width:100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    padding-top: 165px;
+}
+
+.header-ex {
+    height: 165px;
+    overflow:auto;
+}  
+
+.carousel-extension {
+    position: relative;
+    height: inherit;
+}
+
+.carousel-inner {
+    position: relative;
+    height: inherit;
+}
+
+.carousel-item {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+    background-size: cover;
+}
+
+.carousel-text-box-1 {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    position: absolute;
+    top: 35%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 15%;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
+}
+
+.carousel-text-box-2 {
+    font-size: 1.5rem;
+    letter-spacing: 0.1em;
+    position: absolute;
+    top: 35%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    right: 15%;
+    z-index: 10;
+    color: #fff;
+    text-align: center;
 }
