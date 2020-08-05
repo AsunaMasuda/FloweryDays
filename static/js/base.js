@@ -19,6 +19,11 @@ $(document).ready(function () {
   });
 });
 
+// Wow.js
+$(document).ready(function () {
+    new WOW().init();
+});
+
 $(window).scroll(function () {
   if ($(window).scrollTop() <= 100) {
     $("#logo").css("display", "block");
