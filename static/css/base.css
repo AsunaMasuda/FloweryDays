@@ -132,3 +132,23 @@ body {
     color: #fff;
     text-align: center;
 }
+
+/** About **/
+.page-section {
+    padding: 8rem 0;
+}
+
+.bg-primary{
+    background-color: #eacdc2 !important;
+}
+
+.about-icon {
+    font-size: 35px
+}
+
+.liner-text {
+    position: relative;
+    background: linear-gradient(to bottom, #ffffff00 85%, #F5E6E1 15%);
+    width: 80%;
+    left: 15%;
+}
