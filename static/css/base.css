@@ -156,6 +156,7 @@ body {
 /** Testimonial **/
 
 .quote {
+    color: #C5BEC4;
     text-align: center;
     margin-bottom: 30px;
 }
@@ -186,8 +187,21 @@ body {
 }
 
 #fade-quote-carousel.carousel .carousel-indicators > li {
-  background-color: #e84a64;
+  background-color: #eacdc2;
   border: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+#fade-quote-carousel.carousel .carousel-indicators .active {
+  background-color: #b75d69;
+  border: none;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  display: inline-block;
 }
 
 #fade-quote-carousel blockquote {
