@@ -215,3 +215,17 @@ body {
     margin: 0 auto;
     border-radius: 50%;
 }
+
+/** Contact **/
+
+.bg-contact {
+  background: url('../img/home/contact.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
+.ct-contact {
+    background-color: white;
+}
