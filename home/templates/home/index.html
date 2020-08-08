@@ -284,47 +284,76 @@
           <!-- Carousel items -->
           <div class="carousel-inner">
             <div class="carousel-item">
-              <img class="profile-circle mb-3" src="{% static 'img/home/WinonaOliver.jpg' %}" alt="Winona Oliver image">
+              <img
+                class="profile-circle mb-3"
+                src="{% static 'img/home/WinonaOliver.jpg' %}"
+                alt="Winona Oliver image"
+              />
               <blockquote>
                 <h5>Winona Oliver</h5>
                 <p>
-                  There are lots of options I can choose for any occasion. The order was delivered on time and I was kept updated throughout the process!
+                  There are lots of options I can choose for any occasion. The
+                  order was delivered on time and I was kept updated throughout
+                  the process!
                 </p>
               </blockquote>
             </div>
             <div class="carousel-item">
-              <img class="profile-circle mb-3" src="{% static 'img/home/ArronWelch.jpg' %}" alt="Arron Welch image">
+              <img
+                class="profile-circle mb-3"
+                src="{% static 'img/home/ArronWelch.jpg' %}"
+                alt="Arron Welch image"
+              />
               <blockquote>
                 <h5>Arron Welch</h5>
                 <p>
-                  I bought a bouquet for a birthday last minute but it arrived in the same day. Amazing service and great prices as well. I will use your service again!
+                  I bought a bouquet for a birthday last minute but it arrived
+                  in the same day. Amazing service and great prices as well. I
+                  will use your service again!
                 </p>
               </blockquote>
             </div>
             <div class="active carousel-item">
-              <img class="profile-circle mb-3" src="{% static 'img/home/AllieDoyle.jpg' %}" alt="Allie Doyle image">
+              <img
+                class="profile-circle mb-3"
+                src="{% static 'img/home/AllieDoyle.jpg' %}"
+                alt="Allie Doyle image"
+              />
               <blockquote>
                 <h5>Allie Doyle</h5>
                 <p>
-                  I am using the weekly flower subscription by Flowery Days and am very happy with the service. I am always impressed with the packaging & freshness as well.
+                  I am using the weekly flower subscription by Flowery Days and
+                  am very happy with the service. I am always impressed with the
+                  packaging & freshness as well.
                 </p>
               </blockquote>
             </div>
             <div class="carousel-item">
-              <img class="profile-circle mb-3" src="{% static 'img/home/MeaganByrne.jpg' %}" alt="Meagan Byrne image">
+              <img
+                class="profile-circle mb-3"
+                src="{% static 'img/home/MeaganByrne.jpg' %}"
+                alt="Meagan Byrne image"
+              />
               <blockquote>
                 <h5>Meagan Byrne</h5>
                 <p>
-                  Amazing job again Flowery Days. You’ve never let me down. My mother is very happy with the beautiful flower gift set which arrived today for her 60th.
+                  Amazing job again Flowery Days. You’ve never let me down. My
+                  mother is very happy with the beautiful flower gift set which
+                  arrived today for her 60th.
                 </p>
               </blockquote>
             </div>
             <div class="carousel-item">
-              <img class="profile-circle mb-3" src="{% static 'img/home/RoryFitzpatrick.jpg' %}" alt="Rory Fitzpatrick image">
+              <img
+                class="profile-circle mb-3"
+                src="{% static 'img/home/RoryFitzpatrick.jpg' %}"
+                alt="Rory Fitzpatrick image"
+              />
               <blockquote>
                 <h5>Rory Fitzpatrick</h5>
                 <p>
-                  I just received my order and was truly amazed by the products. It was packed so well and the flowers are beautiful.
+                  I just received my order and was truly amazed by the products.
+                  It was packed so well and the flowers are beautiful.
                 </p>
               </blockquote>
             </div>
@@ -337,6 +366,66 @@
 
 <!-- Contact -->
 <section class="page-section bg-primary" id="contact">
- <div class="container"></div>
+  <div class="container">
+    <div class="row text-center mb-5">
+      <div class="col-12">
+        <h1>Send Us Mail</h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6"></div>
+      <div class="col-6">
+        <form>
+          <div class="row form-group">
+            <label for="inputName" class="col-3 col-form-label">Name</label>
+            <div class="col-9">
+              <input
+                type="text"
+                class="form-control"
+                id="inputName"
+                placeholder="Name"
+              />
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="inputEmail" class="col-3 col-form-label">Email</label>
+            <div class="col-9">
+              <input
+                type="email"
+                class="form-control"
+                id="inputEmail"
+                placeholder="Email"
+              />
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="inputSubject" class="col-3 col-form-label"
+              >Subject</label
+            >
+            <div class="col-9">
+              <select class="form-control" id="inputSubject">
+                <option selected>Choose Subject</option>
+                <option>Corporate & Event Flower Inquiry</option>
+                <option>Wedding Flower Inquiry</option>
+                <option>Custom Bouquet Inquiry</option>
+                <option>Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="row form-group">
+            <label for="message" class="col-3 col-form-label">Message</label>
+            <div class="col-9">
+              <textarea class="form-control" id="message" rows="7"></textarea>
+            </div>
+          </div>
+          <div class="row form-group">
+          <div class="col-12 text-center">
+            <button type="submit" class="btn btn-colour-1">Submit</button>
+          </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </section>
 {% endblock %}
