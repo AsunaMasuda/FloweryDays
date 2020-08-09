@@ -2,6 +2,14 @@ footer, header, section {
     display: block;
 }
 
+ul, li {
+    list-style-type: none;
+}
+
+a {
+    transition: all 0.25s ease-in-out;
+}
+
 /** Disable default decorations for Links **/
 a:focus,
 a:hover,
@@ -216,6 +224,7 @@ body {
     border-radius: 50%;
 }
 
+
 /** Contact **/
 
 .bg-contact {
@@ -228,4 +237,32 @@ body {
 
 .ct-contact {
     background-color: white;
+}
+
+
+/** Footer **/
+
+.footer-all {
+    background-color: #774c60;
+    color: white;
+}
+
+.footer-title {
+    margin-bottom: 1rem;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.footer-corporate-list > li > a {
+    color: white;
+}
+
+.footer-corporate-list > li > a:hover {
+    color: #eacdc2;
+}
+
+.footer-corporate-list {
+    columns: 2;
+    break-inside: avoid;
 }
