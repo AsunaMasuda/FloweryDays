@@ -265,3 +265,25 @@ body {
     columns: 2;
     break-inside: avoid;
 }
+
+.second-footer-panel {
+   background: #372549;
+}
+ 
+ul#social-icon li {
+ display:inline;
+}
+ 
+ul#social-icon {
+ padding-left: 0px!important;
+ margin-top: 1rem;
+ margin-bottom: 0.5rem;
+}
+ 
+ul#social-icon a {
+ color: white;
+}
+ 
+ul#social-icon a:hover {
+   color: #eacdc2;
+}
