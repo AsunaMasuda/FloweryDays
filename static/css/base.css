@@ -140,11 +140,17 @@ body {
 }
 
 /** About **/
-.page-section {
-    padding: 7rem 0;
+.bg-about {
+    background-color: #b75d69 !important;
+    color: white;
+    padding: 4rem 0;
 }
 
-.bg-primary{
+.page-section {
+    padding: 4rem 0;
+}
+
+.bg-why-choose-us {
     background-color: #eacdc2 !important;
 }
 
