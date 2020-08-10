@@ -70,11 +70,18 @@
             </a>
           </div>
           <div class="d-inline mr-4">
-            <a href="#">
+            <a href="#" class="display-cart">
               <i
-                class="fa fa-shopping-cart shopping-cart-ex"
+                class="fa fa-shopping-cart shopping-cart-ex fa-lg"
                 aria-hidden="true"
               ></i>
+            <sup class="item-number">
+                {% if total_item %}
+                    {{ total_item }}
+                {% else %}
+                    0
+                {% endif %}
+            </sup>
             </a>
           </div>
         </div>
@@ -519,12 +526,12 @@
         <div class="col-12 text-center">
           <ul id="social-icon" class="text-center">
             <li class="mr-2">
-              <a href="https://www.linkedin.com/in/asuna-fitzpatrick-masuda/">
+              <a href="https://www.linkedin.com/in/asuna-fitzpatrick-masuda/" target="_blank">
                 <i class="fab fa-linkedin fa-2x"></i>
               </a>
             </li>
             <li>
-              <a href="https://github.com/AsunaMasuda"
+              <a href="https://github.com/AsunaMasuda" target="_blank"
                 ><i class="fab fa-github-square fa-2x"></i
               ></a>
             </li>
