@@ -35,6 +35,15 @@ body {
     color: black;
 }
 
+.display-cart {
+  display: inline-block;
+}
+
+.item-number {
+    font-family: 'Roboto', sans-serif;
+    color: black;
+}
+
 /** Button **/
 .btn-outline {
   color: black;
