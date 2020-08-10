@@ -5,7 +5,7 @@
   <div class="container-fluid h-100">
     <div class="row align-items-center h-100">
       <div class="col-auto">
-        <a href="#">
+        <a href="{% url 'home' %}">
           <img
             id="logo"
             class="ml-4"
@@ -18,7 +18,7 @@
         id="navber-extension"
         class="navbar navbar-expand-md navbar-light bg-white py-3 navber-spacing navber-extension col"
       >
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="{% url 'home' %}">
           <img
             id="logo-small"
             src="{% static 'img/home/small_logo.png' %}"
@@ -175,11 +175,11 @@
 </section>
 
 <!-- About -->
-<section class="page-section bg-primary" id="about">
+<section class="page-section bg-why-choose-us" id="why-choose-us">
   <div class="container">
     <div class="row d-flex justify-content-center">
       <div
-        class="col-lg-5 text-center my-auto animate__animated animate__fadeInLeft wow"
+        class="col-lg-5 text-center my-auto animate__animated animate__fadeInLeft wow " 
       >
         <div class="d-none d-lg-block">
           <img
