@@ -5,6 +5,7 @@ footer, header, section {
 ul, li {
    list-style-type: none;
 } 
+
 a {
    transition: all 0.25s ease-in-out;
 }
@@ -45,8 +46,7 @@ body {
 
 .btn-outline:hover,
 .btn-outline:active,
-.btn-outline:focus,
-.btn-outline.active {
+.btn-outline:focus {
   background: black;
   color: #ffffff!important;
   border-color: black;
@@ -62,10 +62,9 @@ body {
 
 .btn-colour-1:hover,
 .btn-colour-1:active,
-.btn-colour-1:focus,
-.btn-colour-1.active {
-  background: black;
-  color: #ffffff;
+.btn-colour-1:focus {
+  background: #ffffff;
+  color: black;
   border-color: black;
 }
 
