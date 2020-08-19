@@ -2,8 +2,8 @@ from django.db import models
 
 
 class Product(models.Model):
-    name = models.CharField(max_length=30)
-    category = models.CharField(max_length=30)
+    name = models.CharField(max_length=254)
+    category = models.CharField(max_length=254)
     price = models.DecimalField(max_digits=6, decimal_places=2)
     occasion = models.CharField(max_length=30)
     description = models.TextField()
@@ -15,17 +15,15 @@ class Product(models.Model):
 
 
 class Image(models.Model):
+    name = models.CharField(max_length=254)
     image = models.ImageField(null=True, blank=True)
     URL = models.URLField(max_length=1024, null=True, blank=True)
     product_id = models.ForeignKey('Product', null=True,
                                    blank=True, on_delete=models.SET_NULL)
 
-    def __str__(self):
-        return self.name
-
 
 class Color(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=254)
     image_id = models.ManyToManyField('Image')
 
     def __str__(self):
@@ -33,7 +31,7 @@ class Color(models.Model):
 
 
 class Flower(models.Model):
-    name = models.CharField(max_length=30)
+    name = models.CharField(max_length=254)
     product_id = models.ManyToManyField('Image')
 
     def __str__(self):
