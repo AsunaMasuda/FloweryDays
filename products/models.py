@@ -15,11 +15,14 @@ class Product(models.Model):
 
 
 class Image(models.Model):
-    name = models.CharField(max_length=254)
+    name = models.CharField(max_length=254, null=True, blank=True)
     image = models.ImageField(null=True, blank=True)
     URL = models.URLField(max_length=1024, null=True, blank=True)
     product_id = models.ForeignKey('Product', null=True,
                                    blank=True, on_delete=models.SET_NULL)
+
+    def __str__(self):
+        return self.name
 
 
 class Color(models.Model):
@@ -32,7 +35,7 @@ class Color(models.Model):
 
 class Flower(models.Model):
     name = models.CharField(max_length=254)
-    product_id = models.ManyToManyField('Image')
+    product_id = models.ManyToManyField('Product')
 
     def __str__(self):
         return self.name
