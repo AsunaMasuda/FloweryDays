@@ -1,0 +1,331 @@
+[{
+		"pk": 1,
+		"model": "products.flower",
+		"fields": {
+			"name": "Allium",
+			"product_id": [1]
+		}
+	},{
+		"pk": 2,
+		"model": "products.flower",
+		"fields": {
+			"name": "Amaryllis",
+			"product_id": [2]
+		}
+	},{
+		"pk": 3,
+		"model": "products.flower",
+		"fields": {
+			"name": "Artichoke",
+			"product_id": [3]
+		}
+	},{
+		"pk": 4,
+		"model": "products.flower",
+		"fields": {
+			"name": "Astilbe",
+			"product_id": [4]
+		}
+	},{
+		"pk": 5,
+		"model": "products.flower",
+		"fields": {
+			"name": "Bells of Ireland",
+			"product_id": [5]
+		}
+	},{
+		"pk": 6,
+		"model": "products.flower",
+		"fields": {
+			"name": "Calla Lily",
+			"product_id": [6]
+		}
+	},{
+		"pk": 7,
+		"model": "products.flower",
+		"fields": {
+			"name": "Carnation",
+			"product_id": [7, 34, 52, 58, 59, 65]
+		}
+	},{
+		"pk": 8,
+		"model": "products.flower",
+		"fields": {
+			"name": "Chrysanthemum",
+			"product_id": [8, 50]
+		}
+	},{
+		"pk": 9,
+		"model": "products.flower",
+		"fields": {
+			"name": "Cosmos",
+			"product_id": [9]
+		}
+	},{
+		"pk": 10,
+		"model": "products.flower",
+		"fields": {
+			"name": "Dahlia",
+			"product_id": [10, 33, 38, 42, 43, 48, 63, 66]
+		}
+	},{
+		"pk": 11,
+		"model": "products.flower",
+		"fields": {
+			"name": "Delphinium",
+			"product_id": [11, 32]
+		}
+	},{
+		"pk": 12,
+		"model": "products.flower",
+		"fields": {
+			"name": "Hyacinth",
+			"product_id": [12]
+		}
+	},{
+		"pk": 13,
+		"model": "products.flower",
+		"fields": {
+			"name": "Hydrangea",
+			"product_id": [13]
+		}
+	},{
+		"pk": 14,
+		"model": "products.flower",
+		"fields": {
+			"name": "Hydrangea",
+			"product_id": [33, 39, 43, 44]
+		}
+	},{
+		"pk": 15,
+		"model": "products.flower",
+		"fields": {
+			"name": "Hypericum Berry",
+			"product_id": [14, 38]
+		}
+	},{
+		"pk": 16,
+		"model": "products.flower",
+		"fields": {
+			"name": "Kale",
+			"product_id": [15]
+		}
+	},{
+		"pk": 17,
+		"model": "products.flower",
+		"fields": {
+			"name": "Lavender",
+			"product_id": [16]
+		}
+	},{
+		"pk": 18,
+		"model": "products.flower",
+		"fields": {
+			"name": "Lily",
+			"product_id": [17]
+		}
+	},{
+		"pk": 19,
+		"model": "products.flower",
+		"fields": {
+			"name": "Lily of the valley",
+			"product_id": [56, 65]
+		}
+	},{
+		"pk": 20,
+		"model": "products.flower",
+		"fields": {
+			"name": "Lisianthus",
+			"product_id": [18, 35, 37, 42, 57]
+		}
+	},{
+		"pk": 21,
+		"model": "products.flower",
+		"fields": {
+			"name": "Lupine",
+			"product_id": [19]
+		}
+	},{
+		"pk": 22,
+		"model": "products.flower",
+		"fields": {
+			"name": "Orchid",
+			"product_id": [20]
+		}
+	},{
+		"pk": 23,
+		"model": "products.flower",
+		"fields": {
+			"name": "Peony",
+			"product_id": [48, 50, 52, 22]
+		}
+	},{
+		"pk": 24,
+		"model": "products.flower",
+		"fields": {
+			"name": "Ranunculus",
+			"product_id": [23]
+		}
+	},{
+		"pk": 25,
+		"model": "products.flower",
+		"fields": {
+			"name": "Rose",
+			"product_id": [24, 32, 33, 34, 35, 36, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 51, 52, 54, 55, 56, 59, 61, 62, 63, 64, 65]
+		}
+	},{
+		"pk": 26,
+		"model": "products.flower",
+		"fields": {
+			"name": "Scabiosa",
+			"product_id": [25]
+		}
+	},{
+		"pk": 27,
+		"model": "products.flower",
+		"fields": {
+			"name": "Garden Stock",
+			"product_id": [26]
+		}
+	},{
+		"pk": 28,
+		"model": "products.flower",
+		"fields": {
+			"name": "Garden Stock",
+			"product_id": [52]
+		}
+	},{
+		"pk": 29,
+		"model": "products.flower",
+		"fields": {
+			"name": "Succulent",
+			"product_id": [27]
+		}
+	},{
+		"pk": 30,
+		"model": "products.flower",
+		"fields": {
+			"name": "Sunflower",
+			"product_id": [28]
+		}
+	},{
+		"pk": 31,
+		"model": "products.flower",
+		"fields": {
+			"name": "Sunflower",
+			"product_id": [38]
+		}
+	},{
+		"pk": 32,
+		"model": "products.flower",
+		"fields": {
+			"name": "Sunflower",
+			"product_id": [66]
+		}
+	},{
+		"pk": 33,
+		"model": "products.flower",
+		"fields": {
+			"name": "Sweet Pea",
+			"product_id": [29]
+		}
+	},{
+		"pk": 34,
+		"model": "products.flower",
+		"fields": {
+			"name": "Tulip",
+			"product_id": [30, 32, 38, 47, 53]
+		}
+	},{
+		"pk": 35,
+		"model": "products.flower",
+		"fields": {
+			"name": "Zinnia",
+			"product_id": [31]
+		}
+	},{
+		"pk": 36,
+		"model": "products.flower",
+		"fields": {
+			"name": "Thistle",
+			"product_id": [32, 41, 66]
+		}
+	},{
+		"pk": 37,
+		"model": "products.flower",
+		"fields": {
+			"name": "Baby eucalyptus",
+			"product_id": [36, 48, 65]
+		}
+	},{
+		"pk": 38,
+		"model": "products.flower",
+		"fields": {
+			"name": "Daisy",
+			"product_id": [37]
+		}
+	},{
+		"pk": 39,
+		"model": "products.flower",
+		"fields": {
+			"name": "Solidago",
+			"product_id": [38]
+		}
+	},{
+		"pk": 40,
+		"model": "products.flower",
+		"fields": {
+			"name": "Italian Ruscus",
+			"product_id": [43]
+		}
+	},{
+		"pk": 41,
+		"model": "products.flower",
+		"fields": {
+			"name": "Italian Ruscus",
+			"product_id": [45]
+		}
+	},{
+		"pk": 42,
+		"model": "products.flower",
+		"fields": {
+			"name": "Baby's Breath",
+			"product_id": [46, 49, 60, 62]
+		}
+	},{
+		"pk": 43,
+		"model": "products.flower",
+		"fields": {
+			"name": "Gardenia",
+			"product_id": [47]
+		}
+	},{
+		"pk": 44,
+		"model": "products.flower",
+		"fields": {
+			"name": "Aspidistra",
+			"product_id": [47]
+		}
+	},{
+		"pk": 45,
+		"model": "products.flower",
+		"fields": {
+			"name": "Gerbera",
+			"product_id": [50, 58]
+		}
+	},{
+		"pk": 46,
+		"model": "products.flower",
+		"fields": {
+			"name": "Leather Leaf",
+			"product_id": [50]
+		}
+	},{
+		"pk": 47,
+		"model": "products.flower",
+		"fields": {
+			"name": "Myrtle",
+			"product_id": [52, 64]
+		}
+	}
+]
