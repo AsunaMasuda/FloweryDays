@@ -9,7 +9,8 @@ class Product(models.Model):
     description = models.TextField()
     unit = models.CharField(max_length=30, null=True, blank=True)
     rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
-
+    product_image = models.ImageField(null=True, blank=True)
+    
     def __str__(self):
         return self.name
 
