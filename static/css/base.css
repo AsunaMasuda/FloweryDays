@@ -302,3 +302,16 @@ ul#social-icon a {
 ul#social-icon a:hover {
    color: #eacdc2;
 }
+
+
+/** Online Shopping **/
+
+.section-onlineshop {
+    padding: 80px 0;
+}
+
+.aside-title {
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    border-bottom: 1px solid #d4d4d4;
+}
