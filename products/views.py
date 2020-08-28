@@ -8,8 +8,20 @@ import operator
 from .models import Product, Image, Color, Flower
 
 
-def initial_products(request):
-    return render(request, 'products/products_onlineshop.html')
+def onlineshop(request):
+    categories = list(set(Product.objects.values_list('category', flat=True)))
+    occasions = list(set(Product.objects.values_list('occasion', flat=True)))
+    colors = Color.objects.all()
+    flowers = Flower.objects.all()
+    products = Product.objects.all()
+    context = {
+        'categories': categories,
+        'occasions': occasions,
+        'colors': colors,
+        'flowers': flowers,
+        'products': products,
+    }
+    return render(request, 'products/products_onlineshop.html', context)
 
 
 def all_products(request):
