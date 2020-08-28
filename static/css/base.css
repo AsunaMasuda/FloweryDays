@@ -315,3 +315,7 @@ ul#social-icon a:hover {
     text-transform: uppercase;
     border-bottom: 1px solid #d4d4d4;
 }
+
+.list-shop-filter {
+    margin-top: 10px;
+}
