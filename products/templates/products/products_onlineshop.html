@@ -6,25 +6,33 @@
         <div class="mb-4">
             <h6 class="aside-title">Categories</h6>
             <select class="selectpicker" multiple data-live-search="true">
-                <option>Mustard</option>
+                {% for category in categories %}
+                <option>{{ category|title }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="mb-4">
             <h6 class="aside-title">Color</h6>
             <select class="selectpicker" multiple data-live-search="true">
-                <option>Mustard</option>
+                {% for color in colors %}
+                <option>{{ color.name|title }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="mb-4">
             <h6 class="aside-title">Flower</h6>
             <select class="selectpicker" multiple data-live-search="true">
-                <option>Mustard</option>
+                {% for flower in flowers %}
+                <option>{{ flower.name|title }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="mb-4">
-            <h6 class="aside-title">Occasion</h6>
+            <h6 class="aside-title">Occasion / Use</h6>
             <select class="selectpicker" multiple data-live-search="true">
-                <option>Mustard</option>
+                {% for occasion in occasions %}
+                <option>{{ occasion|title }}</option>
+                {% endfor %}
             </select>
         </div>
         <div class="col-lg-8 col-xl-9">
