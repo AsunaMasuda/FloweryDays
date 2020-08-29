@@ -335,6 +335,14 @@ ul#social-icon a:hover {
     min-height: 180px;
 }
 
+.online-product-img {
+    transition: transform .2s;
+}
+
+.online-product-img:hover{
+    transform: scale(1.05);
+}
+
 .product-title {
     color: black;
     font-weight: 500;
