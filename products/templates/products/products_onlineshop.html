@@ -43,16 +43,18 @@
                   <!-- Product-->
                   <article class="product">
                     <div class="product-body">
-                      <div class="product-figure"><img src="{{ product.product_image.url }}" alt="" width="204" height="204">
+                      <div class="product-figure"><img src="{{ product.product_image.url }}" class="online-product-img" alt="" width="204" height="204">
                       </div>
                       <h5 class="mt-3 product-title"><a href="">{{ product.name }}</a></h5>
-                        <div class="product-price">€ {{ product.price }}</div>
-                        <div class="product-price">{{ product.unit }}</div>
+                        <div class="product-price">€ {{ product.price }}</div><br>
+                        <div class="product-price">{{ product.unit }}</div><br>
+                        <button class="btn btn-colour-shop" type="button">Add to Cart</button>
                     </div>
                   </article>
             </div>
             {% endfor %}
         </div>
+    </div>
     </div>
 </div>
 </section>
