@@ -354,6 +354,23 @@ ul#social-icon a:hover {
     color: black;
 }
 
+.btn-colour-shop {
+  color: #fff;
+  background-color: #1a1423;
+  border-color: #1a1423;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  margin-top: 1rem;
+}
+
+.btn-colour-shop:hover,
+.btn-colour-shop:active,
+.btn-colour-shop:focus {
+  background: #ffffff;
+  color: #1a1423;
+  border-color: #1a1423;
+}
+
 .product-price {
     display: inline-block;
     vertical-align: middle;
