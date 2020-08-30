@@ -328,19 +328,18 @@ ul#social-icon a:hover {
     text-align: center;
 }
 
+.online-product-img {
+    width: 210px;
+    height: 210px;
+}
+
 .product-figure {
     display: flex;
     align-items: flex-end;
     justify-content: center;
     min-height: 180px;
-}
-
-.online-product-img {
-    transition: transform .2s;
-}
-
-.online-product-img:hover{
-    transform: scale(1.05);
+    width: 210px;
+    height: 210px;
 }
 
 .product-title {
@@ -379,4 +378,57 @@ ul#social-icon a:hover {
     font-weight: 700;
     letter-spacing: 0;
     color: #619f7b;
+}
+
+.product-hover {
+  position: relative;
+  width: 210px;
+  height: 210px;
+  margin-left: auto;
+  margin-right: auto
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: 0.3s ease;
+}
+
+.product-hover:hover .overlay {
+  display: block;
+  background: rgba(183, 93, 105, 0.3);
+}
+
+.button {
+  position: absolute;
+  width: 210px;
+  left:0;
+  top: 100px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity .2s ease;
+}
+
+.button a {
+  width: 150px;
+  padding: 10px 20px;
+  text-align: center;
+  color: white;
+  border: solid 1px white;
+  z-index: 1;
+}
+
+.button > a:hover {
+  border: solid 1px rgba(255,255,255,0.9)!important;
+  background: rgba(255,255,255,0.9);
+  color: rgba(183, 93, 105);
+  z-index: 1;
+}
+
+.product-hover:hover .button {
+  opacity: 1;
 }
