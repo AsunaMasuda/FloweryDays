@@ -24,6 +24,18 @@ def onlineshop(request):
     return render(request, 'products/products_onlineshop.html', context)
 
 
+def single_product(request, product_id):
+    """ A view to show individual product details """
+
+    product = get_object_or_404(Product, pk=product_id)
+
+    context = {
+        'product': product,
+    }
+
+    return render(request, 'products/single_product.html', context)
+
+
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
