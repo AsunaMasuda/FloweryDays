@@ -432,3 +432,18 @@ ul#social-icon a:hover {
 .product-hover:hover .button {
   opacity: 1;
 }
+
+
+/** Single product **/
+.breadcrumb-custom {
+    background-color: rgba(255, 255, 255, 0)!important;
+}
+
+.breadcrumb-item > a{
+    color: black;
+}
+
+.single-product-img {
+    width: 400px;
+    height: 400px;
+}
