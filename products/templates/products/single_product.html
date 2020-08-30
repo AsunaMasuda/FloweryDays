@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-12 text-center">
+            <ul class="breadcrumb breadcrumb-custom">
+            <li class="breadcrumb-item"><a href="#">Home</a></li>
+            <li class="breadcrumb-item"><a href="#">{{ product.category }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+    
+    </div>
+</div>
+{% endblock %}
