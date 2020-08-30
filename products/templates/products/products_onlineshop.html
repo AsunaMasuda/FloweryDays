@@ -46,10 +46,10 @@
                             <div class="product-figure"><img src="{{ product.product_image.url }}" class="online-product-img" alt="">
                             </div>
                             <div class="overlay"></div>
-                            <div class="button"><a href="#">View Details</a>
+                            <div class="button"><a href="{% url 'single_product' product.pk %}">View Details</a>
                             </div>
                         </div>
-                        <h5 class="mt-3 product-title"><a href="">{{ product.name }}</a></h5>
+                        <h5 class="mt-3 product-title"><a href="{% url 'single_product' product.pk %}">{{ product.name }}</a></h5>
                         <div class="product-price">€ {{ product.price }}</div><br>
                         <div class="product-price">{{ product.unit }}</div><br>
                         <button class="btn btn-colour-shop" type="button">Add to Cart</button>
