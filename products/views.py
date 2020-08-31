@@ -24,13 +24,17 @@ def onlineshop(request):
     return render(request, 'products/products_onlineshop.html', context)
 
 
-def single_product(request, product_id):
+def single_product(request, product_pk):
     """ A view to show individual product details """
 
-    product = get_object_or_404(Product, pk=product_id)
+    product = get_object_or_404(Product, pk=product_pk)
+    images = Image.objects.filter(product_id_id=product_pk)
+    colors = Image.objects.prefetch_related("color_set").filter(product_id_id=product_pk)
 
     context = {
         'product': product,
+        'colors': colors,
+        'images': images,
     }
 
     return render(request, 'products/single_product.html', context)
