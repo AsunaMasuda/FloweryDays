@@ -447,3 +447,12 @@ ul#social-icon a:hover {
     width: 400px;
     height: 400px;
 }
+
+.single-subproduct-img {
+    width: 100px;
+    height: 100px;
+}
+
+#color-option {
+    width: 50%!important;
+}
