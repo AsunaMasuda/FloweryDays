@@ -320,7 +320,7 @@ ul#social-icon a:hover {
     margin-top: 10px;
 }
 
-/** Product **/
+/** Product Card **/
 .product {
     box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     padding: 20px 15px;
@@ -434,7 +434,7 @@ ul#social-icon a:hover {
 }
 
 
-/** Single product **/
+/**-- Single product --**/
 .breadcrumb-custom {
     background-color: rgba(255, 255, 255, 0)!important;
 }
@@ -455,4 +455,70 @@ ul#social-icon a:hover {
 
 #color-option {
     width: 50%!important;
+}
+
+/** Quantity Counter **/
+.product-quantity .quantity-count {
+    color: black;
+    display: inline-block;
+    vertical-align: top;
+    font-size: 25px;
+    font-weight: 700;
+    line-height: 30px;
+    padding: 0 2px
+    ;min-width: 35px;
+    text-align: center;
+}
+
+.product-quantity .plus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    }
+
+.product-quantity .minus {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: top;
+    color: white;
+    width: 30px;
+    height: 30px;
+    font: 30px/1 Arial,sans-serif;
+    text-align: center;
+    background-clip: padding-box;
+}
+
+.minus:hover{
+    background-color: #b75d69 !important;
+}
+
+.plus:hover{
+    background-color: #b75d69 !important;
+}
+
+/*Prevent text selection*/
+.minus, .plus{
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+.quantity-count{  
+    border: 0;
+    width: 2%;
+}
+
+.quantity-count::-webkit-outer-spin-button,
+.quantity-count::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.quantity-count:disabled{
+    background-color:white;
 }
