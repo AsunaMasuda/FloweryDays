@@ -1,3 +1,4 @@
+// Navbar
 $(document).ready(function () {
   var navberExtension = $("#navber-extension");
   $(window).scroll(function () {
@@ -38,4 +39,20 @@ $(window).scroll(function () {
   } else {
     $("#logo-small").css("display", "none");
   }
+});
+
+// Quantity Counter
+$(document).ready(function(){
+    $(document).on('click', '.plus', function(){
+        $('.quantity-count').val(parseInt($('.quantity-count').val()) + 1 );
+            if ($('.quantity-count').val() == 100) {
+                $('.quantity-count').val(99);
+            }        
+    });
+    $(document).on('click', '.minus', function(){
+        $('.quantity-count').val(parseInt($('.quantity-count').val()) - 1 );
+            if ($('.quantity-count').val() == 0) {
+                $('.quantity-count').val(1);
+            }
+        });
 });
