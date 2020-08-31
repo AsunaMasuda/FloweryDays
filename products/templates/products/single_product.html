@@ -18,6 +18,26 @@
             <h4 class="mb-3">€ {{ product.price }}</h4>
             <p class="product-description"> {{ product.description }} </p>
             <hr>
+            <div class="row mb-2">
+                <div class="col-md-2 my-auto">Color: </div>
+                <div class="col-md-10 my-auto">
+                    <select class="form-control" id="color-option">
+                    {% for color in colors %}
+                        <option>{{ color.color_set.all.0.name }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 my-auto">Quantity: </div>
+                <div class="col-md-10 my-auto">
+                    <select class="form-control" id="quantity-option">
+                    {% for color in colors %}
+                        <option>{{ color.color_set.all.0.name }}</option>
+                    {% endfor %}
+                    </select>
+                </div>
+            </div>
             <button class="btn btn-colour-shop" type="button">Add to Cart</button>
         </div>
     </div>
