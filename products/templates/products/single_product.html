@@ -12,6 +12,11 @@
     <div class="row">
         <div class="col-md-6">
             <img src="{{ product.product_image.url }}" class="single-product-img"/>
+            <ul>
+                {% for image in images %}
+                    <li><img src="{{ image.image.url }}" class="single-subproduct-img" alt=""></li>
+               {% endfor %}
+           </ul>
         </div>
         <div class="col-md-6">
             <h3 class="product-title">{{ product.name }}</h3>
