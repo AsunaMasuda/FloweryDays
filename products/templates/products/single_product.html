@@ -11,12 +11,39 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <img src="{{ product.product_image.url }}" class="single-product-img"/>
-            <ul>
+            <div class="carousel carousel-extension slide article-slide ml-auto mr-auto" 
+            data-interval="false" id="article-photo-carousel">
+                <!-- Indicators -->
+                <ol class="carousel-indicators">
                 {% for image in images %}
-                    <li><img src="{{ image.image.url }}" class="single-subproduct-img" alt=""></li>
-               {% endfor %}
-           </ul>
+                  {% if forloop.first %}
+                    <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
+                    <img alt="" src="{{ image.image.url }}">
+                    </li>
+                  {% else %}
+                    <li class="" data-slide-to="{{ forloop.counter0 }}" data-target="#article-photo-carousel">
+                    <img alt="" src="{{ image.image.url }}">
+                    </li>
+                  {% endif %}
+                {% endfor %}
+                </ol>
+                <!-- Wrapper for slides -->
+                <div class="carousel-extension">
+                    <div class="carousel-inner cont-slider">
+                    {% for image in images %}
+                        {% if forloop.first %}
+                            <div class="carousel-item active">
+                            <img alt="" title="" src="{{ image.image.url }}" class="single-product-img">
+                            </div>
+                        {% else %}
+                            <div class="carousel-item">
+                            <img alt="" title="" src="{{ image.image.url }}" class="single-product-img">
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="col-md-6">
             <h3 class="product-title">{{ product.name }}</h3>
