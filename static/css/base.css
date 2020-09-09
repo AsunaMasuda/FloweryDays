@@ -304,7 +304,7 @@ ul#social-icon a:hover {
 }
 
 
-/** Online Shopp **/
+/** Online Shop Filter **/
 
 .section-onlineshop {
     padding: 80px 0;
@@ -319,6 +319,24 @@ ul#social-icon a:hover {
 .list-shop-filter {
     margin-top: 10px;
 }
+
+.btn-product-filter {
+  color: #fff;
+  background-color: #774c60;
+  border-color: #774c60;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  margin-top: 1rem;
+}
+
+.btn-product-filter:hover,
+.btn-product-filter:active,
+.btn-product-filter:focus {
+  background: #ffffff;
+  color: #774c60;
+  border-color: #774c60;
+}
+
 
 /** Product Card **/
 .product {
