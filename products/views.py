@@ -62,6 +62,10 @@ def filter_product(request):
         'colors': colors,
         'flowers': flowers,
         'products': products,
+        'category_name': category_name,
+        'color_name': color_name,
+        'flower_name': flower_name,
+        'occasion_name': occasion_name,
     }
 
     return render(request, 'products/products_onlineshop.html', context)
