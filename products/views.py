@@ -90,14 +90,32 @@ def onlineshop(request):
     occasions = list(set(Product.objects.values_list('occasion', flat=True)))
     colors = Color.objects.all()
     flowers = Flower.objects.all()
-    products = Product.objects.all()
+    product_list = Product.objects.all()
+
+    # Default filter
+    category_name = ['bouquet']
+    product_list = product_list.filter(category='bouquet')
+
+    # Pagination
+    paginator = Paginator(product_list, 9)
+    page = request.GET.get('page')
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
+
     context = {
         'categories': categories,
         'occasions': occasions,
         'colors': colors,
         'flowers': flowers,
         'products': products,
+        'category_name': category_name,
     }
+
     return render(request, 'products/products_onlineshop.html', context)
 
 
