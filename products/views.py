@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 from itertools import chain
 from functools import reduce
@@ -9,6 +10,8 @@ from .models import Product, Image, Color, Flower
 
 
 def filter_product(request):
+
+    # Product Filter
     categories = list(set(Product.objects.values_list('category', flat=True)))
     occasions = list(set(Product.objects.values_list('occasion', flat=True)))
     colors = Color.objects.all()
@@ -54,7 +57,18 @@ def filter_product(request):
         else: 
             result_product_pk = set(occasion_product_id)
 
-    products = Product.objects.filter(pk__in=result_product_pk)
+    product_list = Product.objects.filter(pk__in=result_product_pk)
+
+    # Pagination
+    paginator = Paginator(product_list, 9)
+    page = request.GET.get('page')
+
+    try:
+        products = paginator.page(page)
+    except PageNotAnInteger:
+        products = paginator.page(1)
+    except EmptyPage:
+        products = paginator.page(paginator.num_pages)
 
     context = {
         'categories': categories,
@@ -69,6 +83,8 @@ def filter_product(request):
     }
 
     return render(request, 'products/products_onlineshop.html', context)
+
+
 def onlineshop(request):
     categories = list(set(Product.objects.values_list('category', flat=True)))
     occasions = list(set(Product.objects.values_list('occasion', flat=True)))
