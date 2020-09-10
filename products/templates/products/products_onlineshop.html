@@ -1,109 +1,133 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <section class="section-onlineshop">
-<div class="container">
-    <div class="row">
-        <div class="col-lg-4 col-xl-3">
-            <form method="GET" action="{% url 'filter_product' %}" id="form1">
-                <div class="mb-4">
-                    <h6 class="aside-title">Categories</h6>
-                    <select class="selectpicker" multiple data-live-search="true" name="filter_category">
-                        {% for category in categories %}
-                            {% if category_name %}
-                                {% for filtered_category in category_name %}
-                                    {% if category == filtered_category %}
-                                        <option value="{{ category }}" selected>{{ category|title }}</option>
+    <form method="GET" action="{% url 'filter_product' %}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-xl-3">
+                        <div class="mb-4">
+                            <h6 class="aside-title">Categories</h6>
+                            <select class="selectpicker" multiple data-live-search="true" name="filter_category">
+                                {% for category in categories %}
+                                    {% if category_name %}
+                                        {% for filtered_category in category_name %}
+                                            {% if category == filtered_category %}
+                                                <option value="{{ category }}" selected>{{ category|title }}</option>
+                                            {% else %}
+                                                <option value="{{ category }}">{{ category|title }}</option>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% else %}
                                         <option value="{{ category }}">{{ category|title }}</option>
                                     {% endif %}
                                 {% endfor %}
-                            {% else %}
-                                <option value="{{ category }}">{{ category|title }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <h6 class="aside-title">Color</h6>
-                    <select class="selectpicker" multiple data-live-search="true" name="filter_color">
-                        {% for color in colors %}
-                            {% if color_name %}
-                                {% for filtered_color in color_name %}
-                                    {% if color.name == filtered_color %}
-                                        <option value="{{ color.name }}" selected>{{ color.name|title }}</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <h6 class="aside-title">Color</h6>
+                            <select class="selectpicker" multiple data-live-search="true" name="filter_color">
+                                {% for color in colors %}
+                                    {% if color_name %}
+                                        {% for filtered_color in color_name %}
+                                            {% if color.name == filtered_color %}
+                                                <option value="{{ color.name }}" selected>{{ color.name|title }}</option>
+                                            {% else %}
+                                                <option value="{{ color.name }}">{{ color.name|title }}</option>
+                                            {% endif %}
+                                        {% endfor %}
                                     {% else %}
                                         <option value="{{ color.name }}">{{ color.name|title }}</option>
                                     {% endif %}
                                 {% endfor %}
-                            {% else %}
-                                <option value="{{ color.name }}">{{ color.name|title }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <h6 class="aside-title">Flower</h6>
-                    <select class="selectpicker" multiple data-live-search="true"  name="filter_flower">
-                        {% for flower in flowers %}
-                            {% if flower_name %}
-                                {% for filtered_flower in flower_name %}
-                                    {% if flower.name == filtered_flower %}
-                                        <option value="{{ flower.name }}" selected>{{ flower.name|title }}</option>
-                                    {% else %}
-                                        <option value="{{ color.name }}">{{ color.name|title }}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            {% else %}
-                                <option value="{{ flower.name }}">{{ flower.name|title }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <h6 class="aside-title">Occasion / Use</h6>
-                    <select class="selectpicker" multiple data-live-search="true"  name="filter_occasion">
-                        {% for occasion in occasions %}
-                            {% if occasion_name %}
-                                {% for filtered_occasion in occasion_name %}
-                                    {% if occasion == filtered_occasion %}         <option value="{{ occasion }}" selected>{{ occasion|title }}</option>
-                                    {% else %}
-                                        <option value="{{ occasion }}">{{ occasion|title }}</option>
-                                    {% endif %}
-                                {% endfor %}
-                            {% else %}
-                                <option value="{{ occasion }}">{{ occasion|title }}</option>
-                            {% endif %}
-                        {% endfor %}
-                    </select>
-                </div>
-                <div class="mb-4 text-center">
-                    <button class="btn btn-product-filter" type="submit">Apply Filter</button>
-                </div>
-            </form>
-        </div>
-        
-        <div class="col-lg-8 col-xl-9">
-            <div class="row">
-                {% for product in products %}
-                <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
-                    <!-- Product-->
-                    <article class="product">
-                            <div class="product-hover">
-                                <div class="product-figure"><img src="{{ product.product_image.url }}" class="online-product-img" alt="">
+                            </select>
+                        </div>
+                    <div class="mb-4">
+                        <h6 class="aside-title">Flower</h6>
+                        <select class="selectpicker" multiple data-live-search="true"  name="filter_flower">
+                            {% for flower in flowers %}
+                                {% if flower_name %}
+                                    {% for filtered_flower in flower_name %}
+                                        {% if flower.name == filtered_flower %}
+                                            <option value="{{ flower.name }}" selected>{{ flower.name|title }}</option>
+                                        {% else %}
+                                            <option value="{{ color.name }}">{{ color.name|title }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <option value="{{ flower.name }}">{{ flower.name|title }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-4">
+                        <h6 class="aside-title">Occasion / Use</h6>
+                        <select class="selectpicker" multiple data-live-search="true"  name="filter_occasion">
+                            {% for occasion in occasions %}
+                                {% if occasion_name %}
+                                    {% for filtered_occasion in occasion_name %}
+                                        {% if occasion == filtered_occasion %}         <option value="{{ occasion }}" selected>{{ occasion|title }}</option>
+                                        {% else %}
+                                            <option value="{{ occasion }}">{{ occasion|title }}</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% else %}
+                                    <option value="{{ occasion }}">{{ occasion|title }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div class="mb-4 text-center">
+                        <button class="btn btn-product-filter" type="submit">Apply Filter</button>
+                    </div>
+            </div>
+    
+            <div class="col-lg-8 col-xl-9">
+                <div class="row">
+                    {% for product in products %}
+                    <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
+                        <!-- Product-->
+                        <article class="product">
+                                <div class="product-hover">
+                                    <div class="product-figure"><img src="{{ product.product_image.url }}" class="online-product-img" alt="">
+                                    </div>
+                                    <div class="overlay"></div>
+                                    <div class="button"><a href="{% url 'single_product' product.pk %}">View Details</a>
+                                    </div>
                                 </div>
-                                <div class="overlay"></div>
-                                <div class="button"><a href="{% url 'single_product' product.pk %}">View Details</a>
-                                </div>
-                            </div>
-                            <h5 class="mt-3 product-title"><a href="{% url 'single_product' product.pk %}">{{ product.name }}</a></h5>
-                            <div class="product-price">€ {{ product.price }}</div><br>
-                            <div class="product-price">{{ product.unit }}</div><br>
-                            <button class="btn btn-colour-shop" type="button">Add to Cart</button>
-                    </article>
+                                <h5 class="mt-3 product-title"><a href="{% url 'single_product' product.pk %}">{{ product.name }}</a></h5>
+                                <div class="product-price">€ {{ product.price }}</div><br>
+                                <div class="product-price">{{ product.unit }}</div><br>
+                                <button class="btn btn-colour-shop" type="button">Add to Cart</button>
+                        </article>
+                    </div>
+                    {% endfor %}
                 </div>
-                {% endfor %}
+                <div class="row">
+                {% if products.has_other_pages %}
+                    <ul class="pagination">
+                        {% if products.has_previous %}
+                        <li><button name="page" type="submit" value="{{ products.previous_page_number }}">&laquo;</button></li>
+                        {% else %}
+                        <li class="disabled"><span>&laquo;</span></li>
+                        {% endif %}
+
+                        {% for i in products.paginator.page_range %}
+                            {% if products.number == i %}
+                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                            {% else %}
+                                <li><input name="page" type="submit" value="{{ i }}"></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if products.has_next %}
+                        <li><button name="page" type="submit" value="{{ products.next_page_number }}">&raquo;</button></li>
+                        {% else %}
+                        <li class="disabled"><span>&raquo;</span></li>
+                        {% endif %}
+                    </ul>
+                {% endif %}
+                </div>
             </div>
         </div>
-    </div>
-</div>
+        </div>
+    </form>
 </section>
 {% endblock %}
