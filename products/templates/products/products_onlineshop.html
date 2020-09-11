@@ -82,6 +82,28 @@
     
             <div class="col-lg-8 col-xl-9">
                 <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-6">
+                            {{ products.start_index }} - {{ products.end_index }} out of {{ products.paginator.count }} results
+                            </div>
+                            <div class="col-6">
+                                    <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                                    <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
+                                    <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
+                                    <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
+                                    <option value="rating_asc" {% if current_sorting == 'rating_asc' %}selected{% endif %}>Rating (low to high)</option>
+                                    <option value="rating_desc" {% if current_sorting == 'rating_desc' %}selected{% endif %}>Rating (high to low)</option>
+                                    <option value="name_asc" {% if current_sorting == 'name_asc' %}selected{% endif %}>Name (A-Z)</option>
+                                    <option value="name_desc" {% if current_sorting == 'name_desc' %}selected{% endif %}>Name (Z-A)</option>
+                                    <option value="category_asc" {% if current_sorting == 'category_asc' %}selected{% endif %}>Category (A-Z)</option>
+                                    <option value="category_desc" {% if current_sorting == 'category_desc' %}selected{% endif %}>Category (Z-A)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
                     {% for product in products %}
                     <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
                         <!-- Product-->
@@ -101,29 +123,30 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="row">
-                {% if products.has_other_pages %}
-                    <ul class="pagination">
-                        {% if products.has_previous %}
-                        <li><button name="page" type="submit" value="{{ products.previous_page_number }}">&laquo;</button></li>
-                        {% else %}
-                        <li class="disabled"><span>&laquo;</span></li>
+                <div class="row text-center">
+                    <div class="col-12">
+                        {% if products.has_other_pages %}
+                            <ul class="pagination">
+                                {% if products.has_previous %}
+                                <li><button name="page" type="submit" value="{{ products.previous_page_number }}">&laquo;</button></li>
+                                {% else %}
+                                <li class="disabled"><span>&laquo;</span></li>
+                                {% endif %}
+                                {% for i in products.paginator.page_range %}
+                                    {% if products.number == i %}
+                                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                    {% else %}
+                                        <li><input name="page" type="submit" value="{{ i }}"></li>
+                                    {% endif %}
+                                {% endfor %}
+                                {% if products.has_next %}
+                                <li><button name="page" type="submit" value="{{ products.next_page_number }}">&raquo;</button></li>
+                                {% else %}
+                                <li class="disabled"><span>&raquo;</span></li>
+                                {% endif %}
+                            </ul>
                         {% endif %}
-
-                        {% for i in products.paginator.page_range %}
-                            {% if products.number == i %}
-                                <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                            {% else %}
-                                <li><input name="page" type="submit" value="{{ i }}"></li>
-                            {% endif %}
-                        {% endfor %}
-                        {% if products.has_next %}
-                        <li><button name="page" type="submit" value="{{ products.next_page_number }}">&raquo;</button></li>
-                        {% else %}
-                        <li class="disabled"><span>&raquo;</span></li>
-                        {% endif %}
-                    </ul>
-                {% endif %}
+                    </div>
                 </div>
             </div>
         </div>
