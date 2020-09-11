@@ -87,7 +87,7 @@
                             <div class="col-6">
                             {{ products.start_index }} - {{ products.end_index }} out of {{ products.paginator.count }} results
                             </div>
-                            <div class="col-6">
+                                <div class="col-6">
                                     <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
                                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                     <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
