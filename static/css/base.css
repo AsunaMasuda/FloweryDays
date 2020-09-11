@@ -1,3 +1,4 @@
+/**---- Common element over the site ----**/
 footer, header, section {
     display: block;
 }
@@ -81,6 +82,8 @@ body {
     display: none
 }
 
+
+/**---- Index ----**/
 /** Carousel **/
 html,
 body {
@@ -304,6 +307,7 @@ ul#social-icon a:hover {
 }
 
 
+/**---- Online Shop ----**/
 /** Online Shop Filter **/
 
 .section-onlineshop {
@@ -314,6 +318,7 @@ ul#social-icon a:hover {
     padding-bottom: 10px;
     text-transform: uppercase;
     border-bottom: 1px solid #d4d4d4;
+    font-size: 1rem;
 }
 
 .list-shop-filter {
@@ -337,6 +342,9 @@ ul#social-icon a:hover {
   border-color: #774c60;
 }
 
+.product-counter{
+    font-size: 1rem;    
+}
 
 /** Product Card **/
 .product {
@@ -451,8 +459,54 @@ ul#social-icon a:hover {
   opacity: 1;
 }
 
+/** Pagination **/
+.pagination-extension {
+    font-size: 1.2rem;
+}
 
-/**-- Single product --**/
+.move-page-button-disabled {
+    color: #8a8a8a;
+    background-color: white∂;
+    box-sizing: border-box;
+    padding: 1px 6px;
+    border-width: 0px;
+    border-style: outset;
+    border-color: #b75d69;
+    border-image: initial;
+}
+
+.active {
+    padding: 1px 6px;
+    border-width: 2px;
+    color: #a53860;
+}
+
+.page-button {
+    background-color: #ffffff00;
+    box-sizing: border-box;
+    padding: 1px 6px;
+    border-width: 0px;
+    border-style: outset;
+    border-color: #ffffff00;
+    border-image: initial;
+    color: #8a8a8a;
+    cursor: pointer;
+}
+
+.move-page-button {
+    color: white;
+    background-color: #b75d69;
+    box-sizing: border-box;
+    padding: 1px 6px;
+    border-width: 0px;
+    border-style: outset;
+    border-color: #b75d69;
+    border-image: initial;
+    cursor: pointer;
+}
+
+
+/** Single product **/
 .breadcrumb-custom {
     background-color: rgba(255, 255, 255, 0)!important;
 }
@@ -558,7 +612,7 @@ ul#social-icon a:hover {
     background-color: #b75d69 !important;
 }
 
-/*Prevent text selection*/
+/* Prevent text selection */
 .minus, .plus{
     -webkit-user-select: none;
     -moz-user-select: none;
