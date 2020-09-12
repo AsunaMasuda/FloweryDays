@@ -5,7 +5,7 @@
             <div class="row">
                 <div class="col-lg-4 col-xl-3">
                         <div class="mb-4">
-                            <h6 class="aside-title">Categories</h6>
+                            <div class="aside-title">Categories</div>
                             <select class="selectpicker" multiple data-live-search="true" name="filter_category">
                                 {% for category in categories %}
                                     {% if category_name %}
@@ -23,7 +23,7 @@
                             </select>
                         </div>
                         <div class="mb-4">
-                            <h6 class="aside-title">Color</h6>
+                            <div class="aside-title">Color</div>
                             <select class="selectpicker" multiple data-live-search="true" name="filter_color">
                                 {% for color in colors %}
                                     {% if color_name %}
@@ -41,7 +41,7 @@
                             </select>
                         </div>
                     <div class="mb-4">
-                        <h6 class="aside-title">Flower</h6>
+                        <div class="aside-title">Flower</div>
                         <select class="selectpicker" multiple data-live-search="true"  name="filter_flower">
                             {% for flower in flowers %}
                                 {% if flower_name %}
@@ -59,7 +59,7 @@
                         </select>
                     </div>
                     <div class="mb-4">
-                        <h6 class="aside-title">Occasion / Use</h6>
+                        <div class="aside-title">Occasion / Use</div>
                         <select class="selectpicker" multiple data-live-search="true"  name="filter_occasion">
                             {% for occasion in occasions %}
                                 {% if occasion_name %}
@@ -84,7 +84,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
-                            <div class="col-6">
+                            <div class="col-6 product-counter">
                             {{ products.start_index }} - {{ products.end_index }} out of {{ products.paginator.count }} results
                             </div>
                                 <div class="col-6">
@@ -123,26 +123,26 @@
                     </div>
                     {% endfor %}
                 </div>
-                <div class="row text-center">
+                <div class="row">
                     <div class="col-12">
                         {% if products.has_other_pages %}
-                            <ul class="pagination">
+                            <ul class="pagination pagination-extension justify-content-center mt-4">
                                 {% if products.has_previous %}
-                                <li><button name="page" type="submit" value="{{ products.previous_page_number }}">&laquo;</button></li>
+                                <li class="mr-2"><button name="page" type="submit" class="move-page-button" value="{{ products.previous_page_number }}">&laquo;</button></li>
                                 {% else %}
-                                <li class="disabled"><span>&laquo;</span></li>
+                                <li class="move-page-button-disabled mr-2"><span>&laquo;</span></li>
                                 {% endif %}
                                 {% for i in products.paginator.page_range %}
                                     {% if products.number == i %}
-                                        <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                        <li class="active mr-2"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
                                     {% else %}
-                                        <li><input name="page" type="submit" value="{{ i }}"></li>
+                                        <li class="mr-2"><input name="page" type="submit" class="page-button" value="{{ i }}"></li>
                                     {% endif %}
                                 {% endfor %}
                                 {% if products.has_next %}
-                                <li><button name="page" type="submit" value="{{ products.next_page_number }}">&raquo;</button></li>
+                                <li><button name="page" type="submit" class="move-page-button" value="{{ products.next_page_number }}">&raquo;</button></li>
                                 {% else %}
-                                <li class="disabled"><span>&raquo;</span></li>
+                                <li class="move-page-button-disabled"><span>&raquo;</span></li>
                                 {% endif %}
                             </ul>
                         {% endif %}
