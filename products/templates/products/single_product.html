@@ -4,7 +4,7 @@
         <div class="col-12 text-center">
             <ul class="breadcrumb breadcrumb-custom">
             <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
-            <li class="breadcrumb-item"><a href="#">{{ product.category }}</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'filter_product' %}?filter_category={{ product.category }}">{{ product.category }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
             </ul>
         </div>
