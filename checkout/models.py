@@ -1,9 +1,13 @@
-from django.db import models
+import uuid
 
+from django.db import models
+from django.db.models import Sum
+from dhango.conf import settings
+
+from products.models import Product
 
 class Order(models.Model):
     order_number = models.Charfield(max_length=32, null=False, editable=False)
-    user_profile = models.ForeignKey()
     first_name = models.Charfield(max_length=32, null=False, blank=False)
     last_name = models.Charfield(max_length=32, null=False, blank=False)
     email = models.Emailfield(max_length=254, null=False, blank=False)
@@ -19,4 +23,10 @@ class Order(models.Model):
                   decimal_places=2, null=False, default=0)
     grand_total = models.Decimalfield(max_digit=10, decimal_places=2,
                   null=False, default=0)
-    is_gift_wrapping = models.Booleanfield()
+    is_gift_wrapping = models.Booleanfield(default=False)
+
+class OrderLineItem(models.Model):
+    order_id = models.ForeignKey(Order, null=False, blank=False, on_delete=models.CASCADE)
+    product_id = models.ForeisngKey(Product, null=False, blank=False, on_delete=models.CASCADE)
+    quantity = models.IntergerField(null=False, blank=False, default=0)
+    lineitem_total = models.DecimalField(max_digit=6, decimal_places=2, null=False, blank=False, editable=False)
