@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'home',
     'products',
     'checkout',
+    'cart',
     'debug_toolbar',
 ]
 
@@ -74,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'cart.contexts.cart_contexts',
             ],
         },
     },
@@ -155,3 +157,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 INTERNAL_IPS = [
     '127.0.0.1',
 ]
+
+FREE_DELIVERY_THRESHOLD = 50
+STANDARD_DELIVERY_PERCENTAGE = 10
