@@ -62,17 +62,35 @@
                     </div>
                 </div>
             {% endif %}
-            <div class="row mb-3">
-                <div class="col-md-2 my-auto">Quantity: </div>
-                <div class="col-md-10 my-auto">
-					<div class="product-quantity">
-                        <span class="minus bg-dark">-</span>
-                            <input type="number" class="quantity-count" name="quantity" value="1">
-                        <span class="plus bg-dark">+</span>
+
+
+            <form class="form" action="" method="POST">
+                {% csrf_token %}
+                <div class="form-row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-md-2 my-auto">Quantity: </div>
+                            <div class="col-md-10 my-auto">
+                                <div class="product-quantity">
+                                    <span class="minus bg-dark">-</span>
+                                        <input class="quantity-count form-control qty_input" type="number" name="quantity" value="1" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                    <span class="plus bg-dark">+</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
+                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                        </div>
+                        <div class="backToPrevious">
+                            <span class="icon">
+                                <i class="fas fa-arrow-left"></i>
+                            </span>
+                            <span>Back to Previous Page</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <button class="btn btn-colour-shop" type="button">Add to Cart</button>
+            </form>
         </div>
     </div>
 </div>
