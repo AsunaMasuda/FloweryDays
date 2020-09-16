@@ -612,7 +612,6 @@ ul#social-icon a:hover {
     background-color: #b75d69 !important;
 }
 
-/* Prevent text selection */
 .minus, .plus{
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -632,4 +631,20 @@ ul#social-icon a:hover {
 
 .quantity-count:disabled{
     background-color:white;
+}
+
+/* Back to previous page link */
+.backToPrevious{
+    cursor: pointer;
+    margin-top: 4rem;
+}
+
+.backToPrevious:hover,
+.backToPrevious:focus{
+    color: #8a8a8a;
+}
+
+.backToPrevious:active,
+.backToPrevious:focus{
+    color: #5e5e5e;
 }
