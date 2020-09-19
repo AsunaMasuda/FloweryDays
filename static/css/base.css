@@ -576,8 +576,8 @@ ul#social-icon a:hover {
     font-size: 25px;
     font-weight: 700;
     line-height: 30px;
-    padding: 0 2px
-    ;min-width: 35px;
+    padding: 0 2px;
+    min-width: 35px;
     text-align: center;
 }
 
@@ -631,6 +631,11 @@ ul#social-icon a:hover {
 
 .quantity-count:disabled{
     background-color:white;
+}
+
+#errorMsg {
+    font-size: 0.8rem;
+    color: red;
 }
 
 /* Back to previous page link */
