@@ -73,9 +73,10 @@
                             <div class="col-md-10 my-auto">
                                 <div class="product-quantity">
                                     <span class="minus bg-dark">-</span>
-                                        <input class="quantity-count form-control qty_input" type="number" name="quantity" value="1" data-item_id="{{ product.id }}" id="id_qty_{{ product.id }}">
+                                        <input class="quantity-count form-control qty_input" type="number" name="quantity" value="1">
                                     <span class="plus bg-dark">+</span>
                                 </div>
+                                <span id="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
                             </div>
                         </div>
                         <div>
