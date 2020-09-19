@@ -54,9 +54,22 @@ $(document).ready(function(){
             if ($('.quantity-count').val() == 0) {
                 $('.quantity-count').val(1);
             }
-        });
+    });
+    $(document).on('change', 'input', function() {
+        $('.quantity-count').val(parseInt($('.quantity-count').val()));
+            if (($('.quantity-count').val() > 99)) {
+                $('#errorMsg').show();
+                $('.quantity-count').val(99);
+            }
+            else if (($('.quantity-count').val() < 1 )) {
+                $('#errorMsg').show();
+                $('.quantity-count').val(1);
+            }
+            else{
+                $('#errorMsg').hide();
+            }
+    });
 });
-
 
 // Back to previous page
 $(document).ready(function() {
