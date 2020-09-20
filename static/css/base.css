@@ -653,3 +653,8 @@ ul#social-icon a:hover {
 .backToPrevious:focus{
     color: #5e5e5e;
 }
+
+.update-link,
+.remove-item {
+    cursor: pointer;
+}
