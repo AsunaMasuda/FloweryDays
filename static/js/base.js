@@ -44,26 +44,32 @@ $(window).scroll(function () {
 // Quantity Counter
 $(document).ready(function(){
     $(document).on('click', '.plus', function(){
-        $('.quantity-count').val(parseInt($('.quantity-count').val()) + 1 );
-            if ($('.quantity-count').val() == 100) {
-                $('.quantity-count').val(99);
-            }        
+        let id = this.id.split("_")[1]
+        let plus_id = `#number_${id}`
+        $(plus_id).val(parseInt($(plus_id).val()) + 1 );
+            if ($(plus_id).val() == 100) {
+                $(plus_id).val(99);
+            }
     });
     $(document).on('click', '.minus', function(){
-        $('.quantity-count').val(parseInt($('.quantity-count').val()) - 1 );
-            if ($('.quantity-count').val() == 0) {
-                $('.quantity-count').val(1);
+        let id = this.id.split("_")[1]
+        let minus_id = `#number_${id}`
+        $(minus_id).val(parseInt($(minus_id).val()) - 1 );
+            if ($(minus_id).val() == 0) {
+                $(minus_id).val(1);
             }
     });
     $(document).on('change', 'input', function() {
-        $('.quantity-count').val(parseInt($('.quantity-count').val()));
-            if (($('.quantity-count').val() > 99)) {
+        let id = this.id.split("_")[1]
+        let quantityId = `#number_${id}`
+        $(quantityId).val(parseInt($(quantityId).val()));
+            if (($(quantityId).val() > 99)) {
                 $('#errorMsg').show();
-                $('.quantity-count').val(99);
+                $(quantityId).val(99);
             }
-            else if (($('.quantity-count').val() < 1 )) {
+            else if (($(quantityId).val() < 1 )) {
                 $('#errorMsg').show();
-                $('.quantity-count').val(1);
+                $(quantityId).val(1);
             }
             else{
                 $('#errorMsg').hide();
