@@ -9,6 +9,7 @@ ul, li {
 
 a {
    transition: all 0.25s ease-in-out;
+   color: black;
 }
 
 /** Disable default decorations for Links **/
@@ -18,6 +19,7 @@ a:active {
     outline: none!important;
     text-decoration: none !important;
     border: 0!important;
+    color: #8a8a8a
 }
 
 /** Font **/
@@ -573,7 +575,7 @@ ul#social-icon a:hover {
     color: black;
     display: inline-block;
     vertical-align: top;
-    font-size: 25px;
+    font-size: 20px;
     font-weight: 700;
     line-height: 30px;
     padding: 0 2px;
@@ -621,6 +623,7 @@ ul#social-icon a:hover {
 .quantity-count{  
     border: 0;
     width: 2%;
+    background-color: #ffffff00;
 }
 
 .quantity-count::-webkit-outer-spin-button,
@@ -657,4 +660,43 @@ ul#social-icon a:hover {
 .update-link,
 .remove-item {
     cursor: pointer;
+}
+
+/* Cart */
+.section-cart {
+    padding: 20px 10px;
+}
+
+.cart-color-background {
+    background-color: #f2e9e4;
+    padding-bottom: 20px
+}
+
+.table-cart td,
+.table-cart th {
+    border-bottom: 1px solid #fffaf7;
+}
+
+.table-cart thead th {
+    border-top: 1px solid #fffaf7;
+    border-bottom: 2px solid #fffaf7;
+}
+
+.cart-product-name, .order-summary-text,
+.grand-total-text {
+    font-size: 1.2rem;
+}
+
+.order-summary-table {
+    background-color: #ffffff;
+    padding:20px 20px;
+}
+
+.order-summary-ul {
+    padding: 10px 10px!important;
+    margin-bottom: 0!important;
+}
+
+.free-delivery-text {
+    font-size: 0.8rem;
 }
