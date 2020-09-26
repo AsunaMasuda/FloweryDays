@@ -4,8 +4,8 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from .models import BlogPost, BlogImage, BlogComments
 
 def blog_feed(request):
-
-    blog_post = BlogPost.objects.all()
+    #order by newest first for blog_post
+    blog_post = BlogPost.objects.all().order_by('-created_on')
     blog_image = BlogImage.objects.all()
     blog_comments = BlogComments.objects.all()
 
