@@ -542,6 +542,7 @@ ul#social-icon a:hover {
     margin-left: 5px;
     width: 100%;
 }
+
 /* Indicators list style */
 .article-slide .carousel-indicators li {
     border: medium none;
@@ -555,6 +556,7 @@ ul#social-icon a:hover {
     margin-top: 0;
     bottom: -120px;
 }
+
 /* Indicators images style */
 .article-slide .carousel-indicators img {
     border: 2px solid rgba(234, 205, 194, 0.7);
@@ -563,12 +565,12 @@ ul#social-icon a:hover {
     left: 0;
     width: 90px;
 }
+
 /* Indicators active image style */
 .article-slide .carousel-indicators .active img {
     border: 2px solid rgba(183, 93, 105, 0.7);
     opacity: 0.7;
 }
-
 
 /** Quantity Counter **/
 .product-quantity .quantity-count {
@@ -699,4 +701,86 @@ ul#social-icon a:hover {
 
 .free-delivery-text {
     font-size: 0.8rem;
+}
+
+
+/* Blog */
+.card-small-extenstion {
+    height: 380px;
+    border: 0!important;
+}
+
+.card-body-small-extenstion {
+    height: 380px;
+    width: auto;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border: 0!important;
+}
+
+@media (min-width: 768px) {
+.card-large-extenstion {
+    height: 780px;
+    border: 0!important;
+}
+.card-body-large-extenstion {
+    height: 780px;
+    width: auto;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border: 0!important;
+}
+}
+
+@media (max-width: 768px) {
+.card-large-extenstion {
+    height: 380px;
+    border: 0!important;
+}
+.card-body-large-extenstion {
+    height: 380px;
+    width: auto;
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+    border: 0!important;
+}
+}
+
+.card-width-small {
+    height: 100%;
+}
+
+.card-width-large {
+    height: 100%;
+}
+
+.card-body-extenstion {
+    padding: 0!important;
+}
+
+.card-img-top-extenstion {
+    object-fit: cover;
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-height: 100%;
+    min-width: 100%;
+    transform: translate(-50%, -50%);
+}
+
+.card-title-extenstion {
+    z-index: 10;
+    background-color: #ffffff;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    text-align: center;
+    padding: 0.5rem 1rem;
+    margin-bottom: 0!important;
 }
