@@ -1,18 +1,58 @@
 {% extends "base.html" %} {% load static %} {% block content %}
+{% load blog_image_filter %}
 <section class="section-onlineshop">
     <div class="container">
         <div class="row">
-            <div class="col-md-8 mt-3 left">
+            <div class="col-lg-2">
                 {% for post in blog_post %}
-                <div class="card mb-4">
-                    <div class="card-body">
-                        <h2 class="card-title">{{ post.title }}</h2>
-                        <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
-                        <p class="card-text">{{post.content|slice:":200" }}</p>
-                        <a href="" class="btn btn-primary">Read More &rarr;</a>
+                    <p>
+                    {{ post.category }}
+                    </p>
+                    <br>
+                {% endfor %}
+            </div>
+            <div class="col-lg-10">
+                <div class="row row-custom-blog-view">
+                    <div class="col-lg-3 card-width-small">
+                        {% for post in blog_post|slice:":2" %}
+                            {% for card_image in blog_image|in_image:post.pk %}
+                            <div class="card card-small-extenstion">
+                                <div class="card-body card-body-extenstion">
+                                    <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="blog_image">
+                                    <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
+                                </div>
+                            </div>
+                            <br>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-lg-6 card-width-large">
+                        {% for post in blog_post|slice:"2:3" %}
+                            {% for card_image in blog_image|in_image:post.pk %}
+                                <div class="card card-large-extenstion">
+                                    <div class="card-body card-body-extenstion">
+                                        <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="blog_image">
+                                        <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
+                                    </div>
+                                </div>
+                                <br>
+                            {% endfor %}
+                        {% endfor %}
+                    </div>
+                    <div class="col-lg-3 card-width-small">
+                        {% for post in blog_post|slice:"3:5" %}
+                            {% for card_image in blog_image|in_image:post.pk %}
+                                <div class="card card-small-extenstion">
+                                    <div class="card-body card-body-extenstion">
+                                        <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="{{ post.title }}}}">
+                                        <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
+                                    </div>
+                                </div>
+                                <br>
+                            {% endfor %}
+                        {% endfor %}
                     </div>
                 </div>
-                {% endfor %}
             </div>
         </div>
     </div>
