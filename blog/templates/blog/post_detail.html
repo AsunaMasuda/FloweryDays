@@ -1,14 +1,16 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <div class="container">
   <div class="row">
-    <div class="col-md-8 card mb-4  mt-3 left  top">
-      <div class="card-body">
-        <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
-        <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
-        <p class="card-text ">{{ object.content | safe }}</p>
-      </div>
-    </div>
-    {% block sidebar %} {% include 'sidebar.html' %} {% endblock sidebar %}
+        <div class="col-12">
+            <img src="{{ blog_image.image.url }}" class="blog_post_img">
+                <div class="pr-4 pl-4">
+                    <h2 class="card-title mt-4">{{ blog_post.title }}</h2>
+                    <p class="card-text text-muted mt-2">{{ blog_post.author }} | {{ blog_post.created_on }} </p>
+                    <p class="card-text">{{ blog_post.content|linebreaks }}</p>
+                </div>
+                <div class="mt-4">
+                </div>
+        </div>
   </div>
 </div>
 {% endblock %}
