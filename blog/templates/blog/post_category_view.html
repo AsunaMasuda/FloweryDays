@@ -1,0 +1,77 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+{% load blog_image_filter %}
+<section class="section-onlineshop">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <h4 class="mb-4">Category</h4>
+                    {% for category, values in category_dict.items %}
+                        <a href="{% url 'category_view' category|lower %}">
+                            <p>
+                                <span>{{ category }}  </span>
+                                <span>( {{ values }} )</span>
+                            </p>
+                        </a>
+                    {% endfor %}
+            </div>
+            <div class="col-lg-10">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <div class="row">
+                            <div class="col-12 mb-3">
+                                <h2>{{ category|title }}</h2>
+                            </div>
+                            <div class="col-lg-3 card-width-small">
+                                {% for post in selected_blog|slice:":2" %}
+                                    {% for card_image in blog_image|in_image:post.pk %}
+                                        <a href="{% url 'post_view' post.slug %}">
+                                            <div class="card card-small-extenstion card-hover">
+                                                <div class="card-body card-body-small-extenstion">
+                                                    <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="blog_image">
+                                                    <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    <br>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-6 card-width-large">
+                                {% for post in selected_blog|slice:"2:3" %}
+                                    {% for card_image in blog_image|in_image:post.pk %}
+                                        <a href="{% url 'post_view' post.slug %}">
+                                            <div class="card card-large-extenstion">
+                                                <div class="card-body card-body-large-extenstion">
+                                                    <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="blog_image">
+                                                    <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <br>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                            <div class="col-lg-3 card-width-small">
+                                {% for post in selected_blog|slice:"3:5" %}
+                                    {% for card_image in blog_image|in_image:post.pk %}
+                                        <a href="{% url 'post_view' post.slug %}">
+                                            <div class="card card-small-extenstion">
+                                                <div class="card-body card-body-small-extenstion">
+                                                    <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="{{ post.title }}}}">
+                                                    <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
+                                                </div>
+                                            </div>
+                                        </a>
+                                        <br>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
