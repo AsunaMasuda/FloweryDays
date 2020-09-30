@@ -30,9 +30,11 @@ class BlogImage(models.Model):
 
 
 class BlogComments(models.Model):
-    article_id = models.ForeignKey('BlogPost', null=True,
-                                    blank=True, on_delete=models.SET_NULL,
-                                    verbose_name='comment_article_id')
-    user_name = models.CharField(max_length=50)
+    article_id = models.ForeignKey('BlogPost', null=True, related_name="comments",
+                                    blank=True, on_delete=models.SET_NULL)
+    comment_name = models.CharField(max_length=50)
     blog_comment = models.TextField(max_length=500)
     created_on = models.DateTimeField(auto_now_add=True, verbose_name='comment_created_date')
+
+    def __str__(self):
+        return '%s - %s' % (self.article_id.title, self.comment_name)

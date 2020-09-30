@@ -14,7 +14,7 @@ class PostImageAdmin(admin.ModelAdmin):
 
 
 class BlogCommentsAdmin(admin.ModelAdmin):
-    list_display = ('article_id', 'user_name', 'blog_comment', 'created_on')
+    list_display = ('article_id', 'comment_name', 'blog_comment', 'created_on')
     search_fields = ['blog_comment']
 
 
