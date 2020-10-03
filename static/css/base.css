@@ -704,11 +704,17 @@ ul#social-icon a:hover {
 }
 
 
-/* Blog */
+/** Blog **/
+/* Blog landing page */
 .card-small-extenstion {
     height: 380px;
     border: 0!important;
 }
+
+.card-hover:hover {
+    background-color: rgb(255, 255, 255, 0.3);
+    z-index: 10;
+ }
 
 .card-body-small-extenstion {
     height: 380px;
@@ -719,7 +725,7 @@ ul#social-icon a:hover {
     border: 0!important;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 992px) {
 .card-large-extenstion {
     height: 780px;
     border: 0!important;
@@ -734,11 +740,12 @@ ul#social-icon a:hover {
 }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 992px) {
 .card-large-extenstion {
     height: 380px;
     border: 0!important;
 }
+
 .card-body-large-extenstion {
     height: 380px;
     width: auto;
@@ -773,7 +780,7 @@ ul#social-icon a:hover {
 }
 
 .card-title-extenstion {
-    z-index: 10;
+    z-index: 1;
     background-color: #ffffff;
     position: absolute;
     bottom: 0;
@@ -783,4 +790,15 @@ ul#social-icon a:hover {
     text-align: center;
     padding: 0.5rem 1rem;
     margin-bottom: 0!important;
+}
+
+.card-body-small-extenstion:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* Blog Page */
+.blog_post_img {
+    object-fit: cover;
+    width: 100%;
+    height: 350px;
 }
