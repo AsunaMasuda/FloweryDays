@@ -43,6 +43,11 @@
                     <a href="{% url 'single_product' item.product.pk %}">
                     <p class="my-0 cart-product-name"><strong>{{ item.product.name }}</strong></p>
                     </a>
+                    <a
+                        class="remove-item text-danger float-left"
+                        id="remove_{{ item.item_id }}"
+                        ><small>Remove</small></a
+                    >
                     </td>
                     <td class="py-3">
                     <p class="my-0">€ {{ item.product.price }}</p>
@@ -62,11 +67,6 @@
                         </div>
                     </form>
                     <a class="update-link text-info"><small>Update</small></a>
-                    <a
-                        class="remove-item text-danger float-right"
-                        id="remove_{{ item.item_id }}"
-                        ><small>Remove</small></a
-                    >
                     </td>
                     <td class="py-3">
                     <p class="my-0">€{{ item.product.price| calc_subtotal:item.quantity }}</p>
@@ -78,7 +78,7 @@
             {% else %}
             <p class="lead mb-5">Your Cart is empty.</p>
             <a
-                href="{% url 'products' %}"
+                href="{% url 'onlineshop' %}"
                 class="btn btn-outline-black rounded-0 btn-lg"
             >
                 <span class="icon">
