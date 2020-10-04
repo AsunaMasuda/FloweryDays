@@ -64,13 +64,18 @@
       src="https://kit.fontawesome.com/04cda1f084.js"
       crossorigin="anonymous"
     ></script>
-    <script src="{% static 'js/base.js' %}"></script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
-    {% endblock %} {% block extra_js %} {% endblock %}
+    {% endblock %}
+    {% block extra_js %}
+    {{ block.super }}
+        <script src="{% static 'js/base.js' %}"></script>
+    {% endblock %}
 
     <title>Flowery Days {% block extra_title %}{% endblock %}</title>
   </head>
+  
   <body>
     <!-- Navbar -->
     <header class="header-ex bg-white">
@@ -161,7 +166,23 @@
       </div>
     </header>
 
-    {% if messages %} {% endif %} 
+    {% if messages %}
+        <div class="message-container">
+            {% for message in messages %}
+                {% with message.level as level %}
+                    {% if level == 40 %}
+                        {% include 'includes/toasts/toast_error.html' %}
+                    {% elif level == 30 %}
+                        {% include 'includes/toasts/toast_warning.html' %}
+                    {% elif level == 25 %}
+                        {% include 'includes/toasts/toast_added_to_cart.html' %}
+                    {% else %}
+                        {% include 'includes/toasts/toast_info.html' %}
+                    {% endif %}
+                {% endwith %}
+            {% endfor %}
+        </div>
+    {% endif %} 
 
     {% block page_header %} {% endblock %} 
     
@@ -251,6 +272,10 @@
     </div>
   </div>
 </footer>
-    {% block postloadjs %} {% endblock %}
+    {% block postloadjs %}
+    <script type="text/javascript">
+        $('.toast').toast('show');
+    </script>
+    {% endblock %}
   </body>
 </html>
