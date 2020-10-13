@@ -10,7 +10,6 @@ def view_cart(request):
 def add_to_cart(request, item_id):
 
     product = get_object_or_404(Product, pk=item_id)
-    quantity = int(request.POST.get('quantity'))
     redirect_url = request.POST.get('redirect_url')
 
     if request.POST.get('quantity'):
@@ -19,21 +18,32 @@ def add_to_cart(request, item_id):
         quantity = 1
 
     cart = request.session.get('cart', {})
+    last_item = request.session.get('last_item', {})
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
+        messages.success(request, f'Updated {product.name} quantity to {cart[item_id]}')
     else:
         cart[item_id] = quantity
+        messages.success(request, f'Added {product.name} to your bag')
+    
+    last_item = {'last_item': item_id}
 
     request.session['cart'] = cart
+    request.session['last_item'] = {'name': product.name,
+                                    'image': product.product_image.url}
+
     return redirect(redirect_url)
 
 
 def adjust_cart(request, item_id):
 
+    product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
     cart = request.session.get('cart', {})
     cart[item_id] = quantity
+    messages.success(request, 
+    f'Updated {product.name} quantity to {cart[item_id]}')
 
     request.session['cart'] = cart
     return redirect(reverse('view_cart'))
@@ -41,11 +51,14 @@ def adjust_cart(request, item_id):
 
 def remove_from_cart(request, item_id):
     try:
+        product = get_object_or_404(Product, pk=item_id)
         cart = request.session.get('cart', {})
         cart.pop(item_id)
+        messages.success(request, f'Removed {product.name} from your cart')
 
         request.session['cart'] = cart
         return HttpResponse(status=200)
 
-    except Exception:
+    except Exception as e:
+        messages.error(request, f'Error occured. When removing {product.name} from your cart')
         return HttpResponse(status=500)
