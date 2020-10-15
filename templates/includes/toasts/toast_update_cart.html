@@ -1,0 +1,37 @@
+<div class="toast custom-toast rounded-0 border-top-0" data-autohide="false">
+    <div class="arrow-up arrow-success"></div>
+    <div class="w-100 toast-capper bg-success"></div>
+    <div class="toast-header bg-white text-dark">
+        <strong class="mr-auto">Update Cart</strong>
+        <button type="button" class="ml-2 mb-1 close text-dark" data-dismiss="toast" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="toast-body bg-white">
+        <div class="row">
+        {% if last_added_item %}
+            <div class="col-4">
+                <img class="w-100" src="{{ last_added_item.image }}" alt="{{ product.name }}">
+            </div>
+            <div class="col-8">
+                {{ message }}
+            </div>
+        {% endif %}
+        </div>
+        <div class="row">
+            <div class="col-12 text-center">
+                <div class="total-toast mt-3">Subtotal € {{ grand_total|floatformat:2 }}</div>
+                <div class="product-count">( {{ product_count }} product)</div>
+                    {% if free_delivery_delta > 0 %}
+                    <div class="subtotal-toast mt-1">Free Delivery spending {{ free_delivery_delta|floatformat:2 }} more</div>
+                    {% else %}
+                    <div>You've got the free delivery!</div>
+                    {% endif %}
+                <a href="{% url 'view_cart' %}" class="btn btn-outline mt-2" role="button">
+                    View Cart & Checkout
+                </a>
+                <div class="continue-shopping mt-2" data-dismiss="toast" aria-label="Close">Continue Shopping</div>
+            </div>
+        </div>
+    </div>
+</div>
