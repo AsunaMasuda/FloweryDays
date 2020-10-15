@@ -27,7 +27,6 @@ def add_to_cart(request, item_id):
         cart[item_id] = quantity
         messages.success(request, f"You've added {product.name} to your cart.")
 
-    last_item = {'last_item': item_id}
 
     request.session['cart'] = cart
     request.session['last_item'] = {'name': product.name,
@@ -46,6 +45,8 @@ def adjust_cart(request, item_id):
     f"You've updated {product.name} quantity to {cart[item_id]}.")
 
     request.session['cart'] = cart
+    request.session['last_item'] = {'name': product.name,
+                                    'image': product.product_image.url}
     return redirect(reverse('view_cart'))
 
 
@@ -57,6 +58,8 @@ def remove_from_cart(request, item_id):
         messages.success(request, f"You've removed {product.name} from your cart")
 
         request.session['cart'] = cart
+        request.session['last_item'] = {'name': product.name,
+                                        'image': product.product_image.url}
         return HttpResponse(status=200)
 
     except Exception as e:
