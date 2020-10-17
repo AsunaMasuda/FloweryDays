@@ -810,6 +810,8 @@ ul#social-icon a:hover {
     z-index: 99999999999;
 }
 
+
+/* Toast */
 .custom-toast {
     overflow: visible;
 }
@@ -820,6 +822,25 @@ ul#social-icon a:hover {
 
 .toast-capper {
     height: 2px;
+}
+
+.total-toast {
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+.product-count {
+    font-size: 0.8rem;
+}
+
+.continue-shopping {
+    text-decoration: underline;
+
+}
+
+.continue-shopping:hover {
+    text-decoration: none;
+    cursor: pointer;
 }
 
 /* from CSS-tricks.com: https://css-tricks.com/snippets/css/css-triangle/ */
