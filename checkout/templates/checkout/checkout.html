@@ -82,6 +82,7 @@
                         {{ order_form.town_or_city | as_crispy_field }}
                         {{ order_form.county | as_crispy_field }}
                         {{ order_form.postcode | as_crispy_field }}
+                        {{ order_form.is_gift_wrapping | as_crispy_field }}
                         <div class="form-check form-check-inline float-right mr-0">
 							{% if user.is_authenticated %}
 								<label class="form-check-label" for="id-save-info">Save this delivery information to my profile</label>
@@ -131,7 +132,7 @@
     <div id="loading-overlay">
         <h1 class="text-light logo-font loading-spinner">
             <span class="icon">
-                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+                <i class="fas fa-3x fa-spinner fa-spin"></i>
             </span>
         </h1>
     </div>
