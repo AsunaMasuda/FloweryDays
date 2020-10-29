@@ -26,10 +26,9 @@ def checkout(request):
             'town_or_city': request.POST['town_or_city'],
             'county': request.POST['county'],
             'postcode': request.POST['postcode'],
-            'is_gift_wrapping': request.POST['is_gift_wrapping'],
         }
-        order_form = OrderForm(form_data)
 
+        order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
             for item_id, item_data in cart.items():
@@ -64,6 +63,7 @@ def checkout(request):
         current_cart = cart_contexts(request)
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
+        stripe.api_key = stripe_secret_key
         intent = stripe.PaymentIntent.create (
             amount = stripe_total,
             currency = settings.STRIPE_CURRENCY,
@@ -84,16 +84,13 @@ def checkout(request):
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    messages.success(request, f'Order successfully processed! \
-    Your order number is {order_number}. A confirmation \
-    email will be sent to {order.email}.')
+    
+    if 'cart' in request.session:
+        del request.session['cart']
 
-if 'cart' in request.session:
-    del request.session['cart']
+    template = 'checkout/checkout_success.html'
+    context = {
+        'order': order,
+    }
 
-template = 'checkout/checkout_success.html'
-context = {
-    'order': order,
-}
-
-return render(request, template, context)
+    return render(request, template, context)
