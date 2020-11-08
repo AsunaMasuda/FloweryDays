@@ -9,7 +9,7 @@ ul, li {
 
 a {
    transition: all 0.25s ease-in-out;
-   color: black;
+   color: #b75d69;
 }
 
 /** Disable default decorations for Links **/
@@ -19,7 +19,7 @@ a:active {
     outline: none!important;
     text-decoration: none !important;
     border: 0!important;
-    color: #8a8a8a
+    color: #daa9af
 }
 
 /** Font **/
@@ -312,7 +312,7 @@ ul#social-icon a:hover {
 /**---- Online Shop ----**/
 /** Online Shop Filter **/
 
-.section-onlineshop {
+.section-top {
     padding: 80px 0;
 }
 
@@ -431,7 +431,7 @@ ul#social-icon a:hover {
   background: rgba(183, 93, 105, 0.3);
 }
 
-.button {
+.button-overlay {
   position: absolute;
   width: 210px;
   left:0;
@@ -441,7 +441,7 @@ ul#social-icon a:hover {
   transition: opacity .2s ease;
 }
 
-.button a {
+.button-overlay a {
   width: 150px;
   padding: 10px 20px;
   text-align: center;
@@ -450,14 +450,14 @@ ul#social-icon a:hover {
   z-index: 1;
 }
 
-.button > a:hover {
+.button-overlay > a:hover {
   border: solid 1px rgba(255,255,255,0.9)!important;
   background: rgba(255,255,255,0.9);
   color: rgba(183, 93, 105);
   z-index: 1;
 }
 
-.product-hover:hover .button {
+.product-hover:hover .button-overlay {
   opacity: 1;
 }
 
@@ -895,4 +895,11 @@ And vertical overflow will turn into a scrollbar when the height is greater than
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+/* allauth */
+.allauth-inner-content-form input {
+    color: #7c7c7c;
+    border: 1px solid #7c7c7c;
+    border-radius: 0;
 }
