@@ -5,11 +5,15 @@ from django.conf import settings
 
 from .forms import OrderForm
 from .models import Order, OrderLineItem
-from cart.contexts import cart_contexts
+
 from products.models import Product
+from profiles.forms import UserProfileForm
+from profiles.models import UserProfile
+from cart.contexts import cart_contents
 
 import stripe
 import json
+
 
 @require_POST
 def cache_checkout_data(request):
@@ -82,7 +86,7 @@ def checkout(request):
             messages.error(request, "There is no item in your cart.")
             redirect(reverse('onlineshop'))
 
-        current_cart = cart_contexts(request)
+        current_cart = cart_contents(request)
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
@@ -91,7 +95,23 @@ def checkout(request):
             currency = settings.STRIPE_CURRENCY,
         )
 
-        order_form = OrderForm()
+        if request.user.is_authenticated:
+            try:
+                profile = UserProfile.objects.get(user=request.user)
+                order_form = OrderForm(initial={
+                    'first_name': profile.user.first_name,
+                    'last_name': profile.user.last_name,
+                    'email': profile.user.email,
+                    'address_line_1': profile.default_address_line_1,
+                    'address_line_2': profile.default_address_line_2,
+                    'town_or_city': profile.default_town_or_city,
+                    'county': profile.default_county,
+                    'postcode': profile.default_postcode,
+                })
+            except UserProfile.DoesNotExist:
+                order_form = OrderForm()
+        else:
+            order_form = OrderForm()
 
     template = 'checkout/checkout.html'
     context = {
@@ -106,7 +126,30 @@ def checkout(request):
 def checkout_success(request, order_number):
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
-    
+
+    if request.user.is_authenticated:
+        profile = UserProfile.objects.get(user=request.user)
+        # Attach the user's profile to the order
+        order.user_profile = profile
+        order.save()
+
+        # Save the user's info
+        if save_info:
+            profile_data = {
+                'default_email': order.email,
+                'default_postcode': order.postcode,
+                'default_town_or_city': order.town_or_city,
+                'default_address_line_1': order.address_line_1,
+                'default_address_line_2': order.address_line_2,
+                'default_county': order.county,
+            }
+            user_profile_form = UserProfileForm(profile_data, instance=profile)
+            if user_profile_form.is_valid():
+                user_profile_form.save()
+
+    messages.success(request, f'Thank you for your order! \
+        A confirmation email will be sent to {order.email}.')
+
     if 'cart' in request.session:
         del request.session['cart']
 
