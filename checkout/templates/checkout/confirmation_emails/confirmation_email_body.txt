@@ -1,0 +1,27 @@
+Hi {{ order.first_name }},
+
+Thank you for ordering from us. 
+Your order details are below.
+
+Order Details
+Order Number: {{ order.order_number }}
+Order Date: {{ order.date }}
+
+Order Items
+{% for item in order.lineitems.all %}
+{{ item.product.name }}:  {{ item.quantity }} x €{{ item.product.price }}
+{% endfor %}
+
+Delivery Address
+{{ order.first_name }} {{ order.last_name }}
+{{ order.address_line_1 }},
+{{ order.address_line_2 }},
+{{ order.town_or_city }},
+{{ order.county }},
+{{ order.postcode }},
+Ireland
+
+Thank you for shopping with us!
+
+Flowerly Days
+{{ contact_email }}

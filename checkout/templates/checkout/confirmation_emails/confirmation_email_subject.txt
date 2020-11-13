@@ -1,0 +1,1 @@
+<Flowery Days> Confirmation of your Order: {{ order.order_number }}
