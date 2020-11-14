@@ -20,10 +20,10 @@
                     {{ form|crispy }}
                     <button class="btn btn-colour-1">Update Information</button>
                 </form>
-                <div class="mt-2">
+                <div class="mt-4">
                     <a href="{% url 'home' %}">
                         <span class="icon">
-                            <i class="fas fa-arrow-left"></i>
+                            <i class="fas fa-angle-left"></i>
                         </span>
                         <span>Back to Home</span>
                     </a>
@@ -31,7 +31,41 @@
             </div>
             <div class="col-12 col-lg-6">
                 <p>Order History</p>
-                {{ orders }}
+                <div class="order-history table-responsive">
+                    <table class="table table-sm table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Order Number</th>
+                                <th>Date</th>
+                                <th>Items</th>
+                                <th>Order Total</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'order_history' order.order_number %}"
+                                        title="{{ order.order_number }}">
+                                            {{ order.order_number|truncatechars:6 }}
+                                        </a>
+                                    </td>
+                                    <td>{{ order.date }}</td>
+                                    <td>
+                                        <ul class="list-unstyled">
+                                            {% for item in order.lineitems.all %}
+                                            <li class="small">
+                                            {{ item.product.name }} x {{ item.quantity }}
+                                            </li>
+                                            {% endfor %}
+                                        </ul>
+                                    </td>
+                                    <td>${{ order.grand_total }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>  
