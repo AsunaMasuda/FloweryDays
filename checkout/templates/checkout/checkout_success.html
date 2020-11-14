@@ -6,21 +6,21 @@
 {% endblock %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
 {% endblock %}
 
 {% block content %}
-    <div class="container">
+    <div class="container section-top">
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="logo-font mb-4">Thank You for your order!</h2>
+                {% if from_profile %}
+                <h2 class="logo-font mb-4">Your Order Details</h2>
+                <hr>
+                {% else %}
+                <h2 class="logo-font mb-4">Thank you for your order!</h2>
                 <hr>
                 <p class="text-black">Your order information is below. A confirmation email will be sent to <strong>{{ order.email }}</strong>.</p>
+                {% endif %}
             </div>
         </div>
 
@@ -65,7 +65,7 @@
                             </p>
                         </div>
                         <div class="col-12 col-md-8 text-md-right">
-                            <p class="small mb-0">{{ item.quantity }} @ €{{ item.product.price }} each</p>
+                            <p class="small mb-0">{{ item.quantity }} x €{{ item.product.price }}</p>
                         </div>
                     </div>
                     {% endfor %}
@@ -180,14 +180,17 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-4">
 			<div class="col-12 col-lg-7 text-right">
-                    <a href="" class="btn btn-black rounded-0 my-2">
+                {% if from_profile %}
+                    <a href="{% url 'profile' %}">
                         <span class="icon mr-2">
                             <i class="fas fa-angle-left"></i>
                         </span>
                         <span class="text-uppercase">Back to Profile</span>
                     </a>
+                {% else %}
+                {% endif %}
 			</div>
 		</div>
     </div>
