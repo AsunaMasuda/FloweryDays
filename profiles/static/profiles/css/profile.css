@@ -1,0 +1,14 @@
+#profile-update-form input {
+    color: #7c7c7c;
+    border: 1px solid #7c7c7c;
+    border-radius: 0;
+}
+
+#profile-update-form .form-control {
+    color: black;
+}
+
+.order-history {
+    max-height: 416px;
+    overflow-y: auto;
+}
