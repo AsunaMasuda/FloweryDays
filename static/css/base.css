@@ -84,6 +84,13 @@ body {
     display: none
 }
 
+/** Form **/
+.form-flowerydays input,
+.form-flowerydays textarea {
+    color: #000000;
+    border: 1px solid #7c7c7c;
+    border-radius: 0;
+}
 
 /**---- Index ----**/
 /** Carousel **/
@@ -895,11 +902,4 @@ And vertical overflow will turn into a scrollbar when the height is greater than
     height: 100px;
     overflow-x: hidden;
     overflow-y: auto;
-}
-
-/* allauth */
-.allauth-inner-content-form input {
-    color: #7c7c7c;
-    border: 1px solid #7c7c7c;
-    border-radius: 0;
 }
