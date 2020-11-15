@@ -83,6 +83,12 @@
                             <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
                         </div>
+                        {% if request.user.is_superuser %}
+                        <div class="mt-2">
+                            <a href="{% url 'edit_product' product.pk %}" class="product_edit">Edit</a> | 
+                            <a href="{% url 'delete_product' product.pk%}" class="product_delete">Delete</a>
+                        </div>
+                        {% endif %}
                         <div class="backToPrevious">
                             <span class="icon">
                                 <i class="fas fa-arrow-left"></i>
