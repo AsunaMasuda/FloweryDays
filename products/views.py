@@ -155,6 +155,33 @@ def add_product(request):
 
     return render(request, template, context)
 
+
+def edit_product(request, product_pk):
+    """Edit a product in the store"""
+    product = get_object_or_404(Product, pk=product_pk)
+
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES, instance=product)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'You updated {product.name}!')
+            return redirect(reverse('single_product', args=[product_pk]))
+        else:
+            messages.error(request, 'Failed to update product. Please ensure the form is valid.')
+    
+    else:
+        form = ProductForm(instance=product)
+        messages.info(request, f'You are editing a product details: {product.name}')
+
+    template = 'products/edit_product.html'
+    context = {
+        'form': form,
+        'product': product,
+    }
+
+    return render(request, template, context)
+
+
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
