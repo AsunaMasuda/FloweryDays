@@ -8,6 +8,8 @@ import operator
 
 from .models import Product, Image, Color, Flower
 
+from .forms import ProductForm
+
 
 def filter_product(request):
 
@@ -135,6 +137,24 @@ def single_product(request, product_pk):
     return render(request, 'products/single_product.html', context)
 
 
+def add_product(request):
+    """ Add a product to the store """
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'You added the product successfully!')
+            return redirect(reverse('add_product'))
+        else:
+            messages.error(request, 'Failed to add the product. Please ensure the form is valid.')
+    form = ProductForm()
+    template = 'products/add_product.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
+
 def all_products(request):
     """ A view to show all products, including sorting and search queries """
 
@@ -146,6 +166,10 @@ def all_products(request):
     if request.GET:
         if 'q' in request.GET:
             queries = request.GET['q'].split()
+            if not queries:
+             messages.error(request, 
+            f'Please enter keywords to search a product')
+            
             colors =  colors.filter(reduce(operator.__or__, [Q(name__icontains=query) for query in queries]))
             flowers =  flowers.filter(reduce(operator.__or__, [Q(name__icontains=query) for query in queries]))
             products =  products.filter(reduce(operator.__or__, [Q(name__icontains=query) | Q(description__icontains=query) for query in queries]))
