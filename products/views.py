@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 from django.db.models import Q
 from itertools import chain
 from functools import reduce
@@ -137,14 +138,20 @@ def single_product(request, product_pk):
     return render(request, 'products/single_product.html', context)
 
 
+@login_required
 def add_product(request):
     """ Add a product to the store """
+    if not request.user.is_superuser:
+        messages.error(request,
+                       'Sorry, only store owners have access to the area.')
+        return redirect(reverse('home'))
+
     if request.method == 'POST':
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            product = form.save()
             messages.success(request, 'You added the product successfully!')
-            return redirect(reverse('add_product'))
+            return redirect(reverse('single_product', args=[product.id]))
         else:
             messages.error(request, 'Failed to add the product. Please ensure the form is valid.')
     form = ProductForm()
@@ -156,8 +163,14 @@ def add_product(request):
     return render(request, template, context)
 
 
+@login_required
 def edit_product(request, product_pk):
     """Edit a product in the store"""
+    if not request.user.is_superuser:
+        messages.error(request,
+                       'Sorry, only store owners have access to the area.')
+        return redirect(reverse('home'))
+
     product = get_object_or_404(Product, pk=product_pk)
 
     if request.method == 'POST':
@@ -180,6 +193,20 @@ def edit_product(request, product_pk):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_product(request, product_pk):
+    if not request.user.is_superuser:
+        messages.error(request,
+                       'Sorry, only store owners have access to the area.')
+        return redirect(reverse('home'))
+
+    product = get_object_or_404(Product, pk=product_pk)
+    product.delete()
+    messages.success(request,
+                     f'You deleted product: {product.name} from the database.')
+    return redirect(reverse('onlineshop'))
 
 
 def all_products(request):
