@@ -58,6 +58,8 @@
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+    <!-- Stripe -->
+    <script src="https://js.stripe.com/v3/"></script>
     <script src="{% static 'js/base.js' %}"></script>
     {% endblock %}
 
@@ -70,6 +72,7 @@
   <body>
     <!-- Navbar -->
     <header class="header-ex bg-white">
+    {% block page_header %} {% endblock %} 
       <div class="container-fluid h-100">
         <div class="row align-items-center h-100">
           <div class="col-auto">
@@ -126,28 +129,45 @@
                 </li>
               </ul>
             </div>
-            <div class="my-auto text-right">
-              <div class="d-inline mr-4">
-                <a href="{% url 'account_login' %}" class="btn btn-outline" role="button">Log in
-                </a>
-              </div>
-              <div class="d-inline mr-4">
-                <a href="{% url 'account_signup' %}" class="btn btn-colour-1" role="button">
-                    Sign up
-                </a>
-              </div>
-              <div class="d-inline mr-4">
+            
+            {% if request.user.is_authenticated %}
+                <div class="dropdown dropdown-extension">
+                    <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span><i class="fas fa-user-circle"></i></span><span>  My Account</span>
+                    </button>
+                    <div class="dropdown-menu dropdown-extension" aria-labelledby="dropdownMenuButton">
+                        {% if request.user.is_superuser %}
+                            <a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a>
+                        {% endif %}
+                        <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                        <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+
+                    </div>
+                </div>
+            {% else %}
+                <div class="my-auto text-right">
+                <div class="d-inline mr-4">
+                    <a href="{% url 'account_login' %}" class="btn btn-outline" role="button">Log in
+                    </a>
+                </div>
+                <div class="d-inline mr-4">
+                    <a href="{% url 'account_signup' %}" class="btn btn-colour-1" role="button">
+                        Sign up
+                    </a>
+                </div>
+            {% endif %}
+            <div class="d-inline mr-4">
                 <a href="{% url 'view_cart' %}" class="display-cart">
-                  <i
+                    <i
                     class="fa fa-shopping-cart shopping-cart-ex fa-lg"
                     aria-hidden="true"
-                  ></i>
-                  <sup class="item-number">
+                    ></i>
+                    <sup class="item-number">
                     {% if product_count %} {{ product_count }} 
                     {% else %} 0 {% endif %}
-                  </sup>
+                    </sup>
                 </a>
-              </div>
+            </div>
             </div>
           </nav>
         </div>
@@ -163,7 +183,7 @@
                     {% elif level == 30 %}
                         {% include 'includes/toasts/toast_warning.html' %}
                     {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_update_cart.html' %}
+                        {% include 'includes/toasts/toast_success.html' %}
                     {% else %}
                         {% include 'includes/toasts/toast_info.html' %}
                     {% endif %}
@@ -172,9 +192,9 @@
         </div>
     {% endif %} 
 
-    {% block page_header %} {% endblock %} 
-    
-    {% block content %} {% endblock %} 
+
+    {% block content %}
+    {% endblock %} 
 
     <!-- Footer -->
 <footer class="footer-all">
