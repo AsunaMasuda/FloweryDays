@@ -114,8 +114,10 @@ body {
 }
 
 .header-ex {
+    position: relative;
+    z-index: 9999;
     height: 165px;
-    overflow:auto;
+    overflow: visible;
 }  
 
 .carousel-extension {
@@ -159,6 +161,10 @@ body {
     z-index: 10;
     color: #fff;
     text-align: center;
+}
+
+.dropdown-extension {
+    z-index: 999999999999;
 }
 
 /** About **/
@@ -466,6 +472,16 @@ ul#social-icon a:hover {
 
 .product-hover:hover .button-overlay {
   opacity: 1;
+}
+
+.product_edit {
+    font-size: 0.9rem;
+    color: ;
+}
+
+.product_delete {
+    font-size: 0.9rem;
+    color: ;
 }
 
 /** Pagination **/
