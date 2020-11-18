@@ -1,32 +1,41 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <div class="container">
-  <div class="row">
-        <div class="col-12">
-            <img src="{{ blog_image.image.url }}" class="blog_post_img">
-            <div class="pr-4 pl-4 mb-4">
-                <div>
-                    <h2 class="card-title mt-4">{{ blog_post.title }}</h2>
-                    <p class="card-text text-muted mt-2">{{ blog_post.author }} | {{ blog_post.created_on }} </p>
-                    <p class="card-text">{{ blog_post.content|linebreaks }}</p>
-                    <hr>
-                </div>
-                <div>
-                    <h2>Comments</h2>
-                    {% if not blog_post.comments.all %}
-                        No Comments yet
-                    {% else %}
-                        {% for comment in blog_post.comments.all %}
-                            {{ comment.comment_name }}
-                            {{ comment.created_on }}
-                            <br/>
-                            {{ comment.blog_comment }}
-                            <br/><br/>
-                            <hr>
-                        {% endfor %}
-                    {% endif %}
+    <div class="row">
+        <div class="col-12 text-center">
+            <ul class="breadcrumb breadcrumb-custom">
+            <li class="breadcrumb-item"><a href="{% url 'blog' %}">Blog Top</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'category_view' blog_post.category %}">{{ blog_post.category }}</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ blog_post.title }}</li>
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+            <div class="col-12">
+                <img src="{{ blog_image.image.url }}" class="blog_post_img">
+                <div class="pr-4 pl-4 mb-4">
+                    <div>
+                        <h2 class="card-title mt-4">{{ blog_post.title }}</h2>
+                        <p class="card-text text-muted mt-2">{{ blog_post.author }} | {{ blog_post.created_on }} </p>
+                        <p class="card-text">{{ blog_post.content|linebreaks }}</p>
+                        <hr>
+                    </div>
+                    <div>
+                        <h2>Comments</h2>
+                        {% if not blog_post.comments.all %}
+                            No Comments yet
+                        {% else %}
+                            {% for comment in blog_post.comments.all %}
+                                {{ comment.comment_name }}
+                                {{ comment.created_on }}
+                                <br/>
+                                {{ comment.blog_comment }}
+                                <br/><br/>
+                                <hr>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
                 </div>
             </div>
-        </div>
-  </div>
+    </div>
 </div>
 {% endblock %}
