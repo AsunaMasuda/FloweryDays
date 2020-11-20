@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-{% load blog_image_filter %}
+{% load filter_pagination %} {% load blog_image_filter %}
 <section class="section-top">
     <div class="container">
         <div class="row">
@@ -73,6 +73,33 @@
                                 {% endfor %}
                             </div>
                         </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        {% if selected_blog.has_other_pages %}
+                            <ul class="pagination pagination-extension justify-content-center mt-4">
+                                {% if selected_blog.has_previous %}
+                                    <li class="mr-2">
+                                        <a class="move-page-button" value="{% relative_url selected_blog.previous_page_number 'page' request.GET.urlencode %}">&laquo;
+                                        </a>
+                                    </li>
+                            {% else %}
+                            {% endif %}
+                            {% for i in selected_blog.paginator.page_range %}
+                                {% if selected_blog.number == i %}
+                                    <li class="active mr-2"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                    <li class="mr-2"><a class="page-button" href="{% relative_url i 'page' request.GET.urlencode %}"> {{ i }} </a></li>
+                                {% endif %}
+                            {% endfor %}
+                                {% if selected_blog.has_next %}
+                                <li><a class="move-page-button" href="{% relative_url selected_blog.next_page_number 'page' request.GET.urlencode %}">&raquo;</a></li>
+                                {% else %}
+                                <li class="move-page-button-disabled"><span>&raquo;</span></li>
+                                {% endif %}
+                            </ul>
+                        {% endif %}
                     </div>
                 </div>
             </div>
