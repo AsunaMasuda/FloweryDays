@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<div class="container">
+<div class="container section-top">
     <div class="row">
         <div class="col-12 text-center">
             <ul class="breadcrumb breadcrumb-custom">
@@ -12,27 +12,45 @@
     <div class="row">
             <div class="col-12">
                 <img src="{{ blog_image.image.url }}" class="blog_post_img">
-                <div class="pr-4 pl-4 mb-4">
-                    <div>
-                        <h2 class="card-title mt-4">{{ blog_post.title }}</h2>
+                <div class="pr-4 pl-4 mb-4 mt-4">
+                    <div class="pr-4 pl-4 mb-4 mt-4">
+                        <h2 class="card-title">{{ blog_post.title }}</h2>
                         <p class="card-text text-muted mt-2">{{ blog_post.author }} | {{ blog_post.created_on }} </p>
                         <p class="card-text">{{ blog_post.content|linebreaks }}</p>
-                        <hr>
                     </div>
-                    <div>
-                        <h2>Comments</h2>
+                    <hr>
+                    <div class="blog-comment-section">
+                        <div class="mb-3">
                         {% if not blog_post.comments.all %}
-                            No Comments yet
+                            <h2>No Comments yet</h2>
                         {% else %}
+                            <h2>{{ blog_post.comments.count }} Comments</h2>
                             {% for comment in blog_post.comments.all %}
-                                {{ comment.comment_name }}
-                                {{ comment.created_on }}
-                                <br/>
-                                {{ comment.blog_comment }}
-                                <br/><br/>
-                                <hr>
+                                <div class="users-comment mt-2">
+                                    <div>
+                                        <div class="comment-name">{{ comment.comment_name }}</div>
+                                        <div class="comment-date">{{ comment.created_on }}</div>
+                                    </div>
+                                    <div class="mt-3 mb-2">
+                                        <span class="comment-line"></span>
+                                        <span class="ml-2">{{ comment.blog_comment }}</span>
+                                    </div>
+                                </div>
                             {% endfor %}
                         {% endif %}
+                        </div>
+                        <hr>
+                        <div class="blog-comment-form">
+                            <h3>Leave a Comment</h3>
+                            <form method="POST" action="{% url 'post_view' blog_post.slug %}">
+                                {% csrf_token %}
+                                {{ comment_form|crispy }}
+                            <button class="btn btn-colour-1" action="submit">Submit Comment</button>
+                            </form>
+                            <div class="mt-4">
+                            <a href="{% url 'category_view' blog_post.category|lower %}"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Category</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
