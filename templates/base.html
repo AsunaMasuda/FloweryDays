@@ -1,4 +1,4 @@
-{% load static %}
+{% load static %} {% load section_path %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -113,19 +113,16 @@
             >
               <ul class="navbar-nav">
                 <li class="nav-item mr-4">
-                  <a class="nav-link" href="#about">About</a>
+                  <a class="nav-link" href="{% anchor 'home' 'about' %}">About</a>
                 </li>
                 <li class="nav-item mr-4">
                   <a class="nav-link text-nowrap" href="{% url 'onlineshop' %}">Online Shop</a>
                 </li>
                 <li class="nav-item mr-4">
-                  <a class="nav-link" href="#">Subscription</a>
-                </li>
-                <li class="nav-item mr-4">
                   <a class="nav-link" href="{% url 'blog' %}">Blog</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#contact">Contact</a>
+                  <a class="nav-link" href="{% anchor 'home' 'contact' %}">Contact</a>
                 </li>
               </ul>
             </div>
@@ -141,7 +138,6 @@
                         {% endif %}
                         <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
                         <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-
                     </div>
                 </div>
             {% else %}
@@ -211,7 +207,7 @@
                 <div class="col-3">Address:</div>
                 <div class="col-9">
                   <ul>
-                    <li>15 Spitz Ave, Sakura bridge, Dublin, Ireland</li>
+                    <li>15 Dublin Ave, Sakura bridge, Dublin, Ireland</li>
                   </ul>
                 </div>
               </div>
@@ -239,15 +235,12 @@
         >
           <h5 class="footer-title">Quick links</h5>
           <ul class="footer-corporate-list">
-            <li><a href="#">Online Shop</a></li>
-            <li><a href="#">Subscription</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Why choose us?</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Bouquet</a></li>
+            <li><a href="{% url 'onlineshop' %}">Online Shop</a></li>
+            <li><a href="{% anchor 'home' 'about' %}">About</a></li>
+            <li><a href="{% anchor 'home' 'why-choose-us' %}">Why choose us?</a></li>
+            <li><a href="{% anchor 'onlineshop' 'contact' %}">Contact</a></li>
+            <li><a href="{% url 'blog' %}">Blog</a></li>
             <li><a href="#">Individual Flower</a></li>
-            <li><a href="#">Tools & Goods</a></li>
           </ul>
         </div>
       </div>
