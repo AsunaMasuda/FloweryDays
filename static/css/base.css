@@ -171,7 +171,7 @@ body {
 .bg-about {
     background-color: #b75d69 !important;
     color: white;
-    padding: 4rem 0;
+    padding: 6rem 0;
 }
 
 .page-section {
@@ -818,13 +818,12 @@ ul#social-icon a:hover {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* Blog Page */
+/* Blog Post Page */
 .blog_post_img {
     object-fit: cover;
     width: 100%;
     height: 350px;
 }
-
 
 .message-container {
     position: fixed;
@@ -833,6 +832,33 @@ ul#social-icon a:hover {
     z-index: 99999999999;
 }
 
+.blog-comment-section{
+    padding: 20px 250px;
+}
+
+
+.users-comment {
+    padding: 15px 50px;
+    background-color: #eacdc2;
+}
+
+.comment-name{
+    font-weight: 800;
+}
+
+.comment-date{
+    color: #5e5e5e;
+    font-size: 0.8rem; 
+}
+
+.comment-line{
+    background-color: #b75d69;
+    padding: 2px;
+}
+
+.blog-comment-form{
+    margin-top: 30px;
+}
 
 /* Toast */
 .custom-toast {
