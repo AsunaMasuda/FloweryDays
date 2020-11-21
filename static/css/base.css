@@ -127,6 +127,7 @@ body {
 .carousel-inner {
     position: relative;
     height: inherit;
+    z-index: -1;
 }
 
 .carousel-indicators-extension {
@@ -243,6 +244,7 @@ body {
   border: none;
   height: 12px;
   width: 12px;
+  padding: 0 0;
   border-radius: 50%;
   display: inline-block;
 }
