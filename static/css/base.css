@@ -110,7 +110,6 @@ body {
     top: 0;
     position: absolute;
     padding-top: 165px;
-    z-index: -1;
 }
 
 .header-ex {
@@ -128,6 +127,10 @@ body {
 .carousel-inner {
     position: relative;
     height: inherit;
+}
+
+.carousel-indicators-extension {
+    z-index: 9999;
 }
 
 .carousel-item {
