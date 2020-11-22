@@ -85,11 +85,21 @@ body {
 }
 
 /** Form **/
+.form-flowerydays{
+    justify-content: center!important;
+    display: flex;
+}
+
+.search-block{
+    display: inline-block;
+}
+
 .form-flowerydays input,
 .form-flowerydays textarea {
     color: #000000;
     border: 1px solid #7c7c7c;
     border-radius: 0;
+    padding: 6px 12px;
 }
 
 /**---- Index ----**/
