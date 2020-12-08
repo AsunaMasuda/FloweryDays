@@ -3,7 +3,7 @@
     <div class="row">
         <div class="col-12 text-center">
             <ul class="breadcrumb breadcrumb-custom">
-            <li class="breadcrumb-item"><a href="{% url 'home' %}">Home</a></li>
+            <li class="breadcrumb-item"><a href="{% url 'onlineshop' %}">Shop Home</a></li>
             <li class="breadcrumb-item"><a href="{% url 'filter_product' %}?filter_category={{ product.category }}">{{ product.category }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
             </ul>
@@ -33,11 +33,11 @@
                     {% for image in images %}
                         {% if forloop.first %}
                             <div class="carousel-item active">
-                            <img alt="" title="" src="{{ image.image.url }}" class="single-product-img">
+                                <img alt="" title="" src="{{ image.image.url }}" class="single-product-img">
                             </div>
                         {% else %}
                             <div class="carousel-item">
-                            <img alt="" title="" src="{{ image.image.url }}" class="single-product-img">
+                                <img alt="" title="" src="{{ image.image.url }}" class="single-product-img">
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -46,27 +46,27 @@
             </div>
         </div>
         <div class="col-md-6">
-            <h3 class="product-title">{{ product.name }}</h3>
-            <h4 class="mb-3">€ {{ product.price }}</h4>
-            <p class="product-description mb-3"> {{ product.description }} </p>
-            <hr>
-            {% if product.category != 'bouquet' %}
-                <div class="row mb-3">
-                    <div class="col-md-2 my-auto">Color: </div>
-                    <div class="col-md-10 my-auto">
-                        <select class="form-control" id="color-option">
-                        {% for color in colors %}
-                            <option>{{ color.color_set.all.0.name }}</option>
-                        {% endfor %}
-                        </select>
+            <div class="product-info">
+                <h3 class="product-title">{{ product.name }}</h3>
+                    <h4 class="mb-3">€ {{ product.price }}</h4>
+                <p class="product-description mb-3"> {{ product.description }}</p>
+                <hr>
+                {% if product.category != 'bouquet' %}
+                    <div class="row mb-3">
+                        <div class="col-md-2 my-auto">Color: </div>
+                        <div class="col-md-10 my-auto">
+                            <select class="form-control" id="color-option">
+                            {% for color in colors %}
+                                <option>{{ color.color_set.all.0.name }}</option>
+                            {% endfor %}
+                            </select>
+                        </div>
                     </div>
-                </div>
-            {% endif %}
+                {% endif %}
 
 
-            <form class="form" action="{% url 'add_to_cart' product.pk %}" method="POST">
-                {% csrf_token %}
-                <div class="form-row">
+                <form class="form" action="{% url 'add_to_cart' product.pk %}" method="POST">
+                    {% csrf_token %}
                     <div class="col-12">
                         <div class="row">
                             <div class="col-md-2 my-auto">Quantity: </div>
@@ -89,15 +89,79 @@
                             <a href="{% url 'delete_product' product.pk%}" class="product_delete">Delete</a>
                         </div>
                         {% endif %}
-                        <div class="backToPrevious">
-                            <span class="icon">
-                                <i class="fas fa-arrow-left"></i>
-                            </span>
-                            <span>Back to Previous Page</span>
+                    </div>
+                </form>
+                <div class="backToPrevious">
+                    <span class="icon">
+                        <i class="fas fa-arrow-left"></i>
+                    </span>
+                    <span>Back to Previous Page</span>
+                </div>
+            </div>
+            <hr>
+            <div class="product-rating mt-3">
+                {% if product_reviews %}
+                    <div>
+                        <span>The customer Review: {{ average_score.rating_score__avg }} / 5.0</span>
+                        <span class="stars-outer">
+                            <div class="stars-inner" style="width: {{ average_score_percentage }}%"></div>
+                        </span>
+                    </div>
+                    <div id="accordion">
+                        <div class="card">
+                            <div class="card-header" id="headingOne">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                                View Reviews
+                                </button>
+                            </h5>
+                            </div>
+
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+                                    {% for review in product_reviews %}
+                                        <div>
+                                            <span>{{ review.review_title }}</span>
+                                            <span class="stars-outer">
+                                                <div class="stars-inner" style="width: {{ review.review_rate }}%"></div>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            {{ review.review_date }}
+                                        </div>
+                                        <div>
+                                            {{ review.review_comment }}
+                                        </div>
+                                        <hr>
+                                    {% endfor %}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-header" id="headingTwo">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Leave Your Feedback
+                                </button>
+                            </h5>
+                            </div>
+                            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                            <div class="card-body">
+                                <form class="form" action="{% url 'single_product' product.pk %}" method="POST">
+                                {% csrf_token %}
+                                {{ product_review_form|crispy }}
+                                <button class="btn btn-colour-1" action="submit">Submit Review</button>
+                                </form>
+                            </div>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </form>
+                {% else %}
+                    <div>
+                        <p>No Customer Reviews</p>
+                    </div>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>
