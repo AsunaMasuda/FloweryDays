@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 
 class Product(models.Model):
@@ -40,3 +41,26 @@ class Flower(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class ProductReview(models.Model):
+    RATING_CHOICES = (
+        (1, '1'),
+        (2, '2'),
+        (3, '3'),
+        (4, '4'),
+        (5, '5'),
+    )
+    product_id = models.ForeignKey('Product', null=True,
+                                   blank=True, on_delete=models.SET_NULL)
+    user_id = models.ForeignKey(User, null=True,
+                                blank=True, on_delete=models.SET_NULL)
+    rating_score = models.IntegerField(choices=RATING_CHOICES, default=0)
+    review_title = models.CharField(max_length=254)
+    review_comment = models.TextField()
+    review_date = models.DateTimeField(auto_now_add=True,
+                                       verbose_name='review_created_date')
+
+    @property
+    def review_rate(self):
+        return self.rating_score/5*100
