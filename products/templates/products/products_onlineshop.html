@@ -8,14 +8,8 @@
                             <div class="aside-title">Categories</div>
                             <select class="selectpicker mt-2" multiple data-live-search="true" name="filter_category">
                                 {% for category in categories %}
-                                    {% if category_name %}
-                                        {% for filtered_category in category_name %}
-                                            {% if category == filtered_category %}
-                                                <option value="{{ category }}" selected>{{ category|title }}</option>
-                                            {% else %}
-                                                <option value="{{ category }}">{{ category|title }}</option>
-                                            {% endif %}
-                                        {% endfor %}
+                                    {% if category in category_name %}
+                                        <option value="{{ category }}" selected>{{ category|title }}</option>
                                     {% else %}
                                         <option value="{{ category }}">{{ category|title }}</option>
                                     {% endif %}
@@ -26,16 +20,10 @@
                             <div class="aside-title">Color</div>
                             <select class="selectpicker mt-2" multiple data-live-search="true" name="filter_color">
                                 {% for color in colors %}
-                                    {% if color_name %}
-                                        {% for filtered_color in color_name %}
-                                            {% if color.name == filtered_color %}
-                                                <option value="{{ color.name }}" selected>{{ color.name|title }}</option>
-                                            {% else %}
-                                                <option value="{{ color.name }}">{{ color.name|title }}</option>
-                                            {% endif %}
-                                        {% endfor %}
+                                    {% if color in color_name %}
+                                        <option value="{{ color }}" selected>{{ color|title }}</option>
                                     {% else %}
-                                        <option value="{{ color.name }}">{{ color.name|title }}</option>
+                                        <option value="{{ color }}">{{ color|title }}</option>
                                     {% endif %}
                                 {% endfor %}
                             </select>
@@ -44,16 +32,10 @@
                             <div class="aside-title">Flower</div>
                             <select class="selectpicker mt-2" multiple data-live-search="true"  name="filter_flower">
                                 {% for flower in flowers %}
-                                    {% if flower_name %}
-                                        {% for filtered_flower in flower_name %}
-                                            {% if flower.name == filtered_flower %}
-                                                <option value="{{ flower.name }}" selected>{{ flower.name|title }}</option>
-                                            {% else %}
-                                                <option value="{{ color.name }}">{{ color.name|title }}</option>
-                                            {% endif %}
-                                        {% endfor %}
+                                    {% if flower in flower_name %}
+                                        <option value="{{ flower }}" selected>{{ flower|title }}</option>
                                     {% else %}
-                                        <option value="{{ flower.name }}">{{ flower.name|title }}</option>
+                                        <option value="{{ flower }}">{{ flower|title }}</option>
                                     {% endif %}
                                 {% endfor %}
                             </select>
@@ -62,13 +44,8 @@
                             <div class="aside-title mt-2">Occasion / Use</div>
                             <select class="selectpicker mt-2" multiple data-live-search="true"  name="filter_occasion">
                                 {% for occasion in occasions %}
-                                    {% if occasion_name %}
-                                        {% for filtered_occasion in occasion_name %}
-                                            {% if occasion == filtered_occasion %}         <option value="{{ occasion }}" selected>{{ occasion|title }}</option>
-                                            {% else %}
-                                                <option value="{{ occasion }}">{{ occasion|title }}</option>
-                                            {% endif %}
-                                        {% endfor %}
+                                    {% if occasion in occasion_name %}
+                                        <option value="{{ occasion }}" selected>{{ occasion|title }}</option>
                                     {% else %}
                                         <option value="{{ occasion }}">{{ occasion|title }}</option>
                                     {% endif %}
@@ -86,11 +63,22 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="row">
+                            {% if queries %}
+                                <div class="col-12">
+                                    {% if not products %}
+                                        Your search "{% for i in queries %}{{ i }} {% endfor %}" did not match any results.
+                                    {% else %}
+                                        Showing results for "{% for i in queries %}{{ i }} {% endfor %}"
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </div>
+                        <div class="row mt-3">
                             <div class="col-6 product-counter">
                             {{ products.start_index }} - {{ products.end_index }} out of {{ products.paginator.count }} results
                             </div>
-                                <div class="col-6">
-                                    <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border border-{% if current_sorting != 'None_None' %}info{% else %}black{% endif %}">
+                            <div class="col-6">
+                                    <select id="sort-selector" class="custom-select custom-select-sm rounded-0 border">
                                     <option value="reset" {% if current_sorting == 'None_None' %}selected{% endif %}>Sort by...</option>
                                     <option value="price_asc" {% if current_sorting == 'price_asc' %}selected{% endif %}>Price (low to high)</option>
                                     <option value="price_desc" {% if current_sorting == 'price_desc' %}selected{% endif %}>Price (high to low)</option>
@@ -106,6 +94,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    {% if not products %}
+                        <div class="col-12 mt-5">
+                            There is no result with the filters you chose. Please choose different filters.
+                        </div>
+                    {% endif %}
                     {% for product in products %}
                     <div class="col-sm-6 col-md-4 col-lg-6 col-xl-4">
                         <!-- Product-->
