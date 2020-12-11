@@ -14,12 +14,11 @@ from .forms import ProductForm, ProductReviewForm
 
 
 def filter_product(request):
-
     # Product Filter
     categories = list(set(Product.objects.values_list('category', flat=True)))
     occasions = list(set(Product.objects.values_list('occasion', flat=True)))
-    colors = Color.objects.all()
-    flowers = Flower.objects.all()
+    colors = list(set(Color.objects.all().values_list('name', flat=True)))
+    flowers = list(set(Flower.objects.all().values_list('name', flat=True)))
 
     category_name = request.GET.getlist('filter_category')
     color_name = request.GET.getlist('filter_color')
@@ -35,7 +34,7 @@ def filter_product(request):
         result_product_pk = set(category_product_id)
 
     if len(color_name) > 0:
-        filtered_color = colors.filter(reduce(operator.__or__,
+        filtered_color = Color.objects.all().filter(reduce(operator.__or__,
                                               [Q(name__icontains=color) for color in color_name]))
         color_product_id = filtered_color.prefetch_related(
             'image_id').values_list('image_id__product_id', flat=True).distinct()
@@ -45,7 +44,7 @@ def filter_product(request):
             result_product_pk = set(color_product_id)
 
     if len(flower_name) > 0:
-        filtered_flower = flowers.filter(reduce(operator.__or__,
+        filtered_flower = Flower.objects.all().filter(reduce(operator.__or__,
                                                 [Q(name__icontains=flower) for flower in flower_name]))
         flower_product_id = filtered_flower.values_list(
             'product_id', flat=True).distinct()
@@ -137,11 +136,11 @@ def single_product(request, product_pk):
     product_reviews = ProductReview.objects.filter(product_id_id=product_pk)
 
     if product_reviews:
-        average_score = product_reviews.all().aggregate(Avg('rating_score'))
-        average_score_percentage = average_score['rating_score__avg']/5*100
+        average_score = round(product_reviews.all().aggregate(Avg('rating_score'))['rating_score__avg'], 2)
+        average_score_percentage = average_score/5*100
     else:
-        average_score = None
-        average_score_percentage = None
+        average_score = "-"
+        average_score_percentage = 0
 
     if request.method == 'POST':
         product_review_form = ProductReviewForm(data=request.POST)
