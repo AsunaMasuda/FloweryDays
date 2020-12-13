@@ -9,6 +9,7 @@ import operator
 from django.db.models import Avg
 
 from .models import Product, Image, Color, Flower, ProductReview
+from profiles.models import UserProfile
 
 from .forms import ProductForm, ProductReviewForm
 
@@ -128,19 +129,10 @@ def onlineshop(request):
 
 def single_product(request, product_pk):
     """ A view to show individual product details """
-
     product = get_object_or_404(Product, pk=product_pk)
     images = Image.objects.filter(product_id_id=product_pk)
     colors = Image.objects.prefetch_related(
         "color_set").filter(product_id_id=product_pk)
-    product_reviews = ProductReview.objects.filter(product_id_id=product_pk)
-
-    if product_reviews:
-        average_score = round(product_reviews.all().aggregate(Avg('rating_score'))['rating_score__avg'], 2)
-        average_score_percentage = average_score/5*100
-    else:
-        average_score = "-"
-        average_score_percentage = 0
 
     if request.method == 'POST':
         product_review_form = ProductReviewForm(data=request.POST)
@@ -152,8 +144,18 @@ def single_product(request, product_pk):
             # Save the review to the database
             new_review.save()
             product_review_form = ProductReviewForm()
+            messages.success(request, 'Successfully posted your review.')
     else:
         product_review_form = ProductReviewForm()
+
+    product_reviews = ProductReview.objects.filter(product_id_id=product_pk)
+
+    if product_reviews:
+        average_score = round(product_reviews.all().aggregate(Avg('rating_score'))['rating_score__avg'], 2)
+        average_score_percentage = average_score/5*100
+    else:
+        average_score = "-"
+        average_score_percentage = 0
 
     context = {
         'product': product,
@@ -166,6 +168,17 @@ def single_product(request, product_pk):
     }
 
     return render(request, 'products/single_product.html', context)
+
+
+@login_required
+def delete_review(request, review_pk):
+    """Delete a review posted by the user"""
+    review = get_object_or_404(ProductReview, pk=review_pk)
+    product_pk = review.product_id.pk
+    review.delete()
+    messages.success(request,
+                     'Succesfully deleted your review.')
+    return redirect(single_product, product_pk)
 
 
 @login_required

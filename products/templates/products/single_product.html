@@ -85,7 +85,7 @@
                         {% if request.user.is_superuser %}
                         <div class="mt-2">
                             <a href="{% url 'edit_product' product.pk %}" class="product_edit">Edit</a> | 
-                            <a href="{% url 'delete_product' product.pk%}" class="product_delete">Delete</a>
+                            <a href="{% url 'delete_product' product.pk %}" class="product_delete">Delete</a>
                         </div>
                         {% endif %}
                     </div>
@@ -129,6 +129,13 @@
                                         {{ review.review_date }}
                                     </div>
                                     <div>
+                                        {% if request.user.is_authenticated %}
+                                            {% if user.name == review.user_id %}
+                                             <a href="{% url 'delete_review' review.pk %}" class="product_delete">Delete Review</a>
+                                            {% endif %}
+                                        {% endif %}
+                                    </div>
+                                    <div>
                                         {{ review.review_comment }}
                                     </div>
                                     <hr>
@@ -141,6 +148,7 @@
                             </div>
                         </div>
                     </div>
+                    {% if user.is_authenticated %}
                     <div class="card card-review-extension">
                         <div class="card-header card-header-review-extension" id="headingTwo">
                             <div class="collapsed review_click_arrow_2" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
@@ -159,6 +167,11 @@
                         </div>
                         </div>
                     </div>
+                    {% else %}
+                    <div class="mt-4">
+                        <p>To leave a review, please <a href="{% url 'account_login' %}">log in.</a></p>
+                    </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
