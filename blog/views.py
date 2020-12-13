@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-# Create your views here.
+from django.contrib.auth.decorators import login_required
+
 from .models import BlogPost, BlogImage, BlogComments
 from .forms import CommentForm
 
@@ -80,6 +82,7 @@ def post_view(request, slug):
             # Save the comment to the database
             new_comment.save()
             comment_form = CommentForm()
+            messages.success(request, 'Successfully posted your comment.')
     else:
         comment_form = CommentForm()
 
@@ -90,3 +93,13 @@ def post_view(request, slug):
     }
 
     return render(request, template, context)
+
+
+@login_required
+def delete_comment(request, comment_pk):
+    """Delete a review posted by the user"""
+    comment = get_object_or_404(BlogComments, pk=comment_pk)
+    slug = comment.article_id.slug
+    comment.delete()
+    messages.success(request, 'Successfully deleted your comment.')
+    return redirect(post_view, slug)
