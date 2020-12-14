@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
@@ -8,7 +8,8 @@ from .forms import CommentForm
 
 
 def blog_feed(request):
-    #order by newest first for blog_post
+    """A view to render blog posts ordered by newest first with paginations"""
+
     blog_post = BlogPost.objects.all().order_by('-created_on')
     blog_image = BlogImage.objects.all()
     total_post_number = blog_post.count()
@@ -42,6 +43,8 @@ def blog_feed(request):
 
 
 def category_view(request, category):
+    """A view to display blog posts with a selected category"""
+
     blog_post = BlogPost.objects.all().order_by('-created_on')
     selected_blog = blog_post.filter(category__icontains=category)
     total_post_number = blog_post.count()
@@ -67,6 +70,9 @@ def category_view(request, category):
 
 
 def post_view(request, slug):
+    """A view to render the article and the comments and handle posting
+    new comments"""
+
     blog_post = get_object_or_404(BlogPost, slug=slug)
     blog_image = BlogImage.objects.get(article_id=blog_post.id)
     new_comment = None
@@ -97,7 +103,8 @@ def post_view(request, slug):
 
 @login_required
 def delete_comment(request, comment_pk):
-    """Delete a review posted by the user"""
+    """Delete a comment posted by the user"""
+
     comment = get_object_or_404(BlogComments, pk=comment_pk)
     slug = comment.article_id.slug
     comment.delete()
