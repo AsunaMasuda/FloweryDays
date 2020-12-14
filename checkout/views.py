@@ -1,4 +1,5 @@
-from django.shortcuts import render, redirect, reverse, get_object_or_404, HttpResponse
+from django.shortcuts import HttpResponse, render, redirect, reverse, \
+    get_object_or_404
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -17,6 +18,9 @@ import json
 
 @require_POST
 def cache_checkout_data(request):
+    """
+    A view to store user's input for the checkbox "save-info" field
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -33,6 +37,9 @@ def cache_checkout_data(request):
 
 
 def checkout(request):
+    """
+    A view that handles checkout process
+    """
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
 
@@ -68,17 +75,19 @@ def checkout(request):
                     order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
-                        "One of the products in your cart wasn't found in our database. "
-                        "Please call us for assistance!")
+                        "One of the products in your cart wasn't found in our \
+                        database. Please call us for assistance!")
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
 
-            request.session['save_info'] = 'save_info' in  request.POST
-            return redirect(reverse('checkout_success', args=[order.order_number]))
+            request.session['save_info'] = 'save_info' in request.POST
+            return redirect(reverse('checkout_success',
+                                    args=[order.order_number]))
 
         else:
-            messages.error(request, 'There was an error with your form. \ Please double check your information.')
+            messages.error(request, 'There was an error with your form. \
+                Please double check your information.')
 
     else:
         cart = request.session.get('cart', {})
@@ -90,9 +99,9 @@ def checkout(request):
         total = current_cart['grand_total']
         stripe_total = round(total * 100)
         stripe.api_key = stripe_secret_key
-        intent = stripe.PaymentIntent.create (
-            amount = stripe_total,
-            currency = settings.STRIPE_CURRENCY,
+        intent = stripe.PaymentIntent.create(
+            amount=stripe_total,
+            currency=settings.STRIPE_CURRENCY,
         )
 
         if request.user.is_authenticated:
@@ -124,6 +133,9 @@ def checkout(request):
 
 
 def checkout_success(request, order_number):
+    """
+    Handle successful checkouts
+    """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)
 
