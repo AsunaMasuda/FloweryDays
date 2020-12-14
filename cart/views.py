@@ -4,10 +4,13 @@ from products.models import Product
 
 
 def view_cart(request):
+    """A view that renders the cart contents page"""
+
     return render(request, 'cart/cart.html')
 
 
 def add_to_cart(request, item_id):
+    """ Add a quantity of the specified product to the shopping cart """
 
     product = get_object_or_404(Product, pk=item_id)
     redirect_url = request.POST.get('redirect_url')
@@ -27,7 +30,6 @@ def add_to_cart(request, item_id):
         cart[item_id] = quantity
         messages.success(request, f"You've added {product.name} to your cart.")
 
-
     request.session['cart'] = cart
     request.session['last_item'] = {'name': product.name,
                                     'image': product.product_image.url}
@@ -36,6 +38,8 @@ def add_to_cart(request, item_id):
 
 
 def adjust_cart(request, item_id):
+    """Update the quantity of the selected product in the cart
+        to a specified amount"""
 
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -51,6 +55,8 @@ def adjust_cart(request, item_id):
 
 
 def remove_from_cart(request, item_id):
+    """Remove the specified item from the shopping cart"""
+
     try:
         product = get_object_or_404(Product, pk=item_id)
         cart = request.session.get('cart', {})
