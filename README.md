@@ -1,13 +1,21 @@
 # Flowery Days
-[Flowery Days]() is a flower shop that provides online flower & gardening shopping, flowers / gardening subscription service and online community for all the people who love flowers and plants.
+
+Ongoing research in the field of botany seems to indicate delightful things about flowers:
+- Flowers can help heal the common cold.
+- Flowers can help improve mood.
+- Flowers improve memory.
+- Flowers aid relaxation.
+- Flowers increase energy.
+
+[Flowery Days]() is an online flower shop, that offers not only flower bouquets, but also a bunch of individual flowers so that customers can create arrangements by themselves. 
+The shop also publishes blog posts about flower arrangements, gardening and flowers/plants, where the site visitors can leave a comment.
 
 <p align="center"><img src = "" width=900></p>
 
 ## Table of Contents
 
 1. [UX](#ux)
-    - [Goals](#goals)
-        - [User Goals](#user-goals)
+    - [Project Goals](#goals)
     - [User Stories](#user-stories)
     - [Wireframes](#wireframes)
     - [Color Scheme](#color-scheme)
@@ -25,8 +33,14 @@
     - [Defensive Design](#defensive-design)
 
 3. [Information Architecture](#information-architecture)
+    - [Database Choice](#database-choice)
+    - [Data Modeling](#database-modeling)
 
 4. [Technologies Used](#technologies-used)
+    - [Languages](#languages)
+    - [Libraries and Frameworks](#libraries-and-frameworks)
+    - [Tools](#tools)
+    - [Databases](#databases)
 
 5. [Testing](#testing)
     - [Manual Testing](#manual-testing)
@@ -38,12 +52,21 @@
 
 7. [Credits](#credits)
 
+8. [Disclaimer](#disclaimer)
+
 
 # UX
-## Goals
-The goal of this website is to enable the site owner to expand their business online by offering individual products and to gain constant sales by subscription service.
+## Project Goals
+### Target Audience
+- 
 
-### User Goals
+### Visitor / User Goals
+-
+
+### Business Goals (Site Owner's Goals)
+-
+
+## User Goals
 The target audience for this website is:
 1. The site owner who wants to open an online shop where customers can purchase products safely
 2. People who are interested in buying flowers and gardening products
@@ -52,11 +75,7 @@ The target audience for this website is:
 The user goal is to have:
 
 ## User Stories
-#### As an organizer for an event,
-- I would like to have ...
 
-####  As a participant for the event,
-- I would like to have ...
 
 ## Wireframes
 Wireframes were created with [balsamiq](https://balsamiq.com/).
@@ -68,6 +87,7 @@ Wireframes were created with [balsamiq](https://balsamiq.com/).
 3. ![#](https://via.placeholder.com/15/ff6666/000000?text=+) `#ff6666`: 
 4. ![#](https://via.placeholder.com/15/bb7cfe/000000?text=+) `#bb7cfe`: 
 5. ![#](https://via.placeholder.com/15/1abc9b/000000?text=+) `#1abc9b`: 
+
 
 # Features
 
@@ -99,35 +119,19 @@ Wireframes were created with [balsamiq](https://balsamiq.com/).
 -  
 - 
 
-# Information Architecture
-MongoDB Atlas is used for storing data for this web site. 
 
-The following is the data structure. 
-```
-{
-    _id : ObjectId()
-    organizer_name : String,
-    event_key : String,
-    availabilities : Array,
-    event_description : String,
-    event_name : String,
-    event_place : String,
-    participants : Array
-                   { 
-        name: String,
-        availabilities: Array,
-        participant_note: String
-     }
-}
-```
+# Information Architecture
+## Database Choice
+## Data Modeling
+
 
 # Technologies Used
 This application contains key CRUD functionalities and they are used to maximize user's experience in this site. The main frontend development was created using HTML, CSS, JavaScript and their libraries. The main backend development was powered by Python and Flask.
 
-### Languages 
+## Languages 
 - HTML, CSS, JavaScript, Python
 
-### Libraries
+## Libraries
 - Bootstrap (v4.4.1)
 - JQuery
 - JQuery-UI
@@ -137,11 +141,14 @@ This application contains key CRUD functionalities and they are used to maximize
 - Jinja
 - PyMongo
 
-### Tools
+## Tools
 - Git/GitHub
 - Gitpod
 - PIP
 - MongoDB Atlas
+
+## Databases
+
 
 # Testing
 ### Validation Tools
@@ -214,6 +221,7 @@ IP | 0.0.0.0
 PORT | 5000
 MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-ocous.mongodb.net/<database_name>?retryWrites=true&w=majority`
 SECRET_KEY | `<your_secret_key>`
+
 
 # Credits
 
