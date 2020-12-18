@@ -17,8 +17,7 @@ The shop also publishes blog posts about flower arrangements, gardening and flow
 1. [UX](#ux)
     - [Project Goals](#goals)
     - [User Stories](#user-stories)
-    - [Wireframes](#wireframes)
-    - [Color Scheme](#color-scheme)
+    - [Design](#design)
 
 2. [Features](#features)
     - [Existing Features](#existing-features)
@@ -122,16 +121,18 @@ The user goal is to have:
 
 <br/>
 
-## Wireframes
+## Design
+### Wireframes
 Wireframes were created with [balsamiq](https://balsamiq.com/).
+You can find the wireframes [here]().
 
-## Color Scheme
-- 
-1. ![#](https://via.placeholder.com/15/363636/000000?text=+) `#363636`: 
-2. ![#](https://via.placeholder.com/15/fff/000000?text=+) `#fff`: 
-3. ![#](https://via.placeholder.com/15/ff6666/000000?text=+) `#ff6666`: 
-4. ![#](https://via.placeholder.com/15/bb7cfe/000000?text=+) `#bb7cfe`: 
-5. ![#](https://via.placeholder.com/15/1abc9b/000000?text=+) `#1abc9b`: 
+### Color Scheme
+
+
+### Typography
+
+
+### Brand Logo
 
 
 # Features
