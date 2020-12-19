@@ -126,20 +126,24 @@ The user goal is to have:
 Wireframes were created with [balsamiq](https://balsamiq.com/).
 You can find the wireframes [here](https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/wireframe.md).
 
-### Brand Identity of The Shop
-
+### Brand Identity
+- Vision: Beautiful life surrounded by natures and flowers with your creativities.
+- Mission: Provide a wide range of bouquets and flower arrangements that suit special occasion and moments in life which can be purchased with one click online. Be a wholesaler of individual flower bunches so the customers can enjoy flower arrangements themselves, without hassle to go to a physical shops.
+- Values: 1.Happiness - Improve your happiness with the power of natures, 2.Elegance - Appreciate everything around you in everyday life, 3.Nature - Inspired by the natural world and its beauty, 4.Creative - Express your creativity in flower arrangemtns
 
 ### Color Scheme
 Color scheme is important as this is one of the first things site visitors notice when visiting the site. I chose white / black for the site's primary colors because these colors match the secondary earthy colors and make the website look professional and high-end. In addition to that, for the secondary colors of the site, I wanted to create natural / delicate atmosphere to represent the calming sensation of flowers. For the secondary colors, I used [Coolors.co](https://coolors.co/) to create a color pallet, which you can find below. 
-<img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/readme_materials/Colorpalette.png" width=900>
+
+<p align="center"><img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/readme_materials/Colorpalette.png" width=900></p>
 
 This pallet collects the earthy tones with luxuary shades, which the shop aims to have their brand image for. The `Twilight Lavender` and `Popster` colors give the site an elegant and vibrant atmosphere with keeping harmonies with the flowers. The `Champagne Pink` fills the gap between white and the other vivid colors, while giving the calm shades.
 
 ### Typography
-To refrect the flower shop's brand identity, the typeface `Playfair Display` by Claus Eggers Sørensen that falls under serif font family was chosen for the website unless there is any additional specific font setting. `Playfair Display` font has a mood of Elegance, Vintage, Classy and Stylish which matches the shop's branding. As per [this article](https://medium.com/@manahabibian/playfair-display-a-typographic-specimen-b311856700bd) on Medium.com by Mana Habibian, “Playfair Display is a classical typeface with a modern feeling that will give designs the elegance they need.”
+To refrect the flower shop's brand identity, the typeface `Playfair Display` by Claus Eggers Sørensen that falls under serif font family was chosen for the website unless there is any additional specific font setting. `Playfair Display` falls under a classic typography called 'serif' font family which is great to be used when you want your brand to appear trustworthy and traditional. `Playfair Display` font has a mood of Elegance, Vintage, Classy and Stylish which matches the shop's branding. [This article](https://medium.com/@manahabibian/playfair-display-a-typographic-specimen-b311856700bd) by Mana Habibian says “Playfair Display is a classical typeface with a modern feeling that will give designs the elegance they need.”
 
 ### Brand Logo
-
+Logo design is the cornerstone in your brand identity and logo presents a company's name, product and brand. I used [Canva](https://www.canva.com/en_gb/) to create brand logo file. The font represents the brand value `elegance` and the image of a branch at the top was added to represent `Nature` brand value. 
+<p align="center"><img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/static/img/home/logo_flowery_days.png"></p>
 
 # Features
 
