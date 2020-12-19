@@ -184,26 +184,31 @@ The footer section consists of two parts: 1. General information of the Shop and
 1. The first footer section includes the shop address and its opening hours and quick links to the pages within the site.
 2. In this milestone project, Social Media icons are linked to my personal social media accounts, but in real settting they should be linked to business pages on social media, such as Facebook, Instragram, Twitter, Pinterest etc, for social media marketing purposes.
 
-## Products
+## Product Page
+### Online Shop Page
+By clicking 'Online Shop' on the site menu, you can go to the online shop page. This page is filtered with 'Bouquet' category as a default as the shop owner wants to promote products that fall uner Bouquet category that has higher profit. However, the site visitor can adjust the filter condition very easily.  
+- `Filter Function`: There is a filter section at the left side of the online shop page, and you can filter products with `categories`, `color`, `flower` and `occasion/use`. You can also select multiple choices within the filter option same and use several filters to get the results.(e.g. you can choose white and red for the color option and choose tulip and rose for the flower option. In this case, the result will show the products that fall under (white OR red color) AND (tulip OR rose).) I designed the filter to this way in order not to narrow down the products the potential customers are looking for.
+- `Product Card`: The products are displayed in cards that have `Product Name`, `Price`, `Unit`, `Add to Card` button and `View Details` button when hoverovering the product image. If the user is logged in as a superuser, Edit / Delete option is also shown on each card. 
+- `Pagination Bar`: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crutial for a site like online shop which offers many products. 
+
+### Product Detail Page
+
+
+## Cart Page
 ###
 ###
 
-## Cart
+## Checkout Page
 ###
 ###
 
-## Checkout
+## Blog Page
 ###
 ###
 
-## Blog
+## Profiles Page
 ###
 ###
-
-## Profiles
-###
-###
-
 
 
 ## Features Left to Implement
