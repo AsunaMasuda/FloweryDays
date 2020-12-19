@@ -192,11 +192,13 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 - `Pagination Bar`: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crutial for a site like online shop which offers many products. 
 
 ### Product Detail Page
-
+- `Product Image`: On the left side of the product detail page (single_product.html), the product images are shown. When there are several images for the product , for example, some products have color options such as Carnation, the options will be shown under the main image.
+- `Product Information`: On the right side of the product detail page, there is `Product Name`, `Price`, `Description`, `Color` option, `Quantity`, `Add to Cart` button. `Color` option is only visible when the product has the options. Also for superuser, Edit / Delete option will be shown.
+- `Product Review Section`: Customers can see the product scores and review messages by the other customers. The users can leave a score from 1 to 5, and the average of the scores by the customers is shown on the product page. To leave product review, the user is asked to log in their account. At the moment, regardless of the history of purchasing the product the user wants to review for, the user is able to leave a review. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
 
 ## Cart Page
-###
-###
+### 
+### 
 
 ## Checkout Page
 ###
