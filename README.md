@@ -192,20 +192,27 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 - `Pagination Bar`: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crutial for a site like online shop which offers many products. 
 
 ### Product Detail Page
-- `Product Image`: On the left side of the product detail page (single_product.html), the product images are shown. When there are several images for the product , for example, some products have color options such as Carnation, the options will be shown under the main image.
+- `Breadcrumb` navigation is added at the top of the product detail page, which allows customers to keep track their locations in the onlineshop.
+`Product Image`: On the left side of the product detail page (single_product.html), the product images are shown. When there are several images for the product , for example, some products have color options such as Carnation, the options will be shown under the main image.
 - `Product Information`: On the right side of the product detail page, there is `Product Name`, `Price`, `Description`, `Color` option, `Quantity`, `Add to Cart` button. `Color` option is only visible when the product has the options. Also for superuser, Edit / Delete option will be shown.
-- `Product Review Section`: Customers can see the product scores and review messages by the other customers. The users can leave a score from 1 to 5, and the average of the scores by the customers is shown on the product page. To leave product review, the user is asked to log in their account. At the moment, regardless of the history of purchasing the product the user wants to review for, the user is able to leave a review. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
+- `Product Review Section`: Customers can see the product scores and review messages by the other customers. The users can leave a score from 1 to 5, and the average of the scores by the customers is shown on the product page. To leave product review, the user is asked to log in their account. Also, to delete a review, the customer who left the review needs to log in and the delete option will be visible next to the review after logging in. At the moment, regardless of the history of purchasing the product the user wants to review for, the user is able to leave a review. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
 
 ## Cart Page
-- The left side of this cart page shows the products added to the cart. The user is able to change the quantity or remove the product from the cart in this cart view. 
-- On the right side of this cart page, there is Order Summary section that shows `Cart Total`, `Delivery` and `Grand Total`. This way, the customer is able to check the order summary at first glance even if they have added a lot of products to the shopping cart.
+- The left side of this cart page shows the products added to the cart. Customers are able to change the quantity or remove the product from the cart in this cart page. 
+- On the right side of this cart page, there is Order Summary section that shows `Cart Total`, `Delivery` and `Grand Total`. This way, customers are able to check the order summary at first glance even if they have added a lot of products to the shopping cart.
 
 ## Checkout Page
-- In checkout page, the customer is asked to fill out delivery details. The customer also can select if they want gift wrapping to the product or not. At the moment, this shop does not collect user's billing information to the User Profile model or Order model.(However, the billing data is recorded in Stripe from the billing information added by the customer.) One of the features left to implement is add the billing details on Checkout page. 
+- On checkout page, customers are asked to fill out delivery details. The customer also can select if they want gift wrapping to the product or not. At the moment, this shop does not collect user's billing information to the User Profile model or Order model.(However, the billing data is recorded in Stripe from the billing information added by the customer.) One of the features left to implement is add the billing details on Checkout page.
  
 ## Blog Page
-###
-###
+### Blog Feed Page
+- After clicking `Blog` on the site menu at the top, Blog Feed page is loaded. On this page, blog posts will be displayed in decending order by the posted date. To display the blog posts beautifully, the layout that shows posts in 2-1-2 order was chosen. `Pagination Bar` is also added at the end of the page.
+- On the left side of this page, I create categories of blog posts so the site visitors can navigate the blog posts easily. The number of posted blogs in the categories is also shown in the round brackets. 
+
+### Blog Post Detail Page
+- `Breadcrumb` navigation is added at the top of the blog post detail page, for the easy navagation.
+- `Leave Comment` function: Site visitors are able to leave comments to the blog posts. It requirs the visitors to log into their account to do so. Also, after logging in, they can delete comments they left in the past with the delete option shown next to the past comment.
+- To post a new blog article, the admin has to go to the Django Admin site. One of the features left to implement is add a page in the site itself where the admin is able to post a new article without accessing Django Admin site.
 
 ## Profiles Page
 ###
