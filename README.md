@@ -201,9 +201,8 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 - On the right side of this cart page, there is Order Summary section that shows `Cart Total`, `Delivery` and `Grand Total`. This way, the customer is able to check the order summary at first glance even if they have added a lot of products to the shopping cart.
 
 ## Checkout Page
-###
-###
-
+- In checkout page, the customer is asked to fill out delivery details. The customer also can select if they want gift wrapping to the product or not. At the moment, this shop does not collect user's billing information to the User Profile model or Order model.(However, the billing data is recorded in Stripe from the billing information added by the customer.) One of the features left to implement is add the billing details on Checkout page. 
+ 
 ## Blog Page
 ###
 ###
