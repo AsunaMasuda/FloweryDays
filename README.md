@@ -230,10 +230,15 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 ## Django-allauth features
 
 ## Features Left to Implement
-1. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
-2. One of the features left to implement is add the billing details on Checkout page.
-3. One of the features left to implement is add a page in the site itself where the admin is able to post a new article without accessing Django Admin site.
-4. Social Account Login
+There are some of features left to implement in the future which I could not add to this project this time due to the time constraints. These features are great to be added for more complete online shop service for gaining higher customer satisfactions in the site. 
+### 1. Limit the user who can leave product review
+At the moment, all the authenticated users can leave reviews to any products if they are logged in. It should be limited to those who actually purchased the product for the validity of the reviews.
+### 2. Add an option to let the customer add their billing information
+With the current checkout process, the user is asked to fill out delivery information. Billing information is required when the customer wants a receipt or when a billing address is different from a delivery address.
+### 3. Post Blog article through the site
+At the moment, the site owner/admin has to use Django Admin to post a new blog article. However, it would be better usability if they could post them on the site.
+### 4. Social Account Login
+This function allows users to sign up / log into their account of the site, using the existing account such as Google and Facebook. This is beneficial to users and the site ownwers. For users, it's hassle free from remembering a password for the site and it gives the users a smooth registration process. For the site owners, there are many benefits gained by social login - such as increasing user's sign up, reducing bounce rate and gaining user's information for social account which is beneficial for marketing purpose.
 
 ## Defensive Design
 -  
