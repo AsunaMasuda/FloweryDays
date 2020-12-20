@@ -32,6 +32,9 @@ class BlogImage(models.Model):
                                    blank=True, on_delete=models.SET_NULL,
                                    verbose_name='image_article_id')
 
+    def __str__(self):
+        return self.image
+
 
 class BlogComment(models.Model):
     article_id = models.ForeignKey('BlogPost', null=True,
@@ -46,3 +49,6 @@ class BlogComment(models.Model):
 
     class Meta:
         ordering = ['-created_on']
+
+    def __str__(self):
+        return self.comment_title

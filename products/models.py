@@ -8,18 +8,19 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     occasion = models.CharField(max_length=30)
     description = models.TextField()
-    unit = models.CharField(max_length=30, null=True, blank=True)
-    rating = models.DecimalField(max_digits=6, decimal_places=2, null=True, blank=True)
-    product_image = models.ImageField(null=True, blank=True)
-    
+    unit = models.CharField(max_length=30, null=False, blank=True)
+    rating = models.DecimalField(max_digits=6, decimal_places=2,
+                                 null=True, blank=True)
+    product_image = models.ImageField(null=False, blank=True)
+
     def __str__(self):
         return self.name
 
 
 class Image(models.Model):
-    name = models.CharField(max_length=254, null=True, blank=True)
+    name = models.CharField(max_length=254, null=False, blank=True)
     image = models.ImageField(null=False, blank=False)
-    URL = models.URLField(max_length=1024, null=True, blank=True)
+    URL = models.URLField(max_length=1024, null=False, blank=True)
     product_id = models.ForeignKey('Product', null=True,
                                    blank=True, on_delete=models.SET_NULL)
 
