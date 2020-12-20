@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.decorators import login_required
 
-from .models import BlogPost, BlogImage, BlogComments
+from .models import BlogPost, BlogImage, BlogComment
 from .forms import CommentForm
 
 
@@ -105,7 +105,7 @@ def post_view(request, slug):
 def delete_comment(request, comment_pk):
     """Delete a comment posted by the user"""
 
-    comment = get_object_or_404(BlogComments, pk=comment_pk)
+    comment = get_object_or_404(BlogComment, pk=comment_pk)
     slug = comment.article_id.slug
     comment.delete()
     messages.success(request, 'Successfully deleted your comment.')

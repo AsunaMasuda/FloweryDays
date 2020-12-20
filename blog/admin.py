@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BlogPost, BlogImage, BlogComments
+from .models import BlogPost, BlogImage, BlogComment
 
 
 class BlogAdmin(admin.ModelAdmin):
@@ -13,7 +13,7 @@ class PostImageAdmin(admin.ModelAdmin):
     list_display = ('image', 'article_id')
 
 
-class BlogCommentsAdmin(admin.ModelAdmin):
+class BlogCommentAdmin(admin.ModelAdmin):
     list_display = ('article_id', 'comment_title', 'blog_comment',
                     'created_on')
     search_fields = ['blog_comment']
@@ -21,4 +21,4 @@ class BlogCommentsAdmin(admin.ModelAdmin):
 
 admin.site.register(BlogPost, BlogAdmin)
 admin.site.register(BlogImage, PostImageAdmin)
-admin.site.register(BlogComments, BlogCommentsAdmin)
+admin.site.register(BlogComment, BlogCommentAdmin)

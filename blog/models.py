@@ -27,13 +27,13 @@ class BlogPost(models.Model):
 
 
 class BlogImage(models.Model):
-    image = models.ImageField(null=True)
+    image = models.ImageField(null=False)
     article_id = models.ForeignKey('BlogPost', null=True,
                                    blank=True, on_delete=models.SET_NULL,
                                    verbose_name='image_article_id')
 
 
-class BlogComments(models.Model):
+class BlogComment(models.Model):
     article_id = models.ForeignKey('BlogPost', null=True,
                                    related_name="comments", blank=True,
                                    on_delete=models.SET_NULL)
