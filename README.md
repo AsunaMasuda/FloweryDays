@@ -197,8 +197,8 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 - `Product Review Section`: Customers can see the product scores and review messages by the other customers. The users can leave a score from 1 to 5, and the average of the scores by the customers is shown on the product page. To leave product review, the user is asked to log in their account. At the moment, regardless of the history of purchasing the product the user wants to review for, the user is able to leave a review. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
 
 ## Cart Page
-### 
-### 
+- The left side of this cart page shows the products added to the cart. The user is able to change the quantity or remove the product from the cart in this cart view. 
+- On the right side of this cart page, there is Order Summary section that shows `Cart Total`, `Delivery` and `Grand Total`. This way, the customer is able to check the order summary at first glance even if they have added a lot of products to the shopping cart.
 
 ## Checkout Page
 ###
