@@ -241,12 +241,23 @@ At the moment, the site owner/admin has to use Django Admin to post a new blog a
 This function allows users to sign up / log into their account of the site, using the existing account such as Google and Facebook. This is beneficial to users and the site ownwers. For users, it's hassle free from remembering a password for the site and it gives the users a smooth registration process. For the site owners, there are many benefits gained by social login - such as increasing user's sign up, reducing bounce rate and gaining user's information for social account which is beneficial for marketing purpose.
 
 ## Defensive Design
--  
-- 
+### Error views (404 and 500 error)
+If 404 and 500 error occured within the site, a page that has the message of the error and 'Back to Home' button so that the user would not be lost. The templates of 404.html and 500.html are added to [the root template directory].(https://docs.djangoproject.com/en/3.1/ref/views/))
+
+### Form Validation
+- Django Form Validation
+
+### Product Quantity Counter Validation
 
 
 # Information Architecture
 ## Database Choice
+- Development phase
+**SQLight** database was used for the development which is installed with Django. 
+
+- Deployment phase
+**PostgreSQL** was used on deployment stage, which is provided as add-on by Heroku application.
+
 ## Data Modeling
 
 
