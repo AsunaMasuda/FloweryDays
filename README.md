@@ -202,8 +202,14 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 - On the right side of this cart page, there is Order Summary section that shows `Cart Total`, `Delivery` and `Grand Total`. This way, customers are able to check the order summary at first glance even if they have added a lot of products to the shopping cart.
 
 ## Checkout Page
+### Checkout Page
 - On checkout page, customers are asked to fill out delivery details. The customer also can select if they want gift wrapping to the product or not. At the moment, this shop does not collect user's billing information to the User Profile model or Order model.(However, the billing data is recorded in Stripe from the billing information added by the customer.) One of the features left to implement is add the billing details on Checkout page.
- 
+- Thought the customer can complete the checkout process without having an account, if the customer hasn't logged in, the message "Create an account or login to save this information" is shown at the checkout page.
+
+### Checkout Success Page
+- Thank you message will be displayed after the checkout process as well as the table that holds the order details.
+- `Keep Shopping` button is placed at the end of the page, and if the customer has been logged into their account `Back to Profile` will be shown.
+
 ## Blog Page
 ### Blog Feed Page
 - After clicking `Blog` on the site menu at the top, Blog Feed page is loaded. On this page, blog posts will be displayed in decending order by the posted date. To display the blog posts beautifully, the layout that shows posts in 2-1-2 order was chosen. `Pagination Bar` is also added at the end of the page.
@@ -215,13 +221,19 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 - To post a new blog article, the admin has to go to the Django Admin site. One of the features left to implement is add a page in the site itself where the admin is able to post a new article without accessing Django Admin site.
 
 ## Profiles Page
-###
-###
+`My Profile` page is available for authenticated users and will be shown in the `My Account` Dropdown menu at the navbar which appears when you log into your account.
+### My Profile Page
+- In Profile Page, authenticated users can 1. edit `Delivery Information` and 2. see `Order History`. 
 
+## Admin product managment
+
+## Django-allauth features
 
 ## Features Left to Implement
-### Delete the data after the event date is passed
-
+1. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
+2. One of the features left to implement is add the billing details on Checkout page.
+3. One of the features left to implement is add a page in the site itself where the admin is able to post a new article without accessing Django Admin site.
+4. Social Account Login
 
 ## Defensive Design
 -  
