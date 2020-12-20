@@ -21,12 +21,12 @@ The shop also publishes blog posts about flower arrangements, gardening and flow
 
 2. [Features](#features)
     - [Existing Features](#existing-features)
-        - [Home page](#home-page)
-        - [Page for registering a name and an event key](#page-for-registering-a-name-and-an-event-key)
-        - [Page for registering details of the event](#page-for-registering-details-of-the-event)
-        - [Page for getting a shareable link](#page-for-getting-a-shareable-link)
-        - [Page for participants](#page-for-participants)
-        - [Page for restoring an existing plan](#page-for-restoring-an-existing-plan)
+        - [](#)
+        - [](#)
+        - [](#)
+        - [](#)
+        - [](#)
+        - [](#)
     - [Features Left to Implement](#features-left-to-implement)
         - [Delete the data after the event date is passed](#delete-the-data-after-the-event-date-is-passed)
     - [Defensive Design](#defensive-design)
@@ -124,42 +124,104 @@ The user goal is to have:
 ## Design
 ### Wireframes
 Wireframes were created with [balsamiq](https://balsamiq.com/).
-You can find the wireframes [here]().
+You can find the wireframes [here](https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/wireframe.md).
+
+### Brand Identity
+- Vision: Beautiful life surrounded by natures and flowers with your creativities.
+- Mission: Provide a wide range of bouquets and flower arrangements that suit special occasion and moments in life which can be purchased with one click online. Be a wholesaler of individual flower bunches so the customers can enjoy flower arrangements themselves, without hassle to go to a physical shops.
+- Values: 1.Happiness - Improve your happiness with the power of natures, 2.Elegance - Appreciate everything around you in everyday life, 3.Nature - Inspired by the natural world and its beauty, 4.Creative - Express your creativity in flower arrangements
 
 ### Color Scheme
+Color scheme is important as this is one of the first things site visitors notice when visiting the site. I chose white / black for the site's primary colors because these colors match the secondary earthy colors and make the website look professional and high-end. In addition to that, for the secondary colors of the site, I wanted to create natural / delicate atmosphere to represent the calming sensation of flowers. For the secondary colors, I used [Coolors.co](https://coolors.co/) to create a color pallet, which you can find below. 
 
+<p align="center"><img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/readme_materials/Colorpalette.png" width=900></p>
+
+This pallet collects the earthy tones with luxuary shades, which the shop aims to have their brand image for. The `Twilight Lavender` and `Popster` colors give the site an elegant and vibrant atmosphere with keeping harmonies with the flowers. The `Champagne Pink` fills the gap between white and the other vivid colors, while giving the calm shades.
 
 ### Typography
+To refrect the flower shop's brand identity, the typeface `Playfair Display` by Claus Eggers Sørensen that falls under serif font family was chosen for the website unless there is any additional specific font setting. `Playfair Display` falls under a classic typography called 'serif' font family which is great to be used when you want your brand to appear trustworthy and traditional. `Playfair Display` font has a mood of Elegance, Vintage, Classy and Stylish which matches the shop's branding. [This article](https://medium.com/@manahabibian/playfair-display-a-typographic-specimen-b311856700bd) by Mana Habibian says “Playfair Display is a classical typeface with a modern feeling that will give designs the elegance they need.”
 
+- Icon: [FontAwesome]() is used for the main icon library accross the site.
+- Favicon: I got the favicon by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/).
 
 ### Brand Logo
+Logo design is the cornerstone in your brand identity and logo presents a company's name, product and brand. I used [Canva](https://www.canva.com/en_gb/) to create brand logo file. The font represents the brand value `elegance` and the image of a branch at the top was added to represent `Nature` brand value. 
+<p align="center"><img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/static/img/home/logo_flowery_days.png"></p>
 
+<div "text-align: right;"><a href="#table-of-contents">Back to top</a></div>
 
 # Features
 
 ## Existing Features
-### Home page
-- 
+Flowery Days website is composed of 6 application: `home`, `blog`, `cart`, `checkout`, `products`, `profiles`.
 
-### Page for registering a name and an event key
-- 
+## Landing Page (Home)
+Landing Page is designed as a single page website to provide with enough information for the site visitor to understand what the business is about on this site. This page has minimal amount of information to make the site visitors make decisions and take next actions. The page compose of `Navbar`, `Carousel`, `About`, `Why Choose Us?`, `testimonials` and `Contact Form` section. As scrolling down on thie page, the elements are smoothly being placed by [wow.js](https://wowjs.uk/docs) animation effects to give a dynamic and sophisticated experience to the site visitors.
 
-### Page for registering details of the event
-- 
+### Navbar
+When site visitors landed on the page, the hight of the navbar is set as "165 px". I wanted to make the whole brand logo visible to make it memorable because the first view of the page is important that gives the first impressions of the site to the users. If you scroll down the navbar shrinks to the height of "100 px" and sticks at the top of the view, for easy navigations and wider views of content on the landing page. The brand logo which is placed at the left top also becomes the branch icon. 
 
-### Page for getting a shareable link
-- 
+Navbar contains a site menu, a `Search Box`, `Login button`, `Sign Up button`, `Cart icon`.
+- Search box: This search box function allows the visitors to search the products on online shop with keywords. The keywords are searched over `name` and `descriotion` field of Product Model, `name` field of Color Model and `name` field of Flower Model.(Details of these models will be described at the [Information Architecture](#information-architecture)) This function uses "OR" condition not "AND" when searching the keywords, meaning, if the search query was "Tulip Rose", the search result shows the product found using the keyword "Tulip" OR "Rose". Searching with "OR" condition is chosen in order not to limit the possibilities for the products the potential customers want to purchase.
 
-### Page for participants
-- 
-- 
 
-### Page for restoring an existing plan
-- 
+### Carousel
+At the top of the landing page, I placed carousels with beautiful photos of the flowers and the messages. This area is called "Above the fold" area and site visitors engage more with the content in "Above the fold".
+
+### About Us & Why Choose Us?
+`About Us` section explains what the business is and the history of the shop briefly to the site visitor.
+`Why Choose Us?` section showcases three sales points of the shop presenting with icons.
+Those two sections use the color of `Popstrat` and `Champagne Pink` from the color pallete for its background color that seamlessly matches the next section's background.
+
+### Testimonial
+A customer testimonial section can contribute to building the trust of potential customers and also explain the benefits of your products or services. This section displays different customer's testimonials with smooth carousel auto-animation effects.
+
+### Contact Form
+A simple contact form is placed at the end of the landing page. Site visitors fill out (name, email, subject, message) when submitting the form. An email with the inquery from the form will be sent to the admin of the website (handling by django send_mail() functionality).
+
+### Footer
+The footer section consists of two parts: 1. General information of the Shop and Quick Link, 2. Social Media icons and credit
+1. The first footer section includes the shop address and its opening hours and quick links to the pages within the site.
+2. In this milestone project, Social Media icons are linked to my personal social media accounts, but in real settting they should be linked to business pages on social media, such as Facebook, Instragram, Twitter, Pinterest etc, for social media marketing purposes.
+
+## Product Page
+### Online Shop Page
+By clicking 'Online Shop' on the site menu, you can go to the online shop page. This page is filtered with 'Bouquet' category as a default as the shop owner wants to promote products that fall uner Bouquet category that has higher profit. However, the site visitor can adjust the filter condition very easily.  
+- `Filter Function`: There is a filter section at the left side of the online shop page, and you can filter products with `categories`, `color`, `flower` and `occasion/use`. You can also select multiple choices within the filter option same and use several filters to get the results.(e.g. you can choose white and red for the color option and choose tulip and rose for the flower option. In this case, the result will show the products that fall under (white OR red color) AND (tulip OR rose).) I designed the filter to this way in order not to narrow down the products the potential customers are looking for.
+- `Product Card`: The products are displayed in cards that have `Product Name`, `Price`, `Unit`, `Add to Card` button and `View Details` button when hoverovering the product image. If the user is logged in as a superuser, Edit / Delete option is also shown on each card. 
+- `Pagination Bar`: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crutial for a site like online shop which offers many products. 
+
+### Product Detail Page
+- `Breadcrumb` navigation is added at the top of the product detail page, which allows customers to keep track their locations in the onlineshop.
+`Product Image`: On the left side of the product detail page (single_product.html), the product images are shown. When there are several images for the product , for example, some products have color options such as Carnation, the options will be shown under the main image.
+- `Product Information`: On the right side of the product detail page, there is `Product Name`, `Price`, `Description`, `Color` option, `Quantity`, `Add to Cart` button. `Color` option is only visible when the product has the options. Also for superuser, Edit / Delete option will be shown.
+- `Product Review Section`: Customers can see the product scores and review messages by the other customers. The users can leave a score from 1 to 5, and the average of the scores by the customers is shown on the product page. To leave product review, the user is asked to log in their account. Also, to delete a review, the customer who left the review needs to log in and the delete option will be visible next to the review after logging in. At the moment, regardless of the history of purchasing the product the user wants to review for, the user is able to leave a review. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
+
+## Cart Page
+- The left side of this cart page shows the products added to the cart. Customers are able to change the quantity or remove the product from the cart in this cart page. 
+- On the right side of this cart page, there is Order Summary section that shows `Cart Total`, `Delivery` and `Grand Total`. This way, customers are able to check the order summary at first glance even if they have added a lot of products to the shopping cart.
+
+## Checkout Page
+- On checkout page, customers are asked to fill out delivery details. The customer also can select if they want gift wrapping to the product or not. At the moment, this shop does not collect user's billing information to the User Profile model or Order model.(However, the billing data is recorded in Stripe from the billing information added by the customer.) One of the features left to implement is add the billing details on Checkout page.
+ 
+## Blog Page
+### Blog Feed Page
+- After clicking `Blog` on the site menu at the top, Blog Feed page is loaded. On this page, blog posts will be displayed in decending order by the posted date. To display the blog posts beautifully, the layout that shows posts in 2-1-2 order was chosen. `Pagination Bar` is also added at the end of the page.
+- On the left side of this page, I create categories of blog posts so the site visitors can navigate the blog posts easily. The number of posted blogs in the categories is also shown in the round brackets. 
+
+### Blog Post Detail Page
+- `Breadcrumb` navigation is added at the top of the blog post detail page, for the easy navagation.
+- `Leave Comment` function: Site visitors are able to leave comments to the blog posts. It requirs the visitors to log into their account to do so. Also, after logging in, they can delete comments they left in the past with the delete option shown next to the past comment.
+- To post a new blog article, the admin has to go to the Django Admin site. One of the features left to implement is add a page in the site itself where the admin is able to post a new article without accessing Django Admin site.
+
+## Profiles Page
+###
+###
+
 
 ## Features Left to Implement
 ### Delete the data after the event date is passed
-- 
+
 
 ## Defensive Design
 -  
