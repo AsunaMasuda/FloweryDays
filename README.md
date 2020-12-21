@@ -260,22 +260,23 @@ If 404 and 500 error occured within the site, a page that has the message of the
 - Deployment phase
 **PostgreSQL** was used on deployment stage, which is provided as add-on by Heroku application.
 
+- User model is provided as a default by [Django's authentication system](https://docs.djangoproject.com/en/3.1/ref/contrib/auth/).
+
+Following is Entity Relationship Diagram of this project. I created this diagram with [dbdiagram.io](https://dbdiagram.io/home).
+<p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/Entity_Relationship_Diagrams.png?raw=true" width=900></p>
+
 ### Product App
 A bouquet could have several types of flowers and multiple colors. For example, below the product 'Floral Fantasy' has `Delphinium`, `Rose`, `Tulip` and `Tistle` for its flowers and it can be categorized as `Red` and `Orange`. To give customers a better search experience, meaning not to narrow down the search results with the search keyword, I wanted to enable customers to search/filter bouquets with their flower type(name) or their color. For example, if a customer uses a filter `tulip`, bouquets that contains `tulip` (such as the 'Floral Fantasy') and also individual tulip flower product (not bouquet) will be shown. Therefore, separated models `Product`, `Flower`, `Color` are created and connected inbetween. `Image` model is connected to `Product` model because some products could have several product images. Also `Image` model is connected to `Color` model, because each product image should a product that could have mutiple colors. There might have been a better implementation than this scheme, but at the time, this was the best idea I had.
 <p align="center"><img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/readme_materials/Product_model.png" width=900></p>
 
-
 ### Order App
-
-
+`Order` model collects the delivery information, stripe_pid and order information. All the fields except `user_profile` field have `null=false`. The reason why `user_profile` does not have `null=false` is that guest customers (not authenticated users) can also purchase products and complete the checkout process without creating an account. `Order` model is connected to `OrderLineItem` model which collects information of purchased products.
 
 ### Blog App
-
+`BlogPost` model has the essential information for blog post, such as a title, author, content, created date. This model is connected to `User`, `BlogImage` and `BlogComment`.
 
 ### Profile App
-
-
-<p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/Entity_Relationship_Diagrams.png?raw=true" width=900></p>
+`Profile` is used for my profile page where the authenticated users can see their delivery details and their order history.
 
 
 ## Data Modeling
