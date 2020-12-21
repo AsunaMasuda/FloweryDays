@@ -156,7 +156,7 @@ Logo design is the cornerstone in your brand identity and logo presents a compan
 Flowery Days website is composed of 6 application: `home`, `blog`, `cart`, `checkout`, `products`, `profiles`.
 
 ## Landing Page (Home)
-Landing Page is designed as a single page website to provide with enough information for the site visitor to understand what the business is about on this site. This page has minimal amount of information to make the site visitors make decisions and take next actions. The page compose of `Navbar`, `Carousel`, `About`, `Why Choose Us?`, `testimonials` and `Contact Form` section. As scrolling down on thie page, the elements are smoothly being placed by [wow.js](https://wowjs.uk/docs) animation effects to give a dynamic and sophisticated experience to the site visitors.
+Landing Page is designed as a single page website to provide with enough information for the site visitor to understand what the business is about on this site. This page has minimal amount of information to make the site visitors make decisions and take next actions. The page compose of `Navbar`, `Carousel`, `About`, `Why Choose Us?`, `testimonials` and `Contact Form` section. As scrolling down on thie page, the elements are smoothly being placed by [Animate.css](https://animate.style/) and [wow.js](https://wowjs.uk/docs) animation effects to give a dynamic and sophisticated experience to the site visitors.
 
 ### Navbar
 When site visitors landed on the page, the hight of the navbar is set as "165 px". I wanted to make the whole brand logo visible to make it memorable because the first view of the page is important that gives the first impressions of the site to the users. If you scroll down the navbar shrinks to the height of "100 px" and sticks at the top of the view, for easy navigations and wider views of content on the landing page. The brand logo which is placed at the left top also becomes the branch icon. 
@@ -188,6 +188,7 @@ The footer section consists of two parts: 1. General information of the Shop and
 ### Online Shop Page
 By clicking 'Online Shop' on the site menu, you can go to the online shop page. This page is filtered with 'Bouquet' category as a default as the shop owner wants to promote products that fall uner Bouquet category that has higher profit. However, the site visitor can adjust the filter condition very easily.  
 - `Filter Function`: There is a filter section at the left side of the online shop page, and you can filter products with `categories`, `color`, `flower` and `occasion/use`. You can also select multiple choices within the filter option same and use several filters to get the results.(e.g. you can choose white and red for the color option and choose tulip and rose for the flower option. In this case, the result will show the products that fall under (white OR red color) AND (tulip OR rose).) I designed the filter to this way in order not to narrow down the products the potential customers are looking for.
+- `Result Number`: It's shown above the product cards. Customers can see how many results were found in total at a glance.
 - `Product Card`: The products are displayed in cards that have `Product Name`, `Price`, `Unit`, `Add to Card` button and `View Details` button when hoverovering the product image. If the user is logged in as a superuser, Edit / Delete option is also shown on each card. 
 - `Pagination Bar`: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crutial for a site like online shop which offers many products. 
 
@@ -253,60 +254,69 @@ If 404 and 500 error occured within the site, a page that has the message of the
 
 
 # Information Architecture
-## Database Choice
+## Database choice
 - Development phase
 **SQLight** database was used for the development which is installed with Django. 
 
 - Deployment phase
 **PostgreSQL** was used on deployment stage, which is provided as add-on by Heroku application.
 
+- User model is provided as a default by [Django's authentication system](https://docs.djangoproject.com/en/3.1/ref/contrib/auth/).
+
+## Data Modeling
+Following is Entity Relationship Diagram of this project. I created this diagram with [dbdiagram.io](https://dbdiagram.io/home).
+<p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/Entity_Relationship_Diagrams.png?raw=true" width=900></p>
+
 ### Product App
 A bouquet could have several types of flowers and multiple colors. For example, below the product 'Floral Fantasy' has `Delphinium`, `Rose`, `Tulip` and `Tistle` for its flowers and it can be categorized as `Red` and `Orange`. To give customers a better search experience, meaning not to narrow down the search results with the search keyword, I wanted to enable customers to search/filter bouquets with their flower type(name) or their color. For example, if a customer uses a filter `tulip`, bouquets that contains `tulip` (such as the 'Floral Fantasy') and also individual tulip flower product (not bouquet) will be shown. Therefore, separated models `Product`, `Flower`, `Color` are created and connected inbetween. `Image` model is connected to `Product` model because some products could have several product images. Also `Image` model is connected to `Color` model, because each product image should a product that could have mutiple colors. There might have been a better implementation than this scheme, but at the time, this was the best idea I had.
 <p align="center"><img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/readme_materials/Product_model.png" width=900></p>
 
-
 ### Order App
-
-
+`Order` model collects the delivery information, stripe_pid and order information. All the fields except `user_profile` field have `null=false`. The reason why `user_profile` does not have `null=false` is that guest customers (not authenticated users) can also purchase products and complete the checkout process without creating an account. `Order` model is connected to `OrderLineItem` model which collects information of purchased products.
 
 ### Blog App
-
+`BlogPost` model has the essential information for blog post, such as a title, author, content, created date. This model is connected to `User`, `BlogImage` and `BlogComment`.
 
 ### Profile App
-
-
-<p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/Entity_Relationship_Diagrams.png?raw=true" width=900></p>
-
-
-## Data Modeling
+`Profile` is used for my profile page where the authenticated users can see their delivery details and their order history.
 
 
 # Technologies Used
-This application contains key CRUD functionalities and they are used to maximize user's experience in this site. The main frontend development was created using HTML, CSS, JavaScript and their libraries. The main backend development was powered by Python and Flask.
+The main frontend development was created using HTML, CSS, JavaScript and their libraries. The main backend development was powered by Python and Django.
 
-## Languages 
+## Languages
 - HTML, CSS, JavaScript, Python
 
-## Libraries
-- Bootstrap (v4.4.1)
-- JQuery
-- JQuery-UI
-- Popper.js
-- Font Awesome
-- Flask
-- Jinja
-- PyMongo
+## Libraries and Packages
+- [Django](https://www.djangoproject.com/)
+- [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+- [Django Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html)
+- [Bootstrap (v4.4.1)](https://www.bootstrapcdn.com/)
+- [JQuery](https://jquery.com/)
+- [JQuery-UI](https://jqueryui.com/)
+- [Popper.js](https://popper.js.org/)
+- [Font Awesome](https://fontawesome.com/)
+- [Animate.css](https://animate.style/)
+- [Wow.js](https://www.delac.io/wow/)
+- [Stripe](https://stripe.com/ie)
+- [Google Fonts](https://fonts.google.com/)
 
 ## Tools
 - Git/GitHub
 - Gitpod
-- PIP
-- MongoDB Atlas
+- [PIP](https://pip.pypa.io/en/stable/installing/)
+- [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
+- [dbdiagram.io](https://dbdiagram.io/home)
+- [coolors.co](https://coolors.co/)
 
 ## Databases
-
+- [SQlite3](https://www.sqlite.org/index.html)- database used for development.
+- [PostgreSQL](https://www.postgresql.org/) - database used for production.
 
 # Testing
+Manual Testing and Automated Testing can be found in [this article]().
+
+## Code Valication and Formatting 
 ### Validation Tools
 I used these validation tools below for each file.
 - HTML: [W3C HTML Validator](https://validator.w3.org/)
@@ -320,17 +330,6 @@ I used these validation tools below for each file.
 - JavaScript: [Online JavaScript Beautifier](https://beautifier.io/)
 - Python:[PEP8 online](http://pep8online.com/)
 
-### Manual Testing
-
-### Bugs
-#### Python and Database
-- 
-
-#### JavaScript
-- 
-
-#### Browser Compatibility
-- 
 # Deployment
 ## Local Deployment
 For local deployment, you need to have an IDE such as Gitpod and you need to install the following in your IDE:
