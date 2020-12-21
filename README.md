@@ -331,11 +331,32 @@ I used these validation tools below for each file.
 - Python:[PEP8 online](http://pep8online.com/)
 
 # Deployment
-## Local Deployment
-For local deployment, you need to have an IDE such as Gitpod and you need to install the following in your IDE:
-- Git, Python3, PIP3
+## Heroku Deployment
+This website is deployed on [Heroku](https://www.heroku.com/), following these steps:
+1. Create a `requirements.txt` file using the command `web: gunicorn flowery_days.wsgi:application` in the terminal.
+2. Create a `Procfile` using the commant `echo web: python app.py > Procfile` in the terminal.
+3. `git add` and `git commit` and `git push` all the changes to the Github repositoty of this project.
+4. Go to Heroku and create a **new app**. Set a name for this app and select the closest region (Europe) and click **Create app**.
+5. Go to **Resources** tab in Heroku, then in the **Add-ons** search bar look for **Heorku Postgres**(you can type postgres), select **Hobby Dev — Free** and click **Provision** button to add it to your project.
+6. In the heroku dashboard for the application, click on "Setting" > "Reveal Config Vars" and set the values as follows:
 
-1. At the top of this repository, click the green button **Clone or download**.
+| Key | Value |
+ --- | ---
+DEBUG | FALSE
+IP | 0.0.0.0
+PORT | 5000
+MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-ocous.mongodb.net/<database_name>?retryWrites=true&w=majority`
+SECRET_KEY | `<your_secret_key>`
+
+## Local Deployment
+For local deployment, you need to have an IDE (I used Gitpod for this project) and you need to install the following:
+- Git, Python3, PIP3
+Also, you need to create account in the following services if you don't own yet:
+- Stripe, AWS
+
+1. In the IDE you are using, copy and paste the following commane into the terminal
+    `git clone https://github.com/AsunaMasuda/FloweryDays.git`
+The other ways to clone a repository are written in this [GitHub documentation](https://docs.github.com/en/free-pro-team@latest/github/creating-cloning-and-archiving-repositories/cloning-a-repository)
 2. In the Clone with HTTPs section, copy the clone URL for the repository. 
 3. Open your favourite terminal (cmd, powershell, bash, git bash, etc.)
 4. Change the current working directory to the location where you want the cloned directory to be made.
@@ -361,29 +382,15 @@ For local deployment, you need to have an IDE such as Gitpod and you need to ins
 9. Now you can run the website with the command `python3 app.py`
 10. You can now access the website at **http://127.0.0.1:5000**
 
-## Heroku Deployment
-This website is deployed on [Heroku](https://www.heroku.com/), following these steps:
-1. Create a requirements.txt file using the command `pip3 freeze > requirements.txt` in the terminal.
-2. Create a Procfile using the commant `echo web: python app.py > Procfile` in the terminal.
-3. Commit and push all the changes to the Github repositoty of this project.
-4. Go to Heroku and create a new app. Set a name for this app and select the closest region.
-5. Choose Deployment method as GitHub in Heroku Dashboard and link the Github repository to the Heroku app.
-6. Go to Settings then Reveal Config Vars in Heroku Dashboard and set the values as follows:
-
-| Key | Value |
- --- | ---
-IP | 0.0.0.0
-PORT | 5000
-MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-ocous.mongodb.net/<database_name>?retryWrites=true&w=majority`
-SECRET_KEY | `<your_secret_key>`
-
-
 # Credits
 
-## Content
+### Content
 - All text within this project was written by the developer.
 
-## Media
+### Code
+- 
+- 
+
 ### Icons
 - All the icons in this website were provided by [Font Awesome](https://fontawesome.com/).
 - Favicon is made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/).
@@ -394,9 +401,9 @@ SECRET_KEY | `<your_secret_key>`
 ### UX
 - 
 
-### JavaScript
-- 
-
-## Acknowledgements
+### Acknowledgements
 - Thanks to: my Code Institute Mentor Guido Cecilio Garcia Bernal for his advice throughout the development process.
 - Code Institute Slack Community that gave me a light when I was stuck in my coding.
+
+### Disclaimer
+This website is created for educational purpose only.
