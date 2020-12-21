@@ -363,15 +363,16 @@ For local deployment, you need to have an IDE such as Gitpod and you need to ins
 
 ## Heroku Deployment
 This website is deployed on [Heroku](https://www.heroku.com/), following these steps:
-1. Create a requirements.txt file using the command `pip3 freeze > requirements.txt` in the terminal.
-2. Create a Procfile using the commant `echo web: python app.py > Procfile` in the terminal.
-3. Commit and push all the changes to the Github repositoty of this project.
-4. Go to Heroku and create a new app. Set a name for this app and select the closest region.
-5. Choose Deployment method as GitHub in Heroku Dashboard and link the Github repository to the Heroku app.
-6. Go to Settings then Reveal Config Vars in Heroku Dashboard and set the values as follows:
+1. Create a `requirements.txt` file using the command `web: gunicorn flowery_days.wsgi:application` in the terminal.
+2. Create a `Procfile` using the commant `echo web: python app.py > Procfile` in the terminal.
+3. `git add` and `git commit` and `git push` all the changes to the Github repositoty of this project.
+4. Go to Heroku and create a **new app**. Set a name for this app and select the closest region (Europe) and click **Create app**.
+5. Go to **Resources** tab in Heroku, then in the **Add-ons** search bar look for **Heorku Postgres**(you can type postgres), select **Hobby Dev — Free** and click **Provision** button to add it to your project.
+6. In the heroku dashboard for the application, click on "Setting" > "Reveal Config Vars" and set the values as follows:
 
 | Key | Value |
  --- | ---
+DEBUG | FALSE
 IP | 0.0.0.0
 PORT | 5000
 MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-ocous.mongodb.net/<database_name>?retryWrites=true&w=majority`
@@ -380,10 +381,13 @@ SECRET_KEY | `<your_secret_key>`
 
 # Credits
 
-## Content
+### Content
 - All text within this project was written by the developer.
 
-## Media
+### Code
+- 
+- 
+
 ### Icons
 - All the icons in this website were provided by [Font Awesome](https://fontawesome.com/).
 - Favicon is made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/).
@@ -394,9 +398,9 @@ SECRET_KEY | `<your_secret_key>`
 ### UX
 - 
 
-### JavaScript
-- 
-
-## Acknowledgements
+### Acknowledgements
 - Thanks to: my Code Institute Mentor Guido Cecilio Garcia Bernal for his advice throughout the development process.
 - Code Institute Slack Community that gave me a light when I was stuck in my coding.
+
+### Disclaimer
+This website is created for educational purpose only.
