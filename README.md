@@ -156,7 +156,7 @@ Logo design is the cornerstone in your brand identity and logo presents a compan
 Flowery Days website is composed of 6 application: `home`, `blog`, `cart`, `checkout`, `products`, `profiles`.
 
 ## Landing Page (Home)
-Landing Page is designed as a single page website to provide with enough information for the site visitor to understand what the business is about on this site. This page has minimal amount of information to make the site visitors make decisions and take next actions. The page compose of `Navbar`, `Carousel`, `About`, `Why Choose Us?`, `testimonials` and `Contact Form` section. As scrolling down on thie page, the elements are smoothly being placed by [wow.js](https://wowjs.uk/docs) animation effects to give a dynamic and sophisticated experience to the site visitors.
+Landing Page is designed as a single page website to provide with enough information for the site visitor to understand what the business is about on this site. This page has minimal amount of information to make the site visitors make decisions and take next actions. The page compose of `Navbar`, `Carousel`, `About`, `Why Choose Us?`, `testimonials` and `Contact Form` section. As scrolling down on thie page, the elements are smoothly being placed by [Animate.css](https://animate.style/) and [wow.js](https://wowjs.uk/docs) animation effects to give a dynamic and sophisticated experience to the site visitors.
 
 ### Navbar
 When site visitors landed on the page, the hight of the navbar is set as "165 px". I wanted to make the whole brand logo visible to make it memorable because the first view of the page is important that gives the first impressions of the site to the users. If you scroll down the navbar shrinks to the height of "100 px" and sticks at the top of the view, for easy navigations and wider views of content on the landing page. The brand logo which is placed at the left top also becomes the branch icon. 
@@ -282,31 +282,41 @@ A bouquet could have several types of flowers and multiple colors. For example, 
 
 
 # Technologies Used
-This application contains key CRUD functionalities and they are used to maximize user's experience in this site. The main frontend development was created using HTML, CSS, JavaScript and their libraries. The main backend development was powered by Python and Flask.
+The main frontend development was created using HTML, CSS, JavaScript and their libraries. The main backend development was powered by Python and Django.
 
-## Languages 
+## Languages
 - HTML, CSS, JavaScript, Python
 
-## Libraries
-- Bootstrap (v4.4.1)
-- JQuery
-- JQuery-UI
-- Popper.js
-- Font Awesome
-- Flask
-- Jinja
-- PyMongo
+## Libraries and Packages
+- [Django](https://www.djangoproject.com/)
+- [Django Crispy Forms](https://django-crispy-forms.readthedocs.io/en/latest/)
+- [Django Allauth](https://django-allauth.readthedocs.io/en/latest/installation.html)
+- [Bootstrap (v4.4.1)](https://www.bootstrapcdn.com/)
+- [JQuery](https://jquery.com/)
+- [JQuery-UI](https://jqueryui.com/)
+- [Popper.js](https://popper.js.org/)
+- [Font Awesome](https://fontawesome.com/)
+- [Animate.css](https://animate.style/)
+- [Wow.js](https://www.delac.io/wow/)
+- [Stripe](https://stripe.com/ie)
+- [Google Fonts](https://fonts.google.com/)
 
 ## Tools
 - Git/GitHub
 - Gitpod
-- PIP
-- MongoDB Atlas
+- [PIP](https://pip.pypa.io/en/stable/installing/)
+- [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
+- [dbdiagram.io](https://dbdiagram.io/home)
+- [coolors.co](https://coolors.co/)
 
 ## Databases
-
+- [SQlite3](https://www.sqlite.org/index.html)- database used for development.
+- [PostgreSQL](https://www.postgresql.org/) - database used for production.
 
 # Testing
+Manual Testing and Automated Testing can be found in [this article]().
+
+## Code Valication and Formatting 
 ### Validation Tools
 I used these validation tools below for each file.
 - HTML: [W3C HTML Validator](https://validator.w3.org/)
@@ -320,17 +330,6 @@ I used these validation tools below for each file.
 - JavaScript: [Online JavaScript Beautifier](https://beautifier.io/)
 - Python:[PEP8 online](http://pep8online.com/)
 
-### Manual Testing
-
-### Bugs
-#### Python and Database
-- 
-
-#### JavaScript
-- 
-
-#### Browser Compatibility
-- 
 # Deployment
 ## Local Deployment
 For local deployment, you need to have an IDE such as Gitpod and you need to install the following in your IDE:
