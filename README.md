@@ -237,7 +237,9 @@ At the moment, all the authenticated users can leave reviews to any products if 
 With the current checkout process, the user is asked to fill out delivery information. Billing information is required when the customer wants a receipt or when a billing address is different from a delivery address.
 ### 3. Post Blog article through the site
 At the moment, the site owner/admin has to use Django Admin to post a new blog article. However, it would be better usability if they could post them on the site.
-### 4. Social Account Login
+### 4. When a color was selected on a product page, the product image also changes accordingly
+At the moment, even though the color options and images for each color are shown on its product page, these two are not changed if the other is changed. It will be more ideal the action of those two elements is synced.
+### 5. Social Account Login
 This function allows users to sign up / log into their account of the site, using the existing account such as Google and Facebook. This is beneficial to users and the site ownwers. For users, it's hassle free from remembering a password for the site and it gives the users a smooth registration process. For the site owners, there are many benefits gained by social login - such as increasing user's sign up, reducing bounce rate and gaining user's information for social account which is beneficial for marketing purpose.
 
 ## Defensive Design
@@ -257,6 +259,24 @@ If 404 and 500 error occured within the site, a page that has the message of the
 
 - Deployment phase
 **PostgreSQL** was used on deployment stage, which is provided as add-on by Heroku application.
+
+### Product App
+A bouquet could have several types of flowers and multiple colors. For example, below the product 'Floral Fantasy' has `Delphinium`, `Rose`, `Tulip` and `Tistle` for its flowers and it can be categorized as `Red` and `Orange`. To give customers a better search experience, meaning not to narrow down the search results with the search keyword, I wanted to enable customers to search/filter bouquets with their flower type(name) or their color. For example, if a customer uses a filter `tulip`, bouquets that contains `tulip` (such as the 'Floral Fantasy') and also individual tulip flower product (not bouquet) will be shown. Therefore, separated models `Product`, `Flower`, `Color` are created and connected inbetween. `Image` model is connected to `Product` model because some products could have several product images. Also `Image` model is connected to `Color` model, because each product image should a product that could have mutiple colors. There might have been a better implementation than this scheme, but at the time, this was the best idea I had.
+<p align="center"><img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/readme_materials/Product_model.png" width=900></p>
+
+
+### Order App
+
+
+
+### Blog App
+
+
+### Profile App
+
+
+<p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/Entity_Relationship_Diagrams.png?raw=true" width=900></p>
+
 
 ## Data Modeling
 
