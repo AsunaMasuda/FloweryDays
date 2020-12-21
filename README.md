@@ -188,6 +188,7 @@ The footer section consists of two parts: 1. General information of the Shop and
 ### Online Shop Page
 By clicking 'Online Shop' on the site menu, you can go to the online shop page. This page is filtered with 'Bouquet' category as a default as the shop owner wants to promote products that fall uner Bouquet category that has higher profit. However, the site visitor can adjust the filter condition very easily.  
 - `Filter Function`: There is a filter section at the left side of the online shop page, and you can filter products with `categories`, `color`, `flower` and `occasion/use`. You can also select multiple choices within the filter option same and use several filters to get the results.(e.g. you can choose white and red for the color option and choose tulip and rose for the flower option. In this case, the result will show the products that fall under (white OR red color) AND (tulip OR rose).) I designed the filter to this way in order not to narrow down the products the potential customers are looking for.
+- `Result Number`: It's shown above the product cards. Customers can see how many results were found in total at a glance.
 - `Product Card`: The products are displayed in cards that have `Product Name`, `Price`, `Unit`, `Add to Card` button and `View Details` button when hoverovering the product image. If the user is logged in as a superuser, Edit / Delete option is also shown on each card. 
 - `Pagination Bar`: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crutial for a site like online shop which offers many products. 
 
@@ -253,7 +254,7 @@ If 404 and 500 error occured within the site, a page that has the message of the
 
 
 # Information Architecture
-## Database Choice
+## Database choice
 - Development phase
 **SQLight** database was used for the development which is installed with Django. 
 
@@ -262,6 +263,7 @@ If 404 and 500 error occured within the site, a page that has the message of the
 
 - User model is provided as a default by [Django's authentication system](https://docs.djangoproject.com/en/3.1/ref/contrib/auth/).
 
+## Data Modeling
 Following is Entity Relationship Diagram of this project. I created this diagram with [dbdiagram.io](https://dbdiagram.io/home).
 <p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/Entity_Relationship_Diagrams.png?raw=true" width=900></p>
 
@@ -277,9 +279,6 @@ A bouquet could have several types of flowers and multiple colors. For example, 
 
 ### Profile App
 `Profile` is used for my profile page where the authenticated users can see their delivery details and their order history.
-
-
-## Data Modeling
 
 
 # Technologies Used
