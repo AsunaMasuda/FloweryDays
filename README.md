@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/AsunaMasuda/FloweryDays.svg?branch=master)](https://travis-ci.org/AsunaMasuda/FloweryDays)
+
 # Flowery Days
 
 Ongoing research in the field of botany seems to indicate delightful things about flowers:
@@ -79,9 +81,10 @@ The user goal is to have:
 
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- | 
-| Shopper     | Easily see what services are offered | Find the service I want to use |  
-| Shopper     | All the important services are accesible from nav bar| Don't need to scroll to find important information | 
-| Shopper     | Have a shopping cart icon on nav bar | Always check the current order and checkout when I want | 
+| Site User/ Shopper | access the website with any devices | Use the website anytime and anywhere |
+| Shopper | Easily see what services are offered | Find the service I want to use |  
+| Shopper | All the important services are accesible from nav bar| Don't need to scroll to find important information | 
+| Shopper | Have a shopping cart icon on nav bar | Always check the current order and checkout when I want | 
 
 <br/>
 
