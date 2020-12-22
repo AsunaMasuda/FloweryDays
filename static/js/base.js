@@ -20,6 +20,15 @@ $(document).ready(function () {
   });
 });
 
+// Search bar for less than medium screens
+$(document).ready(function () {
+  $('#search-bar-small').hide();
+  $('#search-button').click(function () {
+    $('#search-bar-small').slideToggle('slow');
+  });
+});
+
+
 // Wow.js
 $(document).ready(function () {
     new WOW().init();
