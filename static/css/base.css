@@ -987,13 +987,13 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 550px;
-    margin-bottom: -72px;
+    height: 530px;
+    margin-bottom: -100px;
 }
 
 .carousel-padding {
     width: 100%;
-    height: 550px;
+    height: 445px;
     top: 0;
     position: absolute;
     padding-top: 72px;
@@ -1008,7 +1008,7 @@ ul#social-icon a:hover {
 
 .carousel-extension {
     position: relative;
-    height: 550px;
+    height: inherit;
 }
 }
 
@@ -1022,9 +1022,10 @@ ul#social-icon a:hover {
     text-align: center!important;
 }
 
-.small-size-carousel {
-    height:100%;
+.carousel-image {
+    width: 100%;
 }
+
 
 .header-ex {
     position: relative;
@@ -1034,12 +1035,12 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 550px;
+    height: 495px;
     margin-bottom: -95px;
 }
 
 .carousel-padding {
-    height: inherit;
+    height: 410px;
     top: 0;
     position: absolute;
     padding-top: 95px;
@@ -1047,7 +1048,7 @@ ul#social-icon a:hover {
 
 .carousel-extension {
     position: relative;
-    height: 465px;
+    height: inherit;
 }
 }
 
@@ -1062,9 +1063,6 @@ ul#social-icon a:hover {
     width: 100%;
 }
 
-.small-size-carousel {
-    height:100%;
-}
 
 .header-ex {
     position: relative;
@@ -1074,13 +1072,13 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 550px;
+    height: 580px;
     margin-bottom: -95px;
 }
 
 .carousel-padding {
     width: 100%;
-    height: inherit;
+    height: 490px;
     top: 0;
     position: absolute;
     padding-top: 95px;
@@ -1088,7 +1086,7 @@ ul#social-icon a:hover {
 
 .carousel-extension {
     position: relative;
-    height: 465px;
+    height: inherit;
 }
 }
  
@@ -1103,13 +1101,13 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 720px;
+    height: 850px;
     margin-bottom: -95px;
 }
 
 .carousel-padding {
     width: 100%;
-    height: inherit;
+    height: 660px;
     top: 0;
     position: absolute;
     padding-top: 95px;
@@ -1117,7 +1115,7 @@ ul#social-icon a:hover {
 
 .carousel-extension {
     position: relative;
-    height: 625px;
+    height: inherit;
 }
 }
  
@@ -1133,11 +1131,11 @@ ul#social-icon a:hover {
 
 .top {
     height: 100%;
-    margin-bottom: -95px;
+    margin-bottom: 0;
 }
 
 .carousel-padding {
-    width:100%;
+    width: 100%;
     height: 100%;
     top: 0;
     position: absolute;
@@ -1146,6 +1144,6 @@ ul#social-icon a:hover {
 
 .carousel-extension {
     position: relative;
-    height: 100%;
+    height: inherit;
 }
 }
