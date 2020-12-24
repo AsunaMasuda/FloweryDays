@@ -28,9 +28,8 @@ body {
 }
 
 /** Navbar **/
-
 .navber-spacing {
-    letter-spacing: 1.5px;
+    letter-spacing: 0.5px;
 }
 
 .shopping-cart-ex {
@@ -87,15 +86,25 @@ body {
 /** Form **/
 .form-flowerydays{
     justify-content: center!important;
-    display: flex;
+}
+
+.form-search {
+    justify-content: center!important;
+    display: flex;   
 }
 
 .search-block{
     display: inline-block;
 }
 
+.search-input-field {
+    width: 145px;
+}
+
 .form-flowerydays input,
-.form-flowerydays textarea {
+.form-flowerydays textarea,
+.form-search input,
+.form-search textarea {
     color: #000000;
     border: 1px solid #7c7c7c;
     border-radius: 0;
@@ -109,31 +118,6 @@ body {
     height: 100vh; 
 }
 
-.top {
-    height: 100%;
-    margin-bottom: -165px;
-}
-
-.carousel-padding {
-    width:100%;
-    height: 100%;
-    top: 0;
-    position: absolute;
-    padding-top: 165px;
-}
-
-.header-ex {
-    position: relative;
-    z-index: 9999;
-    height: 165px;
-    overflow: visible;
-}  
-
-.carousel-extension {
-    position: relative;
-    height: inherit;
-}
-
 .carousel-inner {
     position: relative;
     height: inherit;
@@ -142,13 +126,6 @@ body {
 
 .carousel-indicators-extension {
     z-index: 9999;
-}
-
-.carousel-item {
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-attachment: scroll;
-    background-size: cover;
 }
 
 .carousel-text-box-1 {
@@ -491,12 +468,10 @@ ul#social-icon a:hover {
 
 .product_edit {
     font-size: 0.9rem;
-    color: ;
 }
 
 .product_delete {
     font-size: 0.9rem;
-    color: ;
 }
 
 /** Pagination **/
@@ -506,7 +481,7 @@ ul#social-icon a:hover {
 
 .move-page-button-disabled {
     color: #8a8a8a;
-    background-color: white∂;
+    background-color: white;
     box-sizing: border-box;
     padding: 1px 6px;
     border-width: 0px;
@@ -680,10 +655,53 @@ ul#social-icon a:hover {
     color: red;
 }
 
+
+/* Customer Rating */
+.product-rating{
+    margin-bottom: 3rem;
+}
+
+.store-text-large {
+  font-size: 130%;
+}
+
+.stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: 'Font Awesome 5 Free';
+}
+
+.stars-outer::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    font-weight: 10;
+}
+
+.stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 800;
+}
+
+.stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: #da627d;
+}
+
+.card-review-extension {
+    border: 0!important;
+}
+
+.card-header-review-extension {
+    background-color: white!important;
+}
+
 /* Back to previous page link */
 .backToPrevious{
     cursor: pointer;
-    margin-top: 4rem;
+    margin-top: 1rem;
 }
 
 .backToPrevious:hover,
@@ -952,11 +970,198 @@ ul#social-icon a:hover {
     border-bottom-color: #343a40 !important;
 }
 
-/* This whole div will have a max height of 100 pixels.
-Have horizontal overflow hidden.
-And vertical overflow will turn into a scrollbar when the height is greater than 100 pixels.*/
-.bag-notification-wrapper {
-    height: 100px;
-    overflow-x: hidden;
-    overflow-y: auto;
+/**---- Media Queries for responsiveness ----**/
+/* Extra Small devices (phones, less than 576px) */
+@media (min-width: 0px) and (max-width: 576px) {
+#brand-logo {
+    width: 130px;
+}
+
+.explain-center{
+    text-align: center!important;
+}
+
+.carousel-text-box-1 {
+    font-size: 1.2rem!important;
+    left: 8%!important;
+}
+
+.carousel-text-box-2 {
+    font-size: 1.2rem!important;
+    left: 8%!important;
+    top: 60%!important;
+}
+
+
+.small-size-carousel {
+    height:100%;
+}
+
+.first-carousel-small {
+    position:relative;
+    right: 0;
+}
+
+.top {
+    height: 550px;
+    margin-bottom: -72px;
+}
+
+.carousel-padding {
+    width: 100%;
+    height: 550px;
+    top: 0;
+    position: absolute;
+    padding-top: 72px;
+}
+
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 72px;
+    overflow: visible;
+}
+
+.carousel-extension {
+    position: relative;
+    height: 550px;
+}
+}
+
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 576px) and (max-width: 768px) {
+#brand-logo {
+    width: 230px;
+}
+
+.explain-center{
+    text-align: center!important;
+}
+
+.small-size-carousel {
+    height:100%;
+}
+
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 95px;
+    overflow: visible;
+}
+
+.top {
+    height: 550px;
+    margin-bottom: -95px;
+}
+
+.carousel-padding {
+    height: inherit;
+    top: 0;
+    position: absolute;
+    padding-top: 95px;
+}
+
+.carousel-extension {
+    position: relative;
+    height: 465px;
+}
+}
+
+
+/* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
+@media (min-width: 768px) and (max-width: 992px) {
+#brand-logo {
+    width: 230px;
+}
+
+.carousel-image {
+    width: 100%;
+}
+
+.small-size-carousel {
+    height:100%;
+}
+
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 95px;
+    overflow: visible;
+}
+
+.top {
+    height: 550px;
+    margin-bottom: -95px;
+}
+
+.carousel-padding {
+    width: 100%;
+    height: inherit;
+    top: 0;
+    position: absolute;
+    padding-top: 95px;
+}
+
+.carousel-extension {
+    position: relative;
+    height: 465px;
+}
+}
+ 
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) and (max-width: 1200px) {
+#brand-logo {
+    width: 230px;
+}
+
+.carousel-image {
+    width: 100%;
+}
+
+.top {
+    height: 720px;
+    margin-bottom: -95px;
+}
+
+.carousel-padding {
+    width: 100%;
+    height: inherit;
+    top: 0;
+    position: absolute;
+    padding-top: 95px;
+}
+
+.carousel-extension {
+    position: relative;
+    height: 625px;
+}
+}
+ 
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+#brand-logo {
+    width: 230px;
+}
+
+.carousel-image {
+    width: 100%;
+}
+
+.top {
+    height: 100%;
+    margin-bottom: -95px;
+}
+
+.carousel-padding {
+    width:100%;
+    height: 100%;
+    top: 0;
+    position: absolute;
+    padding-top: 95px;
+}
+
+.carousel-extension {
+    position: relative;
+    height: 100%;
+}
 }
