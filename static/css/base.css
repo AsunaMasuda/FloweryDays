@@ -135,19 +135,6 @@ body {
     top: 35%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
-    left: 15%;
-    z-index: 10;
-    color: #fff;
-    text-align: center;
-}
-
-.carousel-text-box-2 {
-    font-size: 1.5rem;
-    letter-spacing: 0.1em;
-    position: absolute;
-    top: 35%;
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     right: 15%;
     z-index: 10;
     color: #fff;
@@ -986,12 +973,9 @@ ul#social-icon a:hover {
     left: 8%!important;
 }
 
-.carousel-text-box-2 {
+.carousel-text-box-3 {
     font-size: 1.2rem!important;
-    left: 8%!important;
-    top: 60%!important;
 }
-
 
 .small-size-carousel {
     height:100%;
