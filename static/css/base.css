@@ -131,6 +131,7 @@ body {
 .carousel-text-box-1 {
     font-size: 1.5rem;
     letter-spacing: 0.1em;
+    text-shadow: 1px 1px #707070;
     position: absolute;
     top: 35%;
     -ms-transform: translateY(-50%);
