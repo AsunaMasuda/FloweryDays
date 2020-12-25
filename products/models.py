@@ -14,7 +14,14 @@ class Product(models.Model):
     product_image = models.ImageField(null=False, blank=True)
 
     def __str__(self):
-        return self.name
+        return '{}, {}, {}, {}, {}, {}, {}, {}'.format(self.name,
+                                                       self.category,
+                                                       self.price,
+                                                       self.occasion,
+                                                       self.description,
+                                                       self.unit,
+                                                       self.rating,
+                                                       self.product_image)
 
 
 class Image(models.Model):
@@ -25,7 +32,10 @@ class Image(models.Model):
                                    blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return self.name
+        return '{}, {}, {}, {}'.format(self.name,
+                                       self.image,
+                                       self.URL,
+                                       self.product_id)
 
 
 class Color(models.Model):
@@ -33,7 +43,8 @@ class Color(models.Model):
     image_id = models.ManyToManyField('Image')
 
     def __str__(self):
-        return self.name
+        return '{}, {}'.format(self.name,
+                                       self.image_id)
 
 
 class Flower(models.Model):
@@ -41,7 +52,8 @@ class Flower(models.Model):
     product_id = models.ManyToManyField('Product')
 
     def __str__(self):
-        return self.name
+        return '{}, {}'.format(self.name,
+                               self.product_id)
 
 
 class ProductReview(models.Model):
@@ -65,3 +77,11 @@ class ProductReview(models.Model):
     @property
     def review_rate(self):
         return self.rating_score/5*100
+
+    def __str__(self):
+        return '{}, {}, {}, {}, {}, {}'.format(self.product_id,
+                                               self.user_id,
+                                               self.rating_score,
+                                               self.review_title,
+                                               self.review_comment,
+                                               self.review_date)

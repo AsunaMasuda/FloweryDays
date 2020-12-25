@@ -23,7 +23,11 @@ class BlogPost(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.title
+        return '{}, {}, {}, {}, {}'.format(self.title,
+                                           self.slug,
+                                           self.author,
+                                           self.category,
+                                           self.content)
 
 
 class BlogImage(models.Model):
@@ -33,7 +37,8 @@ class BlogImage(models.Model):
                                    verbose_name='image_article_id')
 
     def __str__(self):
-        return self.image
+        return '{}, {}'.format(self.image,
+                               self.article_id)
 
 
 class BlogComment(models.Model):
@@ -51,4 +56,8 @@ class BlogComment(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return self.comment_title
+        return '{}, {}, {}, {}, {}'.format(self.article_id,
+                                           self.user_id,
+                                           self.comment_title,
+                                           self.blog_comment,
+                                           self.created_on)

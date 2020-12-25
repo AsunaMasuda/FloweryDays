@@ -70,7 +70,8 @@ class Order(models.Model):
         super().save(*args, **kwargs)
 
     def __str__(self):
-        return self.order_number
+        return '{}, {}'.format(self.order_number,
+                               self.user_profile)
 
 
 class OrderLineItem(models.Model):
@@ -91,3 +92,9 @@ class OrderLineItem(models.Model):
         """
         self.lineitem_total = self.product.price * self.quantity
         super().save(*args, **kwargs)
+
+    def __str__(self):
+        return '{}, {}, {}, {}'.format(self.order,
+                                       self.product,
+                                       self.quantity,
+                                       self.lineitem_total)
