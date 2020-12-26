@@ -98,21 +98,6 @@
                     />
                 </a>
 
-            {% if request.user.is_authenticated %}
-            <div class="dropdown dropdown-extension">
-                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span><i class="fas fa-user-circle"></i></span><span>  My Account</span>
-                </button>
-                <div class="dropdown-menu dropdown-extension" aria-labelledby="dropdownMenuButton">
-                    {% if request.user.is_superuser %}
-                        <a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a>
-                    {% endif %}
-                    <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
-                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
-                </div>
-            </div>
-        {% else %}
-
             <!--Search button for smaller than medium screen-->
             <button class="btn btn-colour-1 d-block d-lg-none mr-2" id="search-button">
                 <span class="text-center">
@@ -133,7 +118,6 @@
                     </sup>
                 </a>
             </div>
-        {% endif %}
         </div>
 
         <div class="collapse navbar-collapse my-auto"
@@ -151,14 +135,45 @@
                 <li class="nav-item mr-1">
                     <a class="nav-link" href="{% anchor 'home' 'contact' %}">Contact</a>
                 </li>
-                <li class="nav-item mr-1">
-                    <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                </li>
-                <li class="nav-item mr-1">
-                    <a class="nav-link" href="{% url 'account_signup' %}">SignUp</a>
-                </li>
+
+                <div class="navbar-divider d-lg-none d-block"></div>
+                {% if request.user.is_authenticated %}
+                    {% if request.user.is_superuser %}
+                    <li class="nav-item mr-1 d-lg-none d-block">
+                        <a class="nav-link" href="{% url 'add_product' %}">Product Management</a>
+                    </li>
+                    {% endif %}
+                    <li class="nav-item mr-1 d-lg-none d-block">
+                        <a class="nav-link" href="{% url 'profile' %}">My Profile</a>
+                    </li>
+                    <li class="nav-item mr-1 d-lg-none d-block">
+                        <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item mr-1 d-lg-none d-block">
+                        <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+                    </li>
+                    <li class="nav-item mr-1 d-lg-none d-block">
+                        <a class="nav-link" href="{% url 'account_signup' %}">SignUp</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
+
+        {% if request.user.is_authenticated %}
+            <div class="dropdown dropdown-extension d-none d-lg-block">
+                <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span><i class="fas fa-user-circle"></i></span><span>  My Account</span>
+                </button>
+                <div class="dropdown-menu dropdown-extension" aria-labelledby="dropdownMenuButton">
+                    {% if request.user.is_superuser %}
+                        <a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a>
+                    {% endif %}
+                    <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
+                    <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
+                </div>
+            </div>
+        {% endif %}
 
         <!--Search bar for larger than medium screen-->
         <div class="my-auto d-none d-lg-block mr-2">
