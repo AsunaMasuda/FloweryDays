@@ -334,14 +334,20 @@ I used these validation tools below for each file.
 - Python:[PEP8 online](http://pep8online.com/)
 
 # Deployment
-## Heroku Deployment
+## Heroku Deployment with AWS
+- `gnicorn`: WSGI(web server gataway interface) server
+- `gninx`:
+- `psycopg2-binary`, `dj-database-url`
 This website is deployed on [Heroku](https://www.heroku.com/), following these steps:
-1. Create a `requirements.txt` file using the command `web: gunicorn flowery_days.wsgi:application` in the terminal.
-2. Create a `Procfile` using the commant `echo web: python app.py > Procfile` in the terminal.
+1. Create a `requirements.txt` file and freeze all the modules with the command `pip3 freeze > requirements.txt` in the terminal.
+2. Create a `Procfile` write `web: gunicorn boutique_ado.wsgi:application` in the file.
 3. `git add` and `git commit` and `git push` all the changes to the Github repositoty of this project.
 4. Go to Heroku and create a **new app**. Set a name for this app and select the closest region (Europe) and click **Create app**.
-5. Go to **Resources** tab in Heroku, then in the **Add-ons** search bar look for **Heorku Postgres**(you can type postgres), select **Hobby Dev — Free** and click **Provision** button to add it to your project.
+5. Go to **Resources** tab in Heroku, then in the **Add-ons** search bar look for **Heorku Postgres**(you can type postgres), select **Hobby Dev — Free** and click **Submit Order Form** button to add it to your project.
 6. In the heroku dashboard for the application, click on "Setting" > "Reveal Config Vars" and set the values as follows:
+Install `pip3 install psycopg2-binary`, `pip3 install dj-database-url`, `pip3 install gunicorn`
+Disable collect static so that Heroku won't try to collect static file with: `heroku config:set DISABLE_COLLECTSTATIC=1`
+Add the hostname of our Heroku app to allowed hosts in settings.py ALLOWED_HOSTS = ['flowerydays']
 
 | Key | Value |
  --- | ---
