@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %}
+{% extends "base.html" %} {% load static %} {% load section_path %}
 {% block content %} 
 
 <!-- Carousel -->
@@ -28,20 +28,21 @@
         />
         <div class="carousel-text-box-1">
             <p
-            class="animate__animated animate__fadeInRight animate__delay-1s"
+            class="animate__animated animate__fadeInRight animate__delay-1s text-shadow-carousel"
             >
             Carefully raised and selected
             </p>
             <p
-            class="animate__animated animate__fadeInLeft animate__delay-1s"
+            class="animate__animated animate__fadeInLeft animate__delay-1s text-shadow-carousel"
             >
             Beautiful flower collections
             </p>
             <p
-            class="animate__animated animate__fadeInRight animate__delay-1s"
+            class="animate__animated animate__fadeInRight animate__delay-1s text-shadow-carousel"
             >
             Delivery to the whole of Ireland
             </p>
+            <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% url 'onlineshop' %}">Check Our Bouquet Collections</a>
         </div>
         </div>
         <div class="small-size-carousel carousel-item">
@@ -52,15 +53,16 @@
         />
         <div class="carousel-text-box-1">
             <p
-            class="animate__animated animate__fadeInRight animate__delay-1s"
+            class="animate__animated animate__fadeInRight animate__delay-1s text-shadow-carousel"
             >
             Inspire your creativity
             </p>
             <p
-            class="animate__animated animate__fadeInLeft animate__delay-1s"
+            class="animate__animated animate__fadeInLeft animate__delay-1s text-shadow-carousel"
             >
             Fresh cut flowers for flower arrangements
             </p>
+            <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% url 'onlineshop' %}">Check Our Flowers</a>
         </div>
         </div>
         <div class="small-size-carousel carousel-item">
@@ -71,15 +73,16 @@
         />
         <div class="carousel-text-box-1">
             <p
-            class="animate__animated animate__fadeInRight animate__delay-1s"
+            class="animate__animated animate__fadeInRight animate__delay-1s text-shadow-carousel"
             >
             Flower Decorations for Wedding & Event
             </p>
             <p
-            class="animate__animated animate__fadeInLeft animate__delay-1s"
+            class="animate__animated animate__fadeInLeft animate__delay-1s text-shadow-carousel"
             >
             Tailor made flower bouquets
             </p>
+            <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% anchor 'home' 'contact' %}">Submit Your Inquiry</a>
         </div>
         </div>
       </div>
