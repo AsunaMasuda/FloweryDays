@@ -7,7 +7,7 @@ class OrderForm(forms.ModelForm):
         model = Order
         fields = ('first_name', 'last_name', 'email', 'address_line_1',
                   'address_line_2', 'postcode', 'town_or_city',
-                  'county', 'is_gift_wrapping')
+                  'county')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -20,7 +20,6 @@ class OrderForm(forms.ModelForm):
             'town_or_city': 'Town or City Name',
             'county': 'County',
             'postcode': 'Postcode',
-            'is_gift_wrapping': 'Gift Wrapping',
         }
 
         self.fields['first_name'].widget.attrs['autofocus'] = True
