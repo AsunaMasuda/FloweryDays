@@ -1,0 +1,1 @@
+web: gunicorn flowery_days.wsgi:application
