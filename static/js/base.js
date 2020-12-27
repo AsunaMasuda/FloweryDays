@@ -1,25 +1,3 @@
-// Navbar
-$(document).ready(function () {
-  var navberExtension = $("#navber-extension");
-  $(window).scroll(function () {
-    if (
-      $(this).scrollTop() > 100 &&
-      navberExtension.hasClass("navber-extension")
-    ) {
-      navberExtension
-        .removeClass("navber-extension")
-        .addClass("fixed-top");
-    } else if (
-      $(this).scrollTop() <= 100 &&
-      navberExtension.hasClass("fixed-top")
-    ) {
-      navberExtension
-        .removeClass("fixed-top")
-        .addClass("navber-extension");
-    }
-  });
-});
-
 // Search bar for less than medium screens
 $(document).ready(function () {
   $('#search-bar-small').hide();
