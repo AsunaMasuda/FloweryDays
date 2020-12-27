@@ -9,7 +9,6 @@ import operator
 from django.db.models import Avg
 
 from .models import Product, Image, Color, Flower, ProductReview
-from profiles.models import UserProfile
 
 from .forms import ProductForm, ProductReviewForm
 
@@ -92,7 +91,7 @@ def filter_product(request):
 
 
 def onlineshop(request):
-    """  """
+    """ A view for online shop (fintered with 'bouquet' category) """
 
     categories = list(set(Product.objects.values_list('category', flat=True)))
     occasions = list(set(Product.objects.values_list('occasion', flat=True)))
@@ -100,7 +99,6 @@ def onlineshop(request):
     flowers = Flower.objects.all()
     product_list = Product.objects.all()
 
-    # Default filter when visitors accessing online shop
     category_name = ['bouquet']
     product_list = product_list.filter(category='bouquet')
 
