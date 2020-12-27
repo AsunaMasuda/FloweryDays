@@ -12,6 +12,11 @@ a {
    color: #b75d69;
 }
 
+.btn:focus,.btn:active {
+   outline: none !important;
+   box-shadow: none;
+}
+
 /** Disable default decorations for Links **/
 a:focus,
 a:hover,
@@ -46,6 +51,13 @@ body {
     color: black;
 }
 
+.navbar-divider {
+    height: 0;
+    margin: .5rem 0;
+    overflow: hidden;
+    border-top: 1px solid #e9ecef;
+}
+
 /** Button **/
 .btn-outline {
   color: black;
@@ -53,14 +65,15 @@ body {
   border-color: black;
   border-radius: 0;
   letter-spacing: 0.05em;
+  border: 1px solid black!important;
 }
 
 .btn-outline:hover,
 .btn-outline:active,
 .btn-outline:focus {
-  background: black;
+  background-color: black;
   color: #ffffff!important;
-  border-color: black;
+  border: 1px solid black!important;
 }
 
 .btn-colour-1 {
@@ -69,14 +82,32 @@ body {
   border-color: black;
   letter-spacing: 0.05em;
   border-radius: 0;
+  border: 1px solid black!important;
 }
 
 .btn-colour-1:hover,
 .btn-colour-1:active,
 .btn-colour-1:focus {
-  background: #ffffff;
+  background-color: #ffffff;
   color: black;
-  border-color: black;
+  border: 1px solid black!important;
+}
+
+.btn-call-to-action {
+  color: #fff;
+  background-color: #b75d69;
+  border-color: #b75d69;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  border: 1px solid #b75d69!important;
+}
+
+.btn-call-to-action:hover,
+.btn-call-to-action:active,
+.btn-call-to-action:focus {
+  background-color: #ffffff;
+  color: #b75d69;
+  border: 1px solid #b75d69!important;
 }
 
 #logo-small{
@@ -121,7 +152,7 @@ body {
 .carousel-inner {
     position: relative;
     height: inherit;
-    z-index: -1;
+    z-index: 1;
 }
 
 .carousel-indicators-extension {
@@ -131,19 +162,21 @@ body {
 .carousel-text-box-1 {
     font-size: 1.5rem;
     letter-spacing: 0.1em;
-    text-shadow: 1px 1px #707070;
     position: absolute;
     top: 35%;
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
     right: 15%;
-    z-index: 10;
     color: #fff;
     text-align: center;
 }
 
+.text-shadow-carousel {
+    text-shadow: 1px 1px #707070;
+}
+
 .dropdown-extension {
-    z-index: 999999999999;
+    z-index: 999999;
 }
 
 /** About **/
@@ -306,7 +339,7 @@ ul#social-icon a:hover {
 /** Online Shop Filter **/
 
 .section-top {
-    padding: 80px 0;
+    padding: 150px 0;
 }
 
 .aside-title {
@@ -972,10 +1005,6 @@ ul#social-icon a:hover {
 .carousel-text-box-1 {
     font-size: 1.2rem!important;
     left: 8%!important;
-}
-
-.carousel-text-box-3 {
-    font-size: 1.2rem!important;
 }
 
 .small-size-carousel {
