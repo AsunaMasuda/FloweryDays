@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container section-top">
+        <div class="row">
+            <div class="col-12 col-md-6">
+                <div class="allauth-form-inner-content">
+                    Thank you for contacting us. Your message is successfully sent to the shop.
+                    We will get back to you as soon as possible.
+                    <div class="mt-2">
+                        <a href="{% url 'home' %}">
+                            <span class="icon">
+                                <i class="fas fa-angle-left"></i>
+                            </span>
+                            <span>Back to Home</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
