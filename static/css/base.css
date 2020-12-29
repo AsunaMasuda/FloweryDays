@@ -17,6 +17,13 @@ a {
    box-shadow: none;
 }
 
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 95px;
+    overflow: visible;
+}
+
 /** Disable default decorations for Links **/
 a:focus,
 a:hover,
@@ -1029,13 +1036,6 @@ ul#social-icon a:hover {
     padding-top: 72px;
 }
 
-.header-ex {
-    position: relative;
-    z-index: 9999;
-    height: 72px;
-    overflow: visible;
-}
-
 .carousel-extension {
     position: relative;
     height: inherit;
@@ -1054,14 +1054,6 @@ ul#social-icon a:hover {
 
 .carousel-image {
     width: 100%;
-}
-
-
-.header-ex {
-    position: relative;
-    z-index: 9999;
-    height: 95px;
-    overflow: visible;
 }
 
 .top {
@@ -1091,14 +1083,6 @@ ul#social-icon a:hover {
 
 .carousel-image {
     width: 100%;
-}
-
-
-.header-ex {
-    position: relative;
-    z-index: 9999;
-    height: 95px;
-    overflow: visible;
 }
 
 .top {
