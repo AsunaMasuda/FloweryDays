@@ -36,7 +36,7 @@ def contactform(request):
                 email,
                 [settings.DEFAULT_FROM_EMAIL],
             )
-            return redirect('thankyou_page')
+            return redirect(thankyou_page)
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
 
@@ -45,4 +45,4 @@ def thankyou_page(request):
     """
     A view to render thank you page after site visitors send a contact form
     """
-    render(request, 'home/thankyou_page.html')
+    return render(request, 'home/thankyou_page.html')
