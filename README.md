@@ -347,7 +347,55 @@ This website is deployed on [Heroku](https://www.heroku.com/), following these s
 6. In the heroku dashboard for the application, click on "Setting" > "Reveal Config Vars" and set the values as follows:
 Install `pip3 install psycopg2-binary`, `pip3 install dj-database-url`, `pip3 install gunicorn`
 Disable collect static so that Heroku won't try to collect static file with: `heroku config:set DISABLE_COLLECTSTATIC=1`
-Add the hostname of our Heroku app to allowed hosts in settings.py ALLOWED_HOSTS = ['flowerydays']
+Add the hostname of our Heroku app to allowed hosts in settings.py ALLOWED_HOSTS = ['flowerydays'] -> `heroku git:remote -a flowerydays` -> `git push heroku master`
+
+To enable the browsers to cache static files, add the following to settings.py:
+AWS_S3_OBJECT_PARAMETERS = {
+    'Expires': 'Thu, 31 Dec 2009 20:00:00 GMT',
+    'CacheControl': 'max-age=94608000',
+}
+
+## Django Secret Key generator
+Used [Djecrety](https://djecrety.ir/) for creating Django Secret Key
+
+## Amazon Web Service S3
+[AWS website](https://aws.amazon.com/)
+
+CORS configuration
+[
+  {
+      "AllowedHeaders": [
+          "Authorization"
+      ],
+      "AllowedMethods": [
+          "GET"
+      ],
+      "AllowedOrigins": [
+          "*"
+      ],
+      "ExposeHeaders": []
+  }
+]
+
+To connect AWS S3 bucket to Django, we need to download boto3 and django-storages. You can do so using a command `pip3 install boto3` and `pip3 install django-storages` in your terminal.
+Add 'storages' to `INSTALLED_APPS` in settings.py.
+Add the following in settings.py.
+if 'USE_AWS' in os.environ:
+    AWS_STORAGE_BUCKET_NAME = 'flowerydays'
+    AWS_S3_REGION_NAME = 'eu-west-1'
+    AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
+    AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
+Go to Heroku Settings and add `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to config variable, and set `USE_AWS` as `True` so that our settings file knows to use the AWS configuration when we deploy to Heroku.
+Delete DISABLE_COLLECTSTATIC
+Add `custom_storages.py`
+Push all the changes to Github/Heroku and all the static files will be uploaded to S3 bucket
+
+## Automatic Deploys
+You can enable automatic deploy in the following steps that pushes update to Heroku everytime you push to github.
+1. Go to Deploy in Heroku dashboard
+2. At `Automatic deploys`, choose a github repository you want to deploy
+3. Click `Enable Automatic Deploys`
+
 
 | Key | Value |
  --- | ---
