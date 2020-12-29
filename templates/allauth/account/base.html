@@ -7,6 +7,14 @@
                 <div class="allauth-form-inner-content">
                     {% block inner_content %}
                     {% endblock %}
+                    <div class="mt-2">
+                        <a href="{% url 'home' %}">
+                            <span class="icon">
+                                <i class="fas fa-angle-left"></i>
+                            </span>
+                            <span>Back to Home</span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
