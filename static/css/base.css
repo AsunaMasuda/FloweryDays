@@ -338,7 +338,7 @@ ul#social-icon a:hover {
 /** Online Shop Filter **/
 
 .section-top {
-    padding: 150px 0;
+    padding: 20px 0;
 }
 
 .aside-title {
@@ -885,11 +885,6 @@ ul#social-icon a:hover {
     z-index: 99999999999;
 }
 
-.blog-comment-section{
-    padding: 20px 250px;
-}
-
-
 .users-comment {
     padding: 15px 50px;
     background-color: #eacdc2;
@@ -1024,7 +1019,7 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 615px;
+    height: 543px;
     margin-bottom: -100px;
 }
 
@@ -1152,6 +1147,11 @@ ul#social-icon a:hover {
     position: relative;
     height: inherit;
 }
+
+/* Blog Comment section padding */
+.blog-comment-section{
+    padding: 20px 150px;
+}
 }
  
 /* Extra large devices (large desktops, 1200px and up) */
@@ -1173,7 +1173,7 @@ ul#social-icon a:hover {
 
 .top {
     height: 100%;
-    margin-bottom: -95px;
+    margin-bottom: -110px;
 }
 
 .carousel-padding {
@@ -1187,5 +1187,10 @@ ul#social-icon a:hover {
 .carousel-extension {
     position: relative;
     height: inherit;
+}
+
+/* Blog Comment section padding */
+.blog-comment-section{
+    padding: 20px 150px;
 }
 }
