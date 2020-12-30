@@ -51,33 +51,32 @@
                     <h4 class="mb-3">€ {{ product.price }}</h4>
                 <p class="product-description mb-3"> {{ product.description }}</p>
                 <hr>
-                {% if product.category != 'bouquet' %}
-                    <div class="row mb-3">
-                        <div class="col-md-2 my-auto">Color: </div>
-                        <div class="col-md-10 my-auto">
-                            <select class="form-control" id="color-option">
-                            {% for color in colors %}
-                                <option>{{ color.color_set.all.0.name }}</option>
-                            {% endfor %}
-                            </select>
-                        </div>
-                    </div>
-                {% endif %}
-
                 <form class="form" action="{% url 'add_to_cart' product.pk %}" method="POST">
                     {% csrf_token %}
                     <div class="col-12">
-                        <div class="row">
-                            <div class="col-md-2 my-auto">Quantity: </div>
-                            <div class="col-md-10 my-auto">
-                                <div class="product-quantity">
-                                    <span id="minus_0" class="minus bg-dark">-</span>
-                                        <input id="number_0" class="quantity-count form-control qty_input" type="number" name="quantity" value="1">
-                                    <span id="plus_0" class="plus bg-dark">+</span>
+                            {% if product.category != 'bouquet' %}
+                            <div class="row mt-2">
+                                <div class="col-md-2 my-auto">Color: </div>
+                                <div class="col-md-10 my-auto">
+                                    <select class="form-control" id="color-option" name="color">
+                                    {% for color in colors %}
+                                        <option>{{ color.color_set.all.0.name }}</option>
+                                    {% endfor %}
+                                    </select>
                                 </div>
-                                <span id="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
                             </div>
-                        </div>
+                            {% endif %}
+                            <div class="row mt-3">
+                                <div class="col-md-2 my-auto">Quantity: </div>
+                                <div class="col-md-10 my-auto">
+                                    <div class="product-quantity">
+                                        <span id="minus_0" class="minus bg-dark">-</span>
+                                            <input id="number_0" class="quantity-count form-control qty_input" type="number" name="quantity" value="1">
+                                        <span id="plus_0" class="plus bg-dark">+</span>
+                                    </div>
+                                    <span id="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
+                                </div>
+                            </div>
                         <div>
                             <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
                             <input type="hidden" name="redirect_url" value="{{ request.path }}">
