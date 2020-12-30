@@ -114,15 +114,17 @@
                                 <div class="product-price">€ {{ product.price }}</div><br>
                                 <div class="product-price">{{ product.unit }}</div><br>
                                 <form class="form" action="{% url 'add_to_cart' product.pk %}" method="POST">
-                                {% csrf_token %}
-                                <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
-                                <input type="hidden" name="redirect_url" value="{% url 'onlineshop' %}">
-                                {% if request.user.is_superuser %}
-                                <div class="mt-2">
-                                    <a href="{% url 'edit_product' product.pk %}" class="product_edit">Edit</a> | 
-                                    <a href="{% url 'delete_product' product.pk%}" class="product_delete">Delete</a>
-                                </div>
-                                {% endif %}
+                                    {% csrf_token %}
+                                    {% if product.category == 'bouquet' %}
+                                    <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
+                                    <input type="hidden" name="redirect_url" value="{% url 'onlineshop' %}">
+                                    {% endif %}
+                                    {% if request.user.is_superuser %}
+                                    <div class="mt-2">
+                                        <a href="{% url 'edit_product' product.pk %}" class="product_edit">Edit</a> | 
+                                        <a href="{% url 'delete_product' product.pk%}" class="product_delete">Delete</a>
+                                    </div>
+                                    {% endif %}
                                 </form>
                         </article>
                     </div>
