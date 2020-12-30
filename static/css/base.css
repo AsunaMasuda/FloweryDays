@@ -17,13 +17,6 @@ a {
    box-shadow: none;
 }
 
-.header-ex {
-    position: relative;
-    z-index: 9999;
-    height: 95px;
-    overflow: visible;
-}
-
 /** Disable default decorations for Links **/
 a:focus,
 a:hover,
@@ -997,9 +990,17 @@ ul#social-icon a:hover {
     border-bottom-color: #343a40 !important;
 }
 
+
 /**---- Media Queries for responsiveness ----**/
 /* Extra Small devices (phones, less than 576px) */
 @media (min-width: 0px) and (max-width: 576px) {
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 72px;
+    overflow: visible;
+}
+
 #brand-logo {
     width: 130px;
 }
@@ -1023,7 +1024,7 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 530px;
+    height: 615px;
     margin-bottom: -100px;
 }
 
@@ -1043,6 +1044,13 @@ ul#social-icon a:hover {
 
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 576px) and (max-width: 768px) {
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 95px;
+    overflow: visible;
+}
+
 #brand-logo {
     width: 230px;
 }
@@ -1056,7 +1064,7 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 495px;
+    height: 505px;
     margin-bottom: -95px;
 }
 
@@ -1076,6 +1084,13 @@ ul#social-icon a:hover {
 
 /* Medium devices (tablets, 768px and up) The navbar toggle appears at this breakpoint */
 @media (min-width: 768px) and (max-width: 992px) {
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 95px;
+    overflow: visible;
+}
+
 #brand-logo {
     width: 230px;
 }
@@ -1085,13 +1100,13 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 580px;
+    height: 635px;
     margin-bottom: -95px;
 }
 
 .carousel-padding {
     width: 100%;
-    height: 490px;
+    height: 540px;
     top: 0;
     position: absolute;
     padding-top: 95px;
@@ -1105,6 +1120,13 @@ ul#social-icon a:hover {
  
 /* Large devices (desktops, 992px and up) */
 @media (min-width: 992px) and (max-width: 1200px) {
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 95px;
+    overflow: visible;
+}
+
 #brand-logo {
     width: 230px;
 }
@@ -1114,7 +1136,7 @@ ul#social-icon a:hover {
 }
 
 .top {
-    height: 850px;
+    height: 755px;
     margin-bottom: -95px;
 }
 
@@ -1134,6 +1156,13 @@ ul#social-icon a:hover {
  
 /* Extra large devices (large desktops, 1200px and up) */
 @media (min-width: 1200px) {
+.header-ex {
+    position: relative;
+    z-index: 9999;
+    height: 95px;
+    overflow: visible;
+}
+
 #brand-logo {
     width: 230px;
 }
@@ -1144,7 +1173,7 @@ ul#social-icon a:hover {
 
 .top {
     height: 100%;
-    margin-bottom: 0;
+    margin-bottom: -95px;
 }
 
 .carousel-padding {
