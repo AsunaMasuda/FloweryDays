@@ -26,10 +26,10 @@ def contactform(request):
     """
     contact_form = ContactForm(request.POST)
     if contact_form.is_valid():
-        name = contact_form['name']
-        email = contact_form['email']
-        subject = contact_form['subject']
-        message = contact_form['message']
+        name = contact_form.cleaned_data['name']
+        email = contact_form.cleaned_data['email']
+        subject = contact_form.cleaned_data['subject']
+        message = contact_form.cleaned_data['message']
         try:
             send_mail(
                 f"You've got a message from {name} ({email}) on contact form.",

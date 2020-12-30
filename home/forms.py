@@ -13,7 +13,7 @@ class ContactForm(forms.Form):
         ('Other', 'Other'),
     )
 
-    full_name = forms.CharField(
+    name = forms.CharField(
         label="Name"
     )
     email = forms.EmailField(
