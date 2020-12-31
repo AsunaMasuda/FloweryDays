@@ -75,7 +75,7 @@
     {% block page_header %} {% endblock %}
         <nav
             id="navber-extension"
-            class="navbar navbar-expand-lg d-block d-lg-flex navbar-light fixed-top bg-white py-3 navber-spacing"
+            class="navbar navbar-expand-lg d-block d-lg-flex navbar-light fixed-top bg-white py-2 navber-spacing"
         >
             <div class="d-flex justify-content-between">
                 <button
@@ -195,16 +195,16 @@
                 </sup>
             </a>
         </div>
-    </nav>
-            <!-- Search bar to show after toggling -->
-            <div id="search-bar-small" class="row bg-white my-auto">
-                <div class="col mt-2 mb-2">
-                    <form class= "form-search" action="{% url 'search_result' %}" method="GET">
-                    <span class="search-block"><input type="text" name="q" placeholder="Search products"></span>
-                    <span class="search-block"><button class="btn btn-colour-1" type="submit"><i class="fas fa-search"></i></button></span>
-                    </form>
-                </div>
+        <!-- Search bar to show after toggling -->
+        <div id="search-bar-small" class="row bg-white my-auto">
+            <div class="col mt-3 mb-1">
+                <form class= "form-search" action="{% url 'search_result' %}" method="GET">
+                <span class="search-block"><input type="text" name="q" placeholder="Search products"></span>
+                <span class="search-block"><button class="btn btn-colour-1" type="submit"><i class="fas fa-search"></i></button></span>
+                </form>
             </div>
+        </div>
+    </nav>
     </header>
     {% if messages %}
         <div class="message-container">
