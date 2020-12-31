@@ -50,9 +50,10 @@
                             <a
                                 class="remove-item text-danger float-left"
                                 id="remove_{{ item.item_id }}"
+                                data-product_color="{{ item.color }}"
                                 ><small>Remove</small></a
                             >
-                        </td>
+                        </td>                        
                         <td class="py-3">
                             <p class="my-0">
                                 {% if item.color %}
@@ -69,14 +70,15 @@
                             <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
                                 {% csrf_token %}
                                 <div class="form-group">
-                                <div class="input-group">
-                                    <div class="product-quantity">
-                                        <span class="minus bg-dark" id="minus_{{ item.item_id }}">-</span>
-                                            <input id="number_{{ item.item_id }}" class="quantity-count form-control qty_input" type="number" name="quantity" value="{{ item.quantity }}">
-                                        <span class="plus bg-dark" id="plus_{{ item.item_id }}">+</span>
+                                    <div class="input-group">
+                                        <div class="product-quantity">
+                                            <span class="minus bg-dark" id="minus_{{ item.item_id }}_{{ item.color }}">-</span>
+                                                <input id="number_{{ item.item_id }}_{{ item.color }}" class="quantity-count form-control qty_input" type="number" name="quantity" value="{{ item.quantity }}">
+                                            <span class="plus bg-dark" id="plus_{{ item.item_id }}_{{ item.color }}">+</span>
+                                        </div>
+                                        <span id="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
                                     </div>
-                                    <span id="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
-                                </div>
+                                    <input type="hidden" value="{{ item.color }}" name="color">
                                 </div>
                             </form>
                             <a class="update-link text-info"><small>Update</small></a>

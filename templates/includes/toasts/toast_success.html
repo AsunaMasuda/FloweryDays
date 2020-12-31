@@ -7,14 +7,20 @@
         </button>
     </div>
     <div class="toast-body bg-white">
-        {% if last_added_item and not on_profile_page %}
+        {% if last_item and not on_profile_page %}
         <div class="row">
+        {% if last_item.image %}
             <div class="col-4">
-                <img class="w-100" src="{{ last_added_item.image }}" alt="{{ product.name }}">
+                <img class="w-100" src="{{ last_item.image }}" alt="{{ product.name }}">
             </div>
             <div class="col-8">
                 {{ message }}
             </div>
+        {% else %}
+            <div class="col-12">
+                {{ message }}
+            </div>
+        {% endif %}
         </div>
         <div class="row">
             <div class="col-12 text-center">

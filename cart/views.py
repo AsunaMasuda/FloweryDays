@@ -32,15 +32,16 @@ def add_to_cart(request, item_id):
                 cart[item_id]['items_by_color'][color] += quantity
                 messages.success(request, f'Updated quantity to \
                                  {cart[item_id]["items_by_color"][color]} for \
-                                 {product.name} / color:{color.upper()}')
+                                 {product.name}/color:{color}')
             else:
                 cart[item_id]['items_by_color'][color] = quantity
-                messages.success(request, f'Added {product.name} / \
-                                 color: {color} to your bag')
+                messages.success(request, f'Added {product.name}/\
+                                 color:{color} to your bag')
         else:
             cart[item_id] = {'items_by_color': {color: quantity}}
-            messages.success(request, f'Added {product.name} / \
-                             color: {color} to your bag')
+            messages.success(request, f'Added {product.name}/\
+                             color:{color} to your bag')
+
         # Get the image for toast when the product has a color choice
         images = Image.objects.all()
         colors = Color.objects.all()
@@ -76,14 +77,27 @@ def adjust_cart(request, item_id):
 
     product = get_object_or_404(Product, pk=item_id)
     quantity = int(request.POST.get('quantity'))
+    color = None
+
+    if 'color' in request.POST:
+        color = request.POST['color']
+
     cart = request.session.get('cart', {})
-    cart[item_id] = quantity
-    messages.success(request, f"You've updated {product.name} \
-                     quantity to {cart[item_id]}.")
+
+    if color:
+        cart[item_id]['items_by_color'][color] = quantity
+        messages.success(request,
+                         f"You've updated {product.name}/color:{color} quantity \
+                         to {cart[item_id]['items_by_color'][color]}.")
+    else:
+        cart[item_id] = quantity
+        messages.success(request, f'Updated {product.name} quantity \
+                         to {cart[item_id]}')
 
     request.session['cart'] = cart
     request.session['last_item'] = {'name': product.name,
-                                    'image': product.product_image.url}
+                                    'image': None}
+
     return redirect(reverse('view_cart'))
 
 
@@ -92,18 +106,28 @@ def remove_from_cart(request, item_id):
 
     try:
         product = get_object_or_404(Product, pk=item_id)
+        color = None
+        if 'color' in request.POST:
+            color = request.POST['color']
         cart = request.session.get('cart', {})
-        cart.pop(item_id)
-        messages.success(request, f"You've removed \
-                         {product.name} from your cart")
+
+        if color:
+            del cart[item_id]['items_by_color'][color]
+            if not cart[item_id]['items_by_color']:
+                cart.pop(item_id)
+            messages.success(request, f"You've removed \
+                            {product.name}/color:{color} from your cart")
+        else:
+            cart.pop(item_id)
+            messages.success(request, f"You've removed {product.name} \
+                             from your cart")
 
         request.session['cart'] = cart
         request.session['last_item'] = {'name': product.name,
-                                        'image': image.filter(category='bouquet').filter(category='bouquet')
-                                        }
+                                        'image': None}
         return HttpResponse(status=200)
 
     except Exception as e:
         messages.error(request, f'Error occured. When removing \
-                       {product.name} from your cart')
+                       {product.name} from your cart: {e}')
         return HttpResponse(status=500)
