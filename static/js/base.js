@@ -6,7 +6,6 @@ $(document).ready(function () {
   });
 });
 
-
 // Wow.js
 $(document).ready(function () {
     new WOW().init();
@@ -32,7 +31,8 @@ $(window).scroll(function () {
 $(document).ready(function(){
     $(document).on('click', '.plus', function(){
         let id = this.id.split("_")[1]
-        let plus_id = `#number_${id}`
+        let color = this.id.split("_")[2]
+        let plus_id = `#number_${id}_${color}`
         $(plus_id).val(parseInt($(plus_id).val()) + 1 );
             if ($(plus_id).val() == 100) {
                 $(plus_id).val(99);
@@ -40,7 +40,8 @@ $(document).ready(function(){
     });
     $(document).on('click', '.minus', function(){
         let id = this.id.split("_")[1]
-        let minus_id = `#number_${id}`
+        let color = this.id.split("_")[2]
+        let minus_id = `#number_${id}_${color}`
         $(minus_id).val(parseInt($(minus_id).val()) - 1 );
             if ($(minus_id).val() == 0) {
                 $(minus_id).val(1);
@@ -48,7 +49,8 @@ $(document).ready(function(){
     });
     $(document).on('change', 'input', function() {
         let id = this.id.split("_")[1]
-        let quantityId = `#number_${id}`
+        let color = this.id.split("_")[2]
+        let quantityId = `#number_${id}_${color}`
         $(quantityId).val(parseInt($(quantityId).val()));
             if (($(quantityId).val() > 99)) {
                 $('#errorMsg').show();
