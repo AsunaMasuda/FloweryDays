@@ -510,7 +510,7 @@ ul#social-icon a:hover {
     border-image: initial;
 }
 
-.active {
+.active-pagination {
     padding: 1px 6px;
     border-width: 2px;
     color: #a53860;
@@ -617,7 +617,8 @@ ul#social-icon a:hover {
     text-align: center;
 }
 
-.product-quantity .plus {
+.product-quantity .plus,
+.product-quantity .plus-cart {
     cursor: pointer;
     display: inline-block;
     vertical-align: top;
@@ -628,7 +629,8 @@ ul#social-icon a:hover {
     text-align: center;
     }
 
-.product-quantity .minus {
+.product-quantity .minus,
+.product-quantity .minus-cart {
     cursor: pointer;
     display: inline-block;
     vertical-align: top;
@@ -640,15 +642,18 @@ ul#social-icon a:hover {
     background-clip: padding-box;
 }
 
-.minus:hover{
+.minus:hover,
+.minus-cart:hover {
     background-color: #b75d69 !important;
 }
 
-.plus:hover{
+.plus:hover,
+.plus-cart:hover {
     background-color: #b75d69 !important;
 }
 
-.minus, .plus{
+.plus, .minus,
+.minus-cart, .plus-cart {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -1005,6 +1010,7 @@ ul#social-icon a:hover {
 }
 
 .carousel-text-box-1 {
+    margin-top: 5rem;
     font-size: 1.2rem!important;
     left: 8%!important;
 }
@@ -1015,7 +1021,6 @@ ul#social-icon a:hover {
 
 .first-carousel-small {
     position:relative;
-    right: 0;
 }
 
 .top {

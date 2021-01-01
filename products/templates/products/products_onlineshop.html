@@ -144,7 +144,7 @@
                                 {% endif %}
                                 {% for i in products.paginator.page_range %}
                                     {% if products.number == i %}
-                                        <li class="active mr-2"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                        <li class="active-pagination mr-2"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
                                     {% else %}
                                         <li class="mr-2"><a class="page-button" href="{% relative_url i 'page' request.GET.urlencode %}">
                                         {{ i }} </a></li>
