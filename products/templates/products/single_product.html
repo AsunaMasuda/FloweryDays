@@ -14,30 +14,32 @@
             <div class="carousel carousel-extension slide article-slide ml-auto mr-auto" 
             data-interval="false" id="article-photo-carousel">
                 <!-- Indicators -->
-                <ol class="carousel-indicators">
-                {% for image in images %}
-                  {% if forloop.first %}
-                    <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
-                    <img alt="image_for_carousel_indicator" src="{{ image.image.url }}">
-                    </li>
-                  {% else %}
-                    <li data-slide-to="{{ forloop.counter0 }}" data-target="#article-photo-carousel">
-                    <img alt="image_for_carousel_indicator" src="{{ image.image.url }}">
-                    </li>
-                  {% endif %}
-                {% endfor %}
-                </ol>
+                <div class="carousel-indicators carousel-indicators-extension">
+                    <ol>
+                    {% for image in images %}
+                    {% if forloop.first %}
+                        <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
+                        <img alt="image_for_carousel_indicator" src="{{ image.image.url }}">
+                        </li>
+                    {% else %}
+                        <li data-slide-to="{{ forloop.counter0 }}" data-target="#article-photo-carousel">
+                        <img alt="image_for_carousel_indicator" src="{{ image.image.url }}">
+                        </li>
+                    {% endif %}
+                    {% endfor %}
+                    </ol>
+                </div>
                 <!-- Wrapper for slides -->
                 <div class="carousel-extension">
-                    <div class="carousel-inner cont-slider">
+                    <div class="carousel-inner">
                     {% for image in images %}
                         {% if forloop.first %}
                             <div class="carousel-item active">
-                                <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img">
+                                    <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
                             </div>
                         {% else %}
                             <div class="carousel-item">
-                                <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img">
+                                <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
                             </div>
                         {% endif %}
                     {% endfor %}
@@ -67,8 +69,8 @@
                             </div>
                             {% endif %}
                             <div class="row mt-3">
-                                <div class="col-md-2 my-auto">Quantity: </div>
-                                <div class="col-md-10 my-auto">
+                                <div class="col-lg-2 my-auto">Quantity: </div>
+                                <div class="col-lg-10 my-auto">
                                     <div class="product-quantity">
                                         <span id="minus_0" class="minus bg-dark">-</span>
                                             <input id="number_0" class="quantity-count form-control qty_input" type="number" name="quantity" value="1">
@@ -89,22 +91,17 @@
                         {% endif %}
                     </div>
                 </form>
-                <div class="backToPrevious">
-                    <span class="icon">
-                        <i class="fas fa-arrow-left"></i>
-                    </span>
-                    <span>Back to Previous Page</span>
-                </div>
             </div>
             <hr>
-            <div class="product-rating mt-3">
-                <div class="mt-2 mb-2">
+            <div class="mb-3 mt-3">
+                <div class="ml-3 mt-2 mb-2">
                     <span>Customer Average Store: <span class="store-text-large">{{ average_score }} / 5.0</span>
                     </span>
                     <span class="stars-outer">
                         <div class="stars-inner" style="width: {{ average_score_percentage }}%"></div>
                     </span>
                 </div>
+                <hr>
                 <div id="accordion">
                     <div class="card card-review-extension">
                         <div class="card-header card-header-review-extension" id="headingOne">
@@ -172,6 +169,12 @@
                     </div>
                     {% endif %}
                 </div>
+            </div>
+            <div class="backToPrevious mb-5 ml-3">
+                <span class="icon">
+                    <i class="fas fa-arrow-left"></i>
+                </span>
+                <span>Back to Previous Page</span>
             </div>
         </div>
     </div>

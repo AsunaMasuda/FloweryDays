@@ -569,15 +569,20 @@ ul#social-icon a:hover {
 }
 
 /* Indicators list style */
-.article-slide .carousel-indicators {
+.article-slide .carousel-indicators-extension {
     bottom: -120px;
     left: 0;
-    margin-left: 5px;
-    width: 100%;
+    width: inherit;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+.carousel-indicators-extension ol {
+    padding-inline-start: 0;
 }
 
 /* Indicators list style */
-.article-slide .carousel-indicators li {
+.article-slide .carousel-indicators-extension li {
     border: medium none;
     border-radius: 0;
     float: left;
@@ -590,7 +595,7 @@ ul#social-icon a:hover {
 }
 
 /* Indicators images style */
-.article-slide .carousel-indicators img {
+.article-slide .carousel-indicators-extension img {
     border: 2px solid rgba(234, 205, 194, 0.7);
     float: left;
     height: 90px;
@@ -599,7 +604,7 @@ ul#social-icon a:hover {
 }
 
 /* Indicators active image style */
-.article-slide .carousel-indicators .active img {
+.article-slide .carousel-indicators-extension .active img {
     border: 2px solid rgba(183, 93, 105, 0.7);
     opacity: 0.7;
 }
@@ -682,10 +687,6 @@ ul#social-icon a:hover {
 
 
 /* Customer Rating */
-.product-rating{
-    margin-bottom: 3rem;
-}
-
 .store-text-large {
   font-size: 130%;
 }
@@ -994,6 +995,26 @@ ul#social-icon a:hover {
 /**---- Media Queries for responsiveness ----**/
 /* Extra Small devices (phones, less than 576px) */
 @media (min-width: 0px) and (max-width: 576px) {
+.single-product-img {
+    width: 250px;
+    height: 250px;
+}
+
+.product-info {
+    text-align: center;
+}
+
+.center-single-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.article-slide {
+    width: 100%;
+    margin-bottom: 120px;
+}
+
 .header-ex {
     position: relative;
     z-index: 9999;
@@ -1051,8 +1072,12 @@ ul#social-icon a:hover {
     overflow: visible;
 }
 
+.product-info {
+    text-align: center;
+}
+
 .carousel-text-box-1 {
-    margin-top: 8rem;
+    margin-top: 5rem;
     font-size: 1.2rem!important;
     left: 30%!important;
 }
@@ -1095,6 +1120,10 @@ ul#social-icon a:hover {
     z-index: 9999;
     height: 95px;
     overflow: visible;
+}
+
+.product-info {
+    text-align: center;
 }
 
 .carousel-text-box-1 {
