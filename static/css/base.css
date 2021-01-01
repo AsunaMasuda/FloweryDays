@@ -1012,7 +1012,7 @@ ul#social-icon a:hover {
 .carousel-text-box-1 {
     margin-top: 5rem;
     font-size: 1.2rem!important;
-    left: 8%!important;
+    left: 15%!important;
 }
 
 .small-size-carousel {
@@ -1049,6 +1049,12 @@ ul#social-icon a:hover {
     z-index: 9999;
     height: 95px;
     overflow: visible;
+}
+
+.carousel-text-box-1 {
+    margin-top: 8rem;
+    font-size: 1.2rem!important;
+    left: 30%!important;
 }
 
 #brand-logo {
@@ -1091,6 +1097,12 @@ ul#social-icon a:hover {
     overflow: visible;
 }
 
+.carousel-text-box-1 {
+    margin-top: 8rem;
+    font-size: 1.2rem!important;
+    left: 30%!important;
+}
+
 #brand-logo {
     width: 230px;
 }
@@ -1125,6 +1137,12 @@ ul#social-icon a:hover {
     z-index: 9999;
     height: 95px;
     overflow: visible;
+}
+
+.carousel-text-box-1 {
+    margin-top: 10rem;
+    font-size: 1.2rem!important;
+    left: 30%!important;
 }
 
 #brand-logo {
