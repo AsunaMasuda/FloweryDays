@@ -267,14 +267,13 @@ def search_result(request):
         queries = request.GET['q'].split()
 
         filtered_colors = colors.filter(
-            reduce(operator.__or__, [Q(name__icontains=query) for query in queries]))
+            reduce(operator.__or__,
+                   [Q(name__icontains=query) for query in queries]))
         filtered_flowers = flowers.filter(
-            reduce(operator.__or__, [Q(name__icontains=query) for query in queries]))
-        filtered_products_name = products.filter(reduce(operator.__or__, [Q(
-            name__icontains=query) | Q(description__icontains=query) for query in queries]))
-
-        # QuerySet with images of a searched color
-        color_filtered = colors.prefetch_related('image_id__product_id')
+            reduce(operator.__or__,
+                   [Q(name__icontains=query) for query in queries]))
+        filtered_products_name = products.filter(reduce(operator.__or__,
+        [Q(name__icontains=query) | Q(description__icontains=query) for query in queries]))
 
         # Getting pk of product table from all the filters
         products_product_id = filtered_products_name.values_list(

@@ -59,7 +59,7 @@
                             {% if product.category != 'bouquet' %}
                             <div class="row mt-2">
                                 <div class="col-lg-2 my-auto">Color: </div>
-                                <div class="col-lg-10 my-auto">
+                                <div class="col-10 my-auto">
                                     <select class="form-control form-control-extention" id="color-option" name="color">
                                     {% for color in colors %}
                                         <option>{{ color.color_set.all.0.name }}</option>
