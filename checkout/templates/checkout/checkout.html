@@ -38,15 +38,27 @@
                     <div class="row">
                         <div class="col-2 mb-1">
                             <a href="{% url 'single_product' item.product.id %}">
-                                {% if item.product.product_image %}
-                                    <img class="w-100" src="{{ item.product.product_image.url }}" alt="{{ product.name }}">
+                                {% if item.product_image %}
+                                    <img class="img-fluid rounded" src="{{ item.product_image }}" alt="{{ item.product.name }}">
                                 {% else %}
-                                    <img class="w-100" src="{{ MEDIA_URL }}noimage.png" alt="{{ product.name }}">
+                                    {% if item.product.product_image %}
+                                        <img class="img-fluid rounded" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}">
+                                    {% else %}
+                                        <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+                                    {% endif %}
                                 {% endif %}
                             </a>
                         </div>
                         <div class="col-7">
                             <p class="my-0"><strong>{{ item.product.name }}</strong></p>
+                            <p class="my-0 small text-muted">
+                                Color: 
+                                {% if item.color %}
+                                    {{ item.color }}
+                                {% else %}
+                                    -
+                                {% endif %}
+                            </p>
                             <p class="my-0 small text-muted">Qty: {{ item.quantity }}</p>
                         </div>
                         <div class="col-3 text-right">
