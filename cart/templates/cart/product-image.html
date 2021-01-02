@@ -1,0 +1,11 @@
+<a href="{% url 'single_product' item.product.pk %}">
+    {% if item.product_image %}
+        <img class="img-fluid rounded" src="{{ item.product_image }}" alt="{{ item.product.name }}">
+    {% else %}
+        {% if item.product.product_image %}
+            <img class="img-fluid rounded" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}">
+        {% else %}
+            <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
+        {% endif %}
+    {% endif %}
+</a>
