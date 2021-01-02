@@ -29,13 +29,13 @@ $(window).scroll(function () {
 
 // Quantity Counter - Cart View
 $(document).ready(function(){
-    $(document).on('click', '.plus', function(){
+    $(document).on('click vclick', '.plus', function(){
         $(this).siblings('.qty_input').val(parseInt($(this).siblings('.qty_input').val()) + 1);
             if ($(this).siblings('.qty_input').val() == 100) {
                 $(this).siblings('.qty_input').val(99);
             }
     });
-    $(document).on('click', '.minus', function(){
+    $(document).on('click vclick', '.minus', function(){
         $(this).siblings('.qty_input').val(parseInt($(this).siblings('.qty_input').val()) - 1);
             if ($(this).siblings('.qty_input').val() == 0) {
                 $(this).siblings('.qty_input').val(1);
