@@ -80,7 +80,7 @@ def checkout(request):
                                 order=order,
                                 product=product,
                                 quantity=quantity,
-                                color=color,
+                                product_color=color,
                             )
                             order_line_item.save()
                 except Product.DoesNotExist:
