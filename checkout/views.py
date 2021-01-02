@@ -159,6 +159,9 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
+    request.session['last_item'] = {'name': None,
+                                    'image': None}
+
     messages.success(request, f'Thank you for your order! \
         A confirmation email will be sent to {order.email}.')
 
