@@ -67,24 +67,34 @@ def checkout(request):
             for item_id, item_data in cart.items():
                 try:
                     product = Product.objects.get(id=item_id)
-                    order_line_item = OrderLineItem(
-                        order=order,
-                        product=product,
-                        quantity=item_data,
-                    )
-                    order_line_item.save()
+                    if isinstance(item_data, int):
+                        order_line_item = OrderLineItem(
+                            order=order,
+                            product=product,
+                            quantity=item_data,
+                        )
+                        order_line_item.save()
+                    else:
+                        for color, quantity in item_data['items_by_color'].items():
+                            order_line_item = OrderLineItem(
+                                order=order,
+                                product=product,
+                                quantity=quantity,
+                                color=color,
+                            )
+                            order_line_item.save()
                 except Product.DoesNotExist:
                     messages.error(request, (
                         "One of the products in your cart wasn't found in our \
-                        database. Please call us for assistance!")
+                        database. Please contact us for further assisctance")
                     )
                     order.delete()
                     return redirect(reverse('view_cart'))
 
+            # Save the information to the user profile
             request.session['save_info'] = 'save_info' in request.POST
             return redirect(reverse('checkout_success',
                                     args=[order.order_number]))
-
         else:
             messages.error(request, 'There was an error with your form. \
                 Please double check your information.')
@@ -104,6 +114,7 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
+        # Autofill the delivery form
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -121,6 +132,10 @@ def checkout(request):
                 order_form = OrderForm()
         else:
             order_form = OrderForm()
+
+    if not stripe_public_key:
+        messages.warning(request, 'Stripe public key was not found. \
+            Did you forget to set it in your environment?')
 
     template = 'checkout/checkout.html'
     context = {
@@ -159,14 +174,13 @@ def checkout_success(request, order_number):
             if user_profile_form.is_valid():
                 user_profile_form.save()
 
-    request.session['last_item'] = {'name': None,
-                                    'image': None}
-
     messages.success(request, f'Thank you for your order! \
         A confirmation email will be sent to {order.email}.')
 
+    # Delete the cart and the last added item for toast
     if 'cart' in request.session:
         del request.session['cart']
+        del request.session['last_item']
 
     template = 'checkout/checkout_success.html'
     context = {
