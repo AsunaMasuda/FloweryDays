@@ -180,6 +180,7 @@ def checkout_success(request, order_number):
     # Delete the cart and the last added item for toast
     if 'cart' in request.session:
         del request.session['cart']
+    if 'last_item' in request.session:
         del request.session['last_item']
 
     template = 'checkout/checkout_success.html'

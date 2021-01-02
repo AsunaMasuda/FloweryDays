@@ -143,6 +143,10 @@ def single_product(request, product_pk):
             new_review.save()
             product_review_form = ProductReviewForm()
             messages.success(request, 'Successfully posted your review.')
+
+            if 'last_item' in request.session:
+                del request.session['last_item']
+
     else:
         product_review_form = ProductReviewForm()
 
@@ -174,6 +178,10 @@ def delete_review(request, review_pk):
     review = get_object_or_404(ProductReview, pk=review_pk)
     product_pk = review.product_id.pk
     review.delete()
+
+    if 'last_item' in request.session:
+        del request.session['last_item']
+
     messages.success(request,
                      'Succesfully deleted your review.')
     return redirect(single_product, product_pk)

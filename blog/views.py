@@ -92,6 +92,9 @@ def post_view(request, slug):
     else:
         comment_form = CommentForm()
 
+    if 'last_item' in request.session:
+        del request.session['last_item']
+
     context = {
         'blog_post': blog_post,
         'blog_image': blog_image,
@@ -108,5 +111,9 @@ def delete_comment(request, comment_pk):
     comment = get_object_or_404(BlogComment, pk=comment_pk)
     slug = comment.article_id.slug
     comment.delete()
+
+    if 'last_item' in request.session:
+        del request.session['last_item']
+
     messages.success(request, 'Successfully deleted your comment.')
     return redirect(post_view, slug)

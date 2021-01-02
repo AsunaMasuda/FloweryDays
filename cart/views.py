@@ -95,8 +95,9 @@ def adjust_cart(request, item_id):
                          to {cart[item_id]}')
 
     request.session['cart'] = cart
-    request.session['last_item'] = {'name': product.name,
-                                    'image': None}
+
+    last_item = request.session.get('last_item', {})
+    del last_item
 
     return redirect(reverse('view_cart'))
 
@@ -122,9 +123,9 @@ def remove_from_cart(request, item_id):
             messages.success(request, f"You've removed {product.name} \
                              from your cart")
 
-        request.session['cart'] = cart
-        request.session['last_item'] = {'name': product.name,
-                                        'image': None}
+        if 'last_item' in request.session:
+            del request.session['last_item']
+
         return HttpResponse(status=200)
 
     except Exception as e:
