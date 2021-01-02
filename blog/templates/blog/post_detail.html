@@ -53,7 +53,7 @@
                             <form method="POST" action="{% url 'post_view' blog_post.slug %}">
                                 {% csrf_token %}
                                 {{ comment_form|crispy }}
-                            <button class="btn btn-colour-1" action="submit">Submit Comment</button>
+                            <button class="btn btn-colour-1" action="submit" aria-label="Blog Comment Submit Button">Submit Comment</button>
                             </form>
                             <div class="mt-4">
                                 <a href="{% url 'category_view' blog_post.category|lower %}"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Category</a>

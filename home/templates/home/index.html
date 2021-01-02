@@ -42,7 +42,7 @@
                 >
                 Delivery to the whole of Ireland
                 </p>
-                <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% url 'onlineshop' %}">Check Our Bouquet Collections</a>
+                <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% url 'onlineshop' %}" aria-label="Carousel Button">Check Our Bouquet Collections</a>
             </div>
         </div>
         <div class="small-size-carousel carousel-item">
@@ -62,7 +62,7 @@
                 >
                 Fresh cut flowers for flower arrangements
                 </p>
-                <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% url 'onlineshop' %}">Check Our Flowers</a>
+                <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% url 'onlineshop' %}" aria-label="Carousel Button">Check Our Flowers</a>
             </div>
         </div>
         <div class="small-size-carousel carousel-item">
@@ -82,7 +82,7 @@
                 >
                 Tailor made flower bouquets
                 </p>
-                <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% anchor 'home' 'contact' %}">Submit Your Inquiry</a>
+                <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% anchor 'home' 'contact' %}" aria-label="Carousel Button">Submit Your Inquiry</a>
             </div>
         </div>
       </div>
@@ -322,7 +322,7 @@
                 {{ contact_form|crispy }}
                 <div class="row form-group">
                     <div class="col-12 text-center">
-                        <button type="submit" class="btn btn-colour-1">Submit</button>
+                        <button type="submit" class="btn btn-colour-1" aria-label="Contact Form Submit Button">Submit</button>
                     </div>
                 </div>
             </form>

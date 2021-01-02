@@ -158,7 +158,7 @@
                             <form class="form" action="{% url 'single_product' product.pk %}" method="POST">
                             {% csrf_token %}
                             {{ product_review_form|crispy }}
-                            <button class="btn btn-colour-1" action="submit">Submit Review</button>
+                            <button class="btn btn-colour-1" action="submit" aria-label="Product Review Submit Button">Submit Review</button>
                             </form>
                         </div>
                         </div>
