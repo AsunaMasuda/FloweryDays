@@ -33,8 +33,9 @@ body {
 }
 
 /** Navbar **/
-.navber-spacing {
+.navbar-spacing {
     letter-spacing: 0.5px;
+    height: 95px;
 }
 
 .shopping-cart-ex {
@@ -270,7 +271,6 @@ body {
 
 
 /** Contact **/
-
 .bg-contact {
   background: url('../img/home/contact.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -620,10 +620,10 @@ ul#social-icon a:hover {
     padding: 0 2px;
     min-width: 35px;
     text-align: center;
+    height: calc(2.5em + .75rem + -35px);
 }
 
-.product-quantity .plus,
-.product-quantity .plus-cart {
+.product-quantity .plus {
     cursor: pointer;
     display: inline-block;
     vertical-align: top;
@@ -634,8 +634,7 @@ ul#social-icon a:hover {
     text-align: center;
     }
 
-.product-quantity .minus,
-.product-quantity .minus-cart {
+.product-quantity .minus {
     cursor: pointer;
     display: inline-block;
     vertical-align: top;
@@ -647,18 +646,11 @@ ul#social-icon a:hover {
     background-clip: padding-box;
 }
 
-.minus:hover,
-.minus-cart:hover {
+.minus:hover, .plus:hover {
     background-color: #b75d69 !important;
 }
 
-.plus:hover,
-.plus-cart:hover {
-    background-color: #b75d69 !important;
-}
-
-.plus, .minus,
-.minus-cart, .plus-cart {
+.plus, .minus {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -680,7 +672,7 @@ ul#social-icon a:hover {
     background-color:white;
 }
 
-#errorMsg {
+.errorMsg {
     font-size: 0.8rem;
     color: red;
 }
@@ -995,6 +987,14 @@ ul#social-icon a:hover {
 /**---- Media Queries for responsiveness ----**/
 /* Extra Small devices (phones, less than 576px) */
 @media (min-width: 0px) and (max-width: 576px) {
+.form-control-extention {
+    display: inline-block;
+}
+
+.vertical-align {
+    margin-top: 7px;
+}
+
 .single-product-img {
     width: 250px;
     height: 250px;
@@ -1018,7 +1018,7 @@ ul#social-icon a:hover {
 .header-ex {
     position: relative;
     z-index: 9999;
-    height: 72px;
+    height: 56px;
     overflow: visible;
 }
 
@@ -1054,7 +1054,7 @@ ul#social-icon a:hover {
     height: 445px;
     top: 0;
     position: absolute;
-    padding-top: 72px;
+    padding-top: 56px;
 }
 
 .carousel-extension {
@@ -1070,6 +1070,10 @@ ul#social-icon a:hover {
     z-index: 9999;
     height: 95px;
     overflow: visible;
+}
+
+.form-control-extention {
+    display: inline-block;
 }
 
 .product-info {
@@ -1120,6 +1124,10 @@ ul#social-icon a:hover {
     z-index: 9999;
     height: 95px;
     overflow: visible;
+}
+
+.form-control-extention {
+    display: inline-block;
 }
 
 .product-info {

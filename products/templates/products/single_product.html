@@ -58,9 +58,9 @@
                     <div class="col-12">
                             {% if product.category != 'bouquet' %}
                             <div class="row mt-2">
-                                <div class="col-md-2 my-auto">Color: </div>
-                                <div class="col-md-10 my-auto">
-                                    <select class="form-control" id="color-option" name="color">
+                                <div class="col-lg-2 my-auto">Color: </div>
+                                <div class="col-lg-10 my-auto">
+                                    <select class="form-control form-control-extention" id="color-option" name="color">
                                     {% for color in colors %}
                                         <option>{{ color.color_set.all.0.name }}</option>
                                     {% endfor %}
@@ -76,7 +76,7 @@
                                             <input id="number_0" class="quantity-count form-control qty_input" type="number" name="quantity" value="1">
                                         <span id="plus_0" class="plus bg-dark">+</span>
                                     </div>
-                                    <span id="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
+                                    <span class="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
                                 </div>
                             </div>
                         <div>

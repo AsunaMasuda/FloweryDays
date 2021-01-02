@@ -8,14 +8,63 @@
 <div class="cart-color-background">
     <div class="container-fluid">
         <div class="row">
-            <div class="col">
+            <div class="col d-none d-md-block">
                     <h2 class="logo-font mt-4 mb-4">Shopping Cart</h2>
+            </div>
+            <div class="col d-block d-md-none">
+                <h4 class="logo-font mt-4 mb-4">Shopping Cart</h4>
             </div>
         </div>
         <div class="row">
-            <div class="col-9">
+            <div class="col-12 col-md-9">
             {% if cart_items %}
-                <div class="table-responsive rounded">
+            <!-- Cart View for Mobile Device -->
+                <div class="table-responsive rounded d-block d-md-none">
+                    <table class="table-cart table table-sm table-borderless">
+                        <thead class="text-black">
+                            <tr>
+                            <th scope="col">Products</th>
+                            <th scope="col"></th>
+                            <th scope="col">Subtotal</th>
+                            </tr>
+                        </thead>
+                    {% for item in cart_items %}
+                        <tr>
+                            <td class="p-3 w-25">
+                                {% include "cart/product-image.html" %}
+                            </td>
+                            <td class="py-3">
+                                {% include "cart/product-name.html" %}
+                                <div class="mb-2">
+                                    <small>
+                                        {% if item.color %}
+                                            {{ item.color }}
+                                        {% else %}
+                                            -
+                                        {% endif %}
+                                    </small>
+                                </div>
+                                {% include "cart/quantity-form.html" %}
+                                <a class="update-link text-info"><small>Update</small></a>
+                                <br>
+                                <a
+                                    class="remove-item text-danger float-left"
+                                    id="remove_{{ item.item_id }}"
+                                    data-product_color="{{ item.color }}"
+                                    ><small>Remove</small></a
+                                >
+                            </td>                        
+                            <td class="py-3">
+                                <div>€{{ item.product.price| calc_subtotal:item.quantity }}</div>
+                            </td>
+                            
+                            
+                        </tr>
+                    {% endfor %}
+                    </table>
+                </div>
+            <!-- Cart View for Desktop -->
+                <div class="table-responsive rounded d-none d-md-block">
                     <table class="table-cart table table-sm table-borderless">
                     <thead class="text-black">
                         <tr>
@@ -31,22 +80,10 @@
                     {% for item in cart_items %}
                     <tr>
                         <td class="p-3 w-25">
-                            <a href="{% url 'single_product' item.product.pk %}">
-                                {% if item.product_image %}
-                                    <img class="img-fluid rounded" src="{{ item.product_image }}" alt="{{ item.product.name }}">
-                                {% else %}
-                                    {% if item.product.product_image %}
-                                        <img class="img-fluid rounded" src="{{ item.product.product_image.url }}" alt="{{ item.product.name }}">
-                                    {% else %}
-                                        <img class="img-fluid rounded" src="{{ MEDIA_URL }}noimage.png" alt="{{ item.product.name }}">
-                                    {% endif %}
-                                {% endif %}
-                            </a>
+                            {% include "cart/product-image.html" %}
                         </td>
                         <td class="py-3">
-                            <a href="{% url 'single_product' item.product.pk %}">
-                            <p class="my-0 cart-product-name"><strong>{{ item.product.name }}</strong></p>
-                            </a>
+                            {% include "cart/product-name.html" %}
                             <a
                                 class="remove-item text-danger float-left"
                                 id="remove_{{ item.item_id }}"
@@ -67,20 +104,7 @@
                             <p class="my-0">€ {{ item.product.price }}</p>
                         </td>
                         <td class="py-3 w-25">
-                            <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
-                                {% csrf_token %}
-                                <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="product-quantity">
-                                            <span class="minus bg-dark" id="minus_{{ item.item_id }}_{{ item.color }}">-</span>
-                                                <input id="number_{{ item.item_id }}_{{ item.color }}" class="quantity-count form-control qty_input" type="number" name="quantity" value="{{ item.quantity }}">
-                                            <span class="plus bg-dark" id="plus_{{ item.item_id }}_{{ item.color }}">+</span>
-                                        </div>
-                                        <span id="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
-                                    </div>
-                                    <input type="hidden" value="{{ item.color }}" name="color">
-                                </div>
-                            </form>
+                            {% include "cart/quantity-form.html" %}
                             <a class="update-link text-info"><small>Update</small></a>
                         </td>
                         <td class="py-3">
@@ -91,7 +115,7 @@
                     </table>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-12 col-md-3">
                 <div class="order-summary-table">
                     <ul class="order-summary-ul">
                         <li class="order-summary-text">
