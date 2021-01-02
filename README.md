@@ -106,7 +106,7 @@ The user goal is to have:
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- | 
 | Shopper | Search a product with keywords | Find the most appropriate products |  
-| Shopper | Order the search results with the prices | Find the most appropriate products for the target price range | 
+| Shopper | Sort the search results by the prices | Find the most appropriate products for the target price range | 
 | Shopper | View individual product pages that have prices, descriptions, sizes, etc | Get detailed information about the product before purchasing | 
 | Shopper | Filter with a specific category of product | Easily find products in a specific category | 
 | Shopper/Site Owner | Leave/View product reviews with scores | Understand which products are popular by the other customers | 
@@ -114,13 +114,12 @@ The user goal is to have:
 
 <br/>
 
-- Purchasing and Checkout
+- Cart, Purchasing and Checkout
 
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- | 
-| Shopper | Easily select the size and quantity of a product when purchasing it | Ensure I don't accidentally select the wrong product and the quantity |  
+| Shopper | Easily select the size and quantity of a product after adding a product to a cart | Ensure I don't accidentally select the wrong product and the quantity | 
 | Shopper | Automatically suggest to log in if I did not log in, when proceeding with checkout | Smoothly proceed with my purchase | 
-| Shopper | See the purchase steps | Understand what process I am at in the purchase | 
 
 <br/>
 
