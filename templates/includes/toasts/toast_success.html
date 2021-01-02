@@ -7,42 +7,36 @@
         </button>
     </div>
     <div class="toast-body bg-white">
-        {% if last_item and not on_profile_page %}
-        <div class="row">
-        {% if last_item.image %}
-            <div class="col-4">
-                <img class="w-100" src="{{ last_item.image }}" alt="{{ product.name }}">
+            <div class="row">
+            {% if last_item.image %}
+                <div class="col-4">
+                    <img class="w-100" src="{{ last_item.image }}" alt="{{ product.name }}">
+                </div>
+                <div class="col-8">
+                    {{ message }}
+                </div>
+            {% else %}
+                <div class="col-12">
+                    {{ message }}
+                </div>
+            {% endif %}
             </div>
-            <div class="col-8">
-                {{ message }}
-            </div>
-        {% else %}
-            <div class="col-12">
-                {{ message }}
-            </div>
-        {% endif %}
-        </div>
-        <div class="row">
-            <div class="col-12 text-center">
-                <div class="total-toast mt-3">Subtotal € {{ grand_total|floatformat:2 }}</div>
-                <div class="product-count">( {{ product_count }} product)</div>
-                    {% if free_delivery_delta > 0 %}
-                    <div class="subtotal-toast mt-1">Free Delivery spending {{ free_delivery_delta|floatformat:2 }} more</div>
-                    {% else %}
-                    <div>You've got the free delivery!</div>
-                    {% endif %}
-                <a href="{% url 'view_cart' %}" class="btn btn-outline mt-2" role="button">
-                    View Cart & Checkout
-                </a>
-                <div class="continue-shopping mt-2" data-dismiss="toast" aria-label="Close">Continue Shopping</div>
-            </div>
-        </div>
-        {% else %}
-        <div class="row">
-            <div class="col-8">
-                {{ message }}
-            </div>
-        </div>        
-        {% endif %}
+            {% if grand_total > 0 %}
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="total-toast mt-3">Subtotal € {{ grand_total|floatformat:2 }}</div>
+                        <div class="product-count">( {{ product_count }} product)</div>
+                            {% if free_delivery_delta > 0 %}
+                            <div class="subtotal-toast mt-1">Free Delivery spending {{ free_delivery_delta|floatformat:2 }} more</div>
+                            {% else %}
+                            <div>You've got the free delivery!</div>
+                            {% endif %}
+                        <a href="{% url 'view_cart' %}" class="btn btn-outline mt-2" role="button">
+                            View Cart & Checkout
+                        </a>
+                        <div class="continue-shopping mt-2" data-dismiss="toast" aria-label="Close">Continue Shopping</div>
+                    </div>
+                </div>
+            {% endif %}
     </div>
 </div>
