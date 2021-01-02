@@ -79,7 +79,7 @@
                                     <ul class="pagination pagination-extension justify-content-center mt-4">
                                         {% if blog_post.has_previous %}
                                             <li class="mr-2">
-                                                <a class="move-page-button" value="{% relative_url blog_post.previous_page_number 'page' request.GET.urlencode %}">&laquo;
+                                                <a class="move-page-button" href="{% relative_url blog_post.previous_page_number 'page' request.GET.urlencode %}">&laquo;
                                                 </a>
                                             </li>
                                     {% else %}
