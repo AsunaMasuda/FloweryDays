@@ -164,15 +164,14 @@ This website is composed of 6 application: `home`, `blog`, `cart`, `checkout`, `
 Landing Page is designed as a single page website to provide site visitors with enough information so they can understand what the business is about of this site. This page has minimal amount of information to let the site visitors take next actions. The page compose of `Navbar`, `Carousel`, `About`, `Why Choose Us?`, `testimonials` and `Contact Form` section. As scrolling down on thie page, the elements are smoothly being placed by [Animate.css](https://animate.style/) and [wow.js](https://wowjs.uk/docs) animation effects to give a dynamic and sophisticated experience to the site visitors.
 
 ### Navbar
-Navbar contains  `Brand Logo`, `Search Box`, `Site Menu`, `My Account dropdown menu` and `Cart icon`.
-- Brand Logo
+Navbar is fixed at the top of pages across the site, so that the site visitors easily navigate the whole site.  Navbar contains  `Brand Logo`, `Search Box`, `Site Menu`, `My Account dropdown` and `Cart icon`.
 - Search box: This search box function allows the visitors to search the products on online shop with keywords. The keywords are searched over `name` and `descriotion` field of Product Model, `name` field of Color Model and `name` field of Flower Model.(Details of these models will be described at the [Information Architecture](#information-architecture)) This function uses "OR" condition not "AND" when searching the keywords, meaning, if the search query was "Tulip Rose", the search result shows the product found using the keyword "Tulip" OR "Rose". Searching with "OR" condition is chosen in order not to limit the possibilities for the products the potential customers want to purchase.
-- Site Menu: It collapses to toggle icon less than 992px width. 
+- Site Menu & My Account dropdown: The site menu collapses to toggle icon less than 992px width. My Account dropdown is included to toggle menu for smaller screen.
+- Cart icon: The number next to the cart icon shows the total of items added to the cart.
 
 ### Carousel
 At the top of the landing page, I placed carousels with beautiful photos of the flowers and the messages. This area is called "Above the fold" area and site visitors engage more with the content in "Above the fold".
-There are three different carousels advertise three different
-
+Three different images and messages are used in the carousel with buttons that link to three different services in the site: `Online Shop`, `Blog`  and `Inquery (Contact Form)`. This way, the users can easily access the page they look for and also the business owners can maximize the sales opportunities.
 
 ### About Us & Why Choose Us?
 `About Us` section explains what the business is and the history of the shop briefly to the site visitor.
@@ -183,26 +182,26 @@ Those two sections use the color of `Popstrat` and `Champagne Pink` from the col
 A customer testimonial section can contribute to building the trust of potential customers and also explain the benefits of your products or services. This section displays different customer's testimonials with smooth carousel auto-animation effects.
 
 ### Contact Form
-A simple contact form is placed at the end of the landing page. Site visitors fill out (name, email, subject, message) when submitting the form. An email with the inquery from the form will be sent to the admin of the website (handling by django send_mail() functionality).
+A simple contact form is placed at the end of the landing page. The email address field is prefilled if the users are logged into their account. Site visitors will fill out fields `name`, `email`, `subject` and `message` when they submit the form. An email with the inquery from the form will be sent to the admin of the website (handling by django send_mail() functionality).
 
 ### Footer
-The footer section consists of two parts: 1. General information of the Shop and Quick Link, 2. Social Media icons and credit
-1. The first footer section includes the shop address and its opening hours and quick links to the pages within the site.
-2. In this milestone project, Social Media icons are linked to my personal social media accounts, but in real settting they should be linked to business pages on social media, such as Facebook, Instragram, Twitter, Pinterest etc, for social media marketing purposes.
+The footer section consists of two sections: 1. General information of the Shop and Quick Link, 2. Social Media icons.
+1. General Info and Quick Links: The first footer section includes the shop address and its opening hours and quick links to the pages within the site.
+2. Social media icons: In this milestone project, Social Media icons are linked to my personal social media accounts, but in real settting they should be linked to business pages on social media, such as Facebook, Instragram, Twitter, Pinterest etc, for social media marketing purposes.
 
 ## Product Page
 ### Online Shop Page
 By clicking 'Online Shop' on the site menu, you can go to the online shop page. This page is filtered with 'Bouquet' category as a default as the shop owner wants to promote products that fall uner Bouquet category that has higher profit. However, the site visitor can adjust the filter condition very easily.  
-- `Filter Function`: There is a filter section at the left side of the online shop page, and you can filter products with `categories`, `color`, `flower` and `occasion/use`. You can also select multiple choices within the filter option same and use several filters to get the results.(e.g. you can choose white and red for the color option and choose tulip and rose for the flower option. In this case, the result will show the products that fall under (white OR red color) AND (tulip OR rose).) I designed the filter to this way in order not to narrow down the products the potential customers are looking for.
-- `Result Number`: It's shown above the product cards. Customers can see how many results were found in total at a glance.
-- `Product Card`: The products are displayed in cards that have `Product Name`, `Price`, `Unit`, `Add to Card` button and `View Details` button when hoverovering the product image. If the user is logged in as a superuser, Edit / Delete option is also shown on each card. 
-- `Pagination Bar`: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crutial for a site like online shop which offers many products. 
+- Product Filter: There is a filter section at the left side of the online shop page, and you can filter products with `categories`, `color`, `flower` and `occasion/use`. You can also select multiple choices within the same filter option (e.g. ) and use several filters to get the results.(e.g. you can choose white and red for the color option and choose tulip and rose for the flower option. In this case, the result will show the products that fall under (white OR red color) AND (tulip OR rose).) I designed the filter to this way in order not to narrow down the products the potential customers are looking for.
+- Result Number: It's shown above the product cards. Customers can see how many results were found in total at a glance.
+- Product Card: The products are displayed in cards that have `Product Name`, `Price`, `Unit`, and `View Details` button when hovering ove the product image. `Add to Cart` button addes the product with 1 quantity to the cart and this button only appears for bouquet category, because the other product categories have color options, so the customers have to access the product detail page. If the user is logged in as a superuser, Edit / Delete option is also shown on each card. 
+- Pagination Bar: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crutial for a site like online shop which offers many products. 
 
 ### Product Detail Page
-- `Breadcrumb` navigation is added at the top of the product detail page, which allows customers to keep track their locations in the onlineshop.
-`Product Image`: On the left side of the product detail page (single_product.html), the product images are shown. When there are several images for the product , for example, some products have color options such as Carnation, the options will be shown under the main image.
-- `Product Information`: On the right side of the product detail page, there is `Product Name`, `Price`, `Description`, `Color` option, `Quantity`, `Add to Cart` button. `Color` option is only visible when the product has the options. Also for superuser, Edit / Delete option will be shown.
-- `Product Review Section`: Customers can see the product scores and review messages by the other customers. The users can leave a score from 1 to 5, and the average of the scores by the customers is shown on the product page. To leave product review, the user is asked to log in their account. Also, to delete a review, the customer who left the review needs to log in and the delete option will be visible next to the review after logging in. At the moment, regardless of the history of purchasing the product the user wants to review for, the user is able to leave a review. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
+- Breadcrumb: Breadcrumb navigation is added at the top of the product detail page, which allows customers to keep track their locations in the onlineshop.
+- Product Image: On the left side of the product detail page (single_product.html), the product images are shown. When there are several images for the product , for example, some products have color options such as Carnation, the options will be shown under the main image.
+- Product Information: On the right side of the product detail page, there is `Product Name`, `Price`, `Description`, `Color` option, `Quantity`, `Add to Cart` button. `Color` option is only visible when the product has the options. Also for superuser, Edit / Delete option will be shown.
+- Product Review Section: Customers can see the product scores and review messages by the other customers. The users can leave a score from 1 to 5, and the average of the scores by the customers is shown on the product page. To leave product review, the user is asked to log in their account. Also, to delete a review, the customer who left the review needs to log in and the delete option will be visible next to the review after logging in. At the moment, regardless of the history of purchasing the product the user wants to review for, the user is able to leave a review. This is one of the features left to implement to limit only the user who actually purchased the product to be allowed to review.
 
 ## Cart Page
 - The left side of this cart page shows the products added to the cart. Customers are able to change the quantity or remove the product from the cart in this cart page. 
@@ -232,9 +231,15 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 ### My Profile Page
 - In Profile Page, authenticated users can 1. edit `Delivery Information` and 2. see `Order History`. 
 
-## Admin product managment
+## Admin Product Managment
+Only authenticated superuser can access to the page (products/add/). If non-logged in users try to access the url directly, it will redirect to the sign in page. If non-supseruser tries to access the url, an error message pops up that inform only superuser can access this page.
 
 ## Django-allauth features
+Base template for allauth has `Back to Home` button at the end of the page, for easy navigation for users.
+- Sign Up: The users will be asked to fill out `E-mail`, `User Name` and `Password` to create an account. When the sign up form is submitted, a verification email will be sent to the user's email address to complete the sign up process.
+- Log In: Users will be asked to input `User Name` or `Email`, and `Password` to login. If the user successfully logged in, a success message will pop up and redirect to the landing page.
+- Log out: Log out page is accessible from the site menu. After the user successfully signed out button on the sign out page, a success message will appear and redirect to the landing page.
+- Forgot password: Forgot password page is accessible from Sign In page. Users will be asked to fill out an email address they have used for their registration to the site. An email with a link to reset the password will be sent after submitting the form.
 
 ## Features Left to Implement
 There are some of features left to implement in the future which I could not add to this project this time due to the time constraints. These features are great to be added for more complete online shop service for gaining higher customer satisfactions in the site. 
@@ -250,7 +255,7 @@ At the moment, even though the color options and images for each color are shown
 This function allows users to sign up / log into their account of the site, using the existing account such as Google and Facebook. This is beneficial to users and the site ownwers. For users, it's hassle free from remembering a password for the site and it gives the users a smooth registration process. For the site owners, there are many benefits gained by social login - such as increasing user's sign up, reducing bounce rate and gaining user's information for social account which is beneficial for marketing purpose.
 ### 6. Linking a related product page to blog post
 To call more customers to purchase a product, it would be effective to link a product page which is related to a blog post theme.
-### 6. Social Media Share Icons
+### 7. Social Media Share Icons
 For social media marketing purpose, adding social media icon with a link to share products and blog posts would be effective. 
 
 ## Defensive Design
@@ -261,7 +266,7 @@ If 404 and 500 error occured within the site, a page that has the message of the
 - Django Form Validation
 
 ### Product Quantity Counter Validation
-
+- The 
 
 # Information Architecture
 ## Database choice
