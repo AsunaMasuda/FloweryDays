@@ -12,7 +12,7 @@ Ongoing research in the field of botany seems to indicate delightful things abou
 [Flowery Days](https://flowerydays.herokuapp.com/) is an online flower shop, that offers not only flower bouquets, but also a bunch of individual flowers for flower arrangements so that customers can enjoy arrangements by themselves.  
 The shop also publishes blog posts about flower arrangements, gardening and flowers/plants, where the site visitors can leave a comment.
 
-<p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/responsive_image.png" width=900></p>
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/responsive_image.png" width=900></div>
 
 This image is created with [ami.responsivedesign](http://ami.responsivedesign.is/).
 
@@ -154,7 +154,7 @@ To refrect the flower shop's brand identity, the typeface `Playfair Display` by 
 Logo design is the cornerstone in your brand identity and logo presents a company's name, product and brand. I used [Canva](https://www.canva.com/en_gb/) to create brand logo file. The font represents the brand value `elegance` and the image of a branch at the top was added to represent `Nature` brand value. 
 <p align="center"><img src = "https://raw.githubusercontent.com/AsunaMasuda/FloweryDays/master/static/img/home/logo_flowery_days.png"></p>
 
-<div "text-align: right;"><a href="#table-of-contents">Back to top</a></div>
+<div><a href="#table-of-contents">Back to top</a></div>
 
 # Features
 
@@ -169,6 +169,15 @@ Navbar is fixed at the top of pages across the site, so that the site visitors e
 - Search box: This search box function allows the visitors to search the products on online shop with keywords. The keywords are searched over `name` and `descriotion` field of Product Model, `name` field of Color Model and `name` field of Flower Model.(Details of these models will be described at the [Information Architecture](#information-architecture)) This function uses "OR" condition not "AND" when searching the keywords, meaning, if the search query was "Tulip Rose", the search result shows the product found using the keyword "Tulip" OR "Rose". Searching with "OR" condition is chosen in order not to limit the possibilities for the products the potential customers want to purchase.
 - Site Menu & My Account dropdown: The site menu collapses to toggle icon less than 992px width. My Account dropdown is included to toggle menu for smaller screen.
 - Cart icon: The number next to the cart icon shows the total of items added to the cart.
+
+Navbar for larger screensizes (width > 992px)
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/navbar_large_screen.png" width=900></div>
+
+Navbar for smaller screensizes (width < 992px)
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/navbar_small_screen.png" width=900></div>
+
+Navbar for authenticated users
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/authenticated_navbar.png" width=900></div>
 
 ### Carousel
 At the top of the landing page, I placed carousels with beautiful photos of the flowers and the messages. This area is called "Above the fold" area and site visitors engage more with the content in "Above the fold".
@@ -268,6 +277,9 @@ If 404 and 500 error occured within the site, a page that has the message of the
 
 ### Product Quantity Counter Validation
 - The 
+
+
+<div><a href="#table-of-contents">Back to top</a></div>
 
 # Information Architecture
 ## Database choice

@@ -164,3 +164,27 @@ Passed all tests.
 - Add a product with w/o image and check if they are acceptable
 ### Result:
 ### Verdict:
+
+
+# Automated Testing
+## Travis
+[Tavis CI](https://travis-ci.org/) was also used for the automated unit testing of this project. 
+Travis CI is a hosted continuous integration service to build and test software projects hosted at GitHub and Bitbucket.
+Travis CI is configured by adding a file named .travis.yml and you need to set a seclet key in the setting in Travis. 
+How to set Travis CI can be found in [this documentation](https://docs.travis-ci.com/).
+
+
+## LightHouse on Google DevTool
+Lighthouse is .... I used Lighthouse on  Landing Page, Online Shop Page/Single Product Page, Blog Page, Cart Page.
+- Landing Page
+Result: It reported the file size of some images are not appropriate, even after I used service called []() to reduce the file size. 
+ I'd like to investigate this as feature improvements because of the time constraints.
+- Blog Page
+Result: The same issue of image file sizes is reported to the Blog Page. 
+- Online Shop
+Result: 
+
+## Peer Code Review
+I got feedback from other students in Code Institute asking on Peer Code Review in Slack community.
+- Suggest to improve the readability of the text on hero image on landing page, since it's a bit hard to see.
+This is fixed by adding a dark color layer onto the image.
