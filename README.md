@@ -214,8 +214,19 @@ The footer section consists of two sections: 1. General information of the Shop 
 ### Online Shop Page
 By clicking 'Online Shop' on the site menu, you can go to the online shop page. This page is filtered with 'Bouquet' category as a default as the shop owner wants to promote products that fall uner Bouquet category that has higher profit. However, the site visitor can adjust the filter condition very easily.  
 - Product Filter: There is a filter section at the left side of the online shop page, and you can filter products with `categories`, `color`, `flower` and `occasion/use`. You can also select multiple choices within the same filter option and use several filters to get the results.(e.g. you can choose white and red for the color option and choose tulip and rose for the flower option. In this case, the result will show the products that fall under (white OR red color) AND (tulip OR rose).) I designed the filter this way in order not to narrow down the products the potential customers are looking for.
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/product_filter.png" width=700></div>
+
 - Result Number: It's shown above the product cards. Customers can see how many results were found in total at a glance.
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/result_number.png" width=700></div>
+
 - Product Card: The products are displayed in cards that have `Product Name`, `Price`, `Unit`, and `View Details` button when hovering ove the product image. `Add to Cart` button addes the product with 1 quantity to the cart and this button only appears for bouquet category, because the other product categories have color options, so the customers have to access the product detail page. If the user is logged in as a superuser, Edit / Delete option is also shown on each card.
+
+Product Card for Bouquets
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/bouquet_product_card.png" width=700></div>
+
+Product Card for Flowers
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/flower_product_card.png" width=700></div>
+
 - Pagination Bar: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crucial for a site like which offers many products for sale.
 
 ### Product Detail Page
@@ -224,9 +235,14 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 - Product Information: On the right side of the product detail page, there is a `Product Name`, `Price`, `Description`, `Color` option, `Quantity`, `Add to Cart` button. `Color` option is only visible when the product has the options. Also for superuser, Edit / Delete option will be shown.
 - Product Review Section: Customers can see the product scores and review messages by other customers. The users can leave a score from 1 to 5, and the average of the scores of the customer reviews is shown on the product page. To leave a product review, the user is asked to log in to their account. Also, to delete a review, the customer who left the review needs to log in and the delete option will be visible next to the review after logging in. At the moment, regardless of whether they have purchase history or not, the user is able to leave a review. This is one of the features left to implement to limit it so only the user who actually purchased the product will be allowed to review.
 
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/product_detail.png" width=700></div>
+
+
 ## Cart Page
 - The left side of this cart page shows the products added to the cart. Customers are able to change the quantity or remove the products in this cart page.
 - On the right side of this cart page, there is an Order Summary section that shows `Cart Total`, `Delivery` and `Grand Total`. This way, customers are able to check the order summary at first glance even if they have added a lot of products to the shopping cart.
+
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/shopping_cart.png" width=700></div>
 
 ## Checkout Page
 ### Checkout Page
@@ -246,6 +262,8 @@ By clicking 'Online Shop' on the site menu, you can go to the online shop page. 
 - `Breadcrumb` navigation is added at the top of the blog post detail page for easy navigation.
 - `Leave Comment` function: Site visitors are able to leave comments on blog posts. It requires the visitors to log into their account to do so. Also, after logging in, they can delete comments they left in the past with the delete option shown next to their comment(s).
 - To post a new blog article, the admin has to go to the Django Admin site. One of the features left to implement is add a page in the site itself where the admin is able to post a new article without accessing the Django Admin site.
+
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/blog_article.png" width=700></div>
 
 ## Profiles Page
 `My Profile` page is available for authenticated users and will be shown in the `My Account` Dropdown menu at the navbar which appears when you log into your account.
