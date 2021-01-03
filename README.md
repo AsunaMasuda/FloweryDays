@@ -1,6 +1,6 @@
-[![Build Status](https://travis-ci.org/AsunaMasuda/FloweryDays.svg?branch=master)](https://travis-ci.org/AsunaMasuda/FloweryDays)
-
 # Flowery Days
+
+[![Build Status](https://travis-ci.org/AsunaMasuda/FloweryDays.svg?branch=master)](https://travis-ci.org/AsunaMasuda/FloweryDays)
 
 Ongoing research in the field of botany seems to indicate delightful things about flowers:
 - Flowers can help heal the common cold.
@@ -9,10 +9,12 @@ Ongoing research in the field of botany seems to indicate delightful things abou
 - Flowers aid relaxation.
 - Flowers increase energy.
 
-[Flowery Days]() is an online flower shop, that offers not only flower bouquets, but also a bunch of individual flowers so that customers can create arrangements by themselves.  
+[Flowery Days](https://flowerydays.herokuapp.com/) is an online flower shop, that offers not only flower bouquets, but also a bunch of individual flowers for flower arrangements so that customers can enjoy arrangements by themselves.  
 The shop also publishes blog posts about flower arrangements, gardening and flowers/plants, where the site visitors can leave a comment.
 
-<p align="center"><img src = "" width=900></p>
+<p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/responsive_image.png" width=900></p>
+
+This image is created with [ami.responsivedesign](http://ami.responsivedesign.is/).
 
 ## Table of Contents
 
@@ -59,21 +61,22 @@ The shop also publishes blog posts about flower arrangements, gardening and flow
 # UX
 ## Project Goals
 ### Target Audience
-- 
+- People who are looking to buy flowers / bouquets
+- People who love flowers/botanies
+- People who seek for presents for special occasions such as birthday
+- People who want to try to mare a flower arrangement and decoration by their own
+- People who want to read interesting blog articles about flowers / botanies / gardening
 
 ### Visitor / User Goals
--
+- Purchase products in a smooth and secure way
+- Get informed with the products before buying by product reviews / product information
+- Gain interesting knowledge about flowers from blog articles and leave a comment to blog articles
 
 ### Business Goals (Site Owner's Goals)
--
-
-## User Goals
-The target audience for this website is:
-1. The site owner who wants to open an online shop where customers can purchase products safely
-2. People who are interested in buying flowers and gardening products
-3. People who are interested in gaining flower decoration and gardening tips and inspirations
-
-The user goal is to have:
+- Provide customers with a secure and safe ecommerce shop
+- Establish the shop's brand image
+- Expand their business effectively
+- Make profit from selling products / services
 
 ## User Stories
 
@@ -155,20 +158,21 @@ Logo design is the cornerstone in your brand identity and logo presents a compan
 # Features
 
 ## Existing Features
-Flowery Days website is composed of 6 application: `home`, `blog`, `cart`, `checkout`, `products`, `profiles`.
+This website is composed of 6 application: `home`, `blog`, `cart`, `checkout`, `products`, `profiles`.
 
 ## Landing Page (Home)
-Landing Page is designed as a single page website to provide with enough information for the site visitor to understand what the business is about on this site. This page has minimal amount of information to make the site visitors make decisions and take next actions. The page compose of `Navbar`, `Carousel`, `About`, `Why Choose Us?`, `testimonials` and `Contact Form` section. As scrolling down on thie page, the elements are smoothly being placed by [Animate.css](https://animate.style/) and [wow.js](https://wowjs.uk/docs) animation effects to give a dynamic and sophisticated experience to the site visitors.
+Landing Page is designed as a single page website to provide site visitors with enough information so they can understand what the business is about of this site. This page has minimal amount of information to let the site visitors take next actions. The page compose of `Navbar`, `Carousel`, `About`, `Why Choose Us?`, `testimonials` and `Contact Form` section. As scrolling down on thie page, the elements are smoothly being placed by [Animate.css](https://animate.style/) and [wow.js](https://wowjs.uk/docs) animation effects to give a dynamic and sophisticated experience to the site visitors.
 
 ### Navbar
-When site visitors landed on the page, the hight of the navbar is set as "165 px". I wanted to make the whole brand logo visible to make it memorable because the first view of the page is important that gives the first impressions of the site to the users. If you scroll down the navbar shrinks to the height of "100 px" and sticks at the top of the view, for easy navigations and wider views of content on the landing page. The brand logo which is placed at the left top also becomes the branch icon. 
-
-Navbar contains a site menu, a `Search Box`, `Login button`, `Sign Up button`, `Cart icon`.
+Navbar contains  `Brand Logo`, `Search Box`, `Site Menu`, `My Account dropdown menu` and `Cart icon`.
+- Brand Logo
 - Search box: This search box function allows the visitors to search the products on online shop with keywords. The keywords are searched over `name` and `descriotion` field of Product Model, `name` field of Color Model and `name` field of Flower Model.(Details of these models will be described at the [Information Architecture](#information-architecture)) This function uses "OR" condition not "AND" when searching the keywords, meaning, if the search query was "Tulip Rose", the search result shows the product found using the keyword "Tulip" OR "Rose". Searching with "OR" condition is chosen in order not to limit the possibilities for the products the potential customers want to purchase.
-
+- Site Menu: It collapses to toggle icon less than 992px width. 
 
 ### Carousel
 At the top of the landing page, I placed carousels with beautiful photos of the flowers and the messages. This area is called "Above the fold" area and site visitors engage more with the content in "Above the fold".
+There are three different carousels advertise three different
+
 
 ### About Us & Why Choose Us?
 `About Us` section explains what the business is and the history of the shop briefly to the site visitor.
@@ -244,6 +248,10 @@ At the moment, the site owner/admin has to use Django Admin to post a new blog a
 At the moment, even though the color options and images for each color are shown on its product page, these two are not changed if the other is changed. It will be more ideal the action of those two elements is synced.
 ### 5. Social Account Login
 This function allows users to sign up / log into their account of the site, using the existing account such as Google and Facebook. This is beneficial to users and the site ownwers. For users, it's hassle free from remembering a password for the site and it gives the users a smooth registration process. For the site owners, there are many benefits gained by social login - such as increasing user's sign up, reducing bounce rate and gaining user's information for social account which is beneficial for marketing purpose.
+### 6. Linking a related product page to blog post
+To call more customers to purchase a product, it would be effective to link a product page which is related to a blog post theme.
+### 6. Social Media Share Icons
+For social media marketing purpose, adding social media icon with a link to share products and blog posts would be effective. 
 
 ## Defensive Design
 ### Error views (404 and 500 error)
