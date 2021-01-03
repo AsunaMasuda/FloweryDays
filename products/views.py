@@ -91,12 +91,12 @@ def filter_product(request):
 
 
 def onlineshop(request):
-    """ A view for online shop (fintered with 'bouquet' category) """
+    """ A view for online shop (filtered with 'bouquet' category) """
 
     categories = list(set(Product.objects.values_list('category', flat=True)))
     occasions = list(set(Product.objects.values_list('occasion', flat=True)))
-    colors = Color.objects.all()
-    flowers = Flower.objects.all()
+    colors = list(set(Color.objects.all().values_list('name', flat=True)))
+    flowers = list(set(Flower.objects.all().values_list('name', flat=True)))
     product_list = Product.objects.all()
 
     category_name = ['bouquet']
