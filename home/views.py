@@ -1,6 +1,7 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.core.mail import send_mail, BadHeaderError
 from django.http import HttpResponse
+from profiles.models import UserProfile
 
 from django.conf import settings
 
@@ -12,7 +13,13 @@ def index(request):
     Render index.html and ContactForm
     """
     template = 'home/index.html'
-    contact_form = ContactForm()
+
+    # Prefill the email address field at contact form
+    if request.user.is_authenticated:
+        profile = get_object_or_404(UserProfile, user=request.user)
+        contact_form = ContactForm(initial={"email": profile.default_email})
+    else:
+        contact_form = ContactForm()
 
     context = {
         'contact_form': contact_form,
