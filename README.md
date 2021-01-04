@@ -214,18 +214,18 @@ The footer section consists of two sections: 1. General information of the Shop 
 ### Online Shop Page
 By clicking 'Online Shop' on the site menu, you can go to the online shop page. This page is filtered with 'Bouquet' category as a default as the shop owner wants to promote products that fall uner Bouquet category that has higher profit. However, the site visitor can adjust the filter condition very easily.  
 - Product Filter: There is a filter section at the left side of the online shop page, and you can filter products with `categories`, `color`, `flower` and `occasion/use`. You can also select multiple choices within the same filter option and use several filters to get the results.(e.g. you can choose white and red for the color option and choose tulip and rose for the flower option. In this case, the result will show the products that fall under (white OR red color) AND (tulip OR rose).) I designed the filter this way in order not to narrow down the products the potential customers are looking for.
-<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/product_filter.png" width=700></div>
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/product_filter.png" width=250></div>
 
 - Result Number: It's shown above the product cards. Customers can see how many results were found in total at a glance.
-<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/result_number.png" width=700></div>
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/result_number.png" width=350></div>
 
 - Product Card: The products are displayed in cards that have `Product Name`, `Price`, `Unit`, and `View Details` button when hovering ove the product image. `Add to Cart` button addes the product with 1 quantity to the cart and this button only appears for bouquet category, because the other product categories have color options, so the customers have to access the product detail page. If the user is logged in as a superuser, Edit / Delete option is also shown on each card.
 
 Product Card for Bouquets
-<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/bouquet_product_card.png" width=700></div>
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/bouquet_product_card.png" width=500></div>
 
 Product Card for Flowers
-<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/flower_product_card.png" width=700></div>
+<div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/flower_product_card.png" width=250></div>
 
 - Pagination Bar: At the bottom of this online shop page, I've set a pagination bar for easy navigation when there are many results to show. Setting up a pagination bar and limiting the number of the products reduce the loading time and make the site look more organized, which is crucial for a site like which offers many products for sale.
 
@@ -336,6 +336,7 @@ A bouquet could have several types of flowers and multiple colors. For example, 
 ### Profile App
 `Profile` is used for my profile page where the authenticated users can see their delivery details and their order history.
 
+<div><a href="#table-of-contents">Back to top</a></div>
 
 # Technologies Used
 The main frontend development was created using HTML, CSS, JavaScript and their libraries. The main backend development was powered by Python and Django.
@@ -364,27 +365,15 @@ The main frontend development was created using HTML, CSS, JavaScript and their 
 - [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
 - [dbdiagram.io](https://dbdiagram.io/home)
 - [coolors.co](https://coolors.co/)
+- [AWS S3 bucket](https://aws.amazon.com/)
 
 ## Databases
 - [SQlite3](https://www.sqlite.org/index.html)- database used for development.
 - [PostgreSQL](https://www.postgresql.org/) - database used for production.
 
 # Testing
-Manual Testing and Automated Testing can be found in [this article]().
+Testing was conducted and recorded in a different file: [Testing.md](https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/testing.md).
 
-## Code Valication and Formatting 
-### Validation Tools
-I used these validation tools below for each file.
-- HTML: [W3C HTML Validator](https://validator.w3.org/)
-- CSS: [W3C CSS validator](https://jigsaw.w3.org/css-validator/)
-- JavaScript: [JSHint](https://jshint.com/)
-- Python: [PEP8 online](http://pep8online.com/)
-
-### Formatter
-- HTML: [HTML Formatter](https://webformatter.com/html)
-- CSS: [CSS Formatter](https://webformatter.com/css)
-- JavaScript: [Online JavaScript Beautifier](https://beautifier.io/)
-- Python:[PEP8 online](http://pep8online.com/)
 
 # Deployment
 ## Heroku Deployment with AWS
@@ -507,6 +496,7 @@ The other ways to clone a repository are written in this [GitHub documentation](
 
 ### Images
 - The favicon for this site is provided by [flaticon](https://www.flaticon.com/)
+- The credits for the images used in this site can be found in this [separated file]().
 
 ### UX
 - 
