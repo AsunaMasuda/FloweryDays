@@ -434,20 +434,14 @@ else:
 ```
 ALLOWED_HOSTS = ['flowerydays.herokuapp.com', 'localhost', '127.0.0.1']
 ```
-15. Commit all the changes to Heroku. Medial files are not connected to the app yet but the app should be working on Heroku.
+15. In Stripe, add Heroku app URL a new webhook endpoint.
+16. Update the settings.py with the new Stripe environment variables and email settings.
+17. Commit all the changes to Heroku. Medial files are not connected to the app yet but the app should be working on Heroku.
 
 ### Amazon Web Service S3
-
-To enable the browsers to cache static files, add the following to settings.py:
-AWS_S3_OBJECT_PARAMETERS = {
-    'Expires': 'Thu, 31 Dec 2009 20:00:00 GMT',
-    'CacheControl': 'max-age=94608000',
-}
-
-
-[AWS website](https://aws.amazon.com/)
-
-CORS configuration
+The static files and media files for this deployed site (e.g. image files for product/blog) are hosted in the [AWS](https://aws.amazon.com/) S3 Bucket. You will need to create S3 bucket, complete the setting up and upload static files and media files to the S3 bucket. You can find [Amazon S3 documentation](https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html) for more information on the setting.
+I used CORS configuration below:
+```
 [
   {
       "AllowedHeaders": [
@@ -462,34 +456,48 @@ CORS configuration
       "ExposeHeaders": []
   }
 ]
+```
 
-To connect AWS S3 bucket to Django, we need to download boto3 and django-storages. You can do so using a command `pip3 install boto3` and `pip3 install django-storages` in your terminal.
-Add 'storages' to `INSTALLED_APPS` in settings.py.
-Add the following in settings.py.
+- Setting for static/media files in settings.py
+1. Install `boto3` and `django-storages` with a command `pip3 install boto3` and `pip3 install django-storages` in your terminal, to connect AWS S3 bucket to Django.
+2. Add 'storages' to `INSTALLED_APPS` in settings.py.
+3. Add the following in settings.py.
+```
 if 'USE_AWS' in os.environ:
+    # Cache Control
+    AWS_S3_OBJECT_PARAMETERS = {
+        'Expires': 'Thu, 31 Dec 2099 20:00:00 GMT',
+        'CacheControl': 'max-age=94608000',
+    }
+
+    # Bucket Config
     AWS_STORAGE_BUCKET_NAME = 'flowerydays'
     AWS_S3_REGION_NAME = 'eu-west-1'
     AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID')
     AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY')
-Go to Heroku Settings and add `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to config variable, and set `USE_AWS` as `True` so that our settings file knows to use the AWS configuration when we deploy to Heroku.
-Delete DISABLE_COLLECTSTATIC
-Add `custom_storages.py`
-Push all the changes to Github/Heroku and all the static files will be uploaded to S3 bucket
+    AWS_S3_CUSTOM_DOMAIN = f'{AWS_STORAGE_BUCKET_NAME}.s3-eu-west-1.amazonaws.com'
+
+    # Static and media files
+    STATICFILES_STORAGE = 'custom_storages.StaticStorage'
+    STATICFILES_LOCATION = 'static'
+    DEFAULT_FILE_STORAGE = 'custom_storages.MediaStorage'
+    MEDIAFILES_LOCATION = 'media'
+
+    # Override static and media URLs in production
+    STATIC_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{STATICFILES_LOCATION}/'
+    MEDIA_URL = f'https://{AWS_S3_CUSTOM_DOMAIN}/{MEDIAFILES_LOCATION}/'
+```
+5. Add [custom_storages.py](https://github.com/AsunaMasuda/FloweryDays/blob/master/custom_storages.py).
+6. Delete DISABLE_COLLECTSTATIC from Heroku Config Var.
+7. Push all the changes to Github/Heroku and all the static files will be uploaded to S3 bucket.
+By setting up above, Heroku will run python3 manage.py collectstatic during the build process and look for static and media files.
 
 ### Automatic Deploy on Heroku
 You can enable automatic deploy in the following steps that pushes update to Heroku everytime you push to github.
-1. Go to Deploy in Heroku dashboard
-2. At `Automatic deploys`, choose a github repository you want to deploy
-3. Click `Enable Automatic Deploys`
+1. Go to Deploy in Heroku dashboard.
+2. At `Automatic deploys`, choose a github repository you want to deploy.
+3. Click `Enable Automatic Deploys`.
 
-
-| Key | Value |
- --- | ---
-DEBUG | FALSE
-IP | 0.0.0.0
-PORT | 5000
-MONGO_URI | `mongodb+srv://<username>:<password>@<cluster_name>-ocous.mongodb.net/<database_name>?retryWrites=true&w=majority`
-SECRET_KEY | `<your_secret_key>`
 
 ## Local Deployment
 For local deployment, you need to have an IDE (I used Gitpod for this project) and you need to install the following:
