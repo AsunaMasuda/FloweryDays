@@ -389,6 +389,7 @@ This website is deployed on [Heroku](https://www.heroku.com/), following these s
 5. Go to Heroku and create a **new app**. Set a name for this app and select the closest region (Europe) and click **Create app**.
 6. Go to **Resources** tab in Heroku, then in the **Add-ons** search bar look for **Heorku Postgres**(you can type postgres), select **Hobby Dev — Free** and click **Submit Order Form** button to add it to your project.
 7. In the heroku dashboard for the application, click on **Setting** > **Reveal Config Vars** and set the values as follows:
+
 | Key | Value |
 | ----------- | ----------- |
 | AWS_ACCESS_KEY_ID | <Your AWS Access Key> |
@@ -401,6 +402,7 @@ This website is deployed on [Heroku](https://www.heroku.com/), following these s
 | STRIPE_SECRET_KEY | <Your Stripe Secret Key>  |
 | STRIPE_WH_SECRET | <Your Stripe WH Key> |
 | USE_AWS | True |
+
 * I used [Djecrety](https://djecrety.ir/) to generate Django Secret Key.
 
 8. Comment out the current database setting in settings.py, and add the code below instead. This is done temporarily to migrate the datbase on Heroku.
@@ -539,7 +541,7 @@ os.environ["STRIPE_WH_SECRET"] = "<Your Stripe WH Secret Key>"
 
 ### Images
 - The favicon for this site is provided by [flaticon](https://www.flaticon.com/)
-- The credits for the images used in this site can be found in this [separated file]().
+- The credits for the images used in this site can be found in this [separated file](https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/image_credit.md).
 
 ### UX
 - 
