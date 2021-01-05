@@ -321,7 +321,10 @@ If 404 and 500 error occured within the site, a page that has the message of the
 
 ## Data Modeling
 Following is Entity Relationship Diagram of this project. I created this diagram with [dbdiagram.io](https://dbdiagram.io/home).
+When I designed this ERD, I referred to [this article](https://launchschool.com/books/sql/read/table_relationships). 
 <p align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/Entity_Relationship_Diagrams.png?raw=true" width=900></p>
+
+I made fixtures for `Product`, `Color` ,`Image` and `Flower` models on Google sheet (.csv file) first, and used [this tool](https://json-csv.com/reverse) to .json file.
 
 ### Product App
 A bouquet could have several types of flowers and multiple colors. For example, below the product 'Floral Fantasy' has `Delphinium`, `Rose`, `Tulip` and `Tistle` for its flowers and it can be categorized as `Red` and `Orange`. To give customers a better search experience, meaning not to narrow down the search results with the search keyword, I wanted to enable customers to search/filter bouquets with their flower type(name) or their color. For example, if a customer uses a filter `tulip`, bouquets that contains `tulip` (such as the 'Floral Fantasy') and also individual tulip flower product (not bouquet) will be shown. Therefore, separated models `Product`, `Flower`, `Color` are created and connected inbetween. `Image` model is connected to `Product` model because some products could have several product images. Also `Image` model is connected to `Color` model, because each product image should a product that could have mutiple colors. There might have been a better implementation than this scheme, but at the time, this was the best idea I had.
@@ -364,7 +367,6 @@ The main frontend development was created using HTML, CSS, JavaScript and their 
 - [PIP](https://pip.pypa.io/en/stable/installing/)
 - [Django Debug Toolbar](https://django-debug-toolbar.readthedocs.io/en/latest/)
 - [dbdiagram.io](https://dbdiagram.io/home)
-- [coolors.co](https://coolors.co/)
 - [AWS S3 bucket](https://aws.amazon.com/)
 
 ## Databases
@@ -528,23 +530,20 @@ os.environ["STRIPE_WH_SECRET"] = "<Your Stripe WH Secret Key>"
 
 # Credits
 
-### Content
-- All text within this project was written by the developer.
+### Content & Code
+- I constantly read [Django](https://docs.djangoproject.com/en/3.1/), [Stripe](https://stripe.com/docs) and [Python](https://docs.python.org/3/) documenation and tutorial throughout the development.
+- For `Blog` app, I referred to [this tutorial](https://djangocentral.com/building-a-blog-application-with-django/).
+- I refered to [this code snippet](https://bootsnipp.com/snippets/k2RdV) for the Testinonial section on the landing page.
+- For search product function, I refered to several articles and video. [](), [](), [](), []().
+- For the hover show button on the product card, I refered to this [code snippet](https://codepen.io/philcheng/pen/YWyYwG).
+- For creating custome template tags used in `Blog` and `Product` apps, I refered to [this video](https://www.youtube.com/watch?v=XtbvBlCyfT4).
+- This project was developed refering to the Boutique Ado Django mini-project from Code Institute course materials. The codes are customized and modified to fit the purpose of this milestone project.
 
-### Code
-- 
-- 
-
-### Icons
+### Images & Media
 - All the icons in this website were provided by [Font Awesome](https://fontawesome.com/).
 - Favicon is made by [Freepik](https://www.flaticon.com/authors/freepik) from [www.flaticon.com](https://www.flaticon.com/).
-
-### Images
-- The favicon for this site is provided by [flaticon](https://www.flaticon.com/)
 - The credits for the images used in this site can be found in this [separated file](https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/image_credit.md).
-
-### UX
-- 
+- To compress the image size, I used [tinypng](https://tinypng.com/).
 
 ### Acknowledgements
 - Thanks to: my Code Institute Mentor Guido Cecilio Garcia Bernal for his advice throughout the development process.
