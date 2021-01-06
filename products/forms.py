@@ -5,7 +5,7 @@ from .models import Product, ProductReview
 class ProductForm(forms.ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
+        exclude = ('rating',)
 
 
 class ProductReviewForm(forms.ModelForm):
