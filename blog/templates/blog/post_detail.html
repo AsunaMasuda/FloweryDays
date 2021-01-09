@@ -15,7 +15,17 @@
                 <div class="pr-4 pl-4 mb-4 mt-4">
                     <div class="pr-4 pl-4 mb-4 mt-4">
                         <h2 class="card-title">{{ blog_post.title }}</h2>
-                        <p class="card-text text-muted mt-2">{{ blog_post.author }} | {{ blog_post.created_on }} </p>
+                        <span class="card-text text-muted mt-2">
+                            {{ blog_post.author }} | {{ blog_post.created_on }}
+                        </span>
+                        {% if request.user.is_superuser %}
+                        <span class="ml-2">
+                            <a href="{% url 'edit_blog' blog_post.pk %}" class="blog_edit">Edit</a> | 
+                            <a href="{% url 'delete_blog' blog_post.pk %}" class="blog_delete">Delete</a>
+                        </span>
+                        {% endif %}
+                    </div>
+                    <div class="mt-2">
                         <p class="card-text">{{ blog_post.content|linebreaks }}</p>
                     </div>
                     <hr>
