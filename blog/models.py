@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.template.defaultfilters import slugify
 
 STATUS = (
    (0, "Draft"),
@@ -23,11 +24,12 @@ class BlogPost(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return '{}, {}, {}, {}, {}'.format(self.title,
-                                           self.slug,
-                                           self.author,
-                                           self.category,
-                                           self.content)
+        return '{}, {}'.format(self.title,
+                               self.category)
+
+    def save(self, *args, **kwargs):
+        self.slug = slugify(self.title)
+        super(BlogPost, self).save(*args, **kwargs)
 
 
 class BlogImage(models.Model):
@@ -56,8 +58,6 @@ class BlogComment(models.Model):
         ordering = ['-created_on']
 
     def __str__(self):
-        return '{}, {}, {}, {}, {}'.format(self.article_id,
-                                           self.user_id,
-                                           self.comment_title,
-                                           self.blog_comment,
-                                           self.created_on)
+        return '{}, {}, {}'.format(self.article_id,
+                                   self.user_id,
+                                   self.comment_title)
