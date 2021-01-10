@@ -210,16 +210,16 @@ Travis CI is a hosted continuous integration service to build and test software 
 Travis CI is configured by adding a file named .travis.yml and you need to set a seclet key in the setting in Travis. 
 How to set Travis CI can be found in [this documentation](https://docs.travis-ci.com/).
 
+## Django tests
+I have run tests for the models and views in all apps, where applicable.
+I have tried to automate the tests as much as possible, but could not reach 100% coverage, since some parts in views.py are complicated and it was difficult to test automatically so I chose manual testing. I also learned [Test-Driven Development](https://www.guru99.com/test-driven-development.html) while learning Django Testing, next time when I build a Django application, I want to try this approach.
+
 
 ## LightHouse on Google DevTool
-Lighthouse is .... I used Lighthouse on  Landing Page, Online Shop Page/Single Product Page, Blog Page, Cart Page.
-- Landing Page
-Result: It reported the file size of some images are not appropriate, even after I used service called []() to reduce the file size. 
+ I used Lighthouse by Google on Landing Page, Online Shop Page/Single Product Page, Blog Page, Cart Page.
+Result: `Landing Page` - It reported the file size of some images are not appropriate, even after I used service called []() to reduce the file size. 
  I'd like to investigate this as feature improvements because of the time constraints.
-- Blog Page
-Result: The same issue of image file sizes is reported to the Blog Page. 
-- Online Shop
-Result: 
+`Blog Page` - The same issue of image file sizes is reported to the Blog Page. 
 
 
 # Code Valication and Formatting 
