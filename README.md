@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/AsunaMasuda/FloweryDays.svg?branch=master)](https://travis-ci.org/AsunaMasuda/FloweryDays)
 
+Link to [Deployed Site](https://flowerydays.herokuapp.com/)
+
 Ongoing research in the field of botany seems to indicate delightful things about flowers:
 - Flowers can help heal the common cold.
 - Flowers can help improve moods.
@@ -19,13 +21,13 @@ This image is created with [ami.responsivedesign](http://ami.responsivedesign.is
 ## Table of Contents
 
 1. [UX](#ux)
-    - [Project Goals](#goals)
+    - [Project Goals](#project-goals)
     - [User Stories](#user-stories)
     - [Design](#design)
 
 2. [Features](#features)
     - [Existing Features](#existing-features)
-        - [Landing Page](#landing-page)
+        - [Landing Page](#landing-page-(home))
         - [Product Page](#product-page)
         - [Cart Page](#cart-page)
         - [Checkout Page](#checkout-page)
@@ -42,17 +44,15 @@ This image is created with [ami.responsivedesign](http://ami.responsivedesign.is
 
 4. [Technologies Used](#technologies-used)
     - [Languages](#languages)
-    - [Libraries and Frameworks](#libraries-and-frameworks)
+    - [Libraries and Packages](#libraries-and-packages)
     - [Tools](#tools)
     - [Databases](#databases)
 
 5. [Testing](#testing)
-    - [Manual Testing](#manual-testing)
-    - [Bugs](#bugs)
 
-6. [Deployment](#deployment)
+6. [Deployment](#deployment)=
+    - [Heroku Deployment with AWS](#heroku-deployment-with-AWS)
     - [Local Deployment](#local-deployment)
-    - [Heroku Deployment](#heroku-deployment)
 
 7. [Credits](#credits)
 
@@ -78,6 +78,8 @@ This image is created with [ami.responsivedesign](http://ami.responsivedesign.is
 - Establish the shop's brand image
 - Expand their business effectively
 - Make profit from selling products / services
+
+<div><a href="#table-of-contents">Back to top</a></div>
 
 ## User Stories
 
@@ -126,6 +128,8 @@ This image is created with [ami.responsivedesign](http://ami.responsivedesign.is
 | Shopper | Automatically suggest to log in if I did not log in, when proceeding with checkout | Smoothly proceed with my purchase |
 
 <br/>
+
+<div><a href="#table-of-contents">Back to top</a></div>
 
 ## Design
 ### Wireframes
@@ -210,6 +214,8 @@ The footer section consists of two sections: 1. General information of the Shop 
 2. Social media icons: In this milestone project, Social Media icons are linked to my personal social media accounts, but in a real settting they should be linked to business pages on social media, such as Facebook, Instragram, Twitter, Pinterest etc, for social media marketing purposes.
 <div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/footer2.png" width=700></div>
 
+<div><a href="#table-of-contents">Back to top</a></div>
+
 ## Product Page
 ### Online Shop Page
 By clicking 'Online Shop' on the site menu, you can go to the online shop page. This page is filtered with 'Bouquet' category as a default as the shop owner wants to promote products that fall uner Bouquet category that has higher profit. However, the site visitor can adjust the filter condition very easily.  
@@ -253,6 +259,8 @@ Product Card for Flowers
 - A thank you message will be displayed after the checkout process as well as the table that holds the order details.
 - `Keep Shopping` button is placed at the end of the page, and if the customer has been logged into their account, `Back to Profile` will be shown.
 
+<div><a href="#table-of-contents">Back to top</a></div>
+
 ## Blog Page
 ### Blog Feed Page
 - After clicking `Blog` on the site menu at the top, Blog Feed page is loaded. On this page, blog posts will be displayed in descending order by the posted date. To display the blog posts beautifully, the layout that shows posts in 2-1-2 order was chosen. `Pagination Bar` is also added at the end of the page.
@@ -261,9 +269,12 @@ Product Card for Flowers
 ### Blog Post Detail Page
 - `Breadcrumb` navigation is added at the top of the blog post detail page for easy navigation.
 - `Leave Comment` function: Site visitors are able to leave comments on blog posts. It requires the visitors to log into their account to do so. Also, after logging in, they can delete comments they left in the past with the delete option shown next to their comment(s).
-- To post a new blog article, the admin has to go to the Django Admin site. One of the features left to implement is add a page in the site itself where the admin is able to post a new article without accessing the Django Admin site.
+- If user is logged in as superuser, they can see the choice of edit/delete at the top of the page.
 
 <div align="center"><img src = "https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/blog_article.png" width=700></div>
+
+### Add/Edit Blog
+- If user is logged in as superuser, they can access to Add / Edit Blog post page. This page is combined with two forms `BlogForm` and `BlogImageForm`.
 
 ## Profiles Page
 `My Profile` page is available for authenticated users and will be shown in the `My Account` Dropdown menu at the navbar which appears when you log into your account.
@@ -271,7 +282,7 @@ Product Card for Flowers
 - In Profile Page, authenticated users can 1. edit `Delivery Information` and 2. see `Order History`.
 
 ## Admin Product Managment
-Only authenticated superusers can access the page (products/add/). If non-logged in users try to access the url directly, it will redirect to the sign in page. If a non-superuser tries to access the url, an error message pops up which says that only a superuser can access this page.
+Only authenticated superusers can access the admin page (1.products/add/, 2. products/edit/, 3. products/delete/, 4. 5. 6. ). If non-logged in users try to access the url directly, it will redirect to the sign in page. If a non-superuser tries to access the url, an error message pops up which says that only a superuser can access this page.
 
 ## Django-allauth features
 Base template for allauth has `Back to Home` button at the end of the page, for easy navigation for users.
@@ -280,21 +291,21 @@ Base template for allauth has `Back to Home` button at the end of the page, for 
 - Log out: Log out page is accessible from the site menu. After the user successfully signed out button on the sign out page, a success message will appear and redirect to the landing page.
 - Forgot password: Forgot password page is accessible from Sign In page. Users will be asked to put in an email address which they have used for their registration to the site. An email with a link to reset the password will be sent after submitting the form.
 
+<div><a href="#table-of-contents">Back to top</a></div>
+
 ## Features Left to Implement
 There are some of features left to implement in the future which I could not add to the project this time due to time constraints. These features are great to be added for a more complete online shop service which would lead to higher customer satisfaction.
 ### 1. Limit the user who can leave product review
 At the moment, all the authenticated users can leave reviews to any products if they are logged in. It should be limited to those who actually purchased the product for the validity of the reviews.
 ### 2. Add an option to let the customer add their billing information
 With the current checkout process, the user is asked to fill out delivery information. Billing information is required when the customer wants a receipt or when a billing address is different from a delivery address.
-### 3. Post Blog article through the site
-At the moment, the site owner/admin has to use Django Admin to post a new blog article. However, it would be better usability if they could post them on the site.
-### 4. When a color was selected on a product page, the product image also changes accordingly
+### 3. When a color was selected on a product page, the product image also changes accordingly
 At the moment, even though the color options and images for each color are shown on its product page, these two are not changed if the other is changed. It would be more ideal if the action of those two elements is synced.
-### 5. Social Account Login
+### 4. Social Account Login
 This function allows users to sign up / log into their account of the site, using an existing third party account such as Google and Facebook. This is beneficial to users and the site owners. For users, it's hassle free for remembering a password for the site and it gives the users a smooth registration process. For the site owners, there are many benefits gained by social login - such as increasing user sign ups, reducing bounce rate and gaining a user's social account details which is beneficial for marketing purpose.
-### 6. Linking a related product page to blog post
+### 5. Linking a related product page to blog post
 To call more customers to purchase a product, it would be effective to link a product page which is related to a blog post theme.
-### 7. Social Media Share Icons
+### 6. Social Media Share Icons
 For social media marketing purpose, adding a social media icon with a link to share products and blog posts would be effective.
 
 ## Defensive Design
@@ -376,6 +387,7 @@ The main frontend development was created using HTML, CSS, JavaScript and their 
 # Testing
 Testing was conducted and recorded in a different file: [Testing.md](https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/testing.md).
 
+<div><a href="#table-of-contents">Back to top</a></div>
 
 # Deployment
 ## Heroku Deployment with AWS
@@ -527,6 +539,8 @@ os.environ["STRIPE_WH_SECRET"] = "<Your Stripe WH Secret Key>"
 `python3 manage.py loaddata <fixture_name>`
 6. Create a superuser for the Postgres database by running with `python3 manage.py createsuperuser`
 7. Now you can access the app using the command `python3 manage.py runserver`
+
+<div><a href="#table-of-contents">Back to top</a></div>
 
 # Credits
 
