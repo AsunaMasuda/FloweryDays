@@ -1,7 +1,7 @@
 # Testing
 ## Table of Contents
 
-1. [Manual Testing](#)
+1. [Manual Testing](#manual-testing)
     - [Responsiveness](#responsiveness)
     - [Landing Page](#landing-page)
     - [Navbar](#navbar)
@@ -17,7 +17,7 @@
     - [Bugs](#bugs)
     - [Peer Code Review](#peer-code-review)
 
-2. [Automated Testing](#)
+2. [Automated Testing](#automated-testing)
     - [Travis](#travis)
     - [Django tests](#django-tests)
     - [LightHouse on Google DevTool](#lightHouse-on-google-devTool)
