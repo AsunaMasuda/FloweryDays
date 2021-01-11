@@ -8,8 +8,10 @@ from .forms import BlogForm, BlogImageForm, CommentForm
 
 
 def blog_feed(request):
-    """A view to render blog posts ordered by newest first with paginations"""
-
+    """
+    A view to render blog posts ordered
+    by newest first with paginations
+    """
     blog_post = BlogPost.objects.all().order_by('-created_on')
     blog_image = BlogImage.objects.all()
     total_post_number = blog_post.count()
@@ -43,8 +45,10 @@ def blog_feed(request):
 
 
 def category_view(request, category):
-    """A view to display blog posts with a selected category"""
-
+    """
+    A view to display blog posts
+    with a selected category
+    """
     blog_post = BlogPost.objects.all().order_by('-created_on')
     selected_blog = blog_post.filter(category__icontains=category)
     total_post_number = blog_post.count()
@@ -70,9 +74,11 @@ def category_view(request, category):
 
 
 def post_view(request, slug):
-    """A view to render the article and the comments and handle posting
-    new comments"""
-
+    """
+    A view to render the article and
+    the comments and handle posting
+    new comments
+    """
     blog_post = get_object_or_404(BlogPost, slug=slug)
     blog_image = BlogImage.objects.get(article_id=blog_post.id)
     new_comment = None
@@ -106,8 +112,9 @@ def post_view(request, slug):
 
 @login_required
 def delete_comment(request, comment_pk):
-    """Delete a comment posted by the user"""
-
+    """
+    Delete a comment posted by the user
+    """
     comment = get_object_or_404(BlogComment, pk=comment_pk)
     slug = comment.article_id.slug
     comment.delete()
@@ -121,7 +128,9 @@ def delete_comment(request, comment_pk):
 
 @login_required
 def add_blog(request):
-    """ Add a product to the store """
+    """
+    Add a blog to the site
+    """
     if not request.user.is_superuser:
         messages.error(request,
                        'Sorry, only store owners have access to the area.')
@@ -142,8 +151,8 @@ def add_blog(request):
             new_blog_image.save()
             messages.success(request, 'Successfully posted your blog.')
         else:
-            messages.error(
-                request, 'Failed to add the blog. Please ensure the form is valid.')
+            messages.error(request, 'Failed to add the blog. \
+                           Please ensure the form is valid.')
 
     else:
         blog_form = BlogForm()
@@ -163,7 +172,9 @@ def add_blog(request):
 
 @login_required
 def edit_blog(request, blog_pk):
-    """Edit a product in the store"""
+    """
+    Edit a blog on the site
+    """
     if not request.user.is_superuser:
         messages.error(request,
                        'Sorry, only site owner have access to the area.')
@@ -174,7 +185,9 @@ def edit_blog(request, blog_pk):
 
     if request.method == 'POST':
         blog_form = BlogForm(request.POST, instance=blog_post)
-        blog_image_form = BlogImageForm(request.POST, request.FILES, instance=blog_image)
+        blog_image_form = BlogImageForm(request.POST,
+                                        request.FILES,
+                                        instance=blog_image)
 
         if blog_form.is_valid() and blog_image_form.is_valid():
             # Create Blog object but don't save to database yet
@@ -193,12 +206,14 @@ def edit_blog(request, blog_pk):
 
             return redirect(reverse('post_view', args=[blog_post.slug]))
         else:
-            messages.error(
-                request, 'Failed to update blog. Please ensure the form is valid.')
+            messages.error(request, 'Failed to update blog. \
+                           Please ensure the form is valid.')
 
     else:
         blog_form = BlogForm(instance=blog_post)
-        blog_image_form = BlogImageForm(request.POST, request.FILES, instance=blog_image)
+        blog_image_form = BlogImageForm(request.POST,
+                                        request.FILES,
+                                        instance=blog_image)
         messages.info(
             request, f'You are editing a product details: {blog_post.title}')
 
@@ -214,6 +229,9 @@ def edit_blog(request, blog_pk):
 
 @login_required
 def delete_blog(request, blog_pk):
+    """
+    Delete a blog from the site
+    """
     if not request.user.is_superuser:
         messages.error(request,
                        'Sorry, only site owner have access to the area.')
@@ -222,7 +240,8 @@ def delete_blog(request, blog_pk):
     blog = get_object_or_404(BlogPost, pk=blog_pk)
     blog.delete()
     messages.success(request,
-                     f'You deleted blog title: {blog.title} from the database.')
+                     f'You deleted blog title: \
+                     {blog.title} from the database.')
 
     if 'last_item' in request.session:
         del request.session['last_item']

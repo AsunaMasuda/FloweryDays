@@ -21,7 +21,8 @@ class TestBlogImageModel(TestCase):
         blog_image.image = SimpleUploadedFile(name='test_image.jpg',
                                               content=b'',
                                               content_type='image/jpeg')
-        self.assertEqual(str(blog_image), 'test_image.jpg, blog_title, category')
+        self.assertEqual(str(blog_image),
+                         'test_image.jpg, blog_title, category')
 
 
 class TestBlogCommentModel(TestCase):
@@ -33,6 +34,10 @@ class TestBlogCommentModel(TestCase):
         blog.save()
         user_2 = User(username='test_user_2')
         user_2.save()
-        blog_comment = BlogComment(article_id=blog, user_id=user_2, comment_title='test_comment_title')
+        blog_comment = BlogComment(article_id=blog,
+                                   user_id=user_2,
+                                   comment_title='test_comment_title')
 
-        self.assertEqual(str(blog_comment), 'blog_title, category, test_user_2, test_comment_title')
+        self.assertEqual(str(blog_comment),
+                         'blog_title, category, test_user_2, \
+                         test_comment_title')
