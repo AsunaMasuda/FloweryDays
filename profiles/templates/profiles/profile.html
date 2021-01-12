@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container section-top">
+    <div class="container section-top order-history-background">
         <div class="row">
             <div class="col-lg-6">
                 <h2 class="logo-font mb-4">My Profile</h2>
@@ -50,7 +50,7 @@
                                             {{ order.order_number|truncatechars:6 }}
                                         </a>
                                     </td>
-                                    <td>{{ order.date }}</td>
+                                    <td>{{ order.order_date }}</td>
                                     <td>
                                         <ul class="list-unstyled">
                                             {% for item in order.lineitems.all %}
@@ -60,7 +60,7 @@
                                             {% endfor %}
                                         </ul>
                                     </td>
-                                    <td>${{ order.grand_total }}</td>
+                                    <td>€ {{ order.grand_total }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
