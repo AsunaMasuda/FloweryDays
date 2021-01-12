@@ -21,13 +21,8 @@ class UserProfile(models.Model):
     default_county = models.CharField(max_length=80, null=False, blank=True)
 
     def __str__(self):
-        return '{}, {}, {}, {}, {}, {}, {}'.format(self.user,
-                                                   self.default_email,
-                                                   self.default_postcode,
-                                                   self.default_town_or_city,
-                                                   self.default_address_line_1,
-                                                   self.default_address_line_2,
-                                                   self.default_county)
+        return '{}, {}'.format(self.user,
+                               self.default_email)
 
 
 @receiver(post_save, sender=User)

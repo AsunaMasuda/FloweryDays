@@ -8,12 +8,12 @@
 {% block content %}
     <div class="container section-top">
         <div class="row">
-            <div class="offset-1 col-10 col-lg-6">
+            <div class="col-lg-6">
                 <h2 class="logo-font mb-4">My Profile</h2>
             </div>
         </div>
-        <div class="row">
-            <div class="offset-1 col-10 col-lg-6">
+        <div class="row mb-4">
+            <div class="col-lg-6">
                 <p>Default Delivery Information</p>
                 <form class="mt-3" action="{% url 'profile' %}" method="POST" id="profile-update-form">
                     {% csrf_token %}
@@ -29,7 +29,7 @@
                     </a>
                 </div>
             </div>
-            <div class="offset-1 col-10 col-lg-6">
+            <div class="col-lg-6">
                 <p>Order History</p>
                 <div class="order-history table-responsive">
                     <table class="table table-sm table-borderless">

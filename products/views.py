@@ -14,7 +14,10 @@ from .forms import ProductForm, ProductReviewForm
 
 
 def filter_product(request):
-    # Product Filter
+    """
+    Render products based on the filters selected
+    by users
+    """
     categories = list(set(Product.objects.values_list('category', flat=True)))
     occasions = list(set(Product.objects.values_list('occasion', flat=True)))
     colors = list(set(Color.objects.all().values_list('name', flat=True)))
@@ -28,24 +31,31 @@ def filter_product(request):
     result_product_pk = set()
 
     if len(category_name) > 0:
-        filtered_category = Product.objects.all().filter(reduce(operator.__or__,
-                                                        [Q(category__icontains=category) for category in category_name]))
+        filtered_category = Product.objects.all().filter(reduce(
+                            operator.__or__,
+                            [Q(category__icontains=category) for category in
+                             category_name]))
         category_product_id = filtered_category.values_list('pk', flat=True)
         result_product_pk = set(category_product_id)
 
     if len(color_name) > 0:
-        filtered_color = Color.objects.all().filter(reduce(operator.__or__,
-                                              [Q(name__icontains=color) for color in color_name]))
+        filtered_color = Color.objects.all().filter(reduce(
+                         operator.__or__,
+                         [Q(name__icontains=color) for color in
+                          color_name]))
         color_product_id = filtered_color.prefetch_related(
-            'image_id').values_list('image_id__product_id', flat=True).distinct()
+                           'image_id').values_list(
+                           'image_id__product_id', flat=True).distinct()
         if len(result_product_pk) > 0:
             result_product_pk = result_product_pk & set(color_product_id)
         else:
             result_product_pk = set(color_product_id)
 
     if len(flower_name) > 0:
-        filtered_flower = Flower.objects.all().filter(reduce(operator.__or__,
-                                                [Q(name__icontains=flower) for flower in flower_name]))
+        filtered_flower = Flower.objects.all().filter(reduce(
+                          operator.__or__,
+                          [Q(name__icontains=flower) for flower in
+                           flower_name]))
         flower_product_id = filtered_flower.values_list(
             'product_id', flat=True).distinct()
         if len(result_product_pk) > 0:
@@ -54,8 +64,10 @@ def filter_product(request):
             result_product_pk = set(flower_product_id)
 
     if len(occasion_name) > 0:
-        filtered_occasion = Product.objects.all().filter(reduce(operator.__or__,
-                                                                [Q(occasion__icontains=occasion) for occasion in occasion_name]))
+        filtered_occasion = Product.objects.all().filter(reduce(
+                            operator.__or__,
+                            [Q(occasion__icontains=occasion) for occasion in
+                             occasion_name]))
         occasion_product_id = filtered_occasion.values_list('pk', flat=True)
         if len(result_product_pk) > 0:
             result_product_pk = result_product_pk & set(occasion_product_id)
@@ -91,7 +103,10 @@ def filter_product(request):
 
 
 def onlineshop(request):
-    """ A view for online shop (filtered with 'bouquet' category) """
+    """
+    A view for online shop
+    (filtered with 'bouquet' category)
+    """
 
     categories = list(set(Product.objects.values_list('category', flat=True)))
     occasions = list(set(Product.objects.values_list('occasion', flat=True)))
@@ -126,7 +141,10 @@ def onlineshop(request):
 
 
 def single_product(request, product_pk):
-    """ A view to show individual product details """
+    """
+    A view to show individual product details and
+    post a product review if request.method is POST
+    """
     product = get_object_or_404(Product, pk=product_pk)
     images = Image.objects.filter(product_id_id=product_pk)
     colors = Image.objects.prefetch_related(
@@ -153,7 +171,8 @@ def single_product(request, product_pk):
     product_reviews = ProductReview.objects.filter(product_id_id=product_pk)
 
     if product_reviews:
-        average_score = round(product_reviews.all().aggregate(Avg('rating_score'))['rating_score__avg'], 2)
+        average_score = round(product_reviews.all().aggregate(
+                        Avg('rating_score'))['rating_score__avg'], 2)
         average_score_percentage = average_score/5*100
     else:
         average_score = "-"
@@ -174,7 +193,9 @@ def single_product(request, product_pk):
 
 @login_required
 def delete_review(request, review_pk):
-    """Delete a review posted by the user"""
+    """
+    Delete a review posted by the user
+    """
     review = get_object_or_404(ProductReview, pk=review_pk)
     product_pk = review.product_id.pk
     review.delete()
@@ -189,7 +210,9 @@ def delete_review(request, review_pk):
 
 @login_required
 def add_product(request):
-    """ Add a product to the store """
+    """
+    Add a product to the store
+    """
     if not request.user.is_superuser:
         messages.error(request,
                        'Sorry, only store owners have access to the area.')
@@ -199,12 +222,24 @@ def add_product(request):
         form = ProductForm(request.POST, request.FILES)
         if form.is_valid():
             product = form.save()
-            messages.success(request, 'You added the product successfully!')
+            messages.success(request, 'You added the product successfully! \
+                                      Please go to Django admin to add \
+                                      the information of `Flower`, `Image`, \
+                                      and `Color` so that the single product \
+                                      page and search function will work as \
+                                      expected.')
+
+            if 'last_item' in request.session:
+                del request.session['last_item']
+
             return redirect(reverse('single_product', args=[product.id]))
         else:
             messages.error(
-                request, 'Failed to add the product. Please ensure the form is valid.')
+                request, 'Failed to add the product. \
+                Please ensure the form is valid.')
+
     form = ProductForm()
+
     template = 'products/add_product.html'
     context = {
         'form': form,
@@ -215,7 +250,9 @@ def add_product(request):
 
 @login_required
 def edit_product(request, product_pk):
-    """Edit a product in the store"""
+    """
+    Edit a product in the store
+    """
     if not request.user.is_superuser:
         messages.error(request,
                        'Sorry, only store owners have access to the area.')
@@ -228,10 +265,15 @@ def edit_product(request, product_pk):
         if form.is_valid():
             form.save()
             messages.success(request, f'You updated {product.name}!')
+
+            if 'last_item' in request.session:
+                del request.session['last_item']
+
             return redirect(reverse('single_product', args=[product_pk]))
         else:
             messages.error(
-                request, 'Failed to update product. Please ensure the form is valid.')
+                request, 'Failed to update product. \
+                Please ensure the form is valid.')
 
     else:
         form = ProductForm(instance=product)
@@ -249,6 +291,9 @@ def edit_product(request, product_pk):
 
 @login_required
 def delete_product(request, product_pk):
+    """
+    Delete a product from database
+    """
     if not request.user.is_superuser:
         messages.error(request,
                        'Sorry, only store owners have access to the area.')
@@ -258,12 +303,18 @@ def delete_product(request, product_pk):
     product.delete()
     messages.success(request,
                      f'You deleted product: {product.name} from the database.')
+
+    if 'last_item' in request.session:
+        del request.session['last_item']
+
     return redirect(reverse('onlineshop'))
 
 
 def search_result(request):
-    """A view to render the results by keyword search"""
-
+    """
+    A view to render the results
+    by keyword search
+    """
     products = Product.objects.all()
     colors = Color.objects.all()
     flowers = Flower.objects.all()
@@ -280,8 +331,11 @@ def search_result(request):
         filtered_flowers = flowers.filter(
             reduce(operator.__or__,
                    [Q(name__icontains=query) for query in queries]))
-        filtered_products_name = products.filter(reduce(operator.__or__,
-        [Q(name__icontains=query) | Q(description__icontains=query) for query in queries]))
+        filtered_products_name = products.filter(reduce(
+                                 operator.__or__,
+                                 [Q(name__icontains=query) | Q(
+                                    description__icontains=query) for query in
+                                  queries]))
 
         # Getting pk of product table from all the filters
         products_product_id = filtered_products_name.values_list(
@@ -289,10 +343,12 @@ def search_result(request):
         flower_product_id = filtered_flowers.values_list(
             'product_id', flat=True).distinct()
         colors_product_id = filtered_colors.prefetch_related(
-            'image_id').values_list('image_id__product_id', flat=True).distinct()
+                            'image_id').values_list(
+                            'image_id__product_id', flat=True).distinct()
 
         result_product_pk = list(
-            set(chain(products_product_id, flower_product_id)) - set(colors_product_id))
+            set(chain(products_product_id,
+                flower_product_id)) - set(colors_product_id))
 
         products = Product.objects.filter(pk__in=result_product_pk)
 

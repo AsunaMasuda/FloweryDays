@@ -3,7 +3,7 @@ from django.test import TestCase
 
 class TestCartFeed(TestCase):
     """
-    Tests for views renders templates in blog app
+    Tests for views renders templates in cart app
     """
 
     def test_view_cart(self):

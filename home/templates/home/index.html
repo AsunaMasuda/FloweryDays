@@ -2,7 +2,7 @@
 {% block content %} 
 
 <!-- Carousel -->
-<section class="top">
+<div class="top">
   <div class="carousel-padding">
     <div
       id="carouselExampleIndicators"
@@ -60,9 +60,14 @@
                 <p
                 class="animate__animated animate__fadeInLeft animate__delay-1s text-shadow-carousel"
                 >
-                Fresh cut flowers for flower arrangements
+                Get idea for your next arrangement
                 </p>
-                <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% url 'onlineshop' %}" aria-label="Carousel Button">Check Our Flowers</a>
+                <p
+                class="animate__animated animate__fadeInRight animate__delay-1s text-shadow-carousel"
+                >
+                Read our weekly published blog articles
+                </p>
+                <a class="animate__animated animate__fadeInUp animate__delay-1s btn btn-call-to-action" role="button" href="{% url 'blog' %}" aria-label="Carousel Button">Check Our Blog</a>
             </div>
         </div>
         <div class="small-size-carousel carousel-item">
@@ -106,7 +111,7 @@
       </a>
     </div>
   </div>
-</section>
+</div>
 
 <!-- About -->
 <section class="bg-about" id="about">

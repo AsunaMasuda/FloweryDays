@@ -22,12 +22,22 @@
             <div class="offset-1 col-10 col-lg-6">
                 <form method="POST" action="{% url 'add_product' %}" class="form mb-2 form-flowerydays" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form | crispy }}
+                    <div class="mt-4">
+                        {{ form | crispy }}
+                    </div>
                     <div class="text-right">
                         <a class="btn btn-outline" href="{% url 'onlineshop' %}">Cancel</a>
                         <button class="btn btn-colour-1" type="submit" aria-label="Add Product Button">Add Product</button>
                     </div>
                 </form>
+                <div class="mt-2">
+                    <a href="{% url 'home' %}">
+                        <span class="icon">
+                            <i class="fas fa-angle-left"></i>
+                        </span>
+                        <span>Back to Home</span>
+                    </a>
+                </div>
             </div>            
         </div>
     </div>

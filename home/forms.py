@@ -21,7 +21,6 @@ class ContactForm(forms.Form):
     )
     subject = forms.CharField(
         label="Subject",
-        max_length=3,
         widget=forms.Select(choices=SUBJECT_CHOICES),
     )
     message = forms.CharField(

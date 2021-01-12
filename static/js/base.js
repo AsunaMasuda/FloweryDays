@@ -61,7 +61,7 @@ $(document).ready(function(){
 $(document).ready(function() {
     $(document).on('click', '.backToPrevious', function(){
         window.history.back();
-    })
+    });
 });
 
 // Customer Review
@@ -69,13 +69,13 @@ $(document).ready(function () {
     $('.review_click_arrow_1').click(function() {
         $(this).find('i').toggleClass('fa-chevron-up fa-chevron-down');
         if ($('.review_click_arrow_2').find('i').hasClass('fa-chevron-up')) {
-        $('.review_click_arrow_2').find('i').toggleClass('fa-chevron-up fa-chevron-down')
-        };
+        $('.review_click_arrow_2').find('i').toggleClass('fa-chevron-up fa-chevron-down');
+        }
     });
     $('.review_click_arrow_2').click(function() {
         $(this).find('i').toggleClass('fa-chevron-up fa-chevron-down');
         if ($('.review_click_arrow_1').find('i').hasClass('fa-chevron-up')) {
-        $('.review_click_arrow_1').find('i').toggleClass('fa-chevron-up fa-chevron-down')
+        $('.review_click_arrow_1').find('i').toggleClass('fa-chevron-up fa-chevron-down');
         }
-    })
+    });
 });

@@ -98,14 +98,14 @@
                     <span>Customer Average Store: <span class="store-text-large">{{ average_score }} / 5.0</span>
                     </span>
                     <span class="stars-outer">
-                        <div class="stars-inner" style="width: {{ average_score_percentage }}%"></div>
+                        <span class="stars-inner" style="width: {{ average_score_percentage }}%"></span>
                     </span>
                 </div>
                 <hr>
                 <div id="accordion">
                     <div class="card card-review-extension">
                         <div class="card-header card-header-review-extension" id="headingOne">
-                            <div class="collapsed review_click_arrow_1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            <div class="collapsed review_click_arrow_1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
                             <h6 class="mb-0">
                             View Reviews <i class="fas fa-chevron-down"></i>
                             </h6>
@@ -118,7 +118,7 @@
                                     <div>
                                         <span>{{ review.review_title }}  </span>
                                         <span class="stars-outer">
-                                            <div class="stars-inner" style="width: {{ review.review_rate }}%"></div>
+                                            <span class="stars-inner" style="width: {{ review.review_rate }}%"></span>
                                         </span>
                                     </div>
                                     <div>
@@ -147,7 +147,7 @@
                     {% if user.is_authenticated %}
                     <div class="card card-review-extension">
                         <div class="card-header card-header-review-extension" id="headingTwo">
-                            <div class="collapsed review_click_arrow_2" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <div class="collapsed review_click_arrow_2" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
                             <h6 class="mb-0">
                             Leave Your Reviews  <i class="fas fa-chevron-down"></i>
                             </h6>

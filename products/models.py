@@ -14,14 +14,7 @@ class Product(models.Model):
     product_image = models.ImageField(null=False, blank=True)
 
     def __str__(self):
-        return '{}, {}, {}, {}, {}, {}, {}, {}'.format(self.name,
-                                                       self.category,
-                                                       self.price,
-                                                       self.occasion,
-                                                       self.description,
-                                                       self.unit,
-                                                       self.rating,
-                                                       self.product_image)
+        return 'name: {}'.format(self.name)
 
 
 class Image(models.Model):
@@ -32,10 +25,7 @@ class Image(models.Model):
                                    blank=True, on_delete=models.SET_NULL)
 
     def __str__(self):
-        return '{}, {}, {}, {}'.format(self.name,
-                                       self.image,
-                                       self.URL,
-                                       self.product_id)
+        return '{}, {}'.format(self.name, self.product_id)
 
 
 class Color(models.Model):
@@ -43,8 +33,7 @@ class Color(models.Model):
     image_id = models.ManyToManyField('Image')
 
     def __str__(self):
-        return '{}, {}'.format(self.name,
-                                       self.image_id)
+        return '{}'.format(self.name)
 
 
 class Flower(models.Model):
@@ -52,8 +41,7 @@ class Flower(models.Model):
     product_id = models.ManyToManyField('Product')
 
     def __str__(self):
-        return '{}, {}'.format(self.name,
-                               self.product_id)
+        return '{}'.format(self.name)
 
 
 class ProductReview(models.Model):
@@ -79,9 +67,5 @@ class ProductReview(models.Model):
         return self.rating_score/5*100
 
     def __str__(self):
-        return '{}, {}, {}, {}, {}, {}'.format(self.product_id,
-                                               self.user_id,
-                                               self.rating_score,
-                                               self.review_title,
-                                               self.review_comment,
-                                               self.review_date)
+        return 'user: {}, review_title: {}'.format(self.user_id,
+                                                      self.review_title)

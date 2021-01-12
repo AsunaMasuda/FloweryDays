@@ -96,7 +96,8 @@ This image is created with [ami.responsivedesign](http://ami.responsivedesign.is
 
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... |
 | ----------- | ----------- | ----------- |
-| Site User | Easily register for an account | Have a personal account and be able to view my profile and ability to check order history |  
+| Site User | Easily register for an account | Have a personal account where I can edit my information |  
+| Site User | View my order history | Purchase the same product again in the next order |
 | Site User | Easily recover my password in case I forget it | Recover access to my account |
 | Site User | Receive an email confirmation after registering | Verify that my account registration was successful |
 | Site Owner | Post a blog about flower arrangement and gardening | Give site visitors interesting information of flowers |
@@ -109,8 +110,7 @@ This image is created with [ami.responsivedesign](http://ami.responsivedesign.is
 
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... |
 | ----------- | ----------- | ----------- |
-| Shopper | Search a product with keywords | Find the most appropriate products |  
-| Shopper | Sort the search results by their prices | Find the most appropriate products for the target price range |
+| Shopper | Search a product with keywords | Find the most appropriate products |
 | Shopper | View individual product pages that have prices, descriptions, sizes, etc | Get detailed information about the product before purchasing |
 | Shopper | Filter by a specific category | Easily find products in a specific category |
 | Shopper/Site Owner | Leave/View product reviews with scores | Understand which products are popular with other customers |
@@ -122,8 +122,9 @@ This image is created with [ami.responsivedesign](http://ami.responsivedesign.is
 
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... |
 | ----------- | ----------- | ----------- |
-| Shopper | Easily select the size and quantity of a product after adding a product to a cart | Ensure I don't accidentally select the wrong product and the quantity |
-| Shopper | Automatically suggest to log in if I did not log in, when proceeding with checkout | Smoothly proceed with my purchase |
+| Shopper | Easily select the quantity and the color (if applicable) of a product after adding a product to a cart | Ensure I don't accidentally select the wrong product and the quantity | 
+| Shopper | The delivery information is prefilled if logged in | Smoothly proceed with my purchase | 
+| Shopper | Automatically suggest to log in if I did not log in | Smoothly proceed with my purchase | 
 
 <br/>
 
@@ -284,18 +285,22 @@ Base template for allauth has `Back to Home` button at the end of the page, for 
 There are some of features left to implement in the future which I could not add to the project this time due to time constraints. These features are great to be added for a more complete online shop service which would lead to higher customer satisfaction.
 ### 1. Limit the user who can leave product review
 At the moment, all the authenticated users can leave reviews to any products if they are logged in. It should be limited to those who actually purchased the product for the validity of the reviews.
-### 2. Add an option to let the customer add their billing information
+### 2. Sort the search/filter results by the prices, or other conditions
+This function would be very helpful when there are many products in results. This was not implemented this time due to the time constraints and there are not that many products used in this project.
+### 3. Add an option to let the customer add their billing information
 With the current checkout process, the user is asked to fill out delivery information. Billing information is required when the customer wants a receipt or when a billing address is different from a delivery address.
-### 3. Post Blog article through the site
+### 4. Post Blog article through the site
 At the moment, the site owner/admin has to use Django Admin to post a new blog article. However, it would be better usability if they could post them on the site.
-### 4. When a color was selected on a product page, the product image also changes accordingly
+### 5. When a color was selected on a product page, the product image also changes accordingly
 At the moment, even though the color options and images for each color are shown on its product page, these two are not changed if the other is changed. It would be more ideal if the action of those two elements is synced.
-### 5. Social Account Login
+### 6. Social Account Login
 This function allows users to sign up / log into their account of the site, using an existing third party account such as Google and Facebook. This is beneficial to users and the site owners. For users, it's hassle free for remembering a password for the site and it gives the users a smooth registration process. For the site owners, there are many benefits gained by social login - such as increasing user sign ups, reducing bounce rate and gaining a user's social account details which is beneficial for marketing purpose.
-### 6. Linking a related product page to blog post
+### 7. Linking a related product page to blog post
 To call more customers to purchase a product, it would be effective to link a product page which is related to a blog post theme.
-### 7. Social Media Share Icons
+### 8. Social Media Share Icons
 For social media marketing purpose, adding a social media icon with a link to share products and blog posts would be effective.
+### 9. Order Tracking System
+To keep the customers informed with the status of their purchase, it would be nice if the site provides the order status such as shipment information in order history and email notifications.
 
 ## Defensive Design
 ### Error views (404 and 500 error)

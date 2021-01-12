@@ -1,6 +1,7 @@
 from django import forms
 from .models import UserProfile
 
+
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile
@@ -8,7 +9,7 @@ class UserProfileForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        placeholders= {
+        placeholders = {
             'default_email': 'Email Address',
             'default_address_line_1': 'Address Line 1',
             'default_address_line_2': 'Address Line 2',
@@ -20,12 +21,13 @@ class UserProfileForm(forms.ModelForm):
 
         self.fields['default_email'].widget.attrs['autofocus'] = True
         for field in self.fields:
+            # Adding * to the placeholder's required field
             if self.fields[field].required:
                 placeholder = f'{placeholders[field]} *'
-                # Adding * to the placeholder's required field
             else:
                 placeholder = placeholders[field]
             self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
+            self.fields[field].widget.attrs['class'] = 'border-black \
+                                                       rounded-0 \
+                                                       profile-form-input'
             self.fields[field].label = False
-

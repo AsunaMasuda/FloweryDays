@@ -3,19 +3,12 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    {% block meta %}
-    <meta http-equic="X-UA-Compatible" content="ie-edge" />
-    <meta charset="utf-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <meta
-      name="description"
-      content="This website is online flower shop, called Flowery Days."
-    />
-    <meta name="author" content="Asuna Masuda" />
-    {% endblock %} {% block extra_meta %} {% endblock %}
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="description" content="This website is online flower shop, called Flowery Days."/>
+    <meta name="author" content="Asuna Masuda"/>
+    {% block extra_meta %} {% endblock %}
 
     <!-- Favicon -->
     <link
@@ -135,11 +128,14 @@
                             <a class="nav-link" href="{% anchor 'home' 'contact' %}">Contact</a>
                         </li>
 
-                        <div class="navbar-divider d-lg-none d-block"></div>
+                        <li class="navbar-divider d-lg-none d-block"></li>
                         {% if request.user.is_authenticated %}
                             {% if request.user.is_superuser %}
                             <li class="nav-item mr-1 d-lg-none d-block">
-                                <a class="nav-link" href="{% url 'add_product' %}">Product Management</a>
+                                <a class="nav-link" href="{% url 'add_product' %}">Add A New Product</a>
+                            </li>
+                            <li class="nav-item mr-1 d-lg-none d-block">
+                                <a class="nav-link" href="{% url 'add_blog' %}">Add A New Blog Post</a>
                             </li>
                             {% endif %}
                             <li class="nav-item mr-1 d-lg-none d-block">
@@ -166,7 +162,8 @@
                         </button>
                         <div class="dropdown-menu dropdown-extension" aria-labelledby="dropdownMenuButton">
                             {% if request.user.is_superuser %}
-                                <a class="dropdown-item" href="{% url 'add_product' %}">Product Management</a>
+                                <a class="dropdown-item" href="{% url 'add_product' %}">Add A New Product</a>
+                                <a class="dropdown-item" href="{% url 'add_blog' %}">Add A New Blog Post</a>
                             {% endif %}
                             <a class="dropdown-item" href="{% url 'profile' %}">My Profile</a>
                             <a href="{% url 'account_logout' %}" class="dropdown-item">Logout</a>
@@ -303,7 +300,7 @@
   </div>
 </footer>
     {% block postloadjs %}
-    <script type="text/javascript">
+    <script>
         $('.toast').toast('show');
     </script>
     {% endblock %}
