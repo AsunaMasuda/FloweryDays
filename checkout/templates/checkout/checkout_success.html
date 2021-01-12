@@ -9,7 +9,7 @@
 {% endblock %}
 
 {% block content %}
-    <div class="container section-top">
+    <div class="container section-top order-history-background">
         <div class="row">
             <div class="col">
                 {% if from_profile %}
@@ -22,11 +22,11 @@
         </div>
 
         <div class="row">
-            <div class="col-12 col-lg-7">
-                <div class="order-confirmation-wrapper p-2 border">
+            <div class="col-12 col-lg-6">
+                <div class="order-confirmation-wrapper p-2 mb-3 border bg-white">
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Order Info:</small>
+                            <h5 class="text-muted">Order Info</h5>
                         </div>
                     </div>
 
@@ -47,29 +47,34 @@
                             <p class="mb-0">{{ order.order_date }}</p>
                         </div>
                     </div>
-
+                </div>
+                <div class="order-confirmation-wrapper p-2 mb-3 border bg-white">
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Order Details:</small>
+                            <h5 class="text-muted">Order Details</h5>
                         </div>
                     </div>
 
                     {% for item in order.lineitems.all %}
                     <div class="row">
-                        <div class="col-12 col-md-4">
-                            <p class="small mb-0 text-black font-weight-bold">
-                                {{ item.product.name }}  color: {% if item.product_color %}{{ item.product_color }}{% else %}- {% endif %}
+                        <div class="col-12 col-lg-6">
+                            <p class="mb-0 text-black font-weight-bold">
+                                {{ item.product.name }}  color:{% if item.product_color %}{{ item.product_color }}{% else %} - {% endif %}
                             </p>
                         </div>
-                        <div class="col-12 col-md-8 text-md-right">
-                            <p class="small mb-0">{{ item.quantity }} x €{{ item.product.price }}</p>
+                        <div class="col-12 col-lg-6 text-md-right">
+                            <p class="mb-0">{{ item.quantity }} x €{{ item.product.price }}</p>
                         </div>
                     </div>
                     {% endfor %}
+                </div>
 
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="order-confirmation-wrapper p-2 mb-3 border bg-white">
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Delivering To:</small>
+                            <h5 class="text-muted">Delivery Into</h5>
                         </div>
                     </div>
 
@@ -141,10 +146,11 @@
                         </div>
                     </div>
                     {% endif %}
-
+                </div>
+                <div class="order-confirmation-wrapper p-2 mb-3 border bg-white">
                     <div class="row">
                         <div class="col">
-                            <small class="text-muted">Billing Info:</small>
+                            <h5 class="text-muted">Billing Info</h5>
                         </div>
                     </div>
 
@@ -177,8 +183,9 @@
                 </div>
             </div>
         </div>
+
         <div class="row mt-4">
-			<div class="col-12 col-lg-7 text-right">
+			<div class="col-12 text-right">
                 {% if from_profile %}
                 <div>
                     <a href="{% url 'profile' %}">
@@ -197,7 +204,7 @@
                         <span>Keep Shopping</span>
                     </a>
                 </div>
-			</div>
+            </div>
 		</div>
     </div>
 {% endblock %}
