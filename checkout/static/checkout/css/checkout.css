@@ -4,25 +4,25 @@
  */
 .StripeElement,
 .stripe-style-input {
-  box-sizing: border-box;
-  height: 40px;
-  padding: 9px 11px;
-  border: 1px solid transparent;
-  border-radius: 0px;
-  background-color: white;
-  box-shadow: 0 1px 3px 0 #e6ebf1;
-  -webkit-transition: box-shadow 150ms ease;
-  transition: box-shadow 150ms ease;
+    box-sizing: border-box;
+    height: 40px;
+    padding: 9px 11px;
+    border: 1px solid transparent;
+    border-radius: 0px;
+    background-color: white;
+    box-shadow: 0 1px 3px 0 #e6ebf1;
+    -webkit-transition: box-shadow 150ms ease;
+    transition: box-shadow 150ms ease;
 }
 
 .StripeElement--focus,
 .stripe-style-input:focus,
 .stripe-style-input:active {
-  box-shadow: 0 1px 3px 0 #cfd7df;
+    box-shadow: 0 1px 3px 0 #cfd7df;
 }
 
 .StripeElement--invalid {
-  border-color: #d9534f;
+    border-color: #d9534f;
 }
 
 .stripe-style-input::placeholder {
@@ -30,7 +30,7 @@
 }
 
 .StripeElement--webkit-autofill {
-  background-color: #fefde5 !important;
+    background-color: #fefde5 !important;
 }
 
 /* Loading Overlay */
@@ -54,7 +54,8 @@
 }
 
 /* Checkout Form Styling */
-#payment-form .form-control, #card-element {
+#payment-form .form-control,
+#card-element {
     color: #222222;
     border: 1px solid #7c7c7c;
 }
