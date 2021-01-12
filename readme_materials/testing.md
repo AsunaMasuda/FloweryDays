@@ -203,7 +203,7 @@ Passed all tests.
 - They get redirected to the landing page and get information on the toast.
 ### Verdict:
 Passed all tests.
-(However, for a feature left to implement, `Category` and `Occasion` should be choices in the form, and there should be also an option to create a new option for them.)
+* However, as a feature left to implement, `Category` and `Occasion` should be `Select` menu instead of `Text Input`, in the product management form. At the moment, the admin can input any text for `Category` and `Occasion` and even if inputting the same `Category` or `Occasion`, these two are recognized as different categories or occations in the system. I aknowledge that this is an important feature, but after a lot of researches, I found that this was complex to create a from selection from values in a field (in this case, Category and Occasion) in a certain model(Product). After spending some time on this project, I found the data modeling scheme I made for this project at the beginning was not the best choice, so for the next Django project, I want to think these aspects of data managements when I am building the idea of data modeling.
 
 ## Bugs
 Minor bugs are reported at the relevant section as you can see above. Here I will write down some interesting bugs I came accross in the testing.
