@@ -1,21 +1,32 @@
 # Testing
 ## Table of Contents
 
-1. [Manual Testing](#)
+1. [Manual Testing](#manual-testing)
     - [Responsiveness](#responsiveness)
+    - [Landing Page](#landing-page)
+    - [Navbar](#navbar)
+    - [Footer](#footer)
+    - [Onlineshop](#onlineshop)
+    - [Blog](#blog)
+    - [Cart](#cart)
+    - [Checkout & Checkout Success Page](#checkout-&-checkout-success-page)
+    - [SignIn/Login, Order History](#signIn/login,-order-history) 
+    - [Profile, Order History](#profile,-order-history) 
+    - [Admin Product Management](#admin-product-management) 
+    - [SignIn/Login, Order History](#signIn/login,-order-history)
+    - [Bugs](#bugs)
+    - [Peer Code Review](#peer-code-review)
 
-2. [Automated Testing](#)
-    - [](#)
+2. [Automated Testing](#automated-testing)
+    - [Travis](#travis)
+    - [Django tests](#django-tests)
+    - [LightHouse on Google DevTool](#lightHouse-on-google-devTool)
 
 3. [Code Valication and Formatting](#code-valication-and-formatting )
+    - [Validation Tools](#validation-tools)
+    - [Formatter](#formatter)
 
-4. [Compatibility and Responsiveness](#)
-    - [](#)
-
-5. [Other Testing](#)
-
-6. [Bugs](#)
-
+4. [Compatibility and Responsiveness](#compatibility-and-responsiveness)
 
 # Manual Testing
 These tests were conducted on the deployed site on Heroku.
@@ -183,11 +194,11 @@ Passed all tests.
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- | 
 | Site Owner | Easity add a new product | Make sure the online site has the latest lineups | 
+| Site Owner | Easity add a new blog | Manage blog posts easily on website | 
 ### Test conducted:
 - Add a product with/without image and check if they are acceptable
-- If the user is not superuser and accessed to the direct url to Admin Product Management, they get redirected and informed.
+- If the user is not superuser and accessed to the direct url to Admin Product/Blog Management, they get redirected and informed.
 ### Result:
-- 
 - The rating option was included to the add product form. I deleted this because reviews are not needed when adding a new product.
 - They get refirected to the landing page and get information on the toast.
 ### Verdict:
@@ -195,9 +206,10 @@ Passed all tests.
 (However, for a feature left to implement, `Category` and `Occasion` should be choice in the form, and there should be also an option to create a new option for them.)
 
 ## Bugs
-Minor bugs are reported at the relevant section above. Here I will write down some interesting bugs I came accross in the testing.
+Minor bugs are reported at the relevant section as you can see above. Here I will write down some interesting bugs I came accross in the testing.
 - `$(document).on()` does not work on mobile device
  `$(document).on()` was initially used for product quantity counter was not working on mobile devices. To resolve this issue, once I used JQuery Mobile to use `vclick` event. However, JQuery Mobile is not compatible with the updated JQuery and gave an error in console. So in the end, I found out if you use `$('.plus').click(function(){...`, the issue would not occur.
+- During CSS validation, I got an error `Property padding-inline-start doesn't exist : 0` for the class `carousel-indicators-extension ol` to modify `-webkit-padding-start: 40px` which is from the user-agent stylesheets of every browser. This was replaced with `margin-left: -40px;`, which is advised [here](https://stackoverflow.com/questions/29307357/get-rid-of-webkit-padding-start-40px).
 
 ## Peer Code Review
 I got feedback from other students in Code Institute asking on Peer Code Review in Slack community.
@@ -217,7 +229,7 @@ I have tried to automate the tests as much as possible, but could not reach 100%
 
 ## LightHouse on Google DevTool
  I used Lighthouse by Google on Landing Page, Online Shop Page/Single Product Page, Blog Page, Cart Page.
-Result: `Landing Page` - It reported the file size of some images are not appropriate, even after I used service called []() to reduce the file size. 
+Result: `Landing Page` - It reported the file size of some images are not appropriate, even after I used service called [tinypng](https://tinypng.com/) to reduce the file size. 
  I'd like to investigate this as feature improvements because of the time constraints.
 `Blog Page` - The same issue of image file sizes is reported to the Blog Page. 
 
@@ -225,13 +237,20 @@ Result: `Landing Page` - It reported the file size of some images are not approp
 # Code Valication and Formatting 
 ### Validation Tools
 I used these validation tools below for each file.
-- HTML: [W3C HTML Validator](https://validator.w3.org/)
+- HTML: [W3C HTML Validator](https://validator.w3.org/) (For HTML validator, I passed each URI to validator since the html files contain Django templates.)
 - CSS: [W3C CSS validator](https://jigsaw.w3.org/css-validator/)
 - JavaScript: [JSHint](https://jshint.com/)
 - Python: [PEP8 online](http://pep8online.com/)
+
+Result:
+- In CSS validation, there have warnings for button elements. I did not address this since the color should be kept for the design purpose and it does not affect any other functions/elements.
+- There is an error `Duplicate ID` when validating in cart view, but it's expected since there are Cart View for Desktop and Mobile devices and these IDs won't be rendered at the same time.
 
 ### Formatter
 - HTML: [HTML Formatter](https://webformatter.com/html)
 - CSS: [CSS Formatter](https://webformatter.com/css)
 - JavaScript: [Online JavaScript Beautifier](https://beautifier.io/)
 - Python:[PEP8 online](http://pep8online.com/)
+
+# Compatibility and Responsiveness
+The device emulator by Google Chrome's developer tool is used to check the responsiveness across all the different screen sizes and devies to ensure compatibility and responsiveness. Also, this website has been tested on multiple browsers (Chrome, Safari, Opera, FireFox) on macOS Mojave (Version 10.14.6).  iPhone XR (iOS 14.1) is used to test for mobile testing.
