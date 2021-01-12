@@ -36,12 +36,12 @@ These tests were conducted on the deployed site on Heroku.
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- | 
 | Site User/ Shopper | access the website with any devices | Use the website anytime and anywhere |
-| Shopper | All the important services are accesible from nav bar| Don't need to scroll to find important information | 
+| Shopper | All the important services are accessible from nav bar| Don't need to scroll to find important information | 
 | Shopper | Have a shopping cart icon on nav bar | Always check the current order and checkout when I want | 
 ### Test conducted:
-- Access each page in the site with different screen sizes by Google Dev Tool's Emulator and check the layout and format of site elements
+- Access each page in the site with different screen sizes with Google Dev Tool's Emulator and check the layout and format of site elements
 ### Result:
-1. Navbar: I have the search bar to be collapsed for smaller than medium screen size (width < 992px) because search Bar with input field conflicted with other navbar components. 
+1. Navbar: I have the search bar collapsed for smaller than medium screen size (width < 992px) because the search bar with input field conflicted with other navbar components. 
 'My Account' pulldown list is included to toggle menu for smaller than medium screen size.
 2. Home page: The image size responsiveness on Carousel at landing(home) page was adjusted by media queries.
 ### Verdict:
@@ -103,7 +103,7 @@ Passed all tests.
 - Use various keywords in keyword search and check if it works as expected.
 - Check if the online shop page / the individual product page is displayed without breaking the layout for common screensizes.
 - Navigations such as paginations, breadcrumb, back to previous page button etc don't break accessing by different paths.
-- Check if the quantity counter and the color options work as expected and gives an informative error message if the number is out side of the range (1-99).
+- Check if the quantity counter and the color options work as expected and gives an informative error message if the number is outside of the range (1-99).
 ### Result:
 - The layout of single_product page for screens less than 992px width was overwrapped. It was fixed by changing the appropriate bootstrap grid system.
 - As width of the product image is set to 400 px, the layout was overwrapped in single_product page. This was fixed by changing it to smaller image size.
@@ -115,7 +115,7 @@ Passed all tests.
 ### User Stories Tested:
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- | 
-| Site Owner | Post a blog about flower arrangement and gardening | Give site visitors interesting information of flowers | 
+| Site Owner | Post a blog about flower arrangement and gardening | Give site visitors interesting information about flowers | 
 | Site Owner | Let the site users log in when they leave comments/reviews | Track who left comments/reviews | 
 | Site User | Add comments to the blog posts | Write down my thoughts to the post | 
 ### Test conducted:
@@ -200,10 +200,10 @@ Passed all tests.
 - If the user is not superuser and accessed to the direct url to Admin Product/Blog Management, they get redirected and informed.
 ### Result:
 - The rating option was included to the add product form. I deleted this because reviews are not needed when adding a new product.
-- They get refirected to the landing page and get information on the toast.
+- They get redirected to the landing page and get information on the toast.
 ### Verdict:
 Passed all tests.
-(However, for a feature left to implement, `Category` and `Occasion` should be choice in the form, and there should be also an option to create a new option for them.)
+(However, for a feature left to implement, `Category` and `Occasion` should be choices in the form, and there should be also an option to create a new option for them.)
 
 ## Bugs
 Minor bugs are reported at the relevant section as you can see above. Here I will write down some interesting bugs I came accross in the testing.
@@ -213,15 +213,15 @@ Minor bugs are reported at the relevant section as you can see above. Here I wil
 - Some HTML files used in this project contain `style=` that specifies css. I acknowledge that having this in HTML is not the best practice though it does not give errors, but it was inevitable to implement some features such as displaying product review score stars (e.g. line in .html), since the percentage for the score is calculated in the views.py and passed to the template. 
 
 ## Peer Code Review
-I got feedback from other students in Code Institute asking on Peer Code Review in Slack community.
-- The fellow student spotted the filter options return as a query set after using a key search function. This was immediately fixed after her feedback.
+I got feedback from other students in Code Institute by asking on the Peer Code Review channel in the Slack community.
+- A fellow student spotted the filter options return as a query set after using a key search function. This was immediately fixed after her feedback.
 
 # Automated Testing
 ## Travis
-[Tavis CI](https://travis-ci.org/) was also used for the automated unit testing of this project. 
-Travis CI is a hosted continuous integration service to build and test software projects hosted at GitHub and Bitbucket.
-Travis CI is configured by adding a file named .travis.yml and you need to set a seclet key in the setting in Travis. 
-How to set Travis CI can be found in [this documentation](https://docs.travis-ci.com/).
+[Travis CI](https://travis-ci.org/) was also used for the automated unit testing of this project. 
+Travis CI is a hosted continuous integration service used to build and test software projects hosted at GitHub and Bitbucket.
+Travis CI is configured by adding a file named .travis.yml and you need to set a secret key in the settings in Travis. 
+How to set up Travis CI can be found in [this documentation](https://docs.travis-ci.com/).
 
 ## Django tests
 I have run tests for the models and views in all apps, where applicable.
@@ -244,7 +244,7 @@ I used these validation tools below for each file.
 - Python: [PEP8 online](http://pep8online.com/)
 
 Result:
-- In CSS validation, there have warnings for button elements. I did not address this since the color should be kept for the design purpose and it does not affect any other functions/elements.
+- In CSS validation, there are warnings for button elements. I did not address this since the color should be kept for the design purpose and it does not affect any other functions/elements.
 - There is an error `Duplicate ID` when validating in cart view, but it's expected since there are Cart View for Desktop and Mobile devices and these IDs won't be rendered at the same time.
 
 ### Formatter
@@ -254,7 +254,7 @@ Result:
 - Python:[PEP8 online](http://pep8online.com/)
 
 Note:
-- I used HTML formatter but there are Django templates in the html files which broke the format. In these cases, I manually format the html files referring to html files used in [botique ado project](https://github.com/ckz8780/boutique_ado_v1/tree/9ed36dc2c07228041b56b28174dd96ee56e6c59a).
+- I used HTML formatter but there are Django templates in the html files which broke the format. In these cases, I manually formatted the html files referring to html files used in [botique ado project](https://github.com/ckz8780/boutique_ado_v1/tree/9ed36dc2c07228041b56b28174dd96ee56e6c59a).
 
 # Compatibility and Responsiveness
 The device emulator by Google Chrome's developer tool is used to check the responsiveness across all the different screen sizes and devies to ensure compatibility and responsiveness. Also, this website has been tested on multiple browsers (Chrome, Safari, Opera, FireFox) on macOS Mojave (Version 10.14.6).  iPhone XR (iOS 14.1) is used to test for mobile testing.
