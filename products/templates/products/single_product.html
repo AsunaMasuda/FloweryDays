@@ -37,18 +37,23 @@
                 <!-- Wrapper for slides -->
                 <div class="carousel-extension">
                     <div class="carousel-inner">
-                        {% for image in images %}
-                            {% if forloop.first %}
-								<div class="carousel-item active">
-									<img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
-								</div>
-                            {% else %}
-                                <div class="carousel-item">
-                                    <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
-                                </div>
-                            {% endif %}
-                        {% endfor %}
-                    
+                        {% if images %}
+                            {% for image in images %}
+                                {% if forloop.first %}
+                                    <div class="carousel-item active">
+                                        <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
+                                    </div>
+                                {% else %}
+                                    <div class="carousel-item">
+                                        <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        {% else %}
+                            <div class="carousel-item active">
+                                <img alt="image_for_product" src="{{ MEDIA_URL }}no_image_available.png" class="single-product-img center-single-img">
+                            </div>
+                        {% endif %}
 					</div>
 				</div>
 			</div>
