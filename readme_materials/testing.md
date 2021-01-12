@@ -193,8 +193,8 @@ Passed all tests.
 ### User Stories Tested:
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- | 
-| Site Owner | Easity add a new product | Make sure the online site has the latest lineups | 
-| Site Owner | Easity add a new blog | Manage blog posts easily on website | 
+| Site Owner | Easily add a new product | Make sure the online site has the latest lineups | 
+| Site Owner | Easily add a new blog | Manage blog posts easily on website | 
 ### Test conducted:
 - Add a product with/without image and check if they are acceptable
 - If the user is not superuser and accessed to the direct url to Admin Product/Blog Management, they get redirected and informed.
@@ -203,7 +203,7 @@ Passed all tests.
 - They get redirected to the landing page and get information on the toast.
 ### Verdict:
 Passed all tests.
-* However, as a feature left to implement, `Category` and `Occasion` should be `Select` menu instead of `Text Input`, in the product management form. At the moment, the admin can input any text for `Category` and `Occasion` and even if inputting the same `Category` or `Occasion`, these two are recognized as different categories or occations in the system. I aknowledge that this is an important feature, but after a lot of researches, I found that this was complex to create a from selection from values in a field (in this case, Category and Occasion) in a certain model(Product). After spending some time on this project, I found the data modeling scheme I made for this project at the beginning was not the best choice, so for the next Django project, I want to think these aspects of data managements when I am building the idea of data modeling.
+* However, as a feature left to implement, `Category` and `Occasion` should be `Select` menu instead of `Text Input`, in the product management form. At the moment, the admin can input any text for `Category` and `Occasion` and even if inputting the same `Category` or `Occasion`, these two are recognized as different categories or occassions in the system. I acknowledge that this is an important feature, but after a lot of researches, I found that this was complex to create a form selection from values in a field (in this case, Category and Occasion) in a certain model(Product). After spending some time on this project, I found the data modeling scheme I made for this project at the beginning was not the best choice, so for the next Django project, I want to think about these aspects of data management when I am building the data modeling.
 
 ## Bugs
 Minor bugs are reported at the relevant section as you can see above. Here I will write down some interesting bugs I came accross in the testing.
