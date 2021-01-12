@@ -210,6 +210,7 @@ Minor bugs are reported at the relevant section as you can see above. Here I wil
 - `$(document).on()` does not work on mobile device
  `$(document).on()` was initially used for product quantity counter was not working on mobile devices. To resolve this issue, once I used JQuery Mobile to use `vclick` event. However, JQuery Mobile is not compatible with the updated JQuery and gave an error in console. So in the end, I found out if you use `$('.plus').click(function(){...`, the issue would not occur.
 - During CSS validation, I got an error `Property padding-inline-start doesn't exist : 0` for the class `carousel-indicators-extension ol` to modify `-webkit-padding-start: 40px` which is from the user-agent stylesheets of every browser. This was replaced with `margin-left: -40px;`, which is advised [here](https://stackoverflow.com/questions/29307357/get-rid-of-webkit-padding-start-40px).
+- Some HTML files used in this project contain `style=` that specifies css. I acknowledge that having this in HTML is not the best practice though it does not give errors, but it was inevitable to implement some features such as displaying product review score stars (e.g. line in .html), since the percentage for the score is calculated in the views.py and passed to the template. 
 
 ## Peer Code Review
 I got feedback from other students in Code Institute asking on Peer Code Review in Slack community.
@@ -237,7 +238,7 @@ Result: `Landing Page` - It reported the file size of some images are not approp
 # Code Valication and Formatting 
 ### Validation Tools
 I used these validation tools below for each file.
-- HTML: [W3C HTML Validator](https://validator.w3.org/) (For HTML validator, I passed each URI to validator since the html files contain Django templates.)
+- HTML: [W3C HTML Validator](https://validator.w3.org/) *For HTML validator, I passed each URI to validator since the html files contain Django templates.
 - CSS: [W3C CSS validator](https://jigsaw.w3.org/css-validator/)
 - JavaScript: [JSHint](https://jshint.com/)
 - Python: [PEP8 online](http://pep8online.com/)
@@ -247,10 +248,13 @@ Result:
 - There is an error `Duplicate ID` when validating in cart view, but it's expected since there are Cart View for Desktop and Mobile devices and these IDs won't be rendered at the same time.
 
 ### Formatter
-- HTML: [HTML Formatter](https://webformatter.com/html)
-- CSS: [CSS Formatter](https://webformatter.com/css)
+- HTML: [HTML Formatter](https://codebeautify.org/htmlviewer/) - Set the tab size to 4.
+- CSS: [CSS Formatter](https://webformatter.com/css) - Set the tab size to 4.
 - JavaScript: [Online JavaScript Beautifier](https://beautifier.io/)
 - Python:[PEP8 online](http://pep8online.com/)
+
+Note:
+- I used HTML formatter but there are Django templates in the html files which broke the format. In these cases, I manually format the html files referring to html files used in [botique ado project](https://github.com/ckz8780/boutique_ado_v1/tree/9ed36dc2c07228041b56b28174dd96ee56e6c59a).
 
 # Compatibility and Responsiveness
 The device emulator by Google Chrome's developer tool is used to check the responsiveness across all the different screen sizes and devies to ensure compatibility and responsiveness. Also, this website has been tested on multiple browsers (Chrome, Safari, Opera, FireFox) on macOS Mojave (Version 10.14.6).  iPhone XR (iOS 14.1) is used to test for mobile testing.
