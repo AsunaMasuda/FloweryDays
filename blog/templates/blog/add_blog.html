@@ -2,43 +2,44 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+    
+<div class="container header-container">
+	<div class="row">
+		<div class="col"></div>
+	</div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container section-top">
-        <div class="row">
-            <div class="offset-1 col-10 col-lg-6">
-                <h2 class="logo-font mb-2">Add a New Blog</h2>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="offset-1 col-10 col-lg-6">
-                <form method="POST" action="{% url 'add_blog' %}" class="form mb-2 form-flowerydays" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <div class="mt-4">
-                        {{ blog_form | crispy }}
-                        {{ blog_image_form | crispy }}
-                    </div>
-                    <div class="text-right">
-                        <a class="btn btn-outline" href="{% url 'blog' %}">Cancel</a>
-                        <button class="btn btn-colour-1" type="submit" aria-label="Add Product Button">Add a New Blog</button>
-                    </div>
-                </form>
-                <div class="mt-2">
-                    <a href="{% url 'home' %}">
-                        <span class="icon">
-                            <i class="fas fa-angle-left"></i>
-                        </span>
-                        <span>Back to Home</span>
-                    </a>
+    
+<div class="container section-top">
+	<div class="row">
+		<div class="offset-1 col-10 col-lg-6">
+			<h2 class="logo-font mb-2">Add a New Blog</h2>
+		</div>
+	</div>
+	<div class="row">
+		<div class="offset-1 col-10 col-lg-6">
+			<form method="POST" action="{% url 'add_blog' %}" class="form mb-2 form-flowerydays" enctype="multipart/form-data">
+                {% csrf_token %}
+				<div class="mt-4">
+                    {{ blog_form | crispy }}
+                    {{ blog_image_form | crispy }}
                 </div>
-            </div>            
-        </div>
-    </div>
+				<div class="text-right">
+					<a class="btn btn-outline" href="{% url 'blog' %}">Cancel</a>
+					<button class="btn btn-colour-1" type="submit" aria-label="Add Product Button">Add a New Blog</button>
+				</div>
+			</form>
+			<div class="mt-2">
+				<a href="{% url 'home' %}">
+					<span class="icon">
+						<i class="fas fa-angle-left"></i>
+					</span>
+					<span>Back to Home</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

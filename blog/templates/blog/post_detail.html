@@ -1,36 +1,41 @@
 {% extends "base.html" %} {% load static %} {% block content %}
+
 <div class="container section-top">
-    <div class="row">
-        <div class="col-12 text-center">
-            <ul class="breadcrumb breadcrumb-custom">
-            <li class="breadcrumb-item"><a href="{% url 'blog' %}">Blog Top</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'category_view' blog_post.category %}">{{ blog_post.category }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ blog_post.title }}</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-            <div class="col-12">
-                <img src="{{ blog_image.image.url }}" class="blog_post_img" alt="blog post header image:{{ blog_image.image.name }}">
+	<div class="row">
+		<div class="col-12 text-center">
+			<ul class="breadcrumb breadcrumb-custom">
+				<li class="breadcrumb-item">
+					<a href="{% url 'blog' %}">Blog Top</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a href="{% url 'category_view' blog_post.category %}">{{ blog_post.category }}</a>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">{{ blog_post.title }}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-12">
+			<img src="{{ blog_image.image.url }}" class="blog_post_img" alt="blog post header image:{{ blog_image.image.name }}">
+            <div class="pr-4 pl-4 mb-4 mt-4">
                 <div class="pr-4 pl-4 mb-4 mt-4">
-                    <div class="pr-4 pl-4 mb-4 mt-4">
-                        <h2 class="card-title">{{ blog_post.title }}</h2>
-                        <span class="card-text text-muted mt-2">
-                            {{ blog_post.author }} | {{ blog_post.created_on }}
-                        </span>
-                        {% if request.user.is_superuser %}
+                    <h2 class="card-title">{{ blog_post.title }}</h2>
+                    <span class="card-text text-muted mt-2">
+                        {{ blog_post.author }} | {{ blog_post.created_on }}
+                    </span>
+                    {% if request.user.is_superuser %}
                         <span class="ml-2">
                             <a href="{% url 'edit_blog' blog_post.pk %}" class="blog_edit">Edit</a> | 
                             <a href="{% url 'delete_blog' blog_post.pk %}" class="blog_delete">Delete</a>
                         </span>
-                        {% endif %}
-                    </div>
-                    <div class="mt-2">
-                        <div class="card-text">{{ blog_post.content|linebreaks }}</div>
-                    </div>
-                    <hr>
-                    <div class="blog-comment-section">
-                        <div class="mb-3">
+                    {% endif %}
+                </div>
+                <div class="mt-2">
+                    <div class="card-text">{{ blog_post.content|linebreaks }}</div>
+                </div>
+                <hr>
+                <div class="blog-comment-section">
+                    <div class="mb-3">
                         {% if not blog_post.comments.all %}
                             <h3>No Comments yet for this post.</h3>
                         {% else %}
@@ -45,38 +50,42 @@
                                         <span class="comment-line"></span>
                                         <span class="ml-2">{{ comment.blog_comment }}</span>
                                     </div>
-                                     <div>
+                                    <div>
                                         {% if user.is_authenticated %}
                                             {% if user.name == comment.user_id %}
-                                             <a href="{% url 'delete_comment' comment.pk %}" class="product_delete">Delete Comment</a>
+                                                <a href="{% url 'delete_comment' comment.pk %}" class="product_delete">Delete Comment</a>
                                             {% endif %}
                                         {% endif %}
                                     </div>
                                 </div>
                             {% endfor %}
                         {% endif %}
-                        </div>
-                        <hr>
-                        {% if user.is_authenticated %}
+                    </div>
+                    <hr>
+                    {% if user.is_authenticated %}
                         <div class="blog-comment-form">
                             <h3>Leave a Comment</h3>
                             <form method="POST" action="{% url 'post_view' blog_post.slug %}">
                                 {% csrf_token %}
                                 {{ comment_form|crispy }}
-                            <button class="btn btn-colour-1" action="submit" aria-label="Blog Comment Submit Button">Submit Comment</button>
+                                <button class="btn btn-colour-1" action="submit" aria-label="Blog Comment Submit Button">Submit Comment</button>
                             </form>
                             <div class="mt-4">
-                                <a href="{% url 'category_view' blog_post.category|lower %}"><i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Category</a>
+                                <a href="{% url 'category_view' blog_post.category|lower %}">
+                                    <i class="fas fa-arrow-left" aria-hidden="true"></i> Back to Category
+                                </a>
                             </div>
                         </div>
-                        {% else %}
+                    {% else %}
                         <div class="mt-4">
-                            <p>To leave a comment, please <a href="{% url 'account_login' %}">log in.</a></p>
+                            <p>To leave a comment, please 
+                                <a href="{% url 'account_login' %}">log in.</a>
+                            </p>
                         </div>
-                        {% endif %}
-                    </div>
+                    {% endif %}
                 </div>
             </div>
+        </div>
     </div>
 </div>
 {% endblock %}

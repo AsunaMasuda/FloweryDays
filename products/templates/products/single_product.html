@@ -1,101 +1,108 @@
 {% extends "base.html" %} {% load static %} {% block content %}
+
 <div class="container">
-    <div class="row">
-        <div class="col-12 text-center">
-            <ul class="breadcrumb breadcrumb-custom">
-            <li class="breadcrumb-item"><a href="{% url 'onlineshop' %}">Shop Home</a></li>
-            <li class="breadcrumb-item"><a href="{% url 'filter_product' %}?filter_category={{ product.category }}">{{ product.category }}</a></li>
-            <li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
-            </ul>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-lg-6">
-            <div class="carousel carousel-extension slide article-slide ml-auto mr-auto" 
+	<div class="row">
+		<div class="col-12 text-center">
+			<ul class="breadcrumb breadcrumb-custom">
+				<li class="breadcrumb-item">
+					<a href="{% url 'onlineshop' %}">Shop Home</a>
+				</li>
+				<li class="breadcrumb-item">
+					<a href="{% url 'filter_product' %}?filter_category={{ product.category }}">{{ product.category }}</a>
+				</li>
+				<li class="breadcrumb-item active" aria-current="page">{{ product.name }}</li>
+			</ul>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-6">
+			<div class="carousel carousel-extension slide article-slide ml-auto mr-auto" 
             data-interval="false" id="article-photo-carousel">
-                <!-- Indicators -->
-                <div class="carousel-indicators carousel-indicators-extension">
-                    <ol>
-                    {% for image in images %}
-                    {% if forloop.first %}
-                        <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
-                        <img alt="image_for_carousel_indicator" src="{{ image.image.url }}">
-                        </li>
-                    {% else %}
-                        <li data-slide-to="{{ forloop.counter0 }}" data-target="#article-photo-carousel">
-                        <img alt="image_for_carousel_indicator" src="{{ image.image.url }}">
-                        </li>
-                    {% endif %}
-                    {% endfor %}
-                    </ol>
-                </div>
+				<!-- Indicators -->
+				<div class="carousel-indicators carousel-indicators-extension">
+					<ol>
+                        {% for image in images %}
+                            {% if forloop.first %}
+                                <li class="active" data-slide-to="0" data-target="#article-photo-carousel">
+                                    <img alt="image_for_carousel_indicator" src="{{ image.image.url }}">
+                                </li>
+                            {% else %}
+							    <li data-slide-to="{{ forloop.counter0 }}" data-target="#article-photo-carousel">
+								    <img alt="image_for_carousel_indicator" src="{{ image.image.url }}">
+								</li>
+                            {% endif %}
+                        {% endfor %}
+					</ol>
+				</div>
                 <!-- Wrapper for slides -->
                 <div class="carousel-extension">
                     <div class="carousel-inner">
-                    {% for image in images %}
-                        {% if forloop.first %}
-                            <div class="carousel-item active">
+                        {% for image in images %}
+                            {% if forloop.first %}
+								<div class="carousel-item active">
+									<img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
+								</div>
+                            {% else %}
+                                <div class="carousel-item">
                                     <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
-                            </div>
-                        {% else %}
-                            <div class="carousel-item">
-                                <img alt="image_for_product" src="{{ image.image.url }}" class="single-product-img center-single-img">
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                    </div>
-                </div>
-            </div>
-        </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    
+					</div>
+				</div>
+			</div>
+	    </div>
         <div class="col-lg-6">
             <div class="product-info">
                 <h3 class="product-title">{{ product.name }}</h3>
-                    <h4 class="mb-3">€ {{ product.price }}</h4>
+                <h4 class="mb-3">€ {{ product.price }}</h4>
                 <p class="product-description mb-3"> {{ product.description }}</p>
                 <hr>
                 <form class="form" action="{% url 'add_to_cart' product.pk %}" method="POST">
                     {% csrf_token %}
                     <div class="col-12">
-                            {% if product.category != 'bouquet' %}
+                        {% if product.category != 'bouquet' %}
                             <div class="row mt-2">
                                 <div class="col-lg-2 my-auto">Color: </div>
                                 <div class="col-10 my-auto">
                                     <select class="form-control form-control-extention" id="color-option" name="color">
-                                    {% for color in colors %}
-                                        <option>{{ color.color_set.all.0.name }}</option>
-                                    {% endfor %}
-                                    </select>
-                                </div>
-                            </div>
-                            {% endif %}
+                                        {% for color in colors %}
+                                            <option>{{ color.color_set.all.0.name }}</option>
+                                        {% endfor %}
+									</select>
+								</div>
+							</div>
+                        {% endif %}
                             <div class="row mt-3">
                                 <div class="col-lg-2 my-auto">Quantity: </div>
                                 <div class="col-lg-10 my-auto">
                                     <div class="product-quantity">
                                         <span id="minus_0" class="minus bg-dark">-</span>
-                                            <input id="number_0" class="quantity-count form-control qty_input" type="number" name="quantity" value="1">
+                                        <input id="number_0" class="quantity-count form-control qty_input" type="number" name="quantity" value="1">
                                         <span id="plus_0" class="plus bg-dark">+</span>
                                     </div>
                                     <span class="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
                                 </div>
                             </div>
-                        <div>
-                            <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
-                            <input type="hidden" name="redirect_url" value="{{ request.path }}">
-                        </div>
+                            <div>
+                                <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
+                                <input type="hidden" name="redirect_url" value="{{ request.path }}">
+                            </div>
                         {% if request.user.is_superuser %}
-                        <div class="mt-2">
-                            <a href="{% url 'edit_product' product.pk %}" class="product_edit">Edit</a> | 
-                            <a href="{% url 'delete_product' product.pk %}" class="product_delete">Delete</a>
-                        </div>
+                            <div class="mt-2">
+                                <a href="{% url 'edit_product' product.pk %}" class="product_edit">Edit</a> | 
+                                <a href="{% url 'delete_product' product.pk %}" class="product_delete">Delete</a>
+                            </div>
                         {% endif %}
-                    </div>
-                </form>
-            </div>
-            <hr>
+					</div>
+				</form>
+			</div>
+			<hr>
             <div class="mb-3 mt-3">
                 <div class="ml-3 mt-2 mb-2">
-                    <span>Customer Average Store: <span class="store-text-large">{{ average_score }} / 5.0</span>
+                    <span>Customer Average Store: 
+                        <span class="store-text-large">{{ average_score }} / 5.0</span>
                     </span>
                     <span class="stars-outer">
                         <span class="stars-inner" style="width: {{ average_score_percentage }}%"></span>
@@ -106,70 +113,68 @@
                     <div class="card card-review-extension">
                         <div class="card-header card-header-review-extension" id="headingOne">
                             <div class="collapsed review_click_arrow_1" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne" role="button">
-                            <h6 class="mb-0">
-                            View Reviews <i class="fas fa-chevron-down"></i>
-                            </h6>
-                            </div>                            
-                        </div>
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
-                            <div class="card-body">
-                            {% if product_reviews %}
-                                {% for review in product_reviews %}
-                                    <div>
-                                        <span>{{ review.review_title }}  </span>
-                                        <span class="stars-outer">
-                                            <span class="stars-inner" style="width: {{ review.review_rate }}%"></span>
-                                        </span>
-                                    </div>
-                                    <div>
-                                        {{ review.review_date }}
-                                    </div>
-                                    <div>
-                                        {% if request.user.is_authenticated %}
-                                            {% if user.name == review.user_id %}
-                                             <a href="{% url 'delete_review' review.pk %}" class="product_delete">Delete Review</a>
+                                <h6 class="mb-0">View Reviews <i class="fas fa-chevron-down"></i></h6>
+							</div>
+						</div>
+						<div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+							<div class="card-body">
+                                {% if product_reviews %}
+                                    {% for review in product_reviews %}
+                                        <div>
+                                            <span>{{ review.review_title }}  </span>
+                                            <span class="stars-outer">
+                                                <span class="stars-inner" style="width: {{ review.review_rate }}%"></span>
+                                            </span>
+                                        </div>
+                                        <div>
+                                            {{ review.review_date }}
+                                        </div>
+                                        <div>
+                                            {% if request.user.is_authenticated %}
+                                                {% if user.name == review.user_id %}
+                                                    <a href="{% url 'delete_review' review.pk %}" class="product_delete">Delete Review</a>
+                                                {% endif %}
                                             {% endif %}
-                                        {% endif %}
-                                    </div>
+                                        </div>
+                                        <div>
+                                            {{ review.review_comment }}
+                                        </div>
+                                        <hr>
+                                    {% endfor %}
+                                {% else %}
                                     <div>
-                                        {{ review.review_comment }}
+                                        <p>No Customer Reviews</p>
                                     </div>
-                                    <hr>
-                                {% endfor %}
-                            {% else %}
-                                <div>
-                                    <p>No Customer Reviews</p>
-                                </div>
-                            {% endif %}
+                                {% endif %}
                             </div>
                         </div>
                     </div>
-                    {% if user.is_authenticated %}
-                    <div class="card card-review-extension">
-                        <div class="card-header card-header-review-extension" id="headingTwo">
-                            <div class="collapsed review_click_arrow_2" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
-                            <h6 class="mb-0">
-                            Leave Your Reviews  <i class="fas fa-chevron-down"></i>
-                            </h6>
-                            </div>
+                        {% if user.is_authenticated %}
+                            <div class="card card-review-extension">
+                                <div class="card-header card-header-review-extension" id="headingTwo">
+                                    <div class="collapsed review_click_arrow_2" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" role="button">
+                                        <h6 class="mb-0">Leave Your Reviews <i class="fas fa-chevron-down"></i></h6>
+									</div>
+								</div>
+                                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                        <form class="form" action="{% url 'single_product' product.pk %}" method="POST">
+                                            {% csrf_token %}
+                                            {{ product_review_form|crispy }}
+                                            <button class="btn btn-colour-1" action="submit" aria-label="Product Review Submit Button">Submit Review</button>
+                                        </form>
+								    </div>
+							    </div>
+							</div>
+                    {% else %}    
+                        <div class="mt-4">
+                            <p>To leave a review, please 
+                                <a href="{% url 'account_login' %}">log in.</a>
+                            </p>
                         </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
-                        <div class="card-body">
-                            <form class="form" action="{% url 'single_product' product.pk %}" method="POST">
-                            {% csrf_token %}
-                            {{ product_review_form|crispy }}
-                            <button class="btn btn-colour-1" action="submit" aria-label="Product Review Submit Button">Submit Review</button>
-                            </form>
-                        </div>
-                        </div>
-                    </div>
-                    {% else %}
-                    <div class="mt-4">
-                        <p>To leave a review, please <a href="{% url 'account_login' %}">log in.</a></p>
-                    </div>
                     {% endif %}
-                </div>
-            </div>
+				</div>
+			</div>
             <div class="backToPrevious mb-5 ml-3">
                 <span class="icon">
                     <i class="fas fa-arrow-left"></i>

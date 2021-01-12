@@ -2,41 +2,42 @@
 {% load static %}
 
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
-    </div>
+    
+<div class="container header-container">
+	<div class="row">
+		<div class="col"></div>
+	</div>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div class="container section-top">
-        <div class="row">
-            <div class="offset-1 col-10 col-lg-6">
-                <h2 class="logo-font mb-4">Product Management</h2>
-                <h5>Edit a Product</h5>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="offset-1 col-10 col-lg-6">
-                <form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2 form-flowerydays" enctype="multipart/form-data">
+    
+<div class="container section-top">
+	<div class="row">
+		<div class="offset-1 col-10 col-lg-6">
+			<h2 class="logo-font mb-4">Product Management</h2>
+			<h5>Edit a Product</h5>
+		</div>
+	</div>
+	<div class="row">
+		<div class="offset-1 col-10 col-lg-6">
+			<form method="POST" action="{% url 'edit_product' product.id %}" class="form mb-2 form-flowerydays" enctype="multipart/form-data">
                     {% csrf_token %}
                     {{ form | crispy }}
-                    <div class="text-right">
-                        <a class="btn btn-outline" href="{% url 'products' %}">Cancel</a>
-                        <button class="btn btn-colour-1" type="submit" aria-label="Update Product Button">Update Product</button>
-                    </div>
-                </form>
-                <div class="mt-2">
-                    <a href="{% url 'home' %}">
-                        <span class="icon">
-                            <i class="fas fa-angle-left"></i>
-                        </span>
-                        <span>Back to Home</span>
-                    </a>
-                </div>
-            </div>            
-        </div>
-    </div>
+				<div class="text-right">
+					<a class="btn btn-outline" href="{% url 'products' %}">Cancel</a>
+					<button class="btn btn-colour-1" type="submit" aria-label="Update Product Button">Update Product</button>
+				</div>
+			</form>
+			<div class="mt-2">
+				<a href="{% url 'home' %}">
+					<span class="icon">
+						<i class="fas fa-angle-left"></i>
+					</span>
+					<span>Back to Home</span>
+				</a>
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

@@ -1,14 +1,14 @@
 <form class="form update-form" method="POST" action="{% url 'adjust_cart' item.item_id %}">
-    {% csrf_token %}
-    <div class="form-group">
-        <div class="input-group">
-            <div class="product-quantity">
-                <span class="minus bg-dark" id="minus_{{ item.item_id }}_{{ item.color }}">-</span>
-                <input class="quantity-count form-control qty_input" type="number" name="quantity" value="{{ item.quantity }}">
-                <span class="plus bg-dark" id="plus_{{ item.item_id }}_{{ item.color }}">+</span>
-            </div>
-            <span class="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
-        </div>
-        <input type="hidden" value="{{ item.color }}" name="color">
-    </div>
+    {% csrf_token %}  
+	<div class="form-group">
+		<div class="input-group">
+			<div class="product-quantity">
+				<span class="minus bg-dark" id="minus_{{ item.item_id }}_{{ item.color }}">-</span>
+				<input class="quantity-count form-control qty_input" type="number" name="quantity" value="{{ item.quantity }}">
+					<span class="plus bg-dark" id="plus_{{ item.item_id }}_{{ item.color }}">+</span>
+			</div>
+				<span class="errorMsg" style="display:none;">Please enter the number between 1 and 99</span>
+		</div>
+		<input type="hidden" value="{{ item.color }}" name="color">
+	</div>
 </form>

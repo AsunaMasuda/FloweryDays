@@ -1,69 +1,68 @@
 {% extends "base.html" %} {% load static %} {% load filter_pagination %} {% block content %}
+
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-lg-4 col-xl-3">
-            <form method="GET" action="{% url 'filter_product' %}">
-                <div class="mb-4">
-                    <div class="aside-title">Categories</div>
-                    <select class="selectpicker mt-2" multiple data-live-search="true" name="filter_category">
+	<div class="row mt-5">
+		<div class="col-lg-4 col-xl-3">
+			<form method="GET" action="{% url 'filter_product' %}">
+				<div class="mb-4">
+					<div class="aside-title">Categories</div>
+					<select class="selectpicker mt-2" multiple data-live-search="true" name="filter_category">
                         {% for category in categories %}
-                            {% if category in category_name %}
-                                <option value="{{ category }}" selected>{{ category|title }}</option>
-                            {% else %}
-                                <option value="{{ category }}">{{ category|title }}</option>
+                            {% if category in category_name %}        
+						        <option value="{{ category }}" selected>{{ category|title }}</option>
+                            {% else %}  
+						        <option value="{{ category }}">{{ category|title }}</option>
                             {% endif %}
                         {% endfor %}
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <div class="aside-title">Color</div>
-                    <select class="selectpicker mt-2" multiple data-live-search="true" name="filter_color">
+					</select>
+				</div>
+				<div class="mb-4">
+					<div class="aside-title">Color</div>
+					<select class="selectpicker mt-2" multiple data-live-search="true" name="filter_color">
                         {% for color in colors %}
                             {% if color in color_name %}
-                                <option value="{{ color }}" selected>{{ color|title }}</option>
-                            {% else %}
-                                <option value="{{ color }}">{{ color|title }}</option>
+        						<option value="{{ color }}" selected>{{ color|title }}</option>
+                            {% else %}  
+						        <option value="{{ color }}">{{ color|title }}</option>
                             {% endif %}
                         {% endfor %}
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <div class="aside-title">Flower</div>
-                    <select class="selectpicker mt-2" multiple data-live-search="true"  name="filter_flower">
+					</select>
+				</div>
+				<div class="mb-4">
+					<div class="aside-title">Flower</div>
+					<select class="selectpicker mt-2" multiple data-live-search="true"  name="filter_flower">
                         {% for flower in flowers %}
                             {% if flower in flower_name %}
-                                <option value="{{ flower }}" selected>{{ flower|title }}</option>
-                            {% else %}
-                                <option value="{{ flower }}">{{ flower|title }}</option>
+        						<option value="{{ flower }}" selected>{{ flower|title }}</option>
+                            {% else %}                        
+						        <option value="{{ flower }}">{{ flower|title }}</option>
                             {% endif %}
                         {% endfor %}
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <div class="aside-title mt-2">Occasion / Use</div>
-                    <select class="selectpicker mt-2" multiple data-live-search="true"  name="filter_occasion">
+					</select>
+				</div>
+				<div class="mb-4">
+					<div class="aside-title mt-2">Occasion / Use</div>
+					<select class="selectpicker mt-2" multiple data-live-search="true"  name="filter_occasion">
                         {% for occasion in occasions %}
-                            {% if occasion in occasion_name %}
-                                <option value="{{ occasion }}" selected>{{ occasion|title }}</option>
+                            {% if occasion in occasion_name %}      
+						        <option value="{{ occasion }}" selected>{{ occasion|title }}</option>
                             {% else %}
-                                <option value="{{ occasion }}">{{ occasion|title }}</option>
+						        <option value="{{ occasion }}">{{ occasion|title }}</option>
                             {% endif %}
                         {% endfor %}
-                    </select>
-                </div>
-                <div class="mb-4 text-center">
-                    <button class="btn btn-product-filter" type="submit" aria-label="Apply Filter Button">Apply Filter</button>
-                </div>
-            </form>
-        </div>
-    
-
-    <div class="col-lg-8 col-xl-9">
-        <div class="row">
-            <div class="col-12">
-                <div class="row">
+					</select>
+				</div>
+				<div class="mb-4 text-center">
+					<button class="btn btn-product-filter" type="submit" aria-label="Apply Filter Button">Apply Filter</button>
+				</div>
+			</form>
+		</div>
+		<div class="col-lg-8 col-xl-9">
+			<div class="row">
+				<div class="col-12">
+					<div class="row">
                     {% if queries %}
-                        <div class="col-12">
+						<div class="col-12">
                             {% if not products %}
                                 Your search "{% for i in queries %}{{ i }} {% endfor %}" did not match any results.
                             {% else %}
@@ -71,83 +70,99 @@
                             {% endif %}
                         </div>
                     {% endif %}
-                </div>
-                <div class="row mt-3">
-                    <div class="col-6 product-counter">
-                    {{ products.start_index }} - {{ products.end_index }} out of {{ products.paginator.count }} results
-                    </div>
-                    <div class="col-6">
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            {% if not products %}
-                <div class="col-12 mt-5">
-                    There is no result with the filters you chose. Please choose different filters.
-                </div>
-            {% endif %}
-            {% for product in products %}
-            <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
-                <!-- Product-->
-                <article class="product">
-                        <div class="product-hover">
-                            <div class="product-figure"><img src="{{ product.product_image.url }}" class="online-product-img" alt="{{ product.name }}">
-                            </div>
-                            <div class="overlay"></div>
-                            <div class="button-overlay"><a href="{% url 'single_product' product.pk %}">View Details</a>
-                            </div>
+					</div>
+					<div class="row mt-3">
+						<div class="col-6 product-counter">
+                            {{ products.start_index }} - {{ products.end_index }} out of {{ products.paginator.count }} results
                         </div>
-                        <h5 class="mt-3 product-title"><a href="{% url 'single_product' product.pk %}">{{ product.name }}</a></h5>
-                        <div class="product-price">€ {{ product.price }}</div><br>
-                        <div class="product-price">{{ product.unit }}</div><br>
-                        <form class="form" action="{% url 'add_to_cart' product.pk %}" method="POST">
-                            {% csrf_token %}
-                            {% if product.category == 'bouquet' %}
-                            <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
-                            <input type="hidden" name="redirect_url" value="{% url 'onlineshop' %}">
-                            {% endif %}
-                            {% if request.user.is_superuser %}
-                            <div class="mt-2">
-                                <a href="{% url 'edit_product' product.pk %}" class="product_edit">Edit</a> | 
-                                <a href="{% url 'delete_product' product.pk%}" class="product_delete">Delete</a>
-                            </div>
-                            {% endif %}
-                        </form>
-                </article>
-            </div>
-            {% endfor %}
-        </div>
-        <div class="row">
-            <div class="col-12">
-                {% if products.has_other_pages %}
-                    <ul class="pagination pagination-extension justify-content-center mt-4">
-                        {% if products.has_previous %}
-                            <li class="mr-2">
-                                <a class="move-page-button" href="{% relative_url products.previous_page_number 'page' request.GET.urlencode %}">&laquo;
-                                </a>
-                            </li>
-                        {% else %}
-                            <li class="move-page-button-disabled mr-2"><span>&laquo;</span></li>
-                        {% endif %}
-                        {% for i in products.paginator.page_range %}
-                            {% if products.number == i %}
-                                <li class="active-pagination mr-2"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
-                            {% else %}
-                                <li class="mr-2"><a class="page-button" href="{% relative_url i 'page' request.GET.urlencode %}">
-                                {{ i }} </a></li>
-                            {% endif %}
-                        {% endfor %}
-                        {% if products.has_next %}
-                        <li><a class="move-page-button" href="{% relative_url products.next_page_number 'page' request.GET.urlencode %}">&raquo;</a></li>
-                        {% else %}
-                        <li class="move-page-button-disabled"><span>&raquo;</span></li>
-                        {% endif %}
-                    </ul>
+						<div class="col-6"></div>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+                {% if not products %}
+                    <div class="col-12 mt-5">
+                        There is no result with the filters you chose. Please choose different filters.
+                    </div>
                 {% endif %}
+                {% for product in products %}
+                    <div class="col-sm-6 col-md-6 col-lg-6 col-xl-4">
+                        <!-- Product-->
+                        <article class="product">
+                            <div class="product-hover">
+                                <div class="product-figure">
+                                    <img src="{{ product.product_image.url }}" class="online-product-img" alt="{{ product.name }}">
+                                </div>
+                                <div class="overlay"></div>
+                                <div class="button-overlay">
+                                    <a href="{% url 'single_product' product.pk %}">View Details</a>
+                                </div>
+                            </div>
+                            <h5 class="mt-3 product-title">
+                                <a href="{% url 'single_product' product.pk %}">{{ product.name }}</a>
+                            </h5>
+                            <div class="product-price">€ {{ product.price }}</div>
+                            <br>
+                            <div class="product-price">{{ product.unit }}</div>
+                            <br>
+                            <form class="form" action="{% url 'add_to_cart' product.pk %}" method="POST">
+                                {% csrf_token %}
+                                {% if product.category == 'bouquet' %}
+                                    <input type="submit" class="btn btn-colour-shop" value="Add to Cart">
+                                    <input type="hidden" name="redirect_url" value="{% url 'onlineshop' %}">
+                                {% endif %}
+                                {% if request.user.is_superuser %}
+                                    <div class="mt-2">
+                                        <a href="{% url 'edit_product' product.pk %}" class="product_edit">Edit</a> | 
+                    
+                                        <a href="{% url 'delete_product' product.pk%}" class="product_delete">Delete</a>
+                                    </div>
+                                {% endif %}
+                            </form>
+                        </article>
+                    </div>
+                {% endfor %}
+		    </div>
+            <div class="row">
+                <div class="col-12">
+                    {% if products.has_other_pages %}
+                        <ul class="pagination pagination-extension justify-content-center mt-4">
+                            {% if products.has_previous %}
+                                <li class="mr-2">
+                                    <a class="move-page-button" href="{% relative_url products.previous_page_number 'page' request.GET.urlencode %}">&laquo;</a>
+                                </li>
+                            {% else %} 
+                                <li class="move-page-button-disabled mr-2">
+                                    <span>&laquo;</span>
+                                </li>
+                            {% endif %}
+                            {% for i in products.paginator.page_range %}
+                                {% if products.number == i %}
+                                    <li class="active-pagination mr-2">
+                                        <span>{{ i }} 
+                                            <span class="sr-only">(current)</span>
+                                        </span>
+                                    </li>
+                                {% else %}
+                                    <li class="mr-2">
+                                        <a class="page-button" href="{% relative_url i 'page' request.GET.urlencode %}">{{ i }} </a>
+                                    </li>
+                                {% endif %}
+                            {% endfor %}
+                            {% if products.has_next %}
+                                <li>
+                                    <a class="move-page-button" href="{% relative_url products.next_page_number 'page' request.GET.urlencode %}">&raquo;</a>
+                                </li>
+                            {% else %}
+                                <li class="move-page-button-disabled">
+                                    <span>&raquo;</span>
+                                </li>
+                            {% endif %}
+                        </ul>
+                    {% endif %}
+			    </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 {% endblock %}

@@ -1,22 +1,16 @@
-{% extends "base.html" %}
-{% load static %}
-
-{% block content%}
+{% extends "base.html" %} {% load static %} {% block content%}
 
 <!-- 500 Error handler -->
 <div class="container section-top">
     <div class="row">
         <div class="col-12 text-center">
-            <h1 class="uppercase font-weight-bold error-heading"> 
+            <h1 class="uppercase font-weight-bold error-heading">
                 500 error
             </h1>
             <h3 class="mt-5 error-sub-heading">
-                Oops! Something went wrong...
-                Please try to refresh this page or contact us if the problem persists.
+                Oops! Something went wrong... Please try to refresh this page or contact us if the problem persists.
             </h3>
-            <a href="{% url 'home' %}" class="btn btn-colour-1 mt-3" aria-label="Back Home Button">
-                <i class="fas fa-chevron-left mr-1"></i> Back Home
-            </a>
+            <a href="{% url 'home' %}" class="btn btn-colour-1 mt-3" aria-label="Back Home Button"> <i class="fas fa-chevron-left mr-1"></i> Back Home </a>
         </div>
     </div>
 </div>

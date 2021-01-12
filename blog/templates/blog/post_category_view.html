@@ -1,63 +1,64 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 {% load filter_pagination %} {% load blog_image_filter %}
+
 <section class="section-top">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-2">
-                <h4 class="mb-4">Category</h4>
-                    <a href="{% url 'blog' %}">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-2">
+				<h4 class="mb-4">Category</h4>
+				<a href="{% url 'blog' %}">
+					<p>
+						<span>All</span>
+						<span>( {{ total_post_number }} )</span>
+					</p>
+				</a>
+                {% for category, values in category_dict.items %}                 
+                    <a href="{% url 'category_view' category|lower %}">
                         <p>
-                            <span>All</span>
-                            <span>( {{ total_post_number }} )</span>
+                            <span>{{ category }}  </span>
+                            <span>( {{ values }} )</span>
                         </p>
                     </a>
-                    {% for category, values in category_dict.items %}
-                        <a href="{% url 'category_view' category|lower %}">
-                            <p>
-                                <span>{{ category }}  </span>
-                                <span>( {{ values }} )</span>
-                            </p>
-                        </a>
-                    {% endfor %}
-            </div>
-            <div class="col-lg-10">
-                <div class="row">
-                    <div class="col-12 mb-3">
-                        <div class="row">
-                            <div class="col-12 mb-3">
-                                <h2>{{ category|title }}</h2>
-                            </div>
-                            <div class="col-lg-3 card-width-small">
+                {% endfor %}
+			</div>
+			<div class="col-lg-10">
+				<div class="row">
+					<div class="col-12 mb-3">
+						<div class="row">
+							<div class="col-12 mb-3">
+								<h2>{{ category|title }}</h2>
+							</div>
+							<div class="col-lg-3 card-width-small">
                                 {% for post in selected_blog|slice:":2" %}
-                                    {% for card_image in blog_image|in_image:post.pk %}
-                                        <a href="{% url 'post_view' post.slug %}">
+                                    {% for card_image in blog_image|in_image:post.pk %} 
+								        <a href="{% url 'post_view' post.slug %}">
                                             <div class="card card-small-extenstion card-hover">
                                                 <div class="card-body card-body-small-extenstion">
-                                                    <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="blog_image">
-                                                    <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
-                                                </div>
-                                            </div>
-                                        </a>
-                                    <br>
+											        <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="blog_image">
+												    <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
+											    </div>
+										    </div>
+									    </a>
+									    <br>
                                     {% endfor %}
                                 {% endfor %}
-                            </div>
-                            <div class="col-lg-6 card-width-large">
+							</div>
+							<div class="col-lg-6 card-width-large">
                                 {% for post in selected_blog|slice:"2:3" %}
                                     {% for card_image in blog_image|in_image:post.pk %}
-                                        <a href="{% url 'post_view' post.slug %}">
-                                            <div class="card card-large-extenstion">
-                                                <div class="card-body card-body-large-extenstion">
-                                                    <img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="blog_image">
-                                                    <h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
-                                                </div>
-                                            </div>
-                                        </a>
-                                        <br>
+										<a href="{% url 'post_view' post.slug %}">
+											<div class="card card-large-extenstion">
+												<div class="card-body card-body-large-extenstion">
+													<img class="card-img-top card-img-top-extenstion" src="{{ card_image.image.url }}" alt="blog_image">
+													<h4 class="card-title card-title-extenstion">{{ post.title }}</h4>
+												</div>
+											</div>
+										</a>
+										<br>
                                     {% endfor %}
                                 {% endfor %}
-                            </div>
-                            <div class="col-lg-3 card-width-small">
+							</div>
+							<div class="col-lg-3 card-width-small">
                                 {% for post in selected_blog|slice:"3:5" %}
                                     {% for card_image in blog_image|in_image:post.pk %}
                                         <a href="{% url 'post_view' post.slug %}">
@@ -71,34 +72,43 @@
                                         <br>
                                     {% endfor %}
                                 {% endfor %}
-                            </div>
+							</div>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-12">
                         {% if selected_blog.has_other_pages %}
-                            <ul class="pagination pagination-extension justify-content-center mt-4">
+							<ul class="pagination pagination-extension justify-content-center mt-4">
                                 {% if selected_blog.has_previous %}
-                                    <li class="mr-2">
-                                        <a class="move-page-button" href="{% relative_url selected_blog.previous_page_number 'page' request.GET.urlencode %}">&laquo;
-                                        </a>
-                                    </li>
-                            {% else %}
-                            {% endif %}
-                            {% for i in selected_blog.paginator.page_range %}
-                                {% if selected_blog.number == i %}
-                                    <li class="active mr-2"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+								<li class="mr-2">
+									<a class="move-page-button" href="{% relative_url selected_blog.previous_page_number 'page' request.GET.urlencode %}">&laquo;</a>
+								</li>
                                 {% else %}
-                                    <li class="mr-2"><a class="page-button" href="{% relative_url i 'page' request.GET.urlencode %}"> {{ i }} </a></li>
                                 {% endif %}
-                            {% endfor %}
+                                {% for i in selected_blog.paginator.page_range %}
+                                    {% if selected_blog.number == i %}
+                                        <li class="active mr-2">
+                                            <span>{{ i }} 
+                                                <span class="sr-only">(current)</span>
+                                            </span>
+                                        </li>
+                                    {% else %}
+                                        <li class="mr-2">
+                                            <a class="page-button" href="{% relative_url i 'page' request.GET.urlencode %}"> {{ i }} </a>
+                                        </li>
+                                    {% endif %}
+                                {% endfor %}
                                 {% if selected_blog.has_next %}
-                                <li><a class="move-page-button" href="{% relative_url selected_blog.next_page_number 'page' request.GET.urlencode %}">&raquo;</a></li>
+                                    <li>
+                                        <a class="move-page-button" href="{% relative_url selected_blog.next_page_number 'page' request.GET.urlencode %}">&raquo;</a>
+                                    </li>
                                 {% else %}
-                                <li class="move-page-button-disabled"><span>&raquo;</span></li>
+                                    <li class="move-page-button-disabled">
+                                        <span>&raquo;</span>
+                                    </li>
                                 {% endif %}
-                            </ul>
+							</ul>
                         {% endif %}
                     </div>
                 </div>
