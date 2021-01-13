@@ -42,12 +42,11 @@ $(document).ready(function() {
         }
     });
     $(document).on('change', '.quantity-count', function() {
-        $(this).val($(this).val());
         if (($(this).val() > 99)) {
-            $('.errorMsg').show();
+            $(this).closest('.input-group').find('.errorMsg').show();
             $(this).val(99);
         } else if (($(this).val() < 1)) {
-            $('.errorMsg').show();
+            $(this).closest('.input-group').find('.errorMsg').show();
             $(this).val(1);
         } else {
             $('.errorMsg').hide();
