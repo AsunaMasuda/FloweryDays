@@ -134,7 +134,7 @@ This image is created with [ami.responsivedesign](http://ami.responsivedesign.is
 
 ## Design
 ### Wireframes
-Wireframes were created with [balsamiq](https://balsamiq.com/).
+Wireframes were created with [balsamiq](https://balsamiq.com/) and [moqups](https://moqups.com/).
 You can find the wireframes [here](https://github.com/AsunaMasuda/FloweryDays/blob/master/readme_materials/wireframe.md).
 
 ### Brand Identity
