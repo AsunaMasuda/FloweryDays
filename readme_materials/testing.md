@@ -9,18 +9,17 @@
     - [Onlineshop](#onlineshop)
     - [Blog](#blog)
     - [Cart](#cart)
-    - [Checkout & Checkout Success Page](#checkout-&-checkout-success-page)
-    - [SignIn/Login, Order History](#signIn/login,-order-history) 
-    - [Profile, Order History](#profile,-order-history) 
+    - [Checkout and Checkout Success Page](#checkout-and-checkout-success-page)
+    - [SignIn and Order History](#signin-and-order-history) 
+    - [Profile and Order History](#profile-and-order-history) 
     - [Admin Product Management](#admin-product-management) 
-    - [SignIn/Login, Order History](#signIn/login,-order-history)
     - [Bugs](#bugs)
     - [Peer Code Review](#peer-code-review)
 
 2. [Automated Testing](#automated-testing)
     - [Travis](#travis)
     - [Django tests](#django-tests)
-    - [LightHouse on Google DevTool](#lightHouse-on-google-devTool)
+    - [LightHouse on Google DevTool](#lighthouse-on-google-devtool)
 
 3. [Code Valication and Formatting](#code-valication-and-formatting )
     - [Validation Tools](#validation-tools)
@@ -141,7 +140,7 @@ Passed all tests.
 ### Verdict:
 Passed all tests.
 
-## Checkout & Checkout Success Page
+## Checkout and Checkout Success Page
 ### User Stories Tested:
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- |  
@@ -158,7 +157,7 @@ Passed all tests.
 ### Verdict:
 Passed all tests.
 
-## SignIn/Login, Order History
+## SignIn and Order History
 ### User Stories Tested:
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... | 
 | ----------- | ----------- | ----------- | 
@@ -174,7 +173,7 @@ Passed all tests.
 ### Verdict:
 Passed all tests.
 
-## Profile, Order History
+## Profile and Order History
 ### User Stories Tested:
 | AS A/AN     | I WANT TO BE ABLE TO ... | SO THAT I CAN... |
 | ----------- | ----------- | ----------- |
@@ -224,15 +223,13 @@ Travis CI is configured by adding a file named .travis.yml and you need to set a
 How to set up Travis CI can be found in [this documentation](https://docs.travis-ci.com/).
 
 ## Django tests
-I have run tests for the models and views in all apps, where applicable.
+I have run tests for the models and views in all apps, where applicable. For Django testing, I have downloaded packages: `coverage` and `django-nose`.
 I have tried to automate the tests as much as possible, but could not reach 100% coverage, since some parts in views.py are complicated and it was difficult to test automatically so I chose manual testing. I also learned [Test-Driven Development](https://www.guru99.com/test-driven-development.html) while learning Django Testing, next time when I build a Django application, I want to try this approach.
 
 
 ## LightHouse on Google DevTool
- I used Lighthouse by Google on Landing Page, Online Shop Page/Single Product Page, Blog Page, Cart Page.
-Result: `Landing Page` - It reported the file size of some images are not appropriate, even after I used service called [tinypng](https://tinypng.com/) to reduce the file size. 
- I'd like to investigate this as feature improvements because of the time constraints.
-`Blog Page` - The same issue of image file sizes is reported to the Blog Page. 
+I used Lighthouse by Google on Landing Page, Online Shop Page/Single Product Page, Blog Page, Cart Page.
+<br>Result: `Landing Page` - It reported the file size of some images are not appropriate, even after I used service called [tinypng](https://tinypng.com/) to reduce the file size. I'd like to investigate this as feature improvements because of the time constraints.
 
 
 # Code Valication and Formatting 
