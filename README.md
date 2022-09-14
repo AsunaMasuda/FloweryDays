@@ -399,7 +399,6 @@ Testing was conducted and recorded in a different file: [Testing.md](https://git
 This website is deployed on [Heroku](https://www.heroku.com/), following these steps:
 1. Install these packages to your local environment, since these packages are required to deploy a Django project on Heroku.
 - [gnicorn](https://gunicorn.org/): `gnicorn` is Python WSGI(web server gataway interface) server for UNIX.
-- [nginx](https://www.nginx.com/): `nginx` is a free, open-source, high-performance HTTP server and reverse proxy, as well as an IMAP/POP3 proxy server.
 - [psycopg2-binary](https://pypi.org/project/psycopg2-binary/): `psycopg2-binary` is PostgreSQL database adapter for the Python programming language.
 - [dj-database-url](https://pypi.org/project/dj-database-url/): `dj-database-url` allows you to utilize the 12factor inspired DATABASE_URL environment variable to configure your Django application.
 2. Create a `requirements.txt` file and freeze all the modules with the command `pip3 freeze > requirements.txt` in the terminal.
