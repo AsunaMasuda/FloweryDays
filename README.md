@@ -18,7 +18,7 @@ The shop also publishes blog posts about flower arrangements, gardening and flow
 
 This image is created with [ami.responsivedesign](http://ami.responsivedesign.is/).
 
-## Table of Contents
+### Table of Contents
 
 1. [UX](#ux)
     - [Project Goals](#project-goals)
